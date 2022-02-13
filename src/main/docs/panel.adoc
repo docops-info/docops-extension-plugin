@@ -1,0 +1,681 @@
+= DocOps.io AsciiDoctorJ Panels
+Steve D Roach
+:email: sroachst@gmail.com
+:stylesdir: styles
+:stylesheet: ubuntu.css
+:toc: left
+:sectnums:
+:title-page:
+:source-highlighter: highlightjs
+:nofooter:
+:imagesdir: images
+:feedback:
+
+== What are they?
+
+AsciiDoctorJ are a wal of creating a panel that are clickable. This means are can create a set of panels that links to various content, an alternative way of building links.
+
+== How to use?
+
+AsciiDoctorJ Panels are abuilt using a block processor. SO you will need to create blocks to visualize them. For the most part the body of the panel is build using a Kotlin DSL.
+
+=== First Example
+
+The first type of panels are of the just the panels with a list of panel objects. See example below
+
+[source,kotlin]
+----
+panels {
+    panel{
+        link = "http://wwww.google.com"
+        label = "Google Search"
+    }
+}
+----
+
+Given the above we will build panels for Google, Apple, Microsoft,Amazon, Netflix
+
+[source,asciidoc]
+====
+[panels,"buttons"]
+....
+panels {
+    panel {
+        link = "https://www.google.com"
+        label = "Google"
+    }
+    panel {
+        link = "https://www.apple.com"
+        label = "Apple"
+    }
+    panel {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+    }
+    panel {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+    }
+    panel {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+    }
+}
+....
+====
+
+[panels,"buttons"]
+----
+panels {
+    panel {
+        link = "https://www.google.com"
+        label = "Google"
+    }
+    panel {
+        link = "https://www.apple.com"
+        label = "Apple"
+    }
+    panel {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+    }
+    panel {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+    }
+    panel {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+    }
+}
+----
+
+The syntax is pretty small to make panel of buttons.
+
+
+== Round Buttons
+Similar to the buttons we have a round object we can use.
+
+[source,asciidoc]
+====
+[panels,"buttons"]
+....
+panels {
+    theme {
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+        }
+    }
+    round {
+        link = "https://www.google.com"
+        label = "Google"
+    }
+    round {
+        link = "https://www.apple.com"
+        label = "Apple"
+    }
+    round {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+    }
+    round {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+    }
+    round {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+    }
+}
+....
+====
+
+
+[panels,"round"]
+----
+panels {
+    theme {
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+        }
+    }
+    round {
+        link = "https://www.google.com"
+        label = "Google"
+    }
+    round {
+        link = "https://www.apple.com"
+        label = "Apple"
+    }
+    round {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+    }
+    round {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+    }
+    round {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+    }
+}
+----
+
+== Theming
+
+
+.Theme Guide
+[cols="1,1,3",stripes=even,frame=sides, grid=cols]
+|===
+|Item |Attribute |Value
+
+|layout
+|columns
+|_optional_,  default: 3, max recommended 6
+
+|
+|groupBy
+|default Grouping.TITLE, others -> .Grouping.TYPE, Grouping.AUTHOR, Grouping.DATE
+
+|
+|groupOrder
+|_optional_ default Grouping.ASCENDING, others -> Grouping.DESCENDING
+
+|
+|
+a|
+[source,kotlin]
+----
+ theme {
+    layout {
+        columns = 4
+        groupBy = Grouping.TITLE
+        groupOrder = GroupingOrder.ASCENDING
+    }
+}
+----
+
+|colorMap
+|color
+|_optional_
+
+|
+|
+a|
+[source,kotlin]
+----
+colorMap{
+    color("#ff6385d9")
+    color("#36a3ebd9")
+    color("#9966ff33")
+    color("#ffcf56d9")
+    color("#4bc0c0d9")
+    color("#FDCBF1")
+}
+----
+
+|legendOn
+|legend
+|boolean, _default true_
+|===
+
+=== Themed Example
+
+Same Panel as above but with sorting ascending and different colors.
+
+[source,asciidoc]
+====
+[panels,"round2"]
+....
+panels {
+    theme {
+        layout {
+            columns = 4
+            groupBy = Grouping.TITLE
+            groupOrder = GroupingOrder.ASCENDING
+        }
+        font {
+            color = "#ffffff"
+        }
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+        }
+    }
+    panel {
+        link = "https://www.google.com"
+        label = "Google"
+    }
+    panel {
+        link = "https://www.apple.com"
+        label = "Apple"
+    }
+    panel {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+    }
+    panel {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+    }
+    panel {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+    }
+}
+....
+====
+
+[panels,"round2"]
+----
+panels {
+    theme {
+        layout {
+            columns = 4
+            groupBy = Grouping.TITLE
+            groupOrder = GroupingOrder.ASCENDING
+        }
+        font {
+            color = "#ffffff"
+        }
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+        }
+    }
+    panel {
+        link = "https://www.google.com"
+        label = "Google"
+    }
+    panel {
+        link = "https://www.apple.com"
+        label = "Apple"
+    }
+    panel {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+    }
+    panel {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+    }
+    panel {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+    }
+}
+----
+
+== Small Panels
+
+More informational panels can be created with small cards
+
+[source,asciidoc]
+====
+[panels,"slim"]
+....
+panels {
+    theme {
+        layout {
+            columns=4
+            groupOrder = GroupingOrder.ASCENDING
+        }
+        font {
+            color = "#000000"
+        }
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+            color("#A6C1EE")
+        }
+        legendOn = false
+    }
+    slim {
+        link = "https://www.google.com"
+        label = "Google"
+        type = "Advertising"
+        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
+        author("Sergey Brin")
+        author("Larry Page")
+        date ="07/30/1998"
+    }
+    slim {
+        link = "https://www.apple.com"
+        label = "Apple"
+        type = "Personal Devices"
+        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
+        author("Steve Jobs")
+        author("Steve Wozniak")
+        date ="01/30/1977"
+    }
+    slim {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+        type = "Software"
+        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
+        author("Bill Gates")
+    }
+    slim {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+        type = "Super Store"
+        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
+        author("Jeff Bezos")
+    }
+    slim {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+        type = "Movie Theater"
+        description = "Netflix, Inc. is an American subscription streaming service and production company."
+        author("Reed")
+        author("Marc")
+    }
+    slim {
+        link = "https://www.facebook.com"
+        label = "Facebook"
+        type = "Social Butterfly"
+        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
+        author("Mark Zukerberg")
+    }
+    slim {
+        link = "https://www.instagram.com"
+        label = "Instagram"
+        type = "Beach"
+        description = "Instagram is an American photo and video sharing social networking service. "
+        author("Kevin")
+        author("Mike")
+    }
+}
+....
+====
+
+
+[panels,"slim"]
+----
+panels {
+    theme {
+        layout {
+            columns=4
+            groupOrder = GroupingOrder.ASCENDING
+        }
+        font {
+            color = "#000000"
+        }
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+            color("#A6C1EE")
+        }
+        legendOn = false
+    }
+    slim {
+        link = "https://www.google.com"
+        label = "Google"
+        type = "Advertising"
+        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
+        author("Sergey Brin")
+        author("Larry Page")
+        date ="07/30/1998"
+    }
+    slim {
+        link = "https://www.apple.com"
+        label = "Apple"
+        type = "Personal Devices"
+        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
+        author("Steve Jobs")
+        author("Steve Wozniak")
+        date ="01/30/1977"
+    }
+    slim {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+        type = "Software"
+        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
+        author("Bill Gates")
+    }
+    slim {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+        type = "Super Store"
+        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
+        author("Jeff Bezos")
+    }
+    slim {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+        type = "Movie Theater"
+        description = "Netflix, Inc. is an American subscription streaming service and production company."
+        author("Reed")
+        author("Marc")
+    }
+    slim {
+        link = "https://www.facebook.com"
+        label = "Facebook"
+        type = "Social Butterfly"
+        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
+        author("Mark Zukerberg")
+    }
+    slim {
+        link = "https://www.instagram.com"
+        label = "Instagram"
+        type = "Beach"
+        description = "Instagram is an American photo and video sharing social networking service. "
+        author("Kevin")
+        author("Mike")
+    }
+}
+----
+
+
+.Slim Cards Guide
+[cols="1,1,3",stripes=even,frame=sides, grid=cols]
+|===
+|Item |Attribute |Notes
+
+|slim
+|type
+|A way to categorize the card by in case you would like to group or sort by, see the Theme table for sorting and grouping
+|
+|description
+|used as the hover over information describing the card
+
+|
+|author
+|list of "author" to the link provided
+
+|
+|date
+|date to display content attributed to link
+
+|===
+
+
+== Large Panels
+
+Alternative to Slim Panel is Large Panels where the description is now displayed on the card
+
+[source,asciidoc]
+====
+[panels,"large"]
+....
+panels {
+theme {
+        layout {
+            columns = 3
+        }
+        font {
+            color = "#000000"
+            weight = FontWeight.bold
+        }
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+            color("#A6C1EE")
+        }
+    }
+    large {
+        link = "https://www.google.com"
+        label = "Google"
+        type = "Search"
+        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
+        date ="07/30/1998"
+    }
+    large {
+        link = "https://www.apple.com"
+        label = "Apple"
+        type = "Personal Devices"
+        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
+        date ="01/30/1977"
+    }
+    large {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+        type = "Software"
+        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
+    }
+    large {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+        type = "Super Store"
+        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
+    }
+    large {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+        type = "Movie Theater"
+        description = "Netflix, Inc. is an American subscription streaming service and production company."
+    }
+    large {
+        link = "https://www.facebook.com"
+        label = "Facebook"
+        type = "Social Butterfly"
+        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
+    }
+    large {
+        link = "https://www.instagram.com"
+        label = "Instagram"
+        type = "Beach"
+        description = "Instagram is an American photo and video sharing social networking service founded by Kevin Systrom and Mike Krieger. "
+    }
+}
+....
+====
+
+[panels,"large"]
+----
+panels {
+theme {
+        layout {
+            columns = 3
+        }
+        font {
+            color = "#000000"
+            weight = FontWeight.bold
+        }
+        colorMap{
+            color("#ff6385d9")
+            color("#36a3ebd9")
+            color("#9966ff33")
+            color("#ffcf56d9")
+            color("#4bc0c0d9")
+            color("#FDCBF1")
+            color("#A6C1EE")
+        }
+    }
+    large {
+        link = "https://www.google.com"
+        label = "Google"
+        type = "Search"
+        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
+        date ="07/30/1998"
+    }
+    large {
+        link = "https://www.apple.com"
+        label = "Apple"
+        type = "Personal Devices"
+        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
+        date ="01/30/1977"
+    }
+    large {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+        type = "Software"
+        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
+    }
+    large {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+        type = "Super Store"
+        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
+    }
+    large {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+        type = "Movie Theater"
+        description = "Netflix, Inc. is an American subscription streaming service and production company."
+    }
+    large {
+        link = "https://www.facebook.com"
+        label = "Facebook"
+        type = "Social Butterfly"
+        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
+    }
+    large {
+        link = "https://www.instagram.com"
+        label = "Instagram"
+        type = "Beach"
+        description = "Instagram is an American photo and video sharing social networking service founded by Kevin Systrom and Mike Krieger. "
+    }
+}
+----
+
+
+.Large Cards Guide
+[cols="1,1,3",stripes=even,frame=sides, grid=cols]
+|===
+|Item |Attribute |Notes
+
+|large
+|type
+|A way to categorize the card by in case you would like to group or sort by, see the Theme table for sorting and grouping
+|
+|description
+|more information on the content behind the link
+
+
+|
+|date
+|date to display content attributed to link
+
+|===
