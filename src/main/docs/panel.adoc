@@ -2,7 +2,7 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: ubuntu.css
+:stylesheet: colony.css
 :toc: left
 :sectnums:
 :title-page:
@@ -228,6 +228,11 @@ colorMap{
 |legendOn
 |legend
 |boolean, _default true_
+
+|newWin
+|
+|boolean, _default true_
+
 |===
 
 === Themed Example
@@ -256,6 +261,7 @@ panels {
             color("#4bc0c0d9")
             color("#FDCBF1")
         }
+        newWin = false
     }
     panel {
         link = "https://www.google.com"
@@ -301,6 +307,7 @@ panels {
             color("#4bc0c0d9")
             color("#FDCBF1")
         }
+        newWin = false
     }
     panel {
         link = "https://www.google.com"
