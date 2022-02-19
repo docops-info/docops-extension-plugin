@@ -176,7 +176,7 @@ panels {
 
 
 .Theme Guide
-[cols="1,1,3",stripes=even,frame=sides, grid=cols]
+[cols="1,1,3"]
 |===
 |Item |Attribute |Value
 
@@ -502,7 +502,7 @@ panels {
 
 
 .Slim Cards Guide
-[cols="1,1,3",stripes=even,frame=sides, grid=cols]
+[cols="1,1,3"]
 |===
 |Item |Attribute |Notes
 
@@ -669,7 +669,7 @@ theme {
 
 
 .Large Cards Guide
-[cols="1,1,3",stripes=even,frame=sides, grid=cols]
+[cols="1,1,3"]
 |===
 |Item |Attribute |Notes
 
