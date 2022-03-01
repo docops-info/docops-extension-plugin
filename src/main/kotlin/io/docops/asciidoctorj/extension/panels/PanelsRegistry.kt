@@ -26,6 +26,8 @@ class PanelsRegistry : ExtensionRegistry {
         //registry.docinfoProcessor(FeedbackDocinfoProcessor::class.java)
         // registry.docinfoProcessor(FeedbackDivDocInfoProcessor::class.java)
         registry.blockMacro(ColorMapBlockMacroProcessor::class.java)
+        registry.docinfoProcessor(TocBotHeaderDocInfoProcessor::class.java)
+        registry.docinfoProcessor(TocBotFooterDocInfoProcessor::class.java)
     }
 
 }

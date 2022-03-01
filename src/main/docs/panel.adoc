@@ -96,7 +96,7 @@ The syntax is pretty small to make panel of buttons.
 == Round Buttons
 Similar to the buttons we have a round object we can use.
 
-[source,asciidoc]
+[source,kotlin]
 ====
 [panels,"buttons"]
 ....
@@ -239,7 +239,7 @@ colorMap{
 
 Same Panel as above but with sorting ascending and different colors.
 
-[source,asciidoc]
+[source,kotlin]
 ====
 [panels,"round2"]
 ....
@@ -336,7 +336,7 @@ panels {
 
 More informational panels can be created with small cards
 
-[source,asciidoc]
+[source,kotlin]
 ====
 [panels,"slim"]
 ....
@@ -528,7 +528,7 @@ panels {
 
 Alternative to Slim Panel is Large Panels where the description is now displayed on the card
 
-[source,asciidoc]
+[source,kotlin]
 ====
 [panels,"large"]
 ....
