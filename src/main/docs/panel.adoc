@@ -9,7 +9,7 @@ Steve D Roach
 :source-highlighter: highlightjs
 :nofooter:
 :imagesdir: images
-:feedback:
+
 
 == What are they?
 
@@ -21,7 +21,7 @@ AsciiDoctorJ Panels are abuilt using a block processor. SO you will need to crea
 
 === First Example
 
-The first type of panels are of the just the panels with a list of panel objects. See example below
+The first type of panels are just panels with a list of panel objects. See example below
 
 [source,kotlin]
 ----
@@ -103,11 +103,11 @@ Similar to the buttons we have a round object we can use.
 panels {
     theme {
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
+            color("#ff6385")
+            color("#36a3eb")
+            color("#9966ff")
+            color("#ffcf56")
+            color("#4bc0c0")
             color("#FDCBF1")
         }
     }
@@ -216,11 +216,11 @@ a|
 [source,kotlin]
 ----
 colorMap{
-    color("#ff6385d9")
-    color("#36a3ebd9")
-    color("#9966ff33")
-    color("#ffcf56d9")
-    color("#4bc0c0d9")
+    color("#ff6385")
+    color("#36a3eb")
+    color("#9966ff")
+    color("#ffcf56")
+    color("#4bc0c0")
     color("#FDCBF1")
 }
 ----
@@ -254,11 +254,11 @@ panels {
             color = "#ffffff"
         }
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
+            color("#ff6385")
+            color("#36a3eb")
+            color("#9966ff")
+            color("#ffcf56")
+            color("#4bc0c0")
             color("#FDCBF1")
         }
         newWin = false
@@ -300,11 +300,11 @@ panels {
             color = "#ffffff"
         }
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
+            color("#ff6385")
+            color("#36a3eb")
+            color("#9966ff")
+            color("#ffcf56")
+            color("#4bc0c0")
             color("#FDCBF1")
         }
         newWin = false
@@ -350,13 +350,7 @@ panels {
             color = "#000000"
         }
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
-            color("#FDCBF1")
-            color("#A6C1EE")
+            color("#ff6385")
         }
         legendOn = false
     }
@@ -432,13 +426,8 @@ panels {
             color = "#000000"
         }
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
-            color("#FDCBF1")
-            color("#A6C1EE")
+            color("#ff6385")
+
         }
         legendOn = false
     }

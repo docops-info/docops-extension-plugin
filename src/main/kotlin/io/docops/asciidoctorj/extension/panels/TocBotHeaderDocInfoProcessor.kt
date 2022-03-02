@@ -8,6 +8,11 @@ import org.asciidoctor.extension.LocationType
 @Location(LocationType.HEADER)
 class TocBotHeaderDocInfoProcessor: DocinfoProcessor() {
     override fun process(document: Document): String {
+        val attributes = document.attributes
+        val tb = attributes.getOrDefault("tocbot", "NO") as String
+        if (!document.isBasebackend("html") || "NO".equals(tb,true)) {
+            return ""
+        }
         return """
             <style>
               /* Tocbot dynamic TOC, works with tocbot 3.0.2 */

@@ -33,6 +33,8 @@ internal class PanelsBlockProcessorTest {
             .dataUri(true)
             .copyCss(true)
             .noFooter(true)
+            .attribute("feedback")
+            .attribute("tocbot")
             .build()
 
         val asciidoctor = Asciidoctor.Factory.create()
