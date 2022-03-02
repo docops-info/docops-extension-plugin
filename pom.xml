@@ -6,11 +6,11 @@
 
     <artifactId>asciidoctorj-docops-panel</artifactId>
     <groupId>io.docops</groupId>
-    <version>2022.0</version>
+    <version>2022.1</version>
     <packaging>jar</packaging>
 
     <name>asciidoctorj-docops-panel</name>
-    <url>https://docops.io/asciidoctorj-docops-panel/</url>
+    <url>https://docops.io/projects/asciidoctorj-docops-panel/</url>
     <description>A asciidoctorj extension for a DSL for creating I panel of of buttons.</description>
 
     <organization>
