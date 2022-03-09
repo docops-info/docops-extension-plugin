@@ -7,8 +7,8 @@
 :minor: .3
 :patch:
 :build:
-//:extention:
-:extention: -SNAPSHOT
+:extention:
+//:extention: -SNAPSHOT
 
 == Maven
 
@@ -42,9 +42,12 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 
 == Document
 
-link:{artifact}.html[]
+link:build/docs/panel.html[{artifact}.html]
 
 == History
+
+2022.3 - 2022-03-09::
+* bugfix
 
 2022.2 - 2022-03-02::
 * bugfix
