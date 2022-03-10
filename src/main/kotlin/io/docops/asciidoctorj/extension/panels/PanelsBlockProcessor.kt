@@ -32,7 +32,17 @@ import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
 import org.asciidoctor.extension.Reader
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.net.URI
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse.BodyHandlers
+import java.time.Duration
+import java.util.*
+import java.util.zip.GZIPOutputStream
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 @Name("panels")
@@ -40,30 +50,68 @@ import java.io.File
 @ContentModel(ContentModel.COMPOUND)
 class PanelsBlockProcessor : BlockProcessor() {
     private var scriptLoader = ScriptLoader()
+    private val server = "http://localhost:8010"
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any {
-        var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
-        val format = attributes.getOrDefault("format", "dsl")
         val content = reader.read()
-        val panels: Panels
-        if ("csv" == format) {
-            panels = panels {
-                columns = 3
-                panelButtons = strToPanelButtons(content)
-                theme {
-                    layout {
-                        columns = 2
-                        groupBy = Grouping.TITLE
-                        groupOrder = GroupingOrder.ASCENDING
-                    }
-                    font {
-                        color = "#000000"
-                        weight = FontWeight.bold
+        val format = attributes.getOrDefault("format", "dsl")
+        var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
+        val backend = parent.document.getAttribute("backend")
+
+        if(serverPresent()) {
+            val payload = compressString(content)
+            var isPdf = "HTML"
+            if ("pdf" == backend) {
+                isPdf = "PDF"
+            }
+            val url = if ("csv" == format) {
+                 "$server/api/panel/csv?type=$isPdf&data=$payload"
+            } else {
+                 "$server/api/panel?type=$isPdf&data=$payload"
+            }
+            val svgBlock = mutableMapOf<String, Any>(
+                "role" to "docops.io.panels",
+                "target" to url,
+                "alt" to "IMG not available",
+                "title" to "Figure. $filename",
+                "interactive-option" to "",
+                "format" to "svg"
+            )
+            var pdfBlock: Block? = null
+            if("PDF"==isPdf) {
+                val lines = dslToLines(payload)
+                pdfBlock = createBlock(parent, "open", lines)
+            }
+            val argAttributes: MutableMap<String, Any> = HashMap()
+            argAttributes["content_model"] = ":raw"
+            val block: Block = createBlock(parent, "open", "", argAttributes, HashMap<Any, Any>())
+            block.blocks.add(createBlock(parent, "image", ArrayList(), svgBlock, HashMap()))
+
+            pdfBlock?.let {
+                parseContent(block, it.lines)
+            }
+            return block
+        } else {
+
+            val panels: Panels
+            if ("csv" == format) {
+                panels = panels {
+                    columns = 3
+                    panelButtons = strToPanelButtons(content)
+                    theme {
+                        layout {
+                            columns = 2
+                            groupBy = Grouping.TITLE
+                            groupOrder = GroupingOrder.ASCENDING
+                        }
+                        font {
+                            color = "#000000"
+                            weight = FontWeight.bold
+                        }
                     }
                 }
-            }
 
-        } else {
-            val source = """
+            } else {
+                val source = """
             import io.docops.asciidoc.buttons.dsl.*
             import io.docops.asciidoc.buttons.models.*
             import io.docops.asciidoc.buttons.theme.*
@@ -71,48 +119,48 @@ class PanelsBlockProcessor : BlockProcessor() {
             
             $content
         """.trimIndent()
-            panels = scriptLoader.parseKotlinScript(source = source)
-        }
-        val backend = parent.document.getAttribute("backend")
-        val panelService = PanelService()
-        var pdfBlock: Block? = null
-        if ("pdf" == backend) {
-            panels.isPdf = true
-            filename += "_pdf"
-            val lines = panelService.toLines(filename, panels)
-            pdfBlock = createBlock(parent, "open", lines)
-        }
+                panels = scriptLoader.parseKotlinScript(source = source)
+            }
+            val panelService = PanelService()
+            var pdfBlock: Block? = null
+            if ("pdf" == backend) {
+                panels.isPdf = true
+                filename += "_pdf"
+                val lines = panelService.toLines(filename, panels)
+                pdfBlock = createBlock(parent, "open", lines)
+            }
 
-        val imgSrc = panelService.fromPanelToSvg(panels)
-        val imgDir = parent.document.getAttribute("imagesdir")
-        var target = "images/${filename}.svg"
-        if (imgDir != null) {
-            target = "${filename}.svg"
-        }
-        val svg = File("${reader.dir}/images/${filename}.svg")
-        val p = svg.parentFile
-        if(!p.exists()) {
-            p.mkdirs()
-        }
-        svg.writeBytes(imgSrc.toByteArray())
-        val blockAttrs = mutableMapOf<String, Any>(
-            "role" to "docops.io.panels",
-            "target" to target,
-            "alt" to "IMG not available",
-            "title" to "Figure. $filename",
-            "interactive-option" to "",
-            "opts" to "inline",
-            "format" to "svg"
+            val imgSrc = panelService.fromPanelToSvg(panels)
+            val imgDir = parent.document.getAttribute("imagesdir")
+            var target = "images/${filename}.svg"
+            if (imgDir != null) {
+                target = "${filename}.svg"
+            }
+            val svg = File("${reader.dir}/images/${filename}.svg")
+            val p = svg.parentFile
+            if (!p.exists()) {
+                p.mkdirs()
+            }
+            svg.writeBytes(imgSrc.toByteArray())
+            val blockAttrs = mutableMapOf<String, Any>(
+                "role" to "docops.io.panels",
+                "target" to target,
+                "alt" to "IMG not available",
+                "title" to "Figure. $filename",
+                "interactive-option" to "",
+                "opts" to "inline",
+                "format" to "svg"
 
-        )
-        val argAttributes: MutableMap<String, Any> = HashMap()
-        argAttributes["content_model"] = ":raw"
-        val block: Block = createBlock(parent, "open", "", argAttributes, HashMap<Any, Any>())
-        block.blocks.add(createBlock(parent, "image", ArrayList(), blockAttrs, HashMap()))
-        pdfBlock?.let {
-            parseContent(block, pdfBlock.lines)
+            )
+            val argAttributes: MutableMap<String, Any> = HashMap()
+            argAttributes["content_model"] = ":raw"
+            val block: Block = createBlock(parent, "open", "", argAttributes, HashMap<Any, Any>())
+            block.blocks.add(createBlock(parent, "image", ArrayList(), blockAttrs, HashMap()))
+            pdfBlock?.let {
+                parseContent(block, pdfBlock.lines)
+            }
+            return block
         }
-        return block
     }
 
     private fun strToPanelButtons(str: String): MutableList<PanelButton> {
@@ -128,5 +176,49 @@ class PanelsBlockProcessor : BlockProcessor() {
             result.add(pb)
         }
         return result
+    }
+
+    private fun serverPresent(): Boolean {
+        val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
+            .connectTimeout(Duration.ofSeconds(20))
+            .build()
+        val request = HttpRequest.newBuilder()
+            .uri(URI.create("$server/ping"))
+            .timeout(Duration.ofMinutes(1))
+            .build()
+        return try {
+            val response = client.send(request, BodyHandlers.ofString())
+            (200 == response.statusCode())
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    private fun dslToLines(dsl : String): List<String> {
+        val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
+            .connectTimeout(Duration.ofSeconds(10))
+            .build()
+        val request = HttpRequest.newBuilder()
+            .uri(URI.create("$server/api/panel/lines?data=$dsl"))
+            .timeout(Duration.ofSeconds(10))
+            .build()
+         try {
+            val response = client.send(request, BodyHandlers.ofString())
+            if(200 == response.statusCode()) {
+                return response.body().lines()
+            }
+        } catch (e: Exception) {
+            return emptyList<String>()
+        }
+        return emptyList<String>()
+    }
+    private fun compressString(body: String) : String {
+        val baos = ByteArrayOutputStream()
+        val zos = GZIPOutputStream(baos)
+        zos.use { z ->
+            z.write(body.toByteArray())
+        }
+        val bytes = baos.toByteArray()
+        return Base64.getUrlEncoder().encodeToString(bytes)
     }
 }

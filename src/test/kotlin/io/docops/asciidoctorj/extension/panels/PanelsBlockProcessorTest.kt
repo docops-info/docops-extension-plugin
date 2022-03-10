@@ -20,6 +20,7 @@ import org.asciidoctor.Asciidoctor
 import org.asciidoctor.Attributes
 import org.asciidoctor.Options
 import org.asciidoctor.SafeMode
+import org.asciidoctor.jruby.AsciiDocDirectoryWalker
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.io.File
@@ -57,5 +58,33 @@ internal class PanelsBlockProcessorTest {
         val images = File(src.parent,"images")
         images.deleteRecursively()
         //target.deleteOnExit()
+       // makePdf()
+    }
+    fun makePdf() {
+        val attrs = Attributes.builder()
+            .sourceHighlighter("rouge")
+            .allowUriRead(true)
+            .dataUri(true)
+            .copyCss(true)
+            .noFooter(false)
+            .build()
+        val asciidoctor = Asciidoctor.Factory.create()
+        val src = File("src/main/docs/panel.adoc")
+        val build = File("build/docs/")
+        build.mkdirs()
+        val target = File(build, "panel.pdf")
+
+        if(target.exists()) {
+            target.delete()
+        }
+        val options = Options.builder()
+            .backend("pdf")
+            .toDir(build)
+            .attributes(attrs)
+            .safe(SafeMode.UNSAFE)
+            .build()
+
+        val str = asciidoctor.convertFile(src, options)
+
     }
 }

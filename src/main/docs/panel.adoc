@@ -141,11 +141,11 @@ panels {
 panels {
     theme {
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
+            color("#ff6385")
+            color("#36a3eb")
+            color("#9966ff")
+            color("#ffcf56")
+            color("#4bc0c0")
             color("#FDCBF1")
         }
     }
@@ -531,11 +531,11 @@ theme {
             weight = FontWeight.bold
         }
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
+            color("#ff6385")
+            color("#36a3eb")
+            color("#9966ff")
+            color("#ffcf56")
+            color("#4bc0c0")
             color("#FDCBF1")
             color("#A6C1EE")
         }
@@ -600,11 +600,11 @@ theme {
             weight = FontWeight.bold
         }
         colorMap{
-            color("#ff6385d9")
-            color("#36a3ebd9")
-            color("#9966ff33")
-            color("#ffcf56d9")
-            color("#4bc0c0d9")
+            color("#ff6385")
+            color("#36a3eb")
+            color("#9966ff")
+            color("#ffcf56")
+            color("#4bc0c0")
             color("#FDCBF1")
             color("#A6C1EE")
         }
