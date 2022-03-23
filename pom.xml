@@ -11,7 +11,7 @@
 
     <name>asciidoctorj-docops-panel</name>
     <url>https://docops.io/projects/asciidoctorj-docops-panel/</url>
-    <description>A asciidoctorj extension for a DSL for creating I panel of of buttons.</description>
+    <description>An asciidoctorj extension for a DSL for creating I panel of of buttons.</description>
 
     <organization>
         <url>https://docops.io/</url>

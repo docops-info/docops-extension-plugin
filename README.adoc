@@ -7,8 +7,8 @@
 :minor: .4
 :patch:
 :build:
-//:extention:
-:extention: -SNAPSHOT
+:extention:
+//:extention: -SNAPSHOT
 
 == Maven
 
@@ -45,6 +45,9 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 link:build/docs/panel.html[{artifact}.html]
 
 == History
+
+2022.4 - 2022-03-09::
+* fixed round buttons
 
 2022.3 - 2022-03-09::
 * bugfix
