@@ -148,7 +148,6 @@ class PanelsBlockProcessor : BlockProcessor() {
                 "alt" to "IMG not available",
                 "title" to "Figure. $filename",
                 "interactive-option" to "",
-                "opts" to "inline",
                 "format" to "svg"
 
             )

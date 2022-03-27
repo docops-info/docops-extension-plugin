@@ -9,15 +9,19 @@ class ColorMapBlockMacroProcessor : BlockMacroProcessor() {
 
     override fun process(parent: StructuralNode, target: String, attributes: MutableMap<String, Any>): Any {
         val str =  """
-            <div id="colormap"></div>
-            <button name="Generate" value="Generate" onclick="genColors();">Crearte Color Palette</button>
+            <div class='exampleblock'>
+                <div class='content'>
+                    <div class='literalblock'>
+                        <div class='content' id="colormap"></div>
+                    </div>
+                </div>
+            </div>
+            <button name="Generate" value="Generate" onclick="genColors();">Create Color Palette</button>
+            <input type="number" id="points" name="points" value="20" step="1">
             <script>
             function getColor(){
-
-
               return hslToHex(360 * Math.random(), (25 + 70 * Math.random()) , (75 + 10 * Math.random()) );
             }
-
             function hslToHex(h, s, l) {
               l /= 100;
               const a = s * Math.min(l, 1 - l) / 100;
@@ -28,12 +32,13 @@ class ColorMapBlockMacroProcessor : BlockMacroProcessor() {
               };
               return `#${'$'}{f(0)}${'$'}{f(8)}${'$'}{f(4)}`;
             }
-
             function genColors() {
                 let str = "colorMap {\n";
                 let elem = document.getElementById("colormap");
                 elem.innerHTML = '';
-                for( let i = 20; i--;) {
+                var pts = document.getElementById("points");
+                var count = pts.value;
+                for( let i = count; i--;) {
                   let item = document.createElement('div');
                   var color = document.createElement('div');
                   let clr = getColor();
@@ -44,12 +49,19 @@ class ColorMapBlockMacroProcessor : BlockMacroProcessor() {
                     border-radius:50%;
                     background: ${'$'}{clr};
                   `
-                str +=  'color(\"'+ clr + '\")\n';
-                  elem.appendChild(item);
+                    item.innerText = clr;
+                    str +=  '      color(\"'+ clr + '\")\n';
+                    elem.appendChild(item);
                 }
                 str += "}"
                 color.innerText = str
-                elem.appendChild(color);
+                var ppre = document.createElement("pre");
+                var pcode = document.createElement("code");
+                pcode.className = 'language-kotlin';
+                ppre.appendChild(pcode);
+                pcode.innerText = str;
+                
+                elem.appendChild(ppre);
             }
             </script>
         """.trimIndent()
