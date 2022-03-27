@@ -350,7 +350,7 @@ panels {
             color = "#000000"
         }
         colorMap{
-            color("#ff6385")
+            color("#ebb3d1")
         }
         legendOn = false
     }
@@ -426,7 +426,7 @@ panels {
             color = "#000000"
         }
         colorMap{
-            color("#ff6385")
+            color("#9cefc5")
 
         }
         legendOn = false
