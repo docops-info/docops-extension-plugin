@@ -2,7 +2,7 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: foundation.css
+:stylesheet: asciidoctor.css
 :toc: left
 :sectnums:
 :title-page:
@@ -36,9 +36,9 @@ panels {
 Given the above we will build panels for Google, Apple, Microsoft,Amazon, Netflix
 
 [source,asciidoc]
-====
+-----
 [panels,"buttons"]
-....
+----
 panels {
     panel {
         link = "https://www.google.com"
@@ -61,8 +61,8 @@ panels {
         label = "Netflix"
     }
 }
-....
-====
+----
+-----
 
 [panels,"buttons"]
 ----
@@ -96,11 +96,11 @@ The syntax is pretty small to make panel of buttons.
 == Round Buttons
 Similar to the buttons we have a round object we can use.
 
-[source,kotlin]
-====
-[panels,"buttons"]
-....
-panels {
+[source,asciidoc]
+-----
+[panels,buttons2]
+----
+panels{
     theme {
         colorMap{
             color("#ff6385")
@@ -132,8 +132,8 @@ panels {
         label = "Netflix"
     }
 }
-....
-====
+----
+-----
 
 
 [panels,"round"]
@@ -239,10 +239,10 @@ colorMap{
 
 Same Panel as above but with sorting ascending and different colors.
 
-[source,kotlin]
-====
+[source,asciidoc]
+-----
 [panels,"round2"]
-....
+----
 panels {
     theme {
         layout {
@@ -284,8 +284,8 @@ panels {
         label = "Netflix"
     }
 }
-....
-====
+----
+-----
 
 [panels,"round2"]
 ----
@@ -336,10 +336,10 @@ panels {
 
 More informational panels can be created with small cards
 
-[source,kotlin]
-====
+[source,asciidoc]
+-----
 [panels,"slim"]
-....
+----
 panels {
     theme {
         layout {
@@ -410,8 +410,8 @@ panels {
         author("Mike")
     }
 }
-....
-====
+----
+-----
 
 
 [panels,"slim"]
@@ -517,10 +517,10 @@ panels {
 
 Alternative to Slim Panel is Large Panels where the description is now displayed on the card
 
-[source,kotlin]
-====
+[source,asciidoc]
+-----
 [panels,"large"]
-....
+----
 panels {
 theme {
         layout {
@@ -585,8 +585,8 @@ theme {
         description = "Instagram is an American photo and video sharing social networking service founded by Kevin Systrom and Mike Krieger. "
     }
 }
-....
-====
+----
+-----
 
 [panels,"large"]
 ----
