@@ -29,11 +29,13 @@ internal class PanelsBlockProcessorTest {
     @Test
     fun testPanel() {
         val attrs = Attributes.builder()
-            .sourceHighlighter("highlightjs")
+            .sourceHighlighter("coderay")
             .allowUriRead(true)
             .dataUri(true)
             .copyCss(true)
             .noFooter(true)
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
             .attribute("feedback")
             .attribute("tocbot")
             .build()
@@ -62,11 +64,15 @@ internal class PanelsBlockProcessorTest {
     }
     fun makePdf() {
         val attrs = Attributes.builder()
-            .sourceHighlighter("rouge")
+            .sourceHighlighter("coderay")
             .allowUriRead(true)
             .dataUri(true)
             .copyCss(true)
-            .noFooter(false)
+            .noFooter(true)
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
+            .attribute("feedback")
+            .attribute("tocbot")
             .build()
         val asciidoctor = Asciidoctor.Factory.create()
         val src = File("src/main/docs/panel.adoc")

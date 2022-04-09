@@ -6,7 +6,8 @@ Steve D Roach
 :toc: left
 :sectnums:
 :title-page:
-:source-highlighter: highlightjs
+:source-highlighter: coderay
+:coderay-css: class
 :nofooter:
 :imagesdir: images
 
@@ -23,7 +24,7 @@ AsciiDoctorJ Panels are abuilt using a block processor. SO you will need to crea
 
 The first type of panels are just panels with a list of panel objects. See example below
 
-[source,kotlin]
+[source%linenums,kotlin]
 ----
 panels {
     panel{
@@ -35,7 +36,7 @@ panels {
 
 Given the above we will build panels for Google, Apple, Microsoft,Amazon, Netflix
 
-[source,asciidoc]
+[source%linenums,asciidoc]
 -----
 [panels,"buttons"]
 ----
@@ -96,7 +97,7 @@ The syntax is pretty small to make panel of buttons.
 == Round Buttons
 Similar to the buttons we have a round object we can use.
 
-[source,asciidoc]
+[source%linenums,asciidoc]
 -----
 [panels,buttons2]
 ----
@@ -195,7 +196,7 @@ panels {
 |
 |
 a|
-[source,kotlin]
+[source%linenums,kotlin]
 ----
  theme {
     layout {
@@ -213,7 +214,7 @@ a|
 |
 |
 a|
-[source,kotlin]
+[source%linenums,kotlin]
 ----
 colorMap{
     color("#ff6385")
@@ -239,7 +240,7 @@ colorMap{
 
 Same Panel as above but with sorting ascending and different colors.
 
-[source,asciidoc]
+[source%linenums,asciidoc]
 -----
 [panels,"round2"]
 ----
@@ -336,10 +337,8 @@ panels {
 
 More informational panels can be created with small cards
 
-[source,asciidoc]
+[source%linenums,kotlin]
 -----
-[panels,"slim"]
-----
 panels {
     theme {
         layout {
@@ -410,7 +409,6 @@ panels {
         author("Mike")
     }
 }
-----
 -----
 
 
@@ -517,7 +515,7 @@ panels {
 
 Alternative to Slim Panel is Large Panels where the description is now displayed on the card
 
-[source,asciidoc]
+[source%linenums,asciidoc]
 -----
 [panels,"large"]
 ----
