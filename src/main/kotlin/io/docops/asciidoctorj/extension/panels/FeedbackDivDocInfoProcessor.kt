@@ -39,6 +39,7 @@ class FeedbackDivDocInfoProcessor : DocinfoProcessor() {
             val png = FeedbackDivDocInfoProcessor::class.java.classLoader.getResourceAsStream("feedback.png")
             png?.let {
                 val enc = Base64.getEncoder().encodeToString(png.readAllBytes())
+                // language=Html
                 return """
                 <div id="slider" style="right:-342px;">
                     <div id="sidebar" onclick="FeedBack.open_panel()"><img src="data:image/png;base64,$enc" alt="feedback"></div>

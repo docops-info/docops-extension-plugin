@@ -28,6 +28,7 @@ class FeedbackDocinfoProcessor : DocinfoProcessor() {
         val attributes = document.attributes
         val fb = attributes.getOrDefault("feedback", "NO") as String
         if (document.isBasebackend("html") && !"NO".equals(fb,true)) {
+           // language=Html
             val style = """
        
        <style>
@@ -87,6 +88,7 @@ class FeedbackDocinfoProcessor : DocinfoProcessor() {
             box-shadow: 0 0 2px #CC1111;
         }
     </style>""".trimIndent()
+    // language=Html
     val script = """
         <script src="https://unpkg.com/htmx.org@1.6.1" ></script>
         <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>

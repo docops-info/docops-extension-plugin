@@ -13,6 +13,7 @@ class TocBotHeaderDocInfoProcessor: DocinfoProcessor() {
         if (!document.isBasebackend("html") || "NO".equals(tb,true)) {
             return ""
         }
+        // language=Html
         return """
             <style>
               /* Tocbot dynamic TOC, works with tocbot 3.0.2 */

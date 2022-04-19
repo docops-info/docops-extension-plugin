@@ -8,6 +8,7 @@ import org.asciidoctor.extension.Name
 class ColorMapBlockMacroProcessor : BlockMacroProcessor() {
 
     override fun process(parent: StructuralNode, target: String, attributes: MutableMap<String, Any>): Any {
+        // language=Html
         val str =  """
             <div class='exampleblock'>
                 <div class='content'>

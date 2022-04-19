@@ -111,6 +111,7 @@ class PanelsBlockProcessor : BlockProcessor() {
                 }
 
             } else {
+                // language=KTS
                 val source = """
             import io.docops.asciidoc.buttons.dsl.*
             import io.docops.asciidoc.buttons.models.*
