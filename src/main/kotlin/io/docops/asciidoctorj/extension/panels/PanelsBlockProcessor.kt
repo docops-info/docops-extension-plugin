@@ -59,7 +59,14 @@ class PanelsBlockProcessor : BlockProcessor() {
 
         if(serverPresent()) {
             println("Server is present")
-            val payload = compressString(content)
+
+            val payload: String = try {
+                compressString(content)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                ""
+            }
+            println("payload compressed is $payload")
             var isPdf = "HTML"
             if ("pdf" == backend) {
                 isPdf = "PDF"
