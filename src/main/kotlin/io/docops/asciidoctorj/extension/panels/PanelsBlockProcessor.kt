@@ -58,6 +58,7 @@ class PanelsBlockProcessor : BlockProcessor() {
         val backend = parent.document.getAttribute("backend")
 
         if(serverPresent()) {
+            println("Server is present")
             val payload = compressString(content)
             var isPdf = "HTML"
             if ("pdf" == backend) {
@@ -68,6 +69,7 @@ class PanelsBlockProcessor : BlockProcessor() {
             } else {
                  "$server/api/panel?type=$isPdf&data=$payload"
             }
+            println("Url for request is $url")
             val svgBlock = mutableMapOf<String, Any>(
                 "role" to "docops.io.panels",
                 "target" to url,
@@ -179,11 +181,12 @@ class PanelsBlockProcessor : BlockProcessor() {
     }
 
     private fun serverPresent(): Boolean {
+        println("Checking if server is present")
         val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
             .connectTimeout(Duration.ofSeconds(20))
             .build()
         val request = HttpRequest.newBuilder()
-            .uri(URI.create("$server/ping"))
+            .uri(URI.create("$server/api/ping"))
             .timeout(Duration.ofMinutes(1))
             .build()
         return try {
