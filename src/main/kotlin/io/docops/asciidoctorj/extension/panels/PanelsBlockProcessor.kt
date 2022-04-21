@@ -91,7 +91,7 @@ class PanelsBlockProcessor : BlockProcessor() {
                     "target" to url,
                     "alt" to "IMG not available",
                     "title" to "Figure. $filename",
-                    "interactive-option" to "",
+                    "opts" to "interactive",
                     "format" to "svg"
                 )
                 svgBlock = createBlock(parent, "image", ArrayList(), svgMap, HashMap())
@@ -168,7 +168,7 @@ class PanelsBlockProcessor : BlockProcessor() {
                 "target" to target,
                 "alt" to "IMG not available",
                 "title" to "Figure. $filename",
-                "interactive-option" to "",
+                "opts" to "interactive",
                 "format" to "svg"
 
             )
