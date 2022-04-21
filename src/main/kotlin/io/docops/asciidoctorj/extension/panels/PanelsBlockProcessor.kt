@@ -77,6 +77,7 @@ class PanelsBlockProcessor : BlockProcessor() {
                  "$server/api/panel?type=$isPdf&data=$payload"
             }
             println("Url for request is $url")
+            println("Backend is $backend")
             var svgBlock: Block? = null
             if("html5".equals(backend,true)){
                 // language=html
