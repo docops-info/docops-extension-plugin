@@ -55,7 +55,7 @@ class PanelsBlockProcessor : BlockProcessor() {
         val content = reader.read()
         val format = attributes.getOrDefault("format", "dsl")
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
-        val backend = parent.document.getAttribute("backend")
+        val backend = parent.document.getAttribute("backend") as String
 
         if(serverPresent()) {
             println("Server is present")
@@ -77,14 +77,24 @@ class PanelsBlockProcessor : BlockProcessor() {
                  "$server/api/panel?type=$isPdf&data=$payload"
             }
             println("Url for request is $url")
-            val svgBlock = mutableMapOf<String, Any>(
-                "role" to "docops.io.panels",
-                "target" to url,
-                "alt" to "IMG not available",
-                "title" to "Figure. $filename",
-                "interactive-option" to "",
-                "format" to "svg"
-            )
+            var svgBlock: Block? = null
+            if("html5".equals(backend,true)){
+                // language=html
+                val imageStr = """
+                    <object type="image/svg+xml" data="${getSvg(url)}"></object>
+                """.trimIndent()
+                svgBlock = createBlock(parent, "pass", imageStr)
+            } else {
+                val svgMap = mutableMapOf<String, Any>(
+                    "role" to "docops.io.panels",
+                    "target" to url,
+                    "alt" to "IMG not available",
+                    "title" to "Figure. $filename",
+                    "interactive-option" to "",
+                    "format" to "svg"
+                )
+                svgBlock = createBlock(parent, "image", ArrayList(), svgMap, HashMap())
+            }
             var pdfBlock: Block? = null
             if("PDF"==isPdf) {
                 val lines = dslToLines(payload)
@@ -93,7 +103,7 @@ class PanelsBlockProcessor : BlockProcessor() {
             val argAttributes: MutableMap<String, Any> = HashMap()
             argAttributes["content_model"] = ":raw"
             val block: Block = createBlock(parent, "open", "", argAttributes, HashMap<Any, Any>())
-            block.blocks.add(createBlock(parent, "image", ArrayList(), svgBlock, HashMap()))
+            block.blocks.add(svgBlock)
 
             pdfBlock?.let {
                 parseContent(block, it.lines)
@@ -201,6 +211,22 @@ class PanelsBlockProcessor : BlockProcessor() {
             (200 == response.statusCode())
         } catch (e: Exception) {
             false
+        }
+    }
+    private fun getSvg(url: String) : String {
+        println("getting image from url")
+        val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
+            .connectTimeout(Duration.ofSeconds(20))
+            .build()
+        val request = HttpRequest.newBuilder()
+            .uri(URI.create(url))
+            .timeout(Duration.ofMinutes(1))
+            .build()
+        return try {
+            val response = client.send(request, BodyHandlers.ofString())
+             response.body()
+        } catch (e: Exception) {
+            ""
         }
     }
 
