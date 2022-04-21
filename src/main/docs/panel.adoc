@@ -18,7 +18,7 @@ AsciiDoctorJ are a wal of creating a panel that are clickable. This means are ca
 
 == How to use?
 
-AsciiDoctorJ Panels are abuilt using a block processor. SO you will need to create blocks to visualize them. For the most part the body of the panel is build using a Kotlin DSL.
+AsciiDoctorJ Panels are built using a block processor. SO you will need to create blocks to visualize them. For the most part the body of the panel is build using a Kotlin DSL.
 
 === First Example
 
