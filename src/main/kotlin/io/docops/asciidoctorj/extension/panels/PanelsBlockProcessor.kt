@@ -32,6 +32,8 @@ import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
 import org.asciidoctor.extension.Reader
+import org.asciidoctor.log.LogRecord
+import org.asciidoctor.log.Severity
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.net.URI
@@ -57,16 +59,15 @@ class PanelsBlockProcessor : BlockProcessor() {
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
         val backend = parent.document.getAttribute("backend") as String
 
-        if(serverPresent()) {
-            println("Server is present")
-
+        if(serverPresent(parent)) {
+            log(LogRecord(Severity.DEBUG, parent.sourceLocation,"Server is present"))
             val payload: String = try {
                 compressString(content)
             } catch (e: Exception) {
-                e.printStackTrace()
+                log(LogRecord(Severity.ERROR,  parent.sourceLocation, e.message))
                 ""
             }
-            println("payload compressed is $payload")
+            log(LogRecord(Severity.DEBUG, parent.sourceLocation,"payload compressed is $payload"))
             var isPdf = "HTML"
             if ("pdf" == backend) {
                 isPdf = "PDF"
@@ -76,29 +77,19 @@ class PanelsBlockProcessor : BlockProcessor() {
             } else {
                  "$server/api/panel?type=$isPdf&data=$payload"
             }
-            println("Url for request is $url")
-            println("Backend is $backend")
-            var svgBlock: Block? = null
-            if("html5".equals(backend,true)){
+            log(LogRecord(Severity.DEBUG, parent.sourceLocation,"Url for request is $url"))
+            val svgBlock: Block = if("html5".equals(backend,true)){
                 // language=html
                 val imageStr = """
-                    <object type="image/svg+xml" data="${getSvg(url)}"></object>
-                """.trimIndent()
-                svgBlock = createBlock(parent, "pass", imageStr)
+                            <object type="image/svg+xml" data="${getSvg(url, parent)}"></object>
+                        """.trimIndent()
+                createBlock(parent, "pass", imageStr)
             } else {
-                val svgMap = mutableMapOf<String, Any>(
-                    "role" to "docops.io.panels",
-                    "target" to url,
-                    "alt" to "IMG not available",
-                    "title" to "Figure. $filename",
-                    "opts" to "interactive",
-                    "format" to "svg"
-                )
-                svgBlock = createBlock(parent, "image", ArrayList(), svgMap, HashMap())
+                produceBlock(url = url, filename= filename, parent = parent)
             }
             var pdfBlock: Block? = null
             if("PDF"==isPdf) {
-                val lines = dslToLines(payload)
+                val lines = dslToLines(dsl = payload, parent= parent)
                 pdfBlock = createBlock(parent, "open", lines)
             }
             val argAttributes: MutableMap<String, Any> = HashMap()
@@ -163,19 +154,11 @@ class PanelsBlockProcessor : BlockProcessor() {
                 p.mkdirs()
             }
             svg.writeBytes(imgSrc.toByteArray())
-            val blockAttrs = mutableMapOf<String, Any>(
-                "role" to "docops.io.panels",
-                "target" to target,
-                "alt" to "IMG not available",
-                "title" to "Figure. $filename",
-                "opts" to "interactive",
-                "format" to "svg"
-
-            )
             val argAttributes: MutableMap<String, Any> = HashMap()
             argAttributes["content_model"] = ":raw"
             val block: Block = createBlock(parent, "open", "", argAttributes, HashMap<Any, Any>())
-            block.blocks.add(createBlock(parent, "image", ArrayList(), blockAttrs, HashMap()))
+            val imgBlock = produceBlock(url = target,filename,parent)
+            block.blocks.add(imgBlock)
             pdfBlock?.let {
                 parseContent(block, pdfBlock.lines)
             }
@@ -183,6 +166,17 @@ class PanelsBlockProcessor : BlockProcessor() {
         }
     }
 
+    private fun produceBlock(url: String, filename: String, parent: StructuralNode): Block {
+        val svgMap = mutableMapOf<String, Any>(
+            "role" to "docops.io.panels",
+            "target" to url,
+            "alt" to "IMG not available",
+            "title" to "Figure. $filename",
+            "opts" to "interactive",
+            "format" to "svg"
+        )
+        return this.createBlock(parent, "image", ArrayList(), svgMap, HashMap())
+    }
     private fun strToPanelButtons(str: String): MutableList<PanelButton> {
         val result = mutableListOf<PanelButton>()
         str.lines().forEach { line ->
@@ -198,7 +192,7 @@ class PanelsBlockProcessor : BlockProcessor() {
         return result
     }
 
-    private fun serverPresent(): Boolean {
+    private fun serverPresent(parent: StructuralNode): Boolean {
         println("Checking if server is present")
         val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
             .connectTimeout(Duration.ofSeconds(20))
@@ -211,10 +205,11 @@ class PanelsBlockProcessor : BlockProcessor() {
             val response = client.send(request, BodyHandlers.ofString())
             (200 == response.statusCode())
         } catch (e: Exception) {
+            log(LogRecord(Severity.WARN,  parent.sourceLocation, e.message))
             false
         }
     }
-    private fun getSvg(url: String) : String {
+    private fun getSvg(url: String, parent: StructuralNode) : String {
         println("getting image from url")
         val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
             .connectTimeout(Duration.ofSeconds(20))
@@ -227,11 +222,12 @@ class PanelsBlockProcessor : BlockProcessor() {
             val response = client.send(request, BodyHandlers.ofString())
              response.body()
         } catch (e: Exception) {
+            log(LogRecord(Severity.ERROR,  parent.sourceLocation, e.message))
             ""
         }
     }
 
-    private fun dslToLines(dsl : String): List<String> {
+    private fun dslToLines(dsl : String, parent: StructuralNode): List<String> {
         val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
             .connectTimeout(Duration.ofSeconds(10))
             .build()
@@ -245,9 +241,10 @@ class PanelsBlockProcessor : BlockProcessor() {
                 return response.body().lines()
             }
         } catch (e: Exception) {
-            return emptyList<String>()
+            log(LogRecord(Severity.ERROR,  parent.sourceLocation, e.message))
+            return emptyList()
         }
-        return emptyList<String>()
+        return emptyList()
     }
     private fun compressString(body: String) : String {
         val baos = ByteArrayOutputStream()
