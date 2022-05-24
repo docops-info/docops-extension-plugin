@@ -25,6 +25,7 @@ import io.docops.asciidoc.buttons.service.PanelService
 import io.docops.asciidoc.buttons.service.ScriptLoader
 import io.docops.asciidoc.buttons.theme.Grouping
 import io.docops.asciidoc.buttons.theme.GroupingOrder
+import io.docops.asciidoc.utils.escapeXml
 import org.asciidoctor.ast.Block
 import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
@@ -101,7 +102,8 @@ class PanelsBlockProcessor : BlockProcessor() {
                 parseContent(block, it.lines)
             }
             return block
-        } else {
+        }
+        else {
 
             val panels: Panels
             if ("csv" == format) {
@@ -121,7 +123,8 @@ class PanelsBlockProcessor : BlockProcessor() {
                     }
                 }
 
-            } else {
+            }
+            else {
                 // language=KTS
                 val source = """
             import io.docops.asciidoc.buttons.dsl.*
@@ -143,21 +146,10 @@ class PanelsBlockProcessor : BlockProcessor() {
             }
 
             val imgSrc = panelService.fromPanelToSvg(panels)
-            val imgDir = parent.document.getAttribute("imagesdir")
-            var target = "images/${filename}.svg"
-            if (imgDir != null) {
-                target = "${filename}.svg"
-            }
-            val svg = File("${reader.dir}/images/${filename}.svg")
-            val p = svg.parentFile
-            if (!p.exists()) {
-                p.mkdirs()
-            }
-            svg.writeBytes(imgSrc.toByteArray())
             val argAttributes: MutableMap<String, Any> = HashMap()
             argAttributes["content_model"] = ":raw"
             val block: Block = createBlock(parent, "open", "", argAttributes, HashMap<Any, Any>())
-            val imgBlock = produceBlock(url = target,filename,parent)
+            val imgBlock = createImageBlockFromString(parent = parent, svg = imgSrc)
             block.blocks.add(imgBlock)
             pdfBlock?.let {
                 parseContent(block, pdfBlock.lines)
@@ -176,6 +168,14 @@ class PanelsBlockProcessor : BlockProcessor() {
             "format" to "svg"
         )
         return this.createBlock(parent, "image", ArrayList(), svgMap, HashMap())
+    }
+    private fun createImageBlockFromString(parent: StructuralNode, svg: String): Block {
+        //language=html
+        val str = Base64.getEncoder().encodeToString(svg.toByteArray())
+        val imageStr = """
+        <object type="image/svg+xml" data="data:image/svg+xml;base64,$str"></object>
+        """.trimIndent()
+        return createBlock(parent, "pass", imageStr)
     }
     private fun strToPanelButtons(str: String): MutableList<PanelButton> {
         val result = mutableListOf<PanelButton>()
