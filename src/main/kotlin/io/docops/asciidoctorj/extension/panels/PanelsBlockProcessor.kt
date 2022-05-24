@@ -25,7 +25,6 @@ import io.docops.asciidoc.buttons.service.PanelService
 import io.docops.asciidoc.buttons.service.ScriptLoader
 import io.docops.asciidoc.buttons.theme.Grouping
 import io.docops.asciidoc.buttons.theme.GroupingOrder
-import io.docops.asciidoc.utils.escapeXml
 import org.asciidoctor.ast.Block
 import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
@@ -36,7 +35,6 @@ import org.asciidoctor.extension.Reader
 import org.asciidoctor.log.LogRecord
 import org.asciidoctor.log.Severity
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -44,8 +42,6 @@ import java.net.http.HttpResponse.BodyHandlers
 import java.time.Duration
 import java.util.*
 import java.util.zip.GZIPOutputStream
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 
 @Name("panels")
