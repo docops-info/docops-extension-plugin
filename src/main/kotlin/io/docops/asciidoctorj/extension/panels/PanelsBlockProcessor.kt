@@ -49,7 +49,7 @@ import java.util.zip.GZIPOutputStream
 @ContentModel(ContentModel.COMPOUND)
 class PanelsBlockProcessor : BlockProcessor() {
     private var scriptLoader = ScriptLoader()
-    private val server = "http://localhost:8010"
+    private val server = "http://localhost:8010/extension"
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any {
         val content = reader.read()
         val format = attributes.getOrDefault("format", "dsl")
