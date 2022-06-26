@@ -61,7 +61,6 @@ class PanelsBlockProcessor : BlockProcessor() {
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
         val backend = parent.document.getAttribute("backend") as String
         val idea = parent.document.getAttribute("env", "") as String
-        println("idea env $idea")
         if (serverPresent(parent)) {
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Server is present"))
             val payload: String = try {
@@ -91,7 +90,7 @@ class PanelsBlockProcessor : BlockProcessor() {
                 produceBlock(url = url, filename = filename, parent = parent)
             }
             var pdfBlock: Block? = null
-            if ("PDF" == isPdf) {
+            if ("PDF" == isPdf && "idea" != idea) {
                 val lines = dslToLines(dsl = payload, parent = parent)
                 pdfBlock = createBlock(parent, "open", lines)
             }
