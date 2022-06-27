@@ -6,7 +6,7 @@
 
     <artifactId>asciidoctorj-docops-panel</artifactId>
     <groupId>io.docops</groupId>
-    <version>2022.11-SNAPSHOT</version>
+    <version>2022.11</version>
     <packaging>jar</packaging>
 
     <name>asciidoctorj-docops-panel</name>
@@ -66,7 +66,7 @@
     </issueManagement>
 
     <properties>
-        <docops-button-render.version>2022.6</docops-button-render.version>
+        <docops-button-render.version>2022.7</docops-button-render.version>
         <asciidoctorj.version>2.5.3</asciidoctorj.version>
         <asciidoctorj-pdf.version>1.6.2</asciidoctorj-pdf.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
