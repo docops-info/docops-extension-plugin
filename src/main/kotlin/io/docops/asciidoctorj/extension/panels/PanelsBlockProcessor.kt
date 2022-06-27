@@ -71,8 +71,10 @@ class PanelsBlockProcessor : BlockProcessor() {
             }
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "payload compressed is $payload"))
             var isPdf = "HTML"
-            if ("pdf" == backend || "idea" == idea) {
+            if ("pdf" == backend) {
                 isPdf = "PDF"
+            } else if("idea" == idea) {
+                isPdf = "IDEA"
             }
             val url = if ("csv" == format) {
                 "$server/api/panel/csv?type=$isPdf&data=$payload"
@@ -80,17 +82,16 @@ class PanelsBlockProcessor : BlockProcessor() {
                 "$server/api/panel?type=$isPdf&data=$payload"
             }
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
-            val svgBlock: Block = if ("html5".equals(backend, true) && "idea" != idea) {
+            val svgBlock: Block = if ("html5".equals(backend, true) || "idea" == idea) {
                 // language=html
-                val imageStr = """
-                            <object type="image/svg+xml" data="${getSvg(url, parent)}"></object>
-                        """.trimIndent()
+                val imageStr = getSvg(url, parent)
                 createBlock(parent, "pass", imageStr)
-            } else {
+            }
+            else {
                 produceBlock(url = url, filename = filename, parent = parent)
             }
             var pdfBlock: Block? = null
-            if ("PDF" == isPdf && "idea" != idea) {
+            if ("PDF" == isPdf) {
                 val lines = dslToLines(dsl = payload, parent = parent)
                 pdfBlock = createBlock(parent, "open", lines)
             }
@@ -158,6 +159,7 @@ class PanelsBlockProcessor : BlockProcessor() {
     }
 
     private fun produceBlock(url: String, filename: String, parent: StructuralNode): Block {
+
         val svgMap = mutableMapOf<String, Any>(
             "role" to "docops.io.panels",
             "target" to url,
@@ -171,11 +173,7 @@ class PanelsBlockProcessor : BlockProcessor() {
 
     private fun createImageBlockFromString(parent: StructuralNode, svg: String): Block {
         //language=html
-        val str = Base64.getEncoder().encodeToString(svg.toByteArray())
-        val imageStr = """
-        <object type="image/svg+xml" data="data:image/svg+xml;base64,$str"></object>
-        """.trimIndent()
-        return createBlock(parent, "pass", imageStr)
+        return createBlock(parent, "pass", svg)
     }
 
     private fun strToPanelButtons(str: String): MutableList<PanelButton> {
