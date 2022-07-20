@@ -6,7 +6,7 @@ Steve D Roach
 :toc: left
 :sectnums:
 :title-page:
-:source-highlighter: coderay
+:source-highlighter: rouge
 :coderay-css: class
 :nofooter:
 :imagesdir: images
@@ -95,6 +95,7 @@ The syntax is pretty small to make panel of buttons.
 
 
 == Round Buttons
+
 Similar to the buttons we have a round object we can use.
 
 [source%linenums,asciidoc]
@@ -175,6 +176,7 @@ panels {
 
 == Theming
 
+IMPORTANT: New Attributes added, dropShadow & font
 
 .Theme Guide
 [cols="1,1,3"]
@@ -196,7 +198,7 @@ panels {
 |
 |
 a|
-[source%linenums,kotlin]
+[source,kotlin]
 ----
  theme {
     layout {
@@ -214,7 +216,7 @@ a|
 |
 |
 a|
-[source%linenums,kotlin]
+[source,kotlin]
 ----
 colorMap{
     color("#ff6385")
@@ -234,6 +236,22 @@ colorMap{
 |
 |boolean, _default true_
 
+|dropShadow
+|
+|number 0..9, _default 1_
+|font
+|
+a|set of font to use
+[source,kotlin]
+----
+    font {
+         color = "#000000"
+         weight = FontWeight.normal
+         font = "Arial, Helvetica, sans-serif"
+         size = "9pt"
+        decoration = "underline"
+    }
+----
 |===
 
 === Themed Example
@@ -254,6 +272,7 @@ panels {
         font {
             color = "#ffffff"
         }
+        dropShadow = 2
         colorMap{
             color("#ff6385")
             color("#36a3eb")
