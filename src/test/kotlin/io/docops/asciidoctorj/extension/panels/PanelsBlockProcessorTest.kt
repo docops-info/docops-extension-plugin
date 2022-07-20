@@ -29,7 +29,7 @@ internal class PanelsBlockProcessorTest {
     @Test
     fun testPanel() {
         val attrs = Attributes.builder()
-            .sourceHighlighter("coderay")
+            .sourceHighlighter("rouge")
             .allowUriRead(true)
             .dataUri(true)
             .copyCss(true)
