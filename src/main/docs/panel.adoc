@@ -176,7 +176,7 @@ panels {
 
 == Theming
 
-IMPORTANT: New Attributes added, dropShadow & font
+TIP: New Attributes added, dropShadow & font
 
 .Theme Guide
 [cols="1,1,3"]
