@@ -17,9 +17,9 @@
 
 package io.docops.asciidoctorj.extension.panels
 
-import io.docops.asciidoc.buttons.dsl.FontWeight
 import io.docops.asciidoc.buttons.dsl.PanelButton
 import io.docops.asciidoc.buttons.dsl.Panels
+import io.docops.asciidoc.buttons.dsl.font
 import io.docops.asciidoc.buttons.dsl.panels
 import io.docops.asciidoc.buttons.service.PanelService
 import io.docops.asciidoc.buttons.service.ScriptLoader
@@ -119,7 +119,7 @@ class PanelsBlockProcessor : BlockProcessor() {
                         }
                         font {
                             color = "#000000"
-                            weight = FontWeight.bold
+                            bold = true
                         }
                     }
                 }
