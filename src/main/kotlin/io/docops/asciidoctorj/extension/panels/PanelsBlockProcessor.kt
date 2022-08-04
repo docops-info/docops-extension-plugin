@@ -44,10 +44,11 @@ import java.util.*
 import java.util.zip.GZIPOutputStream
 
 
+
 @Name("panels")
 @Contexts(Contexts.LISTING)
 @ContentModel(ContentModel.COMPOUND)
-class PanelsBlockProcessor : BlockProcessor() {
+open class PanelsBlockProcessor : BlockProcessor() {
     private var scriptLoader = ScriptLoader()
     private var server = "http://localhost:8010/extension"
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any {
@@ -256,4 +257,11 @@ class PanelsBlockProcessor : BlockProcessor() {
         val bytes = baos.toByteArray()
         return Base64.getUrlEncoder().encodeToString(bytes)
     }
+}
+
+@Name("panel")
+@Contexts(Contexts.LISTING)
+@ContentModel(ContentModel.COMPOUND)
+class  PanelBlockProcessor : PanelsBlockProcessor() {
+
 }

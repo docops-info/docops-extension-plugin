@@ -23,6 +23,7 @@ class PanelsRegistry : ExtensionRegistry {
     override fun register(asciidoctor: Asciidoctor) {
         val registry = asciidoctor.javaExtensionRegistry()
         registry.block(PanelsBlockProcessor::class.java)
+        registry.block(PanelBlockProcessor::class.java)
         registry.docinfoProcessor(FeedbackDocinfoProcessor::class.java)
         registry.docinfoProcessor(FeedbackDivDocInfoProcessor::class.java)
         registry.blockMacro(ColorMapBlockMacroProcessor::class.java)
