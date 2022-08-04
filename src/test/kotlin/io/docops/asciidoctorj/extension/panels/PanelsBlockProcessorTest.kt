@@ -34,6 +34,7 @@ internal class PanelsBlockProcessorTest {
             .dataUri(true)
             .copyCss(true)
             .noFooter(true)
+            .attribute("rouge-css", "style")
             .attribute("coderay-css", "class")
             .attribute("coderay-linenums-mode", "inline")
             .attribute("feedback")
@@ -64,11 +65,12 @@ internal class PanelsBlockProcessorTest {
     }
     fun makePdf() {
         val attrs = Attributes.builder()
-            .sourceHighlighter("coderay")
+            .sourceHighlighter("rouge")
             .allowUriRead(true)
             .dataUri(true)
             .copyCss(true)
             .noFooter(true)
+            .attribute("rouge-css", "style")
             .attribute("coderay-css", "class")
             .attribute("coderay-linenums-mode", "inline")
             .attribute("feedback")

@@ -7,22 +7,23 @@ Steve D Roach
 :sectnums:
 :title-page:
 :source-highlighter: rouge
-:coderay-css: class
+:rouge-css: style
 :nofooter:
 :imagesdir: images
 
 
 == What are they?
 
-AsciiDoctorJ are a way of creating a panel that are clickable. Now you can create a set of panels that links to various content, an alternative way of building links.
+AsciiDoctorJ Panels are a way of creating a panel that is clickable.
+Now you can create a set of panels that links to various contents, an alternative way of building links.
 
 == How to use?
 
-AsciiDoctorJ Panels are built using a block processor. SO you will need to create blocks to visualize them. For the most part the body of the panel is build using a Kotlin DSL.
+AsciiDoctorJ Panels are built using a block processor. SO you will need to create blocks to visualize them. For the most part, the body of the panel is built using a Kotlin DSL.
 
 === First Example
 
-The first type of panels are just panels with a list of panel objects. See example below
+The first type of panels is just panels with a list of panel objects. See example below
 
 [source%linenums,kotlin]
 ----
@@ -34,7 +35,7 @@ panels {
 }
 ----
 
-Given the above we will build panels for Google, Apple, Microsoft,Amazon, Netflix
+Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netflix
 
 [source%linenums,asciidoc]
 -----
@@ -91,14 +92,14 @@ panels {
 }
 ----
 
-The syntax is pretty small to make panel of buttons.
+The syntax is pretty small to make a panel of buttons.
 
 
 == Round Buttons
 
 Similar to the buttons we have a round object we can use.
 
-[source%linenums,asciidoc]
+[source,asciidoc]
 -----
 [panels,buttons2]
 ----
@@ -245,7 +246,7 @@ colorMap{
 a|set of font to use
 [source,kotlin]
 ----
-    font {
+    font = font {
          color = "#000000"
          weight = FontWeight.normal
          font = "Arial, Helvetica, sans-serif"
@@ -270,7 +271,7 @@ panels {
             groupBy = Grouping.TITLE
             groupOrder = GroupingOrder.ASCENDING
         }
-        font {
+        font = font {
             color = "#ffffff"
         }
         dropShadow = 2
@@ -366,7 +367,7 @@ panels {
             columns=4
             groupOrder = GroupingOrder.ASCENDING
         }
-        font {
+        font = font {
             color = "#000000"
         }
         colorMap{
@@ -441,7 +442,7 @@ panels {
             columns=4
             groupOrder = GroupingOrder.ASCENDING
         }
-        font {
+        font = font {
             color = "#000000"
         }
         colorMap{
