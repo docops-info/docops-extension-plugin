@@ -7,8 +7,8 @@
 :minor: .14
 :patch:
 :build:
-//:extension:
-:extension: -SNAPSHOT
+:extension:
+//:extension: -SNAPSHOT
 
 == Maven
 
@@ -45,6 +45,9 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 link:build/docs/panel.html[{artifact}.html]
 
 == History
+
+2022.14 - 2022-08-15::
+panel AND panels
 
 2022.13 - 2022-07-29::
 update admonition
