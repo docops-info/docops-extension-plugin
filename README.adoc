@@ -7,8 +7,8 @@
 :minor: .14
 :patch:
 :build:
-:extension:
-//:extension: -SNAPSHOT
+//:extension:
+:extension: -SNAPSHOT
 
 == Maven
 
