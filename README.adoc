@@ -4,11 +4,11 @@
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
 :major: 2022
-:minor: .14
+:minor: .15
 :patch:
 :build:
-//:extension:
-:extension: -SNAPSHOT
+:extension:
+//:extension: -SNAPSHOT
 
 == Maven
 
@@ -45,6 +45,9 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 link:build/docs/panel.html[{artifact}.html]
 
 == History
+
+2022.15 - 2022-09-12::
+updated buttones
 
 2022.14 - 2022-08-15::
 panel AND panels
