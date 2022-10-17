@@ -4,7 +4,7 @@
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
 :major: 2022
-:minor: .16
+:minor: .17
 :patch:
 :build:
 :extension:
@@ -46,7 +46,10 @@ link:build/docs/panel.html[{artifact}.html]
 
 == History
 
-2022.15 - 2022-09-26::
+2022.17 - 2022-10-17::
+Rectangular Buttons
+
+2022.16 - 2022-09-26::
 default button insertion order
 
 2022.15 - 2022-09-12::
