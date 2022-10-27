@@ -4,7 +4,7 @@
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
 :major: 2022
-:minor: .17
+:minor: .18
 :patch:
 :build:
 :extension:
@@ -45,6 +45,9 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 link:build/docs/panel.html[{artifact}.html]
 
 == History
+
+2022.18 - 2022-10-27::
+Button Fonts and attributes
 
 2022.17 - 2022-10-17::
 Rectangular Buttons
