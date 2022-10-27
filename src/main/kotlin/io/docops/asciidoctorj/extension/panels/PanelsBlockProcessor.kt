@@ -57,7 +57,17 @@ open class PanelsBlockProcessor : BlockProcessor() {
             remoteServer as String
             server = remoteServer
         }
-        val content = reader.read()
+        val pattern = "(?<=\\\$\\{)(.*?)(?=})".toRegex()
+        var content = reader.read()
+        val res = pattern.findAll(content)
+        res.forEach {
+            val subValue = parent.document.attributes[it.value.lowercase()]
+            val key = """${"$"}{${it.value}}"""
+            if(subValue != null) {
+                subValue as String
+                content = content.replace(key, subValue)
+            }
+        }
         val format = attributes.getOrDefault("format", "dsl")
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
         val backend = parent.document.getAttribute("backend") as String
