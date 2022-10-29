@@ -6,7 +6,7 @@
 
     <artifactId>asciidoctorj-docops-panel</artifactId>
     <groupId>io.docops</groupId>
-    <version>2022.18</version>
+    <version>2022.19</version>
     <packaging>jar</packaging>
 
     <name>asciidoctorj-docops-panel</name>
@@ -66,13 +66,13 @@
     </issueManagement>
 
     <properties>
-        <docops-button-render.version>2022.15</docops-button-render.version>
-        <asciidoctorj.version>2.5.5</asciidoctorj.version>
-        <asciidoctorj-pdf.version>2.1.6</asciidoctorj-pdf.version>
+        <docops-button-render.version>2022.16</docops-button-render.version>
+        <asciidoctorj.version>2.5.7</asciidoctorj.version>
+        <asciidoctorj-pdf.version>2.3.3</asciidoctorj-pdf.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
-        <kotlin.version>1.7.10</kotlin.version>
+        <kotlin.version>1.7.20</kotlin.version>
         <kotlin-maven-plugin.version>1.6.20</kotlin-maven-plugin.version>
         <junit.version>5.9.0</junit.version>
         <mojo.version>1.6.0</mojo.version>
