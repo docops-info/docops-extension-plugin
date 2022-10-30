@@ -6,7 +6,7 @@
 
     <artifactId>asciidoctorj-docops-panel</artifactId>
     <groupId>io.docops</groupId>
-    <version>2022.19</version>
+    <version>2022.20-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>asciidoctorj-docops-panel</name>
