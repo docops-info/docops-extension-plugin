@@ -243,7 +243,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             .connectTimeout(Duration.ofSeconds(10))
             .build()
         val request = HttpRequest.newBuilder()
-            .uri(URI.create("$server/api/panel/lines?data=$dsl"))
+            .uri(URI.create("$server/api/panel/lines?data=$dsl&server=$server"))
             .timeout(Duration.ofSeconds(10))
             .build()
         try {
