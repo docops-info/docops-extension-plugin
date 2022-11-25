@@ -211,7 +211,7 @@
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
-                        <phase>site</phase>
+                        <phase>install</phase>
                         <goals>
                             <goal>sign</goal>
                         </goals>
