@@ -7,8 +7,8 @@
 :minor: .20
 :patch:
 :build:
-// :extension:
-:extension: -SNAPSHOT
+:extension:
+// :extension: -SNAPSHOT
 
 == Maven
 
@@ -45,6 +45,9 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 link:build/docs/panel.html[{artifact}.html]
 
 == History
+
+2022.20 - 2022-11-25::
+pdf improvements
 
 2022.19 - 2022-10-29::
 fixed spacing on rectangle button
