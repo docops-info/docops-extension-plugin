@@ -152,7 +152,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             if ("pdf" == backend) {
                 panels.isPdf = true
                 filename += "_pdf"
-                val lines = panelService.toLines(filename, panels)
+                val lines = panelService.toLines(filename, panels, server)
                 pdfBlock = createBlock(parent, "open", lines)
             }
 
