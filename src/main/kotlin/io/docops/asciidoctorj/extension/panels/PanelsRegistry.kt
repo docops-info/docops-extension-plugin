@@ -24,6 +24,7 @@ class PanelsRegistry : ExtensionRegistry {
         val registry = asciidoctor.javaExtensionRegistry()
         registry.block(PanelsBlockProcessor::class.java)
         registry.block(PanelBlockProcessor::class.java)
+        registry.block(BadgeBlockProcessor::class.java)
         registry.docinfoProcessor(FeedbackDocinfoProcessor::class.java)
         registry.docinfoProcessor(FeedbackDivDocInfoProcessor::class.java)
         registry.blockMacro(ColorMapBlockMacroProcessor::class.java)

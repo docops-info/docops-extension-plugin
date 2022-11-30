@@ -6,7 +6,6 @@ Steve D Roach
 :toc: left
 :sectnums:
 :title-page:
-:title-page:
 :source-highlighter: rouge
 :rouge-css: style
 :nofooter:
@@ -704,3 +703,49 @@ theme {
 colorMap::[]
 
 * A simple Utility to generate a pastel themed the colormap for your convenience.
+
+== Badges/Shield
+
+=== Syntax
+
+[source]
+====
+[badge]
+----
+Badges|Are|https://www.google.com|RED
+Cool|Aren't They?|https://www.yahoo.com|YELLOW
+----
+====
+
+.Pipe Delimited Values
+[cols="1,1,2,4"]
+|===
+|Label |Message |Url |Color
+
+|Label for the Badge
+|Message For Badge
+a|Optional Url,
+
+TIP: Still need | with empty url
+a|Supported Colors:
+
+* BRIGHTGREEN
+* GREEN
+* YELLOW
+* YELLOWGREEN
+* ORANGE
+* RED
+* BLUE
+* GREY
+* LIGHTGREY
+
+|===
+
+
+[badge]
+----
+Badges|Are|https://www.google.com|RED
+Cool|Aren't They?|https://www.yahoo.com|YELLOW
+----
+
+

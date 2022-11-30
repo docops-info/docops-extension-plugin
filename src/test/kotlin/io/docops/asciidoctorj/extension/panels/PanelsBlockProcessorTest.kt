@@ -59,11 +59,12 @@ internal class PanelsBlockProcessorTest {
         val images = File(src.parent,"images")
         images.deleteRecursively()
         //target.deleteOnExit()
-       // makePdf()
+        makePdf()
     }
     fun makePdf() {
         val attrs = Attributes.builder()
             .sourceHighlighter("rouge")
+            .showTitle(true)
             .allowUriRead(true)
             .dataUri(true)
             .copyCss(true)
