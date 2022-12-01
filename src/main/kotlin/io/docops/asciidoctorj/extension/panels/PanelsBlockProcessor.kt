@@ -258,17 +258,17 @@ open class PanelsBlockProcessor : BlockProcessor() {
         return emptyList()
     }
 
-    private fun compressString(body: String): String {
-        val baos = ByteArrayOutputStream()
-        val zos = GZIPOutputStream(baos)
-        zos.use { z ->
-            z.write(body.toByteArray())
-        }
-        val bytes = baos.toByteArray()
-        return Base64.getUrlEncoder().encodeToString(bytes)
-    }
-}
 
+}
+ fun compressString(body: String): String {
+    val baos = ByteArrayOutputStream()
+    val zos = GZIPOutputStream(baos)
+    zos.use { z ->
+        z.write(body.toByteArray())
+    }
+    val bytes = baos.toByteArray()
+    return Base64.getUrlEncoder().encodeToString(bytes)
+}
 @Name("panel")
 @Contexts(Contexts.LISTING)
 @ContentModel(ContentModel.COMPOUND)
