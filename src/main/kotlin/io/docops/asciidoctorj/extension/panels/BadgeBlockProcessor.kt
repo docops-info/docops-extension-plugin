@@ -6,6 +6,8 @@ import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
 import org.asciidoctor.extension.Reader
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Name("badge")
 @Contexts(Contexts.LISTING)
@@ -23,25 +25,22 @@ class BadgeBlockProcessor : BlockProcessor() {
         }
         val backend = parent.document.getAttribute("backend") as String
         val lines = mutableListOf<String>()
-        content.lines().forEach { line ->
-            val split = line.split("|")
+
+        //URLEncoder.encode(value, StandardCharsets.UTF_8.toString())
+        content.lines().forEach {
+            line ->
+            val payload = compressString(line)
             var imageLink = "image:"
             if ("pdf" == backend) {
                 imageLink = "image::"
             }
-            if(split.size>=2) {
-                var str = "$imageLink$server/api/badge/item?label=${split[0]}&amp;message=${split[1]}"
-                var link = ""
-                if(split.size>2 ) {
-                    link += ",link=\"${split[2]}\""
-                }
-                if(split.size >3) {
-                    str += "&amp;color=${split[3]}"
-                }
-                str += "&amp;filename=abc.svg[format=svg $link]"
-
-                lines.add(str)
+            val split = line.split("|")
+            var link = ""
+            if(split.size>2 ) {
+                link += ",link=\"${split[2]}\""
             }
+            val str = "$imageLink$server/api/badge/item?payload=$payload&finalname=abc.svg[format=svg $link]"
+            lines.add(str)
         }
         parseContent(parent, lines)
         return null
