@@ -749,12 +749,12 @@ a|Supported Colors:
 [badge]
 ----
 Badges|Are|https://www.google.com|RED|
-Cool|Aren't They?|https://www.yahoo.com|BLUE|ORANGE
+Cool|Aren't They?|https://www.yahoo.com|BLUE|ORANGE|C
 ----
 
 .invalid
 [badge]
 ----
-Badges|Are|https://www.google.com|RED
+Badges|Are|https://www.google.com|RED|
 ----
 

@@ -72,7 +72,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
         val backend = parent.document.getAttribute("backend") as String
         val idea = parent.document.getAttribute("env", "") as String
-        if (serverPresent(parent)) {
+        if (serverPresent(server,parent, this)) {
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Server is present"))
             val payload: String = try {
                 compressString(content)
@@ -95,7 +95,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
             val svgBlock: Block = if ("html5".equals(backend, true) || "idea" == idea) {
                 // language=html
-                val imageStr = getSvg(url, parent)
+                val imageStr = getContentFromServer(url, parent, this)
                 createBlock(parent, "pass", imageStr)
             }
             else {
@@ -183,7 +183,6 @@ open class PanelsBlockProcessor : BlockProcessor() {
     }
 
     private fun createImageBlockFromString(parent: StructuralNode, svg: String): Block {
-        //language=html
         return createBlock(parent, "pass", svg)
     }
 
@@ -202,41 +201,6 @@ open class PanelsBlockProcessor : BlockProcessor() {
         return result
     }
 
-    private fun serverPresent(parent: StructuralNode): Boolean {
-        println("Checking if server is present ${server}/api/ping")
-        val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
-            .connectTimeout(Duration.ofSeconds(20))
-            .build()
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create("$server/api/ping"))
-            .timeout(Duration.ofMinutes(1))
-            .build()
-        return try {
-            val response = client.send(request, BodyHandlers.ofString())
-            (200 == response.statusCode())
-        } catch (e: Exception) {
-            log(LogRecord(Severity.WARN, parent.sourceLocation, e.message))
-            false
-        }
-    }
-
-    private fun getSvg(url: String, parent: StructuralNode): String {
-        println("getting image from url $url")
-        val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
-            .connectTimeout(Duration.ofSeconds(20))
-            .build()
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create(url))
-            .timeout(Duration.ofMinutes(1))
-            .build()
-        return try {
-            val response = client.send(request, BodyHandlers.ofString())
-            response.body()
-        } catch (e: Exception) {
-            log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
-            ""
-        }
-    }
 
     private fun dslToLines(dsl: String, parent: StructuralNode): List<String> {
         val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
@@ -259,6 +223,42 @@ open class PanelsBlockProcessor : BlockProcessor() {
     }
 
 
+}
+fun getContentFromServer(url: String, parent: StructuralNode, pb: BlockProcessor): String {
+    println("getting image from url $url")
+    val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
+        .connectTimeout(Duration.ofSeconds(20))
+        .build()
+    val request = HttpRequest.newBuilder()
+        .uri(URI.create(url))
+        .timeout(Duration.ofMinutes(1))
+        .build()
+    return try {
+        val response = client.send(request, BodyHandlers.ofString())
+        response.body()
+    } catch (e: Exception) {
+        pb.log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
+        e.printStackTrace()
+        ""
+    }
+}
+fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor): Boolean {
+    println("Checking if server is present ${server}/api/ping")
+    val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
+        .connectTimeout(Duration.ofSeconds(20))
+        .build()
+    val request = HttpRequest.newBuilder()
+        .uri(URI.create("$server/api/ping"))
+        .timeout(Duration.ofMinutes(1))
+        .build()
+    return try {
+        val response = client.send(request, BodyHandlers.ofString())
+        (200 == response.statusCode())
+    } catch (e: Exception) {
+        pb.log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
+        e.printStackTrace()
+        false
+    }
 }
  fun compressString(body: String): String {
     val baos = ByteArrayOutputStream()
