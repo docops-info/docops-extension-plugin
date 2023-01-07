@@ -17,7 +17,7 @@ class BadgeBlockProcessor : BlockProcessor() {
     private var server = "http://localhost:8010/extension"
     //image:http://localhost:8010/extension/api/badge/item?label=ABC&message=512&color=RED&fname=abc.svg[]
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
-        val content = reader.read()
+        var content = subContent(reader, parent)
         val remoteServer = parent.document.attributes["panel-server"]
         if (remoteServer != null) {
             remoteServer as String
@@ -45,4 +45,6 @@ class BadgeBlockProcessor : BlockProcessor() {
         parseContent(parent, lines)
         return null
     }
+
+
 }

@@ -57,17 +57,8 @@ open class PanelsBlockProcessor : BlockProcessor() {
             remoteServer as String
             server = remoteServer
         }
-        val pattern = "(?<=\\\$\\{)(.*?)(?=})".toRegex()
-        var content = reader.read()
-        val res = pattern.findAll(content)
-        res.forEach {
-            val subValue = parent.document.attributes[it.value.lowercase()]
-            val key = """${"$"}{${it.value}}"""
-            if(subValue != null) {
-                subValue as String
-                content = content.replace(key, subValue)
-            }
-        }
+        var content = subContent(reader, parent)
+
         val format = attributes.getOrDefault("format", "dsl")
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
         val backend = parent.document.getAttribute("backend") as String
@@ -267,7 +258,21 @@ fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor): B
         z.write(body.toByteArray())
     }
     val bytes = baos.toByteArray()
-    return Base64.getUrlEncoder().encodeToString(bytes)
+    return Base64.getMimeEncoder().encodeToString(bytes)
+}
+fun subContent(reader: Reader, parent: StructuralNode): String {
+    val pattern = "(?<=\\\$\\{)(.*?)(?=})".toRegex()
+    var content = reader.read()
+    val res = pattern.findAll(content)
+    res.forEach {
+        val subValue = parent.document.attributes[it.value.lowercase()]
+        val key = """${"$"}{${it.value}}"""
+        if (subValue != null) {
+            subValue as String
+            content = content.replace(key, subValue)
+        }
+    }
+    return content
 }
 @Name("panel")
 @Contexts(Contexts.LISTING)
