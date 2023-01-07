@@ -38,7 +38,7 @@ panels {
 
 Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netflix
 
-[source%linenums,asciidoc]
+[source%linenums,kotlin]
 -----
 [panels,"buttons"]
 ----
@@ -100,7 +100,7 @@ The syntax is pretty small to make a panel of buttons.
 
 Similar to the buttons we have a round object we can use.
 
-[source,asciidoc]
+[source,kotlin]
 -----
 [panels,buttons2]
 ----
@@ -260,7 +260,7 @@ a|set of font to use
 
 Same Panel as above but with sorting ascending and different colors.
 
-[source%linenums,asciidoc]
+[source%linenums,kotlin]
 -----
 [panels,"round2"]
 ----
@@ -538,7 +538,7 @@ panels {
 
 Alternative to Slim Panel is Large Panels where the description is now displayed on the card
 
-[source%linenums,asciidoc]
+[source%linenums,kotlin]
 -----
 [panels,"large"]
 ----
@@ -708,53 +708,44 @@ colorMap::[]
 
 === Syntax
 
-[source]
+[source,asciidoc]
 -----
 [badge]
 ----
-Badges|Are|https://www.google.com|RED
-Badges|Are|https://www.apple.com|RED|
-Cool|Aren't They?|https://www.yahoo.com|BLUE|ORANGE
+Badges|Are|https://www.google.com|RED|Blue|
+Cool|Aren't They?|https://www.yahoo.com|BLUE|ORANGE|C
 ----
 -----
 
 .Pipe Delimited Values
-[cols="1,1,3,4,3"]
+[cols="1,1,3,1,3,1"]
 |===
-|Label |Message |Url |Label Color | Message Color
+|Label |Message |Url |Label Color | Message Color |Icon
 
 |Label for the Badge
 |Message For Badge
-a|Optional Url,
+a|Optional Url
 
 TIP: Still needs pipe character with empty url
 
-a|Supported Colors:
+a|Color for label, e.g. Red
 
-
-* BRIGHTGREEN
-* GREEN
-* YELLOW
-* YELLOWGREEN
-* ORANGE
-* RED
-* BLUE
-* GREY
-* LIGHTGREY
-
-|Color for message, this is Optional and Defaults to GREEN
+|Color for message, e.g. #ffccb9
+|SimpleIcon name, eg C
 |===
 
 
 [badge]
 ----
-Badges|Are|https://www.google.com|RED|
+Badges|Are|https://www.google.com|RED|Blue|
 Cool|Aren't They?|https://www.yahoo.com|BLUE|ORANGE|C
+Cool thing|Aren't They?|https://www.yahoo.com|BLUE|ORANGE|C
 ----
 
-.invalid
+
 [badge]
 ----
-Badges|Are|https://www.google.com|RED|
+ABCD|512|https://www.google.com|RED||Twitch
+My Long Label|100|https://www.yahoo.com|#9cfccc|ORANGE|C
+My Long Label|250|https://www.yahoo.com|#9cfccc|ORANGE|C
 ----
-

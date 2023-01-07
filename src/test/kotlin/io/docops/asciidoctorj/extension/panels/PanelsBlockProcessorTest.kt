@@ -53,7 +53,7 @@ internal class PanelsBlockProcessorTest {
             .attributes(attrs)
             .safe(SafeMode.UNSAFE)
             .build()
-        val str = asciidoctor.convertFile(src, options)
+        asciidoctor.convertFile(src, options)
 
         assert(target.exists())
         val images = File(src.parent,"images")
@@ -91,7 +91,7 @@ internal class PanelsBlockProcessorTest {
             .safe(SafeMode.UNSAFE)
             .build()
 
-        val str = asciidoctor.convertFile(src, options)
+        asciidoctor.convertFile(src, options)
 
     }
 }

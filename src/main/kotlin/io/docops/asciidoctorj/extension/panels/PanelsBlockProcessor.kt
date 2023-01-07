@@ -258,7 +258,7 @@ fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor): B
         z.write(body.toByteArray())
     }
     val bytes = baos.toByteArray()
-    return Base64.getMimeEncoder().encodeToString(bytes)
+    return Base64.getUrlEncoder().encodeToString(bytes)
 }
 fun subContent(reader: Reader, parent: StructuralNode): String {
     val pattern = "(?<=\\\$\\{)(.*?)(?=})".toRegex()
