@@ -3,12 +3,12 @@
 :data-uri:
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
-:major: 2022
-:minor: .23
+:major: 2023
+:minor: .00
 :patch:
 :build:
-// :extension:
-:extension: -SNAPSHOT
+:extension:
+// :extension: -SNAPSHOT
 
 == Maven
 
@@ -42,10 +42,18 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 
 == Document
 
-link:build/docs/panel.html[{artifact}.html]
+link:docs/panel.html[{artifact}.html]
 
 == History
 
+2023.00 - 2023-01-07::
+* Hygiene and currency
+* Substitution from front matter
+* updated eChart support
+
+[%collapsible]
+.2022 Version History
+====
 2022.22 - 2022-12-30::
 Chart support
 
@@ -115,6 +123,8 @@ updated context route to work with docops-extension-server
 
 2022.0 - 2022-02-13::
 * Initial release to Maven Central.
+
+====
 
 == DocOps
 

@@ -41,7 +41,7 @@ internal class PanelsBlockProcessorTest {
 
         val asciidoctor = Asciidoctor.Factory.create()
         val src = File("src/main/docs/panel.adoc")
-        val build = File("build/docs/")
+        val build = File("docs/")
         build.mkdirs()
         val target = File(build, "panel.html")
         if(target.exists()) {
@@ -77,7 +77,7 @@ internal class PanelsBlockProcessorTest {
             .build()
         val asciidoctor = Asciidoctor.Factory.create()
         val src = File("src/main/docs/panel.adoc")
-        val build = File("build/docs/")
+        val build = File("docs/")
         build.mkdirs()
         val target = File(build, "panel.pdf")
 
