@@ -46,6 +46,9 @@ link:docs/panel.html[{artifact}.html]
 
 == History
 
+2023.01 - 2023-01-29::
+* Button update
+
 2023.00 - 2023-01-07::
 * Hygiene and currency
 * Substitution from front matter
