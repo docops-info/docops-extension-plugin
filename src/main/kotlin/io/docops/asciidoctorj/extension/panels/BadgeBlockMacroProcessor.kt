@@ -1,21 +1,14 @@
 package io.docops.asciidoctorj.extension.panels
 
-import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
-import org.asciidoctor.extension.BlockProcessor
-import org.asciidoctor.extension.Contexts
+import org.asciidoctor.extension.BlockMacroProcessor
 import org.asciidoctor.extension.Name
-import org.asciidoctor.extension.Reader
 
 @Name("badge")
-@Contexts(Contexts.LISTING)
-@ContentModel(ContentModel.COMPOUND)
-class BadgeBlockProcessor : BlockProcessor() {
-
+class BadgeBlockMacroProcessor: BlockMacroProcessor() {
     private var server = "http://localhost:8010/extension"
-    //image:http://localhost:8010/extension/api/badge/item?label=ABC&message=512&color=RED&fname=abc.svg[]
-    override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
-        val content = subContent(reader, parent)
+    override fun process(parent: StructuralNode, target: String, attributes: MutableMap<String, Any>): Any? {
+        val content = subs(target, parent)
         val remoteServer = parent.document.attributes["panel-server"]
         if (remoteServer != null) {
             remoteServer as String
@@ -25,7 +18,7 @@ class BadgeBlockProcessor : BlockProcessor() {
         val lines = mutableListOf<String>()
 
         content.lines().forEach {
-            line ->
+                line ->
             val payload = compressString(" $line")
             var imageLink = "image:"
             if ("pdf" == backend) {
@@ -42,6 +35,4 @@ class BadgeBlockProcessor : BlockProcessor() {
         parseContent(parent, lines)
         return null
     }
-
-
 }
