@@ -536,7 +536,7 @@ panels {
 
 == Large Panels
 
-Alternative to Slim Panel is Large Panels where the description is now displayed on the card
+The alternative to Slim Panel is Large Panels where the description is now displayed on the card
 
 [source%linenums,kotlin]
 -----
@@ -749,3 +749,7 @@ ABCD|512|https://www.google.com|RED||Twitch
 My Long Label|100|https://www.yahoo.com|#9cfccc|ORANGE|C
 My Long Label|250|https://www.yahoo.com|#9cfccc|ORANGE|C
 ----
+
+badge::ABCD|512|https://www.google.com|RED||<Twitch>[]
+badge::My Long Label|100|https://www.yahoo.com|#9cfccc|ORANGE|<C>[]
+badge::My Long Label|250|https://www.yahoo.com|#9cfccc|ORANGE|<C>[]

@@ -261,18 +261,22 @@ fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor): B
     return Base64.getUrlEncoder().encodeToString(bytes)
 }
 fun subContent(reader: Reader, parent: StructuralNode): String {
+    val content = reader.read()
+    return subs(content, parent)
+}
+fun subs(content: String, parent: StructuralNode): String {
     val pattern = "(?<=\\\$\\{)(.*?)(?=})".toRegex()
-    var content = reader.read()
     val res = pattern.findAll(content)
+    var localContent = content
     res.forEach {
         val subValue = parent.document.attributes[it.value.lowercase()]
         val key = """${"$"}{${it.value}}"""
         if (subValue != null) {
             subValue as String
-            content = content.replace(key, subValue)
+            localContent = content.replace(key, subValue)
         }
     }
-    return content
+    return localContent
 }
 @Name("panel")
 @Contexts(Contexts.LISTING)

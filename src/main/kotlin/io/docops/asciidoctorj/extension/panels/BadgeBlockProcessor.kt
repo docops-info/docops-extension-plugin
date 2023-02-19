@@ -13,13 +13,17 @@ import org.asciidoctor.extension.Reader
 class BadgeBlockProcessor : BlockProcessor() {
 
     private var server = "http://localhost:8010/extension"
+    private var webserver = "http://localhost:8010/extension"
     //image:http://localhost:8010/extension/api/badge/item?label=ABC&message=512&color=RED&fname=abc.svg[]
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
-        var content = subContent(reader, parent)
+        val content = subContent(reader, parent)
         val remoteServer = parent.document.attributes["panel-server"]
-        if (remoteServer != null) {
-            remoteServer as String
-            server = remoteServer
+        remoteServer?.let {
+            server = remoteServer as String
+        }
+        val remoteWebserver = parent.document.attributes["panel-webserver"]
+        remoteWebserver?.let {
+            webserver = it as String
         }
         val backend = parent.document.getAttribute("backend") as String
         val lines = mutableListOf<String>()
@@ -36,7 +40,7 @@ class BadgeBlockProcessor : BlockProcessor() {
             if(split.size>2 ) {
                 link = ",link=\"${split[2]}\""
             }
-            val str = "$imageLink$server/api/badge/item?payload=$payload&finalname=abc.svg[format=svg $link] "
+            val str = "$imageLink$webserver/api/badge/item?payload=$payload&finalname=abc.svg[format=svg $link] "
             lines.add(str)
         }
         parseContent(parent, lines)
