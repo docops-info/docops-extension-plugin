@@ -11,6 +11,7 @@ Steve D Roach
 :nofooter:
 :imagesdir: images
 :google: This Is Another Google
+:title-page-background-image: coverpage.svg
 
 
 == What are they?
@@ -374,6 +375,7 @@ panels {
             color("#ebb3d1")
         }
         legendOn = false
+        gradientStyle = DarkTheme
     }
     slim {
         link = "https://www.google.com"
@@ -451,6 +453,7 @@ panels {
         }
         legendOn = false
         dropShadow = 1
+        gradientStyle = DarkTheme
     }
     slim {
         link = "https://www.google.com"
@@ -737,19 +740,10 @@ a|Color for label, e.g. Red
 
 [badge]
 ----
-Badges|Are|https://www.google.com|RED|Blue|
-Cool|Aren't They?|https://www.yahoo.com|BLUE|ORANGE|C
-Cool thing|Aren't They?|https://www.yahoo.com|BLUE|ORANGE|C
+Below|+ +|https://www.google.com|RED|Blue|
+Technical|Debt|https://www.yahoo.com|BLUE|ORANGE|<C>
+Architecture|Reccomendations|https://www.yahoo.com|BLUE|ORANGE|<C>
+Yahoo|Finance|https://www.yahoo.com|#ccFFcc|PURPLE|<C>
 ----
 
 
-[badge]
-----
-ABCD|512|https://www.google.com|RED||Twitch
-My Long Label|100|https://www.yahoo.com|#9cfccc|ORANGE|C
-My Long Label|250|https://www.yahoo.com|#9cfccc|ORANGE|C
-----
-
-badge::ABCD|512|https://www.google.com|RED||<Twitch>[]
-badge::My Long Label|100|https://www.yahoo.com|#9cfccc|ORANGE|<C>[]
-badge::My Long Label|250|https://www.yahoo.com|#9cfccc|ORANGE|<C>[]

@@ -1,11 +1,13 @@
 package io.docops.asciidoctorj.extension.panels
 
+import org.asciidoctor.ast.Block
 import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
 import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
 import org.asciidoctor.extension.Reader
+
 
 @Name("badge")
 @Contexts(Contexts.LISTING)
@@ -14,7 +16,6 @@ class BadgeBlockProcessor : BlockProcessor() {
 
     private var server = "http://localhost:8010/extension"
     private var webserver = "http://localhost:8010/extension"
-    //image:http://localhost:8010/extension/api/badge/item?label=ABC&message=512&color=RED&fname=abc.svg[]
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
         val content = subContent(reader, parent)
         val remoteServer = parent.document.attributes["panel-server"]
@@ -26,26 +27,61 @@ class BadgeBlockProcessor : BlockProcessor() {
             webserver = it as String
         }
         val backend = parent.document.getAttribute("backend") as String
-        val lines = mutableListOf<String>()
-
-        content.lines().forEach {
-            line ->
-            val payload = compressString(" $line")
-            var imageLink = "image:"
-            if ("pdf" == backend) {
-                imageLink = "image::"
-            }
-            val split = line.split("|")
-            var link = ""
-            if(split.size>2 ) {
-                link = ",link=\"${split[2]}\""
-            }
-            val str = "$imageLink$webserver/api/badge/item?payload=$payload&finalname=abc.svg[format=svg $link] "
-            lines.add(str)
+        val block: Block = createBlock(parent, "open", null as String?)
+        val lines: MutableList<String> = if ("pdf" == backend) {
+            makeContentForPdf(content)
+        } else {
+            makeContentForHtml(content)
         }
-        parseContent(parent, lines)
-        return null
+        parseContent(block, lines)
+        return block
     }
 
+    private fun makeContentForHtml(content: String): MutableList<String> {
+        val lines = mutableListOf<String>()
+        content.lines().forEach { line ->
+            val payload = compressString(" $line")
+            val imageLink = "image:"
+            val split = line.split("|")
+            var link = ""
+            if (split.size > 2) {
+                link = ",link=\"${split[2]}\""
+            }
+            val str =
+                "$imageLink$webserver/api/badge/item?payload=$payload&type=SVG&finalname=abc_${System.currentTimeMillis()}.svg[format=svg$link] "
+            lines.add(str)
+        }
+        return lines
+    }
+
+    private fun makeContentForPdf(content: String): MutableList<String> {
+        val lines = mutableListOf<String>()
+        lines.add("""[cols="1,1,1", grid=none, frame=none]""")
+        lines.add("|===")
+        content.lines().forEachIndexed { index, line ->
+            val payload = compressString(" $line")
+            val imageLink = "image::"
+            val type = "PDF"
+            val ext = "png"
+            val split = line.split("|")
+            var link = ""
+            if (split.size > 2) {
+                link = ",link=\"${split[2]}\""
+            }
+            val str =
+                "$imageLink$webserver/api/badge/item?payload=$payload&type=PDF&finalname=abc_${System.currentTimeMillis()}.png[format=png$link] "
+            lines.add("a|$str")
+        }
+        val size = content.lines().size
+        val rem = size % 3
+        if(rem == 1) {
+            lines.add("|")
+            lines.add("|")
+        } else if(rem == 1) {
+            lines.add("|")
+        }
+        lines.add("|===")
+        return lines
+    }
 
 }
