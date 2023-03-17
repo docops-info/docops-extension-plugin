@@ -51,19 +51,24 @@ import java.util.zip.GZIPOutputStream
 open class PanelsBlockProcessor : BlockProcessor() {
     private var scriptLoader = ScriptLoader()
     private var server = "http://localhost:8010/extension"
+    private var localDebug = false
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any {
         val remoteServer = parent.document.attributes["panel-server"]
         if (remoteServer != null) {
             remoteServer as String
             server = remoteServer
         }
-        var content = subContent(reader, parent)
-
+        val content = subContent(reader, parent, localDebug)
+        val debug = parent.document.attributes["local-debug"]
+        if(debug != null) {
+            debug as String
+            localDebug = debug.toBoolean()
+        }
         val format = attributes.getOrDefault("format", "dsl")
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
         val backend = parent.document.getAttribute("backend") as String
         val idea = parent.document.getAttribute("env", "") as String
-        if (serverPresent(server,parent, this)) {
+        if (serverPresent(server,parent, this, localDebug)) {
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Server is present"))
             val payload: String = try {
                 compressString(content)
@@ -86,7 +91,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
             val svgBlock: Block = if ("html5".equals(backend, true) || "idea" == idea) {
                 // language=html
-                val imageStr = getContentFromServer(url, parent, this)
+                val imageStr = getContentFromServer(url, parent, this, localDebug)
                 createBlock(parent, "pass", imageStr)
             }
             else {
@@ -215,8 +220,10 @@ open class PanelsBlockProcessor : BlockProcessor() {
 
 
 }
-fun getContentFromServer(url: String, parent: StructuralNode, pb: BlockProcessor): String {
-    println("getting image from url $url")
+fun getContentFromServer(url: String, parent: StructuralNode, pb: BlockProcessor, debug: Boolean = false): String {
+    if(debug) {
+        println("getting image from url $url")
+    }
     val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
         .connectTimeout(Duration.ofSeconds(20))
         .build()
@@ -233,8 +240,10 @@ fun getContentFromServer(url: String, parent: StructuralNode, pb: BlockProcessor
         ""
     }
 }
-fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor): Boolean {
-    println("Checking if server is present ${server}/api/ping")
+fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor, debug: Boolean = false): Boolean {
+    if(debug) {
+        println("Checking if server is present ${server}/api/ping")
+    }
     val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
         .connectTimeout(Duration.ofSeconds(20))
         .build()
@@ -260,20 +269,26 @@ fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor): B
     val bytes = baos.toByteArray()
     return Base64.getUrlEncoder().encodeToString(bytes)
 }
-fun subContent(reader: Reader, parent: StructuralNode): String {
+fun subContent(reader: Reader, parent: StructuralNode, debug: Boolean = false): String {
     val content = reader.read()
-    return subs(content, parent)
+    return subs(content, parent, debug)
 }
-fun subs(content: String, parent: StructuralNode): String {
+fun subs(content: String, parent: StructuralNode, debug: Boolean = false): String {
     val pattern = """\#\[.*?\]""".toRegex()
     val res = pattern.findAll(content)
     var localContent = content
     res.forEach {
         val subValue = parent.document.attributes[it.value.replace("#[", "").replace("]","").lowercase()]
         val key = it.value
+        if(debug) {
+            println("Text Substitution for $key & value to replace $subValue")
+        }
         if (subValue != null) {
             subValue as String
             localContent = localContent.replace(key, subValue)
+            if(debug) {
+                println("content after substituting $key -> $localContent")
+            }
         }
     }
     return localContent

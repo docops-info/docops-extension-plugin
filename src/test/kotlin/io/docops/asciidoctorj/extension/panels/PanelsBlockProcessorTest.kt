@@ -37,6 +37,7 @@ internal class PanelsBlockProcessorTest {
             .attribute("coderay-linenums-mode", "inline")
             .attribute("feedback")
             .attribute("tocbot")
+            .attribute("local-debug", "true")
             .build()
 
         val asciidoctor = Asciidoctor.Factory.create()

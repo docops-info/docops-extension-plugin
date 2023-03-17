@@ -11,6 +11,7 @@ import org.asciidoctor.log.Severity
 @ContentModel(ContentModel.COMPOUND)
 open class EChartBlockProcessor : BlockProcessor() {
     private var server = "http://localhost:8010/extension"
+    private var localDebug = false
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
         return processRequest(parent, reader, "bar")
     }
@@ -21,6 +22,11 @@ open class EChartBlockProcessor : BlockProcessor() {
         type: String
     ): Any? {
         val backend = parent.document.getAttribute("backend") as String
+        val debug = parent.document.attributes["local-debug"]
+        if(debug != null) {
+            debug as String
+            localDebug = debug.toBoolean()
+        }
         if ("html5".equals(backend, true)) {
             val remoteServer = parent.document.attributes["panel-server"]
             if (remoteServer != null) {
@@ -28,7 +34,7 @@ open class EChartBlockProcessor : BlockProcessor() {
                 server = remoteServer
             }
             val content = reader.read()
-            if (serverPresent(server, parent, this)) {
+            if (serverPresent(server, parent, this, localDebug)) {
                 val payload: String = try {
                     compressString(content)
                 } catch (e: Exception) {
@@ -37,7 +43,7 @@ open class EChartBlockProcessor : BlockProcessor() {
                 }
                 log(LogRecord(Severity.DEBUG, parent.sourceLocation, "payload compressed is $payload"))
                 val url = "$server/api/echart?type=$type&data=$payload"
-                val source = getContentFromServer(url, parent, this)
+                val source = getContentFromServer(url, parent, this, localDebug)
                 return createBlock(parent, "pass", source)
             }
         }

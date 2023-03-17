@@ -16,8 +16,14 @@ class BadgeBlockProcessor : BlockProcessor() {
 
     private var server = "http://localhost:8010/extension"
     private var webserver = "http://localhost:8010/extension"
+    private var localDebug = false
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
-        val content = subContent(reader, parent)
+        val debug = parent.document.attributes["local-debug"]
+        if(debug != null) {
+            debug as String
+            localDebug = debug.toBoolean()
+        }
+        val content = subContent(reader, parent, localDebug)
         val remoteServer = parent.document.attributes["panel-server"]
         remoteServer?.let {
             server = remoteServer as String
