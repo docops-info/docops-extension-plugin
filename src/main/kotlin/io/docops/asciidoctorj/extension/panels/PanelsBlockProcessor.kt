@@ -265,15 +265,15 @@ fun subContent(reader: Reader, parent: StructuralNode): String {
     return subs(content, parent)
 }
 fun subs(content: String, parent: StructuralNode): String {
-    val pattern = "(?<=\\\$\\{)(.*?)(?=})".toRegex()
+    val pattern = """\#\[.*?\]""".toRegex()
     val res = pattern.findAll(content)
     var localContent = content
     res.forEach {
-        val subValue = parent.document.attributes[it.value.lowercase()]
-        val key = """${"$"}{${it.value}}"""
+        val subValue = parent.document.attributes[it.value.replace("#[", "").replace("]","").lowercase()]
+        val key = it.value
         if (subValue != null) {
             subValue as String
-            localContent = content.replace(key, subValue)
+            localContent = localContent.replace(key, subValue)
         }
     }
     return localContent

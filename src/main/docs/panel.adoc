@@ -13,6 +13,7 @@ Steve D Roach
 :google: This Is Another Google
 :title-page-background-image: coverpage.svg
 
+include::base.adoc[]
 
 == What are they?
 
@@ -73,7 +74,7 @@ panels {
 panels {
     panel {
         link = "https://www.google.com"
-        label = "${Google}"
+        label = "#[Google]"
     }
     panel {
         link = "https://www.apple.com"
@@ -432,6 +433,14 @@ panels {
         author("Kevin")
         author("Mike")
     }
+    slim {
+        link = "#[link-server]#[app]"
+        label = "DocOps.io"
+        type = "Documentation"
+        description = "Sharing documentation experience for developers to extend with AsciiDoctor"
+        author("Steve Roach")
+        author("Ian Rose")
+    }
 }
 -----
 
@@ -453,7 +462,7 @@ panels {
         }
         legendOn = false
         dropShadow = 1
-        gradientStyle = DarkTheme
+        gradientStyle = GradientStyle(gradientId= "grad_1679021189141", color1 = "#282525", color2 = "#252424", color3 = "#252424", fontColor = "#cd9d72", titleColor = "#e06666", panelStroke = PanelStroke(color = "#cd9d72", width = 5))
     }
     slim {
         link = "https://www.google.com"
@@ -509,6 +518,14 @@ panels {
         description = "Instagram is an American photo and video sharing social networking service. "
         author("Kevin")
         author("Mike")
+    }
+    slim {
+        link = "#[link-server]#[app]"
+        label = "DocOps"
+        type = "Documentation"
+        description = "Sharing documentation experience for developers to extend with AsciiDoctor"
+        author("Steve Roach")
+        author("Ian Rose")
     }
 }
 ----
