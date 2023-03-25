@@ -41,7 +41,7 @@ panels {
 Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netflix
 
 [source%linenums,kotlin]
------
+....
 [panels,"buttons"]
 ----
 panels {
@@ -67,7 +67,7 @@ panels {
     }
 }
 ----
------
+....
 
 [panels,"buttons"]
 ----
@@ -102,8 +102,8 @@ The syntax is pretty small to make a panel of buttons.
 
 Similar to the buttons we have a round object we can use.
 
-[source,kotlin]
------
+[source%linenums,kotlin]
+....
 [panels,buttons2]
 ----
 panels{
@@ -139,7 +139,7 @@ panels{
     }
 }
 ----
------
+....
 
 
 [panels,"round"]
@@ -362,7 +362,7 @@ panels {
 More informational panels can be created with small cards
 
 [source%linenums,kotlin]
------
+....
 panels {
     theme {
         layout {
@@ -442,10 +442,10 @@ panels {
         author("Ian Rose")
     }
 }
------
+....
 
 
-[panels,"slim"]
+[panels,"slim",height="480",width="640"]
 ----
 panels {
     theme {
@@ -629,7 +629,7 @@ theme {
 ----
 -----
 
-[panels,"large"]
+[panels,"large",width="480",height="705"]
 ----
 panels {
 theme {
@@ -637,7 +637,7 @@ theme {
             columns = 3
         }
         font {
-            color = "#000000"
+            color = "#cccccc"
             bold = true
         }
         colorMap{
@@ -718,11 +718,17 @@ theme {
 
 |===
 
-== Generate Color Map Utility
 
+
+ifndef::backend-pdf[]
+
+== Generate Color Map Utility
 colorMap::[]
 
-* A simple Utility to generate a pastel themed the colormap for your convenience.
+* A simple Utility to generate a pastel themed colormap for your convenience.
+endif::[]
+
+
 
 == Badges/Shield
 
@@ -758,7 +764,7 @@ a|Color for label, e.g. Red
 [badge]
 ----
 Below|+ +|https://www.google.com|RED|Blue|
-Technical|Debt|https://www.yahoo.com|BLUE|ORANGE|<C>
+Technical|Debt|https://www.yahoo.com|RED|PINK|<C>
 Architecture|Reccomendations|https://www.yahoo.com|BLUE|ORANGE|<C>
 Yahoo|Finance|https://www.yahoo.com|#ccFFcc|PURPLE|<C>
 ----

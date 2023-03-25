@@ -44,7 +44,6 @@ import java.util.*
 import java.util.zip.GZIPOutputStream
 
 
-
 @Name("panels")
 @Contexts(Contexts.LISTING)
 @ContentModel(ContentModel.COMPOUND)
@@ -66,6 +65,8 @@ open class PanelsBlockProcessor : BlockProcessor() {
         }
         val format = attributes.getOrDefault("format", "dsl")
         var filename = attributes.getOrDefault("2", "${System.currentTimeMillis()}_unk") as String
+        var width = attributes.getOrDefault("width", "") as String
+        var height = attributes.getOrDefault("height", "") as String
         val backend = parent.document.getAttribute("backend") as String
         val idea = parent.document.getAttribute("env", "") as String
         if (serverPresent(server,parent, this, localDebug)) {
@@ -86,7 +87,19 @@ open class PanelsBlockProcessor : BlockProcessor() {
             val url = if ("csv" == format) {
                 "$server/api/panel/csv?type=$isPdf&data=$payload"
             } else {
-                "$server/api/panel?type=$isPdf&data=$payload"
+                if(width.isNotEmpty()) {
+                    width = "&width=$width"
+                }
+                if(height.isNotEmpty()) {
+                    height = "&height=$height"
+                }
+                if(width.isNotEmpty() && height.isEmpty()) {
+                    height = "&height=480"
+                }
+                if(width.isEmpty() && height.isNotEmpty()) {
+                    width = "&width=640"
+                }
+                "$server/api/panel?type=${isPdf}${width}${height}&data=$payload"
             }
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
             val svgBlock: Block = if ("html5".equals(backend, true) || "idea" == idea) {
