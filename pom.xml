@@ -21,7 +21,7 @@
 
     <artifactId>asciidoctorj-docops-panel</artifactId>
     <groupId>io.docops</groupId>
-    <version>2023.07</version>
+    <version>2023.08</version>
     <packaging>jar</packaging>
 
     <name>asciidoctorj-docops-panel</name>
@@ -81,7 +81,7 @@
     </issueManagement>
 
     <properties>
-        <docops-button-render.version>2023.06</docops-button-render.version>
+        <docops-button-render.version>2023.07</docops-button-render.version>
         <asciidoctorj.version>2.5.7</asciidoctorj.version>
         <asciidoctorj-pdf.version>2.3.4</asciidoctorj-pdf.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -89,12 +89,12 @@
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
         <kotlin.version>1.8.0</kotlin.version>
         <kotlin-maven-plugin.version>1.6.20</kotlin-maven-plugin.version>
-        <junit.version>5.9.0</junit.version>
+        <junit.version>5.9.2</junit.version>
         <mojo.version>1.6.0</mojo.version>
         <dokka.version>1.6.10</dokka.version>
         <maven-plugin.version>3.0.0-M6</maven-plugin.version>
         <maven-shared-utils.version>3.3.4</maven-shared-utils.version>
-        <maven-deploy.version>3.0.0</maven-deploy.version>
+        <maven-deploy.version>3.1.0</maven-deploy.version>
         <maven-compiler.version>3.10.1</maven-compiler.version>
         <maven-release.version>3.0.0-M5</maven-release.version>
         <maven-scm-provider.version>2.0.0-M1</maven-scm-provider.version>
