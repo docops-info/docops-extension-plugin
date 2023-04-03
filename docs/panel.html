@@ -2685,10 +2685,9 @@ mediumZoom('.content img', {
 </li>
 <li><a href="#_small_panels">5. Small Panels</a></li>
 <li><a href="#_large_panels">6. Large Panels</a></li>
-<li><a href="#_generate_color_map_utility">7. Generate Color Map Utility</a></li>
-<li><a href="#_badgesshield">8. Badges/Shield</a>
+<li><a href="#_generate_color_map_utility">7. Generate Color Map Utility</a>
 <ul class="sectlevel2">
-<li><a href="#_syntax">8.1. Syntax</a></li>
+<li><a href="#_syntax">7.1. Syntax</a></li>
 </ul>
 </li>
 </ul>
@@ -2732,6 +2731,7 @@ Now you can create a set of panels that links to various contents, an alternativ
 </pre></td></tr></tbody></table></code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netflix</p>
 </div>
@@ -2762,7 +2762,7 @@ Now you can create a set of panels that links to various contents, an alternativ
 23
 24
 25
-</pre></td><td class="code"><pre><span style="color: #008080">[panels,"buttons"]</span>
+</pre></td><td class="code"><pre><span style="color: #008080">[panels,"buttons",width="80%"]</span>
 <span style="background-color: #f8f8f8">----</span>
 <span style="color: #990000;font-weight: bold">panels</span> <span style="background-color: #f8f8f8">{</span>
     <span style="color: #990000;font-weight: bold">panel</span> <span style="background-color: #f8f8f8">{</span>
@@ -2792,8 +2792,17 @@ Now you can create a set of panels that links to various contents, an alternativ
 </div>
 <div class="openblock">
 <div class="content">
-<?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" width="945" height="220"
+<div class="openblock">
+<div class="content">
+<table class="tableblock frame-none grid-all center" style="width: 80%;">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" id="DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 945 220"
                 >
         <defs>
@@ -2811,6 +2820,25 @@ Now you can create a set of panels that links to various contents, an alternativ
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%">
+            <!-- Thicken out the original shape -->
+            <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken"/>
+
+            <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+            <feGaussianBlur in="thicken" stdDeviation="10" result="blurred"/>
+
+            <!-- Change the colour -->
+            <feFlood flood-color="hsl(265, 55%, 20%)" result="glowColor"/>
+
+            <!-- Color in the glows -->
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored"/>
+
+            <!--	Layer the effects together -->
+            <feMerge>
+                <feMergeNode in="softGlow_colored"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -2858,7 +2886,38 @@ Now you can create a set of panels that links to various contents, an alternativ
             <stop offset="100%" stop-color="#112266" />
         </linearGradient>
 
-        <circle id="myCircle" cx="0" cy="0"  r="60" class="card"/>
+
+           <linearGradient id="ID2256b1b7-389d-40b4-b8f6-101425c61f23" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID4dbf379f-379a-4f4c-9304-a9a01ac275bc" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID4586b164-a666-4eb3-9094-6eb03d2fc897" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID3ca5dfd4-732c-47a7-986c-c2c46f9195bd" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID63d336d8-f1f2-4cb2-9c47-9307341f9498" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+        <circle id="myCircle" cx="0" cy="0"  r="60" class="card" stroke="black" stroke-width="1"/>
         <rect id="legendRect" x="0" y="0" width="10" height="10"  class="legend"/>
         <rect id="mySlimRect" x="0" y="0" width="150" height="150" rx="5" ry="5" class="card"/>
         <rect id="myLargeRect" fill="#fffefa" x="0" y="0" width="300" height="400" rx="5" ry="5" class="card" filter="url(#dropShadow)">
@@ -2868,99 +2927,118 @@ Now you can create a set of panels that links to various contents, an alternativ
         <rect id="myPanel" x="0" y="0" width="300" height="30" rx="5" ry="5" class="card"/>
 
     </defs>
-    <style>
-rect.card {
-   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-rect.card:hover {
-    opacity: 0.6;
-}
-use.card {
-   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-use.card:hover {
-    opacity: 0.6;
-}
-.card {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-.card:hover {
-    opacity: 0.6;
-}
-.subtitle {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    font-size: 10px;
-}
-rect.legend {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
+            <style>
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 rect.card:hover { opacity: 0.9; }
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; filter: url(#sofGlow)}
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 .card { pointer-events: bounding-box; opacity: 1; }
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 .card:hover { opacity: 0.9; }
+        .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 rect.legend { pointer-events: bounding-box; opacity: 1; }
 
-rect.legend:hover {
-    opacity: 0.6;
-}
-.label {
-    font-family: Helvetica, Arial, sans-serif;
-}
-.title {
-    fill: white;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 9pt;
-}
-.legendText {
-    font-size: 9pt;
-    font-family:  Helvetica, Arial, sans-serif;
-}
-.btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 rect.legend:hover { opacity: 0.9; }
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 .label { font-family: Helvetica, Arial, sans-serif; }
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
+
+        @keyframes draw {
+            0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
+            100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
+        }
+
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 .shape{ stroke:black;}
+
+
+.ID2256b1b7-389d-40b4-b8f6-101425c61f23_cls { fill: url(#ID2256b1b7-389d-40b4-b8f6-101425c61f23); }
+
+#ID2256b1b7-389d-40b4-b8f6-101425c61f23 .stop1 {stop-color: #9489f6;}
+
+#ID2256b1b7-389d-40b4-b8f6-101425c61f23 .stop2 {stop-color: #5e4ef1;}
+
+#ID2256b1b7-389d-40b4-b8f6-101425c61f23 .stop3 {stop-color: #2913ED;}
+
+.ID4dbf379f-379a-4f4c-9304-a9a01ac275bc_cls { fill: url(#ID4dbf379f-379a-4f4c-9304-a9a01ac275bc); }
+
+#ID4dbf379f-379a-4f4c-9304-a9a01ac275bc .stop1 {stop-color: #98a6f2;}
+
+#ID4dbf379f-379a-4f4c-9304-a9a01ac275bc .stop2 {stop-color: #6579eb;}
+
+#ID4dbf379f-379a-4f4c-9304-a9a01ac275bc .stop3 {stop-color: #324DE5;}
+
+.ID4586b164-a666-4eb3-9094-6eb03d2fc897_cls { fill: url(#ID4586b164-a666-4eb3-9094-6eb03d2fc897); }
+
+#ID4586b164-a666-4eb3-9094-6eb03d2fc897 .stop1 {stop-color: #98d7d0;}
+
+#ID4586b164-a666-4eb3-9094-6eb03d2fc897 .stop2 {stop-color: #65c3b8;}
+
+#ID4586b164-a666-4eb3-9094-6eb03d2fc897 .stop3 {stop-color: #32B0A1;}
+
+.ID3ca5dfd4-732c-47a7-986c-c2c46f9195bd_cls { fill: url(#ID3ca5dfd4-732c-47a7-986c-c2c46f9195bd); }
+
+#ID3ca5dfd4-732c-47a7-986c-c2c46f9195bd .stop1 {stop-color: #8ed8bb;}
+
+#ID3ca5dfd4-732c-47a7-986c-c2c46f9195bd .stop2 {stop-color: #56c499;}
+
+#ID3ca5dfd4-732c-47a7-986c-c2c46f9195bd .stop3 {stop-color: #1EB178;}
+
+.ID63d336d8-f1f2-4cb2-9c47-9307341f9498_cls { fill: url(#ID63d336d8-f1f2-4cb2-9c47-9307341f9498); }
+
+#ID63d336d8-f1f2-4cb2-9c47-9307341f9498 .stop1 {stop-color: #ecbcf5;}
+
+#ID63d336d8-f1f2-4cb2-9c47-9307341f9498 .stop2 {stop-color: #e39af0;}
+
+#ID63d336d8-f1f2-4cb2-9c47-9307341f9498 .stop3 {stop-color: #DA79EC;}
+
+        #DocOps-07d1532b-c6bf-4280-85f2-ecaa9c1b4c34 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
 </style><g><a xlink:href="https://www.google.com" target="_blank">
-    <use x="10" y="10" class="card" fill="#DA79EC" xlink:href="#myPanel">
+    <use x="10" y="10" class="card ID2256b1b7-389d-40b4-b8f6-101425c61f23_cls shape" fill="#2913ED" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">This Is Another Google</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="162" y="30" text-anchor="middle" class="label"><a xlink:href="https://www.google.com" class="title btnclass1">This Is Another Google</a></text><a xlink:href="https://www.apple.com" target="_blank">
-    <use x="320" y="10" class="card" fill="#DECD5E" xlink:href="#myPanel">
+    <use x="320" y="10" class="card ID4dbf379f-379a-4f4c-9304-a9a01ac275bc_cls shape" fill="#324DE5" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Apple</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="472" y="30" text-anchor="middle" class="label"><a xlink:href="https://www.apple.com" class="title btnclass1">Apple</a></text><a xlink:href="https://www.microsoft.com" target="_blank">
-    <use x="630" y="10" class="card" fill="#F6AB4C" xlink:href="#myPanel">
+    <use x="630" y="10" class="card ID4586b164-a666-4eb3-9094-6eb03d2fc897_cls shape" fill="#32B0A1" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Microsoft</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="782" y="30" text-anchor="middle" class="label"><a xlink:href="https://www.microsoft.com" class="title btnclass1">Microsoft</a></text></g><g><a xlink:href="https://www.amazon.com" target="_blank">
-    <use x="10" y="50" class="card" fill="#F8827D" xlink:href="#myPanel">
+    <use x="10" y="50" class="card ID3ca5dfd4-732c-47a7-986c-c2c46f9195bd_cls shape" fill="#1EB178" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Amazon</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="162" y="70" text-anchor="middle" class="label"><a xlink:href="https://www.amazon.com" class="title btnclass1">Amazon</a></text><a xlink:href="https://www.netflix.com" target="_blank">
-    <use x="320" y="50" class="card" fill="#FB0F5F" xlink:href="#myPanel">
+    <use x="320" y="50" class="card ID63d336d8-f1f2-4cb2-9c47-9307341f9498_cls shape" fill="#DA79EC" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Netflix</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="472" y="70" text-anchor="middle" class="label"><a xlink:href="https://www.netflix.com" class="title btnclass1">Netflix</a></text></g><svg><use x="10" y="90" style="fill:#DA79EC" class="card" xlink:href="#legendRect"/>
-<text x="30" y="100" class="legendText">This Is Another Google</text><use x="10" y="110" style="fill:#DECD5E" class="card" xlink:href="#legendRect"/>
-<text x="30" y="120" class="legendText">Apple</text><use x="50%" y="90" style="fill:#F6AB4C" class="card" xlink:href="#legendRect"/>
-<text x="54%" y="100" class="legendText">Microsoft</text><use x="50%" y="110" style="fill:#F8827D" class="card" xlink:href="#legendRect"/>
-<text x="54%" y="120" class="legendText">Amazon</text><use x="50%" y="130" style="fill:#FB0F5F" class="card" xlink:href="#legendRect"/>
+</a><text x="472" y="70" text-anchor="middle" class="label"><a xlink:href="https://www.netflix.com" class="title btnclass1">Netflix</a></text></g><svg><use x="10" y="90" style="fill:#2913ED" class="card" xlink:href="#legendRect"/>
+<text x="30" y="100" class="legendText">This Is Another Google</text><use x="10" y="110" style="fill:#324DE5" class="card" xlink:href="#legendRect"/>
+<text x="30" y="120" class="legendText">Apple</text><use x="50%" y="90" style="fill:#32B0A1" class="card" xlink:href="#legendRect"/>
+<text x="54%" y="100" class="legendText">Microsoft</text><use x="50%" y="110" style="fill:#1EB178" class="card" xlink:href="#legendRect"/>
+<text x="54%" y="120" class="legendText">Amazon</text><use x="50%" y="130" style="fill:#DA79EC" class="card" xlink:href="#legendRect"/>
 <text x="54%" y="140" class="legendText">Netflix</text></svg></svg>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -2973,7 +3051,7 @@ rect.legend:hover {
 <h2 id="_round_buttons">3. Round Buttons</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Similar to the buttons we have a round object we can use.</p>
+<p>Similar to the buttons, we have a round object we can use.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3016,8 +3094,17 @@ rect.legend:hover {
 </div>
 <div class="openblock">
 <div class="content">
-<?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" width="450" height="450"
+<div class="openblock">
+<div class="content">
+<table class="tableblock frame-none grid-all center" style="width: 60%;">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" id="DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 450 450"
                 >
         <defs>
@@ -3035,6 +3122,25 @@ rect.legend:hover {
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%">
+            <!-- Thicken out the original shape -->
+            <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken"/>
+
+            <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+            <feGaussianBlur in="thicken" stdDeviation="10" result="blurred"/>
+
+            <!-- Change the colour -->
+            <feFlood flood-color="hsl(265, 55%, 20%)" result="glowColor"/>
+
+            <!-- Color in the glows -->
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored"/>
+
+            <!--	Layer the effects together -->
+            <feMerge>
+                <feMergeNode in="softGlow_colored"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -3082,7 +3188,38 @@ rect.legend:hover {
             <stop offset="100%" stop-color="#112266" />
         </linearGradient>
 
-        <circle id="myCircle" cx="0" cy="0"  r="60" class="card"/>
+
+           <linearGradient id="IDa54a0a83-84e2-4930-bf2b-1dc2d9e430e5" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="IDe83b4373-d40f-40c0-ae26-50a5070d4d79" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="IDc893c8ed-16c4-4127-87f4-35defd10af62" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID4e73a88c-033f-400e-b7a8-a5d9214ad1b0" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="IDb3dd9089-bdfb-4832-a2af-54d8dfd4379a" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+        <circle id="myCircle" cx="0" cy="0"  r="60" class="card" stroke="black" stroke-width="1"/>
         <rect id="legendRect" x="0" y="0" width="10" height="10"  class="legend"/>
         <rect id="mySlimRect" x="0" y="0" width="150" height="150" rx="5" ry="5" class="card"/>
         <rect id="myLargeRect" fill="#fffefa" x="0" y="0" width="300" height="400" rx="5" ry="5" class="card" filter="url(#dropShadow)">
@@ -3092,47 +3229,69 @@ rect.legend:hover {
         <rect id="myPanel" x="0" y="0" width="300" height="30" rx="5" ry="5" class="card"/>
 
     </defs>
-    <style>
-circle.card {
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-circle.card:hover {
-    opacity: 0.6;
-}
-use.card {
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-use.card:hover {
-    opacity: 0.6;
-}
-.subtitle {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    font-size: 9pt;
-}
-rect.legend {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
+            <style>
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 circle.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 circle.card:hover { opacity: 0.9; transition: fill .5s ease-in;}
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 use.card:hover { opacity: 0.9; stroke-width: 3,stroke: gold; transition: fill .5s ease-in;}
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 9pt; }
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 rect.legend { pointer-events: bounding-box; opacity: 1; }
 
-rect.legend:hover {
-    opacity: 0.6;
-}
-.label {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 9pt;
-}
-.legendText {
-    font-size: 9pt;
-    font-family:  Helvetica, Arial, sans-serif;
-}
-.btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 rect.legend:hover { opacity: 0.9; }
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 .label { font-family: Helvetica, Arial, sans-serif; font-size: 9pt; }
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 .legendText { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
+
+        @keyframes draw {
+            0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
+            100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
+        }
+
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 .shape{ stroke:gold;}
+
+
+.IDa54a0a83-84e2-4930-bf2b-1dc2d9e430e5_cls { fill: url(#IDa54a0a83-84e2-4930-bf2b-1dc2d9e430e5); }
+
+#IDa54a0a83-84e2-4930-bf2b-1dc2d9e430e5 .stop1 {stop-color: #e9b0e1;}
+
+#IDa54a0a83-84e2-4930-bf2b-1dc2d9e430e5 .stop2 {stop-color: #de89d2;}
+
+#IDa54a0a83-84e2-4930-bf2b-1dc2d9e430e5 .stop3 {stop-color: #D362C4;}
+
+.IDe83b4373-d40f-40c0-ae26-50a5070d4d79_cls { fill: url(#IDe83b4373-d40f-40c0-ae26-50a5070d4d79); }
+
+#IDe83b4373-d40f-40c0-ae26-50a5070d4d79 .stop1 {stop-color: #ed8e8a;}
+
+#IDe83b4373-d40f-40c0-ae26-50a5070d4d79 .stop2 {stop-color: #e4554f;}
+
+#IDe83b4373-d40f-40c0-ae26-50a5070d4d79 .stop3 {stop-color: #DC1D15;}
+
+.IDc893c8ed-16c4-4127-87f4-35defd10af62_cls { fill: url(#IDc893c8ed-16c4-4127-87f4-35defd10af62); }
+
+#IDc893c8ed-16c4-4127-87f4-35defd10af62 .stop1 {stop-color: #d59fa0;}
+
+#IDc893c8ed-16c4-4127-87f4-35defd10af62 .stop2 {stop-color: #c06f71;}
+
+#IDc893c8ed-16c4-4127-87f4-35defd10af62 .stop3 {stop-color: #AC3F42;}
+
+.ID4e73a88c-033f-400e-b7a8-a5d9214ad1b0_cls { fill: url(#ID4e73a88c-033f-400e-b7a8-a5d9214ad1b0); }
+
+#ID4e73a88c-033f-400e-b7a8-a5d9214ad1b0 .stop1 {stop-color: #f19ad9;}
+
+#ID4e73a88c-033f-400e-b7a8-a5d9214ad1b0 .stop2 {stop-color: #ea67c6;}
+
+#ID4e73a88c-033f-400e-b7a8-a5d9214ad1b0 .stop3 {stop-color: #E335B3;}
+
+.IDb3dd9089-bdfb-4832-a2af-54d8dfd4379a_cls { fill: url(#IDb3dd9089-bdfb-4832-a2af-54d8dfd4379a); }
+
+#IDb3dd9089-bdfb-4832-a2af-54d8dfd4379a .stop1 {stop-color: #dcbceb;}
+
+#IDb3dd9089-bdfb-4832-a2af-54d8dfd4379a .stop2 {stop-color: #cb9ae1;}
+
+#IDb3dd9089-bdfb-4832-a2af-54d8dfd4379a .stop3 {stop-color: #BA79D7;}
+
+        #DocOps-04f9c06e-e6b5-480a-b3ce-943ee933b303 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
 </style><g><a xlink:href="https://www.google.com" target="_blank">
-    <use x="80" y="65" xlink:href="#myCircle" class="card" fill="#ff6385">
+    <use x="80" y="65" xlink:href="#myCircle" class="card IDa54a0a83-84e2-4930-bf2b-1dc2d9e430e5_cls" fill="#D362C4">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Google</text>
@@ -3142,7 +3301,7 @@ rect.legend:hover {
                 <a xlink:href="https://www.google.com" target="_blank">
                     <text x="80" y="70" text-anchor="middle" ><tspan class="title btnclass1" x="80" dy="0">Google</tspan></text>
 </a><a xlink:href="https://www.apple.com" target="_blank">
-    <use x="205" y="65" xlink:href="#myCircle" class="card" fill="#36a3eb">
+    <use x="205" y="65" xlink:href="#myCircle" class="card IDe83b4373-d40f-40c0-ae26-50a5070d4d79_cls" fill="#DC1D15">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Apple</text>
@@ -3152,7 +3311,7 @@ rect.legend:hover {
                 <a xlink:href="https://www.apple.com" target="_blank">
                     <text x="205" y="70" text-anchor="middle" ><tspan class="title btnclass1" x="205" dy="0">Apple</tspan></text>
 </a><a xlink:href="https://www.microsoft.com" target="_blank">
-    <use x="330" y="65" xlink:href="#myCircle" class="card" fill="#9966ff">
+    <use x="330" y="65" xlink:href="#myCircle" class="card IDc893c8ed-16c4-4127-87f4-35defd10af62_cls" fill="#AC3F42">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Microsoft</text>
@@ -3162,7 +3321,7 @@ rect.legend:hover {
                 <a xlink:href="https://www.microsoft.com" target="_blank">
                     <text x="330" y="70" text-anchor="middle" ><tspan class="title btnclass1" x="330" dy="0">Microsoft</tspan></text>
 </a></g><g><a xlink:href="https://www.amazon.com" target="_blank">
-    <use x="80" y="195" xlink:href="#myCircle" class="card" fill="#ffcf56">
+    <use x="80" y="195" xlink:href="#myCircle" class="card ID4e73a88c-033f-400e-b7a8-a5d9214ad1b0_cls" fill="#E335B3">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Amazon</text>
@@ -3172,7 +3331,7 @@ rect.legend:hover {
                 <a xlink:href="https://www.amazon.com" target="_blank">
                     <text x="80" y="200" text-anchor="middle" ><tspan class="title btnclass1" x="80" dy="0">Amazon</tspan></text>
 </a><a xlink:href="https://www.netflix.com" target="_blank">
-    <use x="205" y="195" xlink:href="#myCircle" class="card" fill="#4bc0c0">
+    <use x="205" y="195" xlink:href="#myCircle" class="card IDb3dd9089-bdfb-4832-a2af-54d8dfd4379a_cls" fill="#BA79D7">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Netflix</text>
@@ -3181,12 +3340,19 @@ rect.legend:hover {
 </a>
                 <a xlink:href="https://www.netflix.com" target="_blank">
                     <text x="205" y="200" text-anchor="middle" ><tspan class="title btnclass1" x="205" dy="0">Netflix</tspan></text>
-</a></g><svg><use x="10" y="320" style="fill:#ff6385" class="card" xlink:href="#legendRect"/>
-<text x="30" y="330" class="legendText">Google</text><use x="10" y="340" style="fill:#36a3eb" class="card" xlink:href="#legendRect"/>
-<text x="30" y="350" class="legendText">Apple</text><use x="50%" y="320" style="fill:#9966ff" class="card" xlink:href="#legendRect"/>
-<text x="54%" y="330" class="legendText">Microsoft</text><use x="50%" y="340" style="fill:#ffcf56" class="card" xlink:href="#legendRect"/>
-<text x="54%" y="350" class="legendText">Amazon</text><use x="50%" y="360" style="fill:#4bc0c0" class="card" xlink:href="#legendRect"/>
+</a></g><svg><use x="10" y="320" style="fill:#D362C4" class="card" xlink:href="#legendRect"/>
+<text x="30" y="330" class="legendText">Google</text><use x="10" y="340" style="fill:#DC1D15" class="card" xlink:href="#legendRect"/>
+<text x="30" y="350" class="legendText">Apple</text><use x="50%" y="320" style="fill:#AC3F42" class="card" xlink:href="#legendRect"/>
+<text x="54%" y="330" class="legendText">Microsoft</text><use x="50%" y="340" style="fill:#E335B3" class="card" xlink:href="#legendRect"/>
+<text x="54%" y="350" class="legendText">Amazon</text><use x="50%" y="360" style="fill:#BA79D7" class="card" xlink:href="#legendRect"/>
 <text x="54%" y="370" class="legendText">Netflix</text></svg></svg>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3408,8 +3574,17 @@ New Attributes added, dropShadow &amp; font
 </div>
 <div class="openblock">
 <div class="content">
-<?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1260" height="220"
+<div class="openblock">
+<div class="content">
+<table class="tableblock frame-none grid-all stretch center">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" id="DocOps-9117be49-300e-4020-a574-6939d3786258"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1260 220"
                 >
         <defs>
@@ -3427,6 +3602,25 @@ New Attributes added, dropShadow &amp; font
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%">
+            <!-- Thicken out the original shape -->
+            <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken"/>
+
+            <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+            <feGaussianBlur in="thicken" stdDeviation="10" result="blurred"/>
+
+            <!-- Change the colour -->
+            <feFlood flood-color="hsl(265, 55%, 20%)" result="glowColor"/>
+
+            <!-- Color in the glows -->
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored"/>
+
+            <!--	Layer the effects together -->
+            <feMerge>
+                <feMergeNode in="softGlow_colored"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -3474,7 +3668,38 @@ New Attributes added, dropShadow &amp; font
             <stop offset="100%" stop-color="#112266" />
         </linearGradient>
 
-        <circle id="myCircle" cx="0" cy="0"  r="60" class="card"/>
+
+           <linearGradient id="ID538ebd3d-c5b6-4b8b-96ed-c84dea7787b5" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID2e703254-b8c1-4b82-af69-25e4711dc6c5" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="IDf7a72667-b8f8-46fa-b36c-36ed060dd90f" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID55059a32-b79f-434a-aaca-4fa9a872bcc9" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="IDfde219e6-701c-46f7-9886-33a5028ef1ac" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+        <circle id="myCircle" cx="0" cy="0"  r="60" class="card" stroke="black" stroke-width="1"/>
         <rect id="legendRect" x="0" y="0" width="10" height="10"  class="legend"/>
         <rect id="mySlimRect" x="0" y="0" width="150" height="150" rx="5" ry="5" class="card"/>
         <rect id="myLargeRect" fill="#fffefa" x="0" y="0" width="300" height="400" rx="5" ry="5" class="card" filter="url(#dropShadow)">
@@ -3484,88 +3709,100 @@ New Attributes added, dropShadow &amp; font
         <rect id="myPanel" x="0" y="0" width="300" height="30" rx="5" ry="5" class="card"/>
 
     </defs>
-    <style>
-rect.card {
-   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-rect.card:hover {
-    opacity: 0.6;
-}
-use.card {
-   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-use.card:hover {
-    opacity: 0.6;
-}
-.card {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-.card:hover {
-    opacity: 0.6;
-}
-.subtitle {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    font-size: 10px;
-}
-rect.legend {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
+            <style>
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 rect.card:hover { opacity: 0.9; }
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; filter: url(#sofGlow)}
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 .card { pointer-events: bounding-box; opacity: 1; }
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 .card:hover { opacity: 0.9; }
+        .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 rect.legend { pointer-events: bounding-box; opacity: 1; }
 
-rect.legend:hover {
-    opacity: 0.6;
-}
-.label {
-    font-family: Helvetica, Arial, sans-serif;
-}
-.title {
-    fill: white;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 9pt;
-}
-.legendText {
-    font-size: 9pt;
-    font-family:  Helvetica, Arial, sans-serif;
-}
-.btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 rect.legend:hover { opacity: 0.9; }
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 .label { font-family: Helvetica, Arial, sans-serif; }
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
+
+        @keyframes draw {
+            0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
+            100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
+        }
+
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 .shape{ stroke:black;}
+
+
+.ID538ebd3d-c5b6-4b8b-96ed-c84dea7787b5_cls { fill: url(#ID538ebd3d-c5b6-4b8b-96ed-c84dea7787b5); }
+
+#ID538ebd3d-c5b6-4b8b-96ed-c84dea7787b5 .stop1 {stop-color: #ffb1c2;}
+
+#ID538ebd3d-c5b6-4b8b-96ed-c84dea7787b5 .stop2 {stop-color: #ff8aa3;}
+
+#ID538ebd3d-c5b6-4b8b-96ed-c84dea7787b5 .stop3 {stop-color: #ff6385;}
+
+.ID2e703254-b8c1-4b82-af69-25e4711dc6c5_cls { fill: url(#ID2e703254-b8c1-4b82-af69-25e4711dc6c5); }
+
+#ID2e703254-b8c1-4b82-af69-25e4711dc6c5 .stop1 {stop-color: #9ad1f5;}
+
+#ID2e703254-b8c1-4b82-af69-25e4711dc6c5 .stop2 {stop-color: #68baf0;}
+
+#ID2e703254-b8c1-4b82-af69-25e4711dc6c5 .stop3 {stop-color: #36a3eb;}
+
+.IDf7a72667-b8f8-46fa-b36c-36ed060dd90f_cls { fill: url(#IDf7a72667-b8f8-46fa-b36c-36ed060dd90f); }
+
+#IDf7a72667-b8f8-46fa-b36c-36ed060dd90f .stop1 {stop-color: #ccb2ff;}
+
+#IDf7a72667-b8f8-46fa-b36c-36ed060dd90f .stop2 {stop-color: #b28cff;}
+
+#IDf7a72667-b8f8-46fa-b36c-36ed060dd90f .stop3 {stop-color: #9966ff;}
+
+.ID55059a32-b79f-434a-aaca-4fa9a872bcc9_cls { fill: url(#ID55059a32-b79f-434a-aaca-4fa9a872bcc9); }
+
+#ID55059a32-b79f-434a-aaca-4fa9a872bcc9 .stop1 {stop-color: #ffe7aa;}
+
+#ID55059a32-b79f-434a-aaca-4fa9a872bcc9 .stop2 {stop-color: #ffdb80;}
+
+#ID55059a32-b79f-434a-aaca-4fa9a872bcc9 .stop3 {stop-color: #ffcf56;}
+
+.IDfde219e6-701c-46f7-9886-33a5028ef1ac_cls { fill: url(#IDfde219e6-701c-46f7-9886-33a5028ef1ac); }
+
+#IDfde219e6-701c-46f7-9886-33a5028ef1ac .stop1 {stop-color: #a5dfdf;}
+
+#IDfde219e6-701c-46f7-9886-33a5028ef1ac .stop2 {stop-color: #78cfcf;}
+
+#IDfde219e6-701c-46f7-9886-33a5028ef1ac .stop3 {stop-color: #4bc0c0;}
+
+        #DocOps-9117be49-300e-4020-a574-6939d3786258 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
 </style><g><a xlink:href="https://www.amazon.com" target="_top">
-    <use x="10" y="10" class="card" fill="#ff6385" xlink:href="#myPanel">
+    <use x="10" y="10" class="card ID538ebd3d-c5b6-4b8b-96ed-c84dea7787b5_cls shape" fill="#ff6385" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Amazon</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="162" y="30" text-anchor="middle" class="label"><a xlink:href="https://www.amazon.com" class="title btnclass1">Amazon</a></text><a xlink:href="https://www.apple.com" target="_top">
-    <use x="320" y="10" class="card" fill="#36a3eb" xlink:href="#myPanel">
+    <use x="320" y="10" class="card ID2e703254-b8c1-4b82-af69-25e4711dc6c5_cls shape" fill="#36a3eb" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Apple</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="472" y="30" text-anchor="middle" class="label"><a xlink:href="https://www.apple.com" class="title btnclass1">Apple</a></text><a xlink:href="https://www.google.com" target="_top">
-    <use x="630" y="10" class="card" fill="#9966ff" xlink:href="#myPanel">
+    <use x="630" y="10" class="card IDf7a72667-b8f8-46fa-b36c-36ed060dd90f_cls shape" fill="#9966ff" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Google</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="782" y="30" text-anchor="middle" class="label"><a xlink:href="https://www.google.com" class="title btnclass1">Google</a></text><a xlink:href="https://www.microsoft.com" target="_top">
-    <use x="940" y="10" class="card" fill="#ffcf56" xlink:href="#myPanel">
+    <use x="940" y="10" class="card ID55059a32-b79f-434a-aaca-4fa9a872bcc9_cls shape" fill="#ffcf56" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Microsoft</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
 </a><text x="1092" y="30" text-anchor="middle" class="label"><a xlink:href="https://www.microsoft.com" class="title btnclass1">Microsoft</a></text></g><g><a xlink:href="https://www.netflix.com" target="_top">
-    <use x="10" y="50" class="card" fill="#4bc0c0" xlink:href="#myPanel">
+    <use x="10" y="50" class="card IDfde219e6-701c-46f7-9886-33a5028ef1ac_cls shape" fill="#4bc0c0" xlink:href="#myPanel">
         <title class="description"></title>
     </use>
     <text class="category" visibility="hidden">Netflix</text>
@@ -3577,6 +3814,13 @@ rect.legend:hover {
 <text x="54%" y="100" class="legendText">Google</text><use x="50%" y="110" style="fill:#ffcf56" class="card" xlink:href="#legendRect"/>
 <text x="54%" y="120" class="legendText">Microsoft</text><use x="50%" y="130" style="fill:#4bc0c0" class="card" xlink:href="#legendRect"/>
 <text x="54%" y="140" class="legendText">Netflix</text></svg></svg>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3661,6 +3905,14 @@ rect.legend:hover {
 69
 70
 71
+72
+73
+74
+75
+76
+77
+78
+79
 </pre></td><td class="code"><pre><span style="color: #990000;font-weight: bold">panels</span> <span style="background-color: #f8f8f8">{</span>
     <span style="color: #990000;font-weight: bold">theme</span> <span style="background-color: #f8f8f8">{</span>
         <span style="color: #990000;font-weight: bold">layout</span> <span style="background-color: #f8f8f8">{</span>
@@ -3731,14 +3983,31 @@ rect.legend:hover {
         <span style="color: #990000;font-weight: bold">author</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"Kevin"</span><span style="background-color: #f8f8f8">)</span>
         <span style="color: #990000;font-weight: bold">author</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"Mike"</span><span style="background-color: #f8f8f8">)</span>
     <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #990000;font-weight: bold">slim</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="background-color: #f8f8f8">link</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"#[link-server]#[app]"</span>
+        <span style="background-color: #f8f8f8">label</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"DocOps.io"</span>
+        <span style="background-color: #f8f8f8">type</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"Documentation"</span>
+        <span style="background-color: #f8f8f8">description</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"Sharing documentation experience for developers to extend with AsciiDoctor"</span>
+        <span style="color: #990000;font-weight: bold">author</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"Steve Roach"</span><span style="background-color: #f8f8f8">)</span>
+        <span style="color: #990000;font-weight: bold">author</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"Ian Rose"</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">}</span>
 <span style="background-color: #f8f8f8">}</span>
 </pre></td></tr></tbody></table></code></pre>
 </div>
 </div>
 <div class="openblock">
 <div class="content">
-<?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" width="660" height="360"
+<div class="openblock">
+<div class="content">
+<table class="tableblock frame-none grid-all center" style="width: 80%;">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" id="DocOps-87cbb406-427b-4fce-973c-3737cb087225"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 660 360"
                 >
         <defs>
@@ -3756,6 +4025,25 @@ rect.legend:hover {
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%">
+            <!-- Thicken out the original shape -->
+            <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken"/>
+
+            <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+            <feGaussianBlur in="thicken" stdDeviation="10" result="blurred"/>
+
+            <!-- Change the colour -->
+            <feFlood flood-color="hsl(265, 55%, 20%)" result="glowColor"/>
+
+            <!-- Color in the glows -->
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored"/>
+
+            <!--	Layer the effects together -->
+            <feMerge>
+                <feMergeNode in="softGlow_colored"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -3802,12 +4090,61 @@ rect.legend:hover {
             <stop offset="50%" stop-color="red" />
             <stop offset="100%" stop-color="#112266" />
         </linearGradient>
-        <linearGradient id="Darks">
+        <linearGradient id="grad_1679021189141">
     <stop class="stop1" offset="0%" />
     <stop class="stop2" offset="50%" />
     <stop class="stop3" offset="100%" />
 </linearGradient>
-        <circle id="myCircle" cx="0" cy="0"  r="60" class="card"/>
+
+           <linearGradient id="ID582eb468-eb7e-416f-82bf-ebdca74347f7" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID6b437b1b-f7cc-4276-ae1a-f155dd31c7e3" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID99c999ca-6433-45d0-8a83-c7b74d5b4561" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="IDf4b1cf10-b59e-4196-b68f-e9109364669c" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID40459a12-6203-46ff-b414-628e327e42d0" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID4aa8429b-4782-432f-a198-ef74b00dc37f" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID8f38c88d-7fc1-45a7-ae4e-d4267c7b734a" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID4da449db-7e80-4de9-a01d-beefb7e2310d" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+        <circle id="myCircle" cx="0" cy="0"  r="60" class="card" stroke="black" stroke-width="1"/>
         <rect id="legendRect" x="0" y="0" width="10" height="10"  class="legend"/>
         <rect id="mySlimRect" x="0" y="0" width="150" height="150" rx="5" ry="5" class="card"/>
         <rect id="myLargeRect" fill="#fffefa" x="0" y="0" width="300" height="400" rx="5" ry="5" class="card" filter="url(#dropShadow)">
@@ -3818,93 +4155,119 @@ rect.legend:hover {
 
     </defs>
             <style>
-        use { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));  pointer-events: bounding-box; opacity: 1; }
-        use:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
-        .lineHead { fill: #cd9d72; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 9pt; }
-        .description { fill: #cd9d72; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; }
-        .category { fill: #cd9d72; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; font-weight: bold; font-style: italic}
-        .title { fill: #cacaca; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal; font-size: 9pt; }
-        .author { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 8pt; fill: #cd9d72; }
-        .legendText { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 9pt; }
-        .date { fill: #cd9d72; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 use { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1));  pointer-events: bounding-box; opacity: 1; }
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 use:hover { opacity: 0.9; -webkit-animation: 0.9s draw linear forwards; animation: 0.9s draw linear forwards; filter: url(#sofGlow)}
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .lineHead { fill: #cd9d72; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 9pt; }
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .description { fill: #cd9d72; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; }
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .category { fill: #e06666; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; font-weight: bold; font-style: italic}
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .title { fill: #e06666; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal; font-size: 9pt; }
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .author { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 8pt; fill: #cd9d72; }
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .legendText { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 9pt; }
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .date { fill: #cd9d72; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
 
         @keyframes draw {
             0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
             100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:5px; }
         }
 
-        .shape{ stroke:#cd9d72;}
+        #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .shape{ stroke:#cd9d72;}
 
 
-.darks { fill: url(#Darks); }
-#Darks .stop1 {stop-color: #282525;}
-#Darks .stop2 {stop-color: #252424;}
-#Darks .stop3 {stop-color: #1e1f22;}
-.btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#000000;letter-spacing:normal;}
+.grad_1679021189141 { fill: url(#grad_1679021189141); }
+#grad_1679021189141 .stop1 {stop-color: #282525;}
+#grad_1679021189141 .stop2 {stop-color: #252424;}
+#grad_1679021189141 .stop3 {stop-color: #252424;}
+
+
+         #DocOps-87cbb406-427b-4fce-973c-3737cb087225 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#000000;letter-spacing:normal;}
 </style><g> <a xlink:href="https://www.google.com" target="_blank">
-<use x="10" y="10" class="card darks shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="10" y="10" class="grad_1679021189141 ID582eb468-eb7e-416f-82bf-ebdca74347f7_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Google is is an American multinational technology company that specializes in Internet-related services and products </title>
 </use>
-</a><text x="12" y="30">
-    <tspan x="14" dy="0" class="title ">Google</tspan><tspan x="14" dy="16" class="description ">Google is is an American</tspan><tspan x="14" dy="16" class="description ">multinational technology</tspan><tspan x="14" dy="16" class="description ">company that specializes in</tspan><tspan x="14" dy="16" class="description ">Internet-related services</tspan>
+</a> <text x="14" y="30" class="title " fill="#000" opacity="0.25">Google</text><text x="15" y="29" class="title ">Google</text>
+<text x="12" y="30">
+    <tspan x="14" dy="16" class="description ">Google is is an American</tspan><tspan x="14" dy="16" class="description ">multinational technology</tspan><tspan x="14" dy="16" class="description ">company that specializes in</tspan><tspan x="14" dy="16" class="description ">Internet-related services</tspan>
     <tspan x="14" dy="16" class="category">Advertising</tspan>
     <tspan x="14" dy="16" class="author ">Sergey Brin</tspan><tspan x="14" dy="16" class="author ">Larry Page</tspan>
     <tspan x="12" dy="16" class="date">07/30/1998</tspan>
 </text> <a xlink:href="https://www.apple.com" target="_blank">
-<use x="170" y="10" class="card darks shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="170" y="10" class="grad_1679021189141 ID6b437b1b-f7cc-4276-ae1a-f155dd31c7e3_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. </title>
 </use>
-</a><text x="172" y="30">
-    <tspan x="174" dy="0" class="title ">Apple</tspan><tspan x="174" dy="16" class="description ">Apple Inc. is an American</tspan><tspan x="174" dy="16" class="description ">multinational technology</tspan><tspan x="174" dy="16" class="description ">company that specializes in</tspan><tspan x="174" dy="16" class="description ">consumer electronics,</tspan>
+</a> <text x="174" y="30" class="title " fill="#000" opacity="0.25">Apple</text><text x="175" y="29" class="title ">Apple</text>
+<text x="172" y="30">
+    <tspan x="174" dy="16" class="description ">Apple Inc. is an American</tspan><tspan x="174" dy="16" class="description ">multinational technology</tspan><tspan x="174" dy="16" class="description ">company that specializes in</tspan><tspan x="174" dy="16" class="description ">consumer electronics,</tspan>
     <tspan x="174" dy="16" class="category">Personal Devices</tspan>
     <tspan x="174" dy="16" class="author ">Steve Jobs</tspan><tspan x="174" dy="16" class="author ">Steve Wozniak</tspan>
     <tspan x="172" dy="16" class="date">01/30/1977</tspan>
 </text> <a xlink:href="https://www.microsoft.com" target="_blank">
-<use x="330" y="10" class="card darks shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="330" y="10" class="grad_1679021189141 ID99c999ca-6433-45d0-8a83-c7b74d5b4561_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.</title>
 </use>
-</a><text x="332" y="30">
-    <tspan x="334" dy="0" class="title ">Microsoft</tspan><tspan x="334" dy="16" class="description ">Microsoft Corporation is an</tspan><tspan x="334" dy="16" class="description ">American multinational</tspan><tspan x="334" dy="16" class="description ">technology corporation</tspan><tspan x="334" dy="16" class="description ">which produces computer</tspan>
+</a> <text x="334" y="30" class="title " fill="#000" opacity="0.25">Microsoft</text><text x="335" y="29" class="title ">Microsoft</text>
+<text x="332" y="30">
+    <tspan x="334" dy="16" class="description ">Microsoft Corporation is an</tspan><tspan x="334" dy="16" class="description ">American multinational</tspan><tspan x="334" dy="16" class="description ">technology corporation</tspan><tspan x="334" dy="16" class="description ">which produces computer</tspan>
     <tspan x="334" dy="16" class="category">Software</tspan>
     <tspan x="334" dy="16" class="author ">Bill Gates</tspan>
     <tspan x="332" dy="16" class="date"></tspan>
 </text> <a xlink:href="https://www.amazon.com" target="_blank">
-<use x="490" y="10" class="card darks shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="490" y="10" class="grad_1679021189141 IDf4b1cf10-b59e-4196-b68f-e9109364669c_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence</title>
 </use>
-</a><text x="492" y="30">
-    <tspan x="494" dy="0" class="title ">Amazon</tspan><tspan x="494" dy="16" class="description ">Amazon.com, Inc. is an</tspan><tspan x="494" dy="16" class="description ">American multinational</tspan><tspan x="494" dy="16" class="description ">technology company which</tspan><tspan x="494" dy="16" class="description ">focuses on e-commerce, cloud</tspan>
+</a> <text x="494" y="30" class="title " fill="#000" opacity="0.25">Amazon</text><text x="495" y="29" class="title ">Amazon</text>
+<text x="492" y="30">
+    <tspan x="494" dy="16" class="description ">Amazon.com, Inc. is an</tspan><tspan x="494" dy="16" class="description ">American multinational</tspan><tspan x="494" dy="16" class="description ">technology company which</tspan><tspan x="494" dy="16" class="description ">focuses on e-commerce, cloud</tspan>
     <tspan x="494" dy="16" class="category">Super Store</tspan>
     <tspan x="494" dy="16" class="author ">Jeff Bezos</tspan>
     <tspan x="492" dy="16" class="date"></tspan>
 </text></g><g> <a xlink:href="https://www.netflix.com" target="_blank">
-<use x="10" y="170" class="card darks shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="10" y="170" class="grad_1679021189141 ID40459a12-6203-46ff-b414-628e327e42d0_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Netflix, Inc. is an American subscription streaming service and production company.</title>
 </use>
-</a><text x="12" y="190">
-    <tspan x="14" dy="0" class="title ">Netflix</tspan><tspan x="14" dy="16" class="description ">Netflix, Inc. is an American</tspan><tspan x="14" dy="16" class="description ">subscription streaming</tspan><tspan x="14" dy="16" class="description ">service and production</tspan><tspan x="14" dy="16" class="description ">company.</tspan>
+</a> <text x="14" y="190" class="title " fill="#000" opacity="0.25">Netflix</text><text x="15" y="189" class="title ">Netflix</text>
+<text x="12" y="190">
+    <tspan x="14" dy="16" class="description ">Netflix, Inc. is an American</tspan><tspan x="14" dy="16" class="description ">subscription streaming</tspan><tspan x="14" dy="16" class="description ">service and production</tspan><tspan x="14" dy="16" class="description ">company.</tspan>
     <tspan x="14" dy="16" class="category">Movie Theater</tspan>
     <tspan x="14" dy="16" class="author ">Reed</tspan><tspan x="14" dy="16" class="author ">Marc</tspan>
     <tspan x="12" dy="16" class="date"></tspan>
 </text> <a xlink:href="https://www.facebook.com" target="_blank">
-<use x="170" y="170" class="card darks shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="170" y="170" class="grad_1679021189141 ID4aa8429b-4782-432f-a198-ef74b00dc37f_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Facebook is an American online social media and social networking service owned by Meta Platforms.</title>
 </use>
-</a><text x="172" y="190">
-    <tspan x="174" dy="0" class="title ">Facebook</tspan><tspan x="174" dy="16" class="description ">Facebook is an American</tspan><tspan x="174" dy="16" class="description ">online social media and</tspan><tspan x="174" dy="16" class="description ">social networking service</tspan><tspan x="174" dy="16" class="description ">owned by Meta Platforms.</tspan>
+</a> <text x="174" y="190" class="title " fill="#000" opacity="0.25">Facebook</text><text x="175" y="189" class="title ">Facebook</text>
+<text x="172" y="190">
+    <tspan x="174" dy="16" class="description ">Facebook is an American</tspan><tspan x="174" dy="16" class="description ">online social media and</tspan><tspan x="174" dy="16" class="description ">social networking service</tspan><tspan x="174" dy="16" class="description ">owned by Meta Platforms.</tspan>
     <tspan x="174" dy="16" class="category">Social Butterfly</tspan>
     <tspan x="174" dy="16" class="author ">Mark Zukerberg</tspan>
     <tspan x="172" dy="16" class="date"></tspan>
 </text> <a xlink:href="https://www.instagram.com" target="_blank">
-<use x="330" y="170" class="card darks shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="330" y="170" class="grad_1679021189141 ID8f38c88d-7fc1-45a7-ae4e-d4267c7b734a_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Instagram is an American photo and video sharing social networking service. </title>
 </use>
-</a><text x="332" y="190">
-    <tspan x="334" dy="0" class="title ">Instagram</tspan><tspan x="334" dy="16" class="description ">Instagram is an American</tspan><tspan x="334" dy="16" class="description ">photo and video sharing</tspan><tspan x="334" dy="16" class="description ">social networking service.</tspan>
+</a> <text x="334" y="190" class="title " fill="#000" opacity="0.25">Instagram</text><text x="335" y="189" class="title ">Instagram</text>
+<text x="332" y="190">
+    <tspan x="334" dy="16" class="description ">Instagram is an American</tspan><tspan x="334" dy="16" class="description ">photo and video sharing</tspan><tspan x="334" dy="16" class="description ">social networking service.</tspan>
     <tspan x="334" dy="16" class="category">Beach</tspan>
     <tspan x="334" dy="16" class="author ">Kevin</tspan><tspan x="334" dy="16" class="author ">Mike</tspan>
     <tspan x="332" dy="16" class="date"></tspan>
+</text> <a xlink:href="https://docops.io/extension" target="_blank">
+<use x="490" y="170" class="grad_1679021189141 ID4da449db-7e80-4de9-a01d-beefb7e2310d_cls shape" fill="#9cefc5" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+    <title class="description">Sharing documentation experience for developers to extend with AsciiDoctor</title>
+</use>
+</a> <text x="494" y="190" class="title " fill="#000" opacity="0.25">DocOps</text><text x="495" y="189" class="title ">DocOps</text>
+<text x="492" y="190">
+    <tspan x="494" dy="16" class="description ">Sharing documentation</tspan><tspan x="494" dy="16" class="description ">experience for developers to</tspan><tspan x="494" dy="16" class="description ">extend with AsciiDoctor</tspan>
+    <tspan x="494" dy="16" class="category">Documentation</tspan>
+    <tspan x="494" dy="16" class="author ">Steve Roach</tspan><tspan x="494" dy="16" class="author ">Ian Rose</tspan>
+    <tspan x="492" dy="16" class="date"></tspan>
 </text></g></svg>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -4093,8 +4456,17 @@ rect.legend:hover {
 </div>
 <div class="openblock">
 <div class="content">
-<?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" width="960" height="1410"
+<div class="openblock">
+<div class="content">
+<table class="tableblock frame-none grid-all center" style="width: 80%;">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" id="DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 1410"
                 >
         <defs>
@@ -4102,7 +4474,7 @@ rect.legend:hover {
             <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
             <feOffset dx="1" dy="3" result="offsetblur"/>
             <feComponentTransfer>
-                <feFuncA type="linear" slope="0.1"/>
+                <feFuncA type="linear" slope="0.5"/>
             </feComponentTransfer>
             <feMerge>
                 <feMergeNode/>
@@ -4112,6 +4484,25 @@ rect.legend:hover {
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%">
+            <!-- Thicken out the original shape -->
+            <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken"/>
+
+            <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+            <feGaussianBlur in="thicken" stdDeviation="10" result="blurred"/>
+
+            <!-- Change the colour -->
+            <feFlood flood-color="hsl(265, 55%, 20%)" result="glowColor"/>
+
+            <!-- Color in the glows -->
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored"/>
+
+            <!--	Layer the effects together -->
+            <feMerge>
+                <feMergeNode in="softGlow_colored"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -4159,7 +4550,50 @@ rect.legend:hover {
             <stop offset="100%" stop-color="#112266" />
         </linearGradient>
 
-        <circle id="myCircle" cx="0" cy="0"  r="60" class="card"/>
+
+           <linearGradient id="IDa4af3509-565f-42c5-9651-2f1d509c8853" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID1a196f67-1bb3-4052-9141-2669edb1ffcf" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID0927029f-43a5-4622-9139-7be1b11bec3a" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID992da2ab-749a-4bb9-a8e1-70f179787e01" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="IDd9c59be7-8312-4176-aab4-1b760903a748" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+           <linearGradient id="ID4ae810db-ae94-4bd3-a868-db77facea795" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+
+        <circle id="myCircle" cx="0" cy="0"  r="60" class="card" stroke="black" stroke-width="1"/>
         <rect id="legendRect" x="0" y="0" width="10" height="10"  class="legend"/>
         <rect id="mySlimRect" x="0" y="0" width="150" height="150" rx="5" ry="5" class="card"/>
         <rect id="myLargeRect" fill="#fffefa" x="0" y="0" width="300" height="400" rx="5" ry="5" class="card" filter="url(#dropShadow)">
@@ -4169,127 +4603,417 @@ rect.legend:hover {
         <rect id="myPanel" x="0" y="0" width="300" height="30" rx="5" ry="5" class="card"/>
 
     </defs>
-        <style>
-rect.card {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-rect.card:hover {
-    opacity: 0.6;
-}
-use.card {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-use.card:hover {
-    opacity: 0.6;
-}
-.card {
-    pointer-events: bounding-box;
-    opacity: 1;
-}
-.card:hover {
-    opacity: 0.6;
-}
-.headline {
-    font-family:  Helvetica, Arial, sans-serif;
-    fill: #46494d;
-}
-.link {
-font-family:  Helvetica, Arial, sans-serif;
-    fill: #335D79;
-}
-.description {
-    font-size: 9pt;
-    font-family:  Helvetica, Arial, sans-serif;
-}
-.category {
-    font-size: 10pt;
-    font-family:  Helvetica, Arial, sans-serif;
-}
-.longdesc {
-    font-family:  Helvetica, Arial, sans-serif;
-    font-size: 9pt;
-}
-.legendText {
-    font-size: 9pt;
-    font-family:  Helvetica, Arial, sans-serif;
-}
-.btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
-</style><svg> <a xlink:href="https://www.google.com" target="_blank">
- <use x="10" y="10" class="card" xlink:href="#myLargeRect"><title class="description">Google is is an American multinational technology company that specializes in Internet-related services and products </title></use>
-<use x="10" y="10" class="card" fill="#ff6385" xlink:href="#myLargerHeroRect"/>
-</a><text x="20" y="230" class="link">
-    <a href="https://www.google.com" class="title btnclass1">
-        Google
-    </a>
-</text>
+                <style>
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 rect.card { pointer-events: bounding-box; opacity: 1; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 rect.card:hover { opacity: 0.9; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 use.card { pointer-events: bounding-box; opacity: 1; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 use.card:hover { opacity: 0.9; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .card { pointer-events: bounding-box; opacity: 1; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .card:hover { opacity: 0.9; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .headline { font-family:  Helvetica, Arial, sans-serif; fill: #46494d; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .link { font-family:  Helvetica, Arial, sans-serif; fill: #335D79; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .description { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .category { font-size: 10pt; font-family:  Helvetica, Arial, sans-serif; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .longdesc { font-family:  Helvetica, Arial, sans-serif; font-size: 9pt; }
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .legendText { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
+
+        @keyframes draw {
+            0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
+            100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
+        }
+
+        #DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .shape{ stroke:black;}
+
+
+.IDa4af3509-565f-42c5-9651-2f1d509c8853_cls { fill: url(#IDa4af3509-565f-42c5-9651-2f1d509c8853); }
+
+#IDa4af3509-565f-42c5-9651-2f1d509c8853 .stop1 {stop-color: #ffb1c2;}
+
+#IDa4af3509-565f-42c5-9651-2f1d509c8853 .stop2 {stop-color: #ff8aa3;}
+
+#IDa4af3509-565f-42c5-9651-2f1d509c8853 .stop3 {stop-color: #ff6385;}
+
+.ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc_cls { fill: url(#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc); }
+
+#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc .stop1 {stop-color: #9ad1f5;}
+
+#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc .stop2 {stop-color: #68baf0;}
+
+#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc .stop3 {stop-color: #36a3eb;}
+
+.ID1a196f67-1bb3-4052-9141-2669edb1ffcf_cls { fill: url(#ID1a196f67-1bb3-4052-9141-2669edb1ffcf); }
+
+#ID1a196f67-1bb3-4052-9141-2669edb1ffcf .stop1 {stop-color: #ccb2ff;}
+
+#ID1a196f67-1bb3-4052-9141-2669edb1ffcf .stop2 {stop-color: #b28cff;}
+
+#ID1a196f67-1bb3-4052-9141-2669edb1ffcf .stop3 {stop-color: #9966ff;}
+
+.ID0927029f-43a5-4622-9139-7be1b11bec3a_cls { fill: url(#ID0927029f-43a5-4622-9139-7be1b11bec3a); }
+
+#ID0927029f-43a5-4622-9139-7be1b11bec3a .stop1 {stop-color: #ffe7aa;}
+
+#ID0927029f-43a5-4622-9139-7be1b11bec3a .stop2 {stop-color: #ffdb80;}
+
+#ID0927029f-43a5-4622-9139-7be1b11bec3a .stop3 {stop-color: #ffcf56;}
+
+.ID992da2ab-749a-4bb9-a8e1-70f179787e01_cls { fill: url(#ID992da2ab-749a-4bb9-a8e1-70f179787e01); }
+
+#ID992da2ab-749a-4bb9-a8e1-70f179787e01 .stop1 {stop-color: #a5dfdf;}
+
+#ID992da2ab-749a-4bb9-a8e1-70f179787e01 .stop2 {stop-color: #78cfcf;}
+
+#ID992da2ab-749a-4bb9-a8e1-70f179787e01 .stop3 {stop-color: #4bc0c0;}
+
+.IDd9c59be7-8312-4176-aab4-1b760903a748_cls { fill: url(#IDd9c59be7-8312-4176-aab4-1b760903a748); }
+
+#IDd9c59be7-8312-4176-aab4-1b760903a748 .stop1 {stop-color: #fee5f8;}
+
+#IDd9c59be7-8312-4176-aab4-1b760903a748 .stop2 {stop-color: #fdd8f4;}
+
+#IDd9c59be7-8312-4176-aab4-1b760903a748 .stop3 {stop-color: #FDCBF1;}
+
+.ID4ae810db-ae94-4bd3-a868-db77facea795_cls { fill: url(#ID4ae810db-ae94-4bd3-a868-db77facea795); }
+
+#ID4ae810db-ae94-4bd3-a868-db77facea795 .stop1 {stop-color: #d2e0f6;}
+
+#ID4ae810db-ae94-4bd3-a868-db77facea795 .stop2 {stop-color: #bcd0f2;}
+
+#ID4ae810db-ae94-4bd3-a868-db77facea795 .stop3 {stop-color: #A6C1EE;}
+#DocOps-9ed336ed-becd-413b-9da9-ed60ea47a3b8 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+</style><svg>                    <a xlink:href="https://www.google.com" target="_blank">
+                    <use x="10" y="10" class="card shape" xlink:href="#myLargeRect"><title class="description">Google is is an American multinational technology company that specializes in Internet-related services and products </title></use>
+                   <use x="10" y="10" class="card IDa4af3509-565f-42c5-9651-2f1d509c8853_cls" fill="#ff6385" xlink:href="#myLargerHeroRect"/>            <svg id="twotone_IDa4af3509-565f-42c5-9651-2f1d509c8853" x="10" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ICON</title>
+                <defs>
+           <linearGradient id="IDa4af3509-565f-42c5-9651-2f1d509c8853" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+        </defs>
+                <style>
+                    .oddstyleIDa4af3509-565f-42c5-9651-2f1d509c8853 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ff6385;
+                    }
+
+                    .evenstyleIDa4af3509-565f-42c5-9651-2f1d509c8853 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffffff;
+                    }
+
+.IDa4af3509-565f-42c5-9651-2f1d509c8853_cls { fill: url(#IDa4af3509-565f-42c5-9651-2f1d509c8853); }
+
+#IDa4af3509-565f-42c5-9651-2f1d509c8853 .stop1 {stop-color: #ffb1c2;}
+
+#IDa4af3509-565f-42c5-9651-2f1d509c8853 .stop2 {stop-color: #ff8aa3;}
+
+#IDa4af3509-565f-42c5-9651-2f1d509c8853 .stop3 {stop-color: #ff6385;}
+
+                </style>
+                <g id="Page-1IDa4af3509-565f-42c5-9651-2f1d509c8853" stroke="none" stroke-width="1" fill="#FFFFFF">
+                    <rect width="100%" height="100%" fill="none" />
+                    <rect width="100%" height="50%" fill="#FFFFFF"/>
+                    <rect y="95.5" width="100%" height="50%" class="IDa4af3509-565f-42c5-9651-2f1d509c8853_cls" />
+                    <text text-anchor="middle" x="150" y="67.75" class="oddstyleIDa4af3509-565f-42c5-9651-2f1d509c8853">Google</text>
+                    <text text-anchor="middle" x="150" y="70.75" fill="#000" opacity="0.25" class="oddstyleIDa4af3509-565f-42c5-9651-2f1d509c8853">Google</text>
+                    <text text-anchor="middle" x="150" y="163.25" class="evenstyleIDa4af3509-565f-42c5-9651-2f1d509c8853">Search</text>
+                    <text text-anchor="middle" x="150" y="166.25" fill="#000" opacity="0.25" class="evenstyleIDa4af3509-565f-42c5-9651-2f1d509c8853">Search</text>
+                </g>
+            </svg>
+                   </a><a xlink:href="https://www.google.com" href="https://www.google.com" class="btnclass1">
+<text x="20" y="230" class="link" fill="#000" opacity="0.25">Google</text>
+<text x="21" y="229" class="title link">Google</text>
+</a>
 <text x="20" y="248" class="category btnclass1">Search</text>
 <text x="20" y="250" class="longdesc">
 
-                    <tspan x="20" dy="18" class="date">07/30/1998</tspan><tspan x="20" dy="18" class="longdesc">Google is is an American multinational </tspan><tspan x="20" dy="18" class="longdesc">technology company that specializes in </tspan><tspan x="20" dy="18" class="longdesc">Internet-related services and products </tspan></text> <a xlink:href="https://www.apple.com" target="_blank">
- <use x="330" y="10" class="card" xlink:href="#myLargeRect"><title class="description">Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. </title></use>
-<use x="330" y="10" class="card" fill="#36a3eb" xlink:href="#myLargerHeroRect"/>
-</a><text x="340" y="230" class="link">
-    <a href="https://www.apple.com" class="title btnclass1">
-        Apple
-    </a>
-</text>
+                    <tspan x="20" dy="18" class="date">07/30/1998</tspan><tspan x="20" dy="18" class="longdesc">Google is is an American multinational </tspan><tspan x="20" dy="18" class="longdesc">technology company that specializes in </tspan><tspan x="20" dy="18" class="longdesc">Internet-related services and products </tspan></text>                    <a xlink:href="https://www.apple.com" target="_blank">
+                    <use x="330" y="10" class="card shape" xlink:href="#myLargeRect"><title class="description">Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. </title></use>
+                   <use x="330" y="10" class="card ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc_cls" fill="#36a3eb" xlink:href="#myLargerHeroRect"/>            <svg id="twotone_ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc" x="330" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ICON</title>
+                <defs>
+           <linearGradient id="ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+        </defs>
+                <style>
+                    .oddstyleID05ddc06d-5120-4c4e-97cb-8fba78d6abbc {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #36a3eb;
+                    }
+
+                    .evenstyleID05ddc06d-5120-4c4e-97cb-8fba78d6abbc {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffffff;
+                    }
+
+.ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc_cls { fill: url(#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc); }
+
+#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc .stop1 {stop-color: #9ad1f5;}
+
+#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc .stop2 {stop-color: #68baf0;}
+
+#ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc .stop3 {stop-color: #36a3eb;}
+
+                </style>
+                <g id="Page-1ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc" stroke="none" stroke-width="1" fill="#FFFFFF">
+                    <rect width="100%" height="100%" fill="none" />
+                    <rect width="100%" height="50%" fill="#FFFFFF"/>
+                    <rect y="95.5" width="100%" height="50%" class="ID05ddc06d-5120-4c4e-97cb-8fba78d6abbc_cls" />
+                    <text text-anchor="middle" x="150" y="67.75" class="oddstyleID05ddc06d-5120-4c4e-97cb-8fba78d6abbc">Apple</text>
+                    <text text-anchor="middle" x="150" y="70.75" fill="#000" opacity="0.25" class="oddstyleID05ddc06d-5120-4c4e-97cb-8fba78d6abbc">Apple</text>
+                    <text text-anchor="middle" x="150" y="163.25" class="evenstyleID05ddc06d-5120-4c4e-97cb-8fba78d6abbc">Inc.</text>
+                    <text text-anchor="middle" x="150" y="166.25" fill="#000" opacity="0.25" class="evenstyleID05ddc06d-5120-4c4e-97cb-8fba78d6abbc">Inc.</text>
+                </g>
+            </svg>
+                   </a><a xlink:href="https://www.apple.com" href="https://www.apple.com" class="btnclass1">
+<text x="340" y="230" class="link" fill="#000" opacity="0.25">Apple</text>
+<text x="341" y="229" class="title link">Apple</text>
+</a>
 <text x="340" y="248" class="category btnclass1">Personal Devices</text>
 <text x="340" y="250" class="longdesc">
 
-                    <tspan x="340" dy="18" class="date">01/30/1977</tspan><tspan x="340" dy="18" class="longdesc">Apple Inc. is an American multinational </tspan><tspan x="340" dy="18" class="longdesc">technology company that specializes in </tspan><tspan x="340" dy="18" class="longdesc">consumer electronics, computer software and </tspan><tspan x="340" dy="18" class="longdesc">online services. </tspan></text> <a xlink:href="https://www.microsoft.com" target="_blank">
- <use x="650" y="10" class="card" xlink:href="#myLargeRect"><title class="description">Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.</title></use>
-<use x="650" y="10" class="card" fill="#9966ff" xlink:href="#myLargerHeroRect"/>
-</a><text x="660" y="230" class="link">
-    <a href="https://www.microsoft.com" class="title btnclass1">
-        Microsoft
-    </a>
-</text>
+                    <tspan x="340" dy="18" class="date">01/30/1977</tspan><tspan x="340" dy="18" class="longdesc">Apple Inc. is an American multinational </tspan><tspan x="340" dy="18" class="longdesc">technology company that specializes in </tspan><tspan x="340" dy="18" class="longdesc">consumer electronics, computer software and </tspan><tspan x="340" dy="18" class="longdesc">online services. </tspan></text>                    <a xlink:href="https://www.microsoft.com" target="_blank">
+                    <use x="650" y="10" class="card shape" xlink:href="#myLargeRect"><title class="description">Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.</title></use>
+                   <use x="650" y="10" class="card ID1a196f67-1bb3-4052-9141-2669edb1ffcf_cls" fill="#9966ff" xlink:href="#myLargerHeroRect"/>            <svg id="twotone_ID1a196f67-1bb3-4052-9141-2669edb1ffcf" x="650" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ICON</title>
+                <defs>
+           <linearGradient id="ID1a196f67-1bb3-4052-9141-2669edb1ffcf" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+        </defs>
+                <style>
+                    .oddstyleID1a196f67-1bb3-4052-9141-2669edb1ffcf {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #9966ff;
+                    }
+
+                    .evenstyleID1a196f67-1bb3-4052-9141-2669edb1ffcf {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffffff;
+                    }
+
+.ID1a196f67-1bb3-4052-9141-2669edb1ffcf_cls { fill: url(#ID1a196f67-1bb3-4052-9141-2669edb1ffcf); }
+
+#ID1a196f67-1bb3-4052-9141-2669edb1ffcf .stop1 {stop-color: #ccb2ff;}
+
+#ID1a196f67-1bb3-4052-9141-2669edb1ffcf .stop2 {stop-color: #b28cff;}
+
+#ID1a196f67-1bb3-4052-9141-2669edb1ffcf .stop3 {stop-color: #9966ff;}
+
+                </style>
+                <g id="Page-1ID1a196f67-1bb3-4052-9141-2669edb1ffcf" stroke="none" stroke-width="1" fill="#FFFFFF">
+                    <rect width="100%" height="100%" fill="none" />
+                    <rect width="100%" height="50%" fill="#FFFFFF"/>
+                    <rect y="95.5" width="100%" height="50%" class="ID1a196f67-1bb3-4052-9141-2669edb1ffcf_cls" />
+                    <text text-anchor="middle" x="150" y="67.75" class="oddstyleID1a196f67-1bb3-4052-9141-2669edb1ffcf">Microsoft</text>
+                    <text text-anchor="middle" x="150" y="70.75" fill="#000" opacity="0.25" class="oddstyleID1a196f67-1bb3-4052-9141-2669edb1ffcf">Microsoft</text>
+                    <text text-anchor="middle" x="150" y="163.25" class="evenstyleID1a196f67-1bb3-4052-9141-2669edb1ffcf">Corp</text>
+                    <text text-anchor="middle" x="150" y="166.25" fill="#000" opacity="0.25" class="evenstyleID1a196f67-1bb3-4052-9141-2669edb1ffcf">Corp</text>
+                </g>
+            </svg>
+                   </a><a xlink:href="https://www.microsoft.com" href="https://www.microsoft.com" class="btnclass1">
+<text x="660" y="230" class="link" fill="#000" opacity="0.25">Microsoft</text>
+<text x="661" y="229" class="title link">Microsoft</text>
+</a>
 <text x="660" y="248" class="category btnclass1">Software</text>
 <text x="660" y="250" class="longdesc">
 
-                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Microsoft Corporation is an American </tspan><tspan x="660" dy="18" class="longdesc">multinational technology corporation which </tspan><tspan x="660" dy="18" class="longdesc">produces computer software, consumer </tspan><tspan x="660" dy="18" class="longdesc">electronics, personal computers, and related </tspan><tspan x="660" dy="18" class="longdesc">services. </tspan></text></svg><svg> <a xlink:href="https://www.amazon.com" target="_blank">
- <use x="10" y="420" class="card" xlink:href="#myLargeRect"><title class="description">Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence</title></use>
-<use x="10" y="420" class="card" fill="#ffcf56" xlink:href="#myLargerHeroRect"/>
-</a><text x="20" y="640" class="link">
-    <a href="https://www.amazon.com" class="title btnclass1">
-        Amazon
-    </a>
-</text>
+                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Microsoft Corporation is an American </tspan><tspan x="660" dy="18" class="longdesc">multinational technology corporation which </tspan><tspan x="660" dy="18" class="longdesc">produces computer software, consumer </tspan><tspan x="660" dy="18" class="longdesc">electronics, personal computers, and related </tspan><tspan x="660" dy="18" class="longdesc">services. </tspan></text></svg><svg>                    <a xlink:href="https://www.amazon.com" target="_blank">
+                    <use x="10" y="420" class="card shape" xlink:href="#myLargeRect"><title class="description">Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence</title></use>
+                   <use x="10" y="420" class="card ID0927029f-43a5-4622-9139-7be1b11bec3a_cls" fill="#ffcf56" xlink:href="#myLargerHeroRect"/>            <svg id="twotone_ID0927029f-43a5-4622-9139-7be1b11bec3a" x="10" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ICON</title>
+                <defs>
+           <linearGradient id="ID0927029f-43a5-4622-9139-7be1b11bec3a" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+        </defs>
+                <style>
+                    .oddstyleID0927029f-43a5-4622-9139-7be1b11bec3a {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffcf56;
+                    }
+
+                    .evenstyleID0927029f-43a5-4622-9139-7be1b11bec3a {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffffff;
+                    }
+
+.ID0927029f-43a5-4622-9139-7be1b11bec3a_cls { fill: url(#ID0927029f-43a5-4622-9139-7be1b11bec3a); }
+
+#ID0927029f-43a5-4622-9139-7be1b11bec3a .stop1 {stop-color: #ffe7aa;}
+
+#ID0927029f-43a5-4622-9139-7be1b11bec3a .stop2 {stop-color: #ffdb80;}
+
+#ID0927029f-43a5-4622-9139-7be1b11bec3a .stop3 {stop-color: #ffcf56;}
+
+                </style>
+                <g id="Page-1ID0927029f-43a5-4622-9139-7be1b11bec3a" stroke="none" stroke-width="1" fill="#FFFFFF">
+                    <rect width="100%" height="100%" fill="none" />
+                    <rect width="100%" height="50%" fill="#FFFFFF"/>
+                    <rect y="95.5" width="100%" height="50%" class="ID0927029f-43a5-4622-9139-7be1b11bec3a_cls" />
+                    <text text-anchor="middle" x="150" y="67.75" class="oddstyleID0927029f-43a5-4622-9139-7be1b11bec3a">Amazon</text>
+                    <text text-anchor="middle" x="150" y="70.75" fill="#000" opacity="0.25" class="oddstyleID0927029f-43a5-4622-9139-7be1b11bec3a">Amazon</text>
+                    <text text-anchor="middle" x="150" y="163.25" class="evenstyleID0927029f-43a5-4622-9139-7be1b11bec3a">Inc.</text>
+                    <text text-anchor="middle" x="150" y="166.25" fill="#000" opacity="0.25" class="evenstyleID0927029f-43a5-4622-9139-7be1b11bec3a">Inc.</text>
+                </g>
+            </svg>
+                   </a><a xlink:href="https://www.amazon.com" href="https://www.amazon.com" class="btnclass1">
+<text x="20" y="640" class="link" fill="#000" opacity="0.25">Amazon</text>
+<text x="21" y="639" class="title link">Amazon</text>
+</a>
 <text x="20" y="658" class="category btnclass1">Super Store</text>
 <text x="20" y="660" class="longdesc">
 
-                    <tspan x="20" dy="18" class="date"></tspan><tspan x="20" dy="18" class="longdesc">Amazon.com, Inc. is an American multinational </tspan><tspan x="20" dy="18" class="longdesc">technology company which focuses on </tspan><tspan x="20" dy="18" class="longdesc">e-commerce, cloud computing, digital </tspan><tspan x="20" dy="18" class="longdesc">streaming, and artificial intelligence </tspan></text> <a xlink:href="https://www.netflix.com" target="_blank">
- <use x="330" y="420" class="card" xlink:href="#myLargeRect"><title class="description">Netflix, Inc. is an American subscription streaming service and production company.</title></use>
-<use x="330" y="420" class="card" fill="#4bc0c0" xlink:href="#myLargerHeroRect"/>
-</a><text x="340" y="640" class="link">
-    <a href="https://www.netflix.com" class="title btnclass1">
-        Netflix
-    </a>
-</text>
+                    <tspan x="20" dy="18" class="date"></tspan><tspan x="20" dy="18" class="longdesc">Amazon.com, Inc. is an American multinational </tspan><tspan x="20" dy="18" class="longdesc">technology company which focuses on </tspan><tspan x="20" dy="18" class="longdesc">e-commerce, cloud computing, digital </tspan><tspan x="20" dy="18" class="longdesc">streaming, and artificial intelligence </tspan></text>                    <a xlink:href="https://www.netflix.com" target="_blank">
+                    <use x="330" y="420" class="card shape" xlink:href="#myLargeRect"><title class="description">Netflix, Inc. is an American subscription streaming service and production company.</title></use>
+                   <use x="330" y="420" class="card ID992da2ab-749a-4bb9-a8e1-70f179787e01_cls" fill="#4bc0c0" xlink:href="#myLargerHeroRect"/>            <svg id="twotone_ID992da2ab-749a-4bb9-a8e1-70f179787e01" x="330" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ICON</title>
+                <defs>
+           <linearGradient id="ID992da2ab-749a-4bb9-a8e1-70f179787e01" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+        </defs>
+                <style>
+                    .oddstyleID992da2ab-749a-4bb9-a8e1-70f179787e01 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #4bc0c0;
+                    }
+
+                    .evenstyleID992da2ab-749a-4bb9-a8e1-70f179787e01 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffffff;
+                    }
+
+.ID992da2ab-749a-4bb9-a8e1-70f179787e01_cls { fill: url(#ID992da2ab-749a-4bb9-a8e1-70f179787e01); }
+
+#ID992da2ab-749a-4bb9-a8e1-70f179787e01 .stop1 {stop-color: #a5dfdf;}
+
+#ID992da2ab-749a-4bb9-a8e1-70f179787e01 .stop2 {stop-color: #78cfcf;}
+
+#ID992da2ab-749a-4bb9-a8e1-70f179787e01 .stop3 {stop-color: #4bc0c0;}
+
+                </style>
+                <g id="Page-1ID992da2ab-749a-4bb9-a8e1-70f179787e01" stroke="none" stroke-width="1" fill="#FFFFFF">
+                    <rect width="100%" height="100%" fill="none" />
+                    <rect width="100%" height="50%" fill="#FFFFFF"/>
+                    <rect y="95.5" width="100%" height="50%" class="ID992da2ab-749a-4bb9-a8e1-70f179787e01_cls" />
+                    <text text-anchor="middle" x="150" y="67.75" class="oddstyleID992da2ab-749a-4bb9-a8e1-70f179787e01">Netflix</text>
+                    <text text-anchor="middle" x="150" y="70.75" fill="#000" opacity="0.25" class="oddstyleID992da2ab-749a-4bb9-a8e1-70f179787e01">Netflix</text>
+                    <text text-anchor="middle" x="150" y="163.25" class="evenstyleID992da2ab-749a-4bb9-a8e1-70f179787e01">Movies</text>
+                    <text text-anchor="middle" x="150" y="166.25" fill="#000" opacity="0.25" class="evenstyleID992da2ab-749a-4bb9-a8e1-70f179787e01">Movies</text>
+                </g>
+            </svg>
+                   </a><a xlink:href="https://www.netflix.com" href="https://www.netflix.com" class="btnclass1">
+<text x="340" y="640" class="link" fill="#000" opacity="0.25">Netflix</text>
+<text x="341" y="639" class="title link">Netflix</text>
+</a>
 <text x="340" y="658" class="category btnclass1">Movie Theater</text>
 <text x="340" y="660" class="longdesc">
 
-                    <tspan x="340" dy="18" class="date"></tspan><tspan x="340" dy="18" class="longdesc">Netflix, Inc. is an American subscription </tspan><tspan x="340" dy="18" class="longdesc">streaming service and production company. </tspan></text> <a xlink:href="https://www.facebook.com" target="_blank">
- <use x="650" y="420" class="card" xlink:href="#myLargeRect"><title class="description">Facebook is an American online social media and social networking service owned by Meta Platforms.</title></use>
-<use x="650" y="420" class="card" fill="#FDCBF1" xlink:href="#myLargerHeroRect"/>
-</a><text x="660" y="640" class="link">
-    <a href="https://www.facebook.com" class="title btnclass1">
-        Facebook
-    </a>
-</text>
+                    <tspan x="340" dy="18" class="date"></tspan><tspan x="340" dy="18" class="longdesc">Netflix, Inc. is an American subscription </tspan><tspan x="340" dy="18" class="longdesc">streaming service and production company. </tspan></text>                    <a xlink:href="https://www.facebook.com" target="_blank">
+                    <use x="650" y="420" class="card shape" xlink:href="#myLargeRect"><title class="description">Facebook is an American online social media and social networking service owned by Meta Platforms.</title></use>
+                   <use x="650" y="420" class="card IDd9c59be7-8312-4176-aab4-1b760903a748_cls" fill="#FDCBF1" xlink:href="#myLargerHeroRect"/>            <svg id="twotone_IDd9c59be7-8312-4176-aab4-1b760903a748" x="650" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ICON</title>
+                <defs>
+           <linearGradient id="IDd9c59be7-8312-4176-aab4-1b760903a748" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+        </defs>
+                <style>
+                    .oddstyleIDd9c59be7-8312-4176-aab4-1b760903a748 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #FDCBF1;
+                    }
+
+                    .evenstyleIDd9c59be7-8312-4176-aab4-1b760903a748 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffffff;
+                    }
+
+.IDd9c59be7-8312-4176-aab4-1b760903a748_cls { fill: url(#IDd9c59be7-8312-4176-aab4-1b760903a748); }
+
+#IDd9c59be7-8312-4176-aab4-1b760903a748 .stop1 {stop-color: #fee5f8;}
+
+#IDd9c59be7-8312-4176-aab4-1b760903a748 .stop2 {stop-color: #fdd8f4;}
+
+#IDd9c59be7-8312-4176-aab4-1b760903a748 .stop3 {stop-color: #FDCBF1;}
+
+                </style>
+                <g id="Page-1IDd9c59be7-8312-4176-aab4-1b760903a748" stroke="none" stroke-width="1" fill="#FFFFFF">
+                    <rect width="100%" height="100%" fill="none" />
+                    <rect width="100%" height="50%" fill="#FFFFFF"/>
+                    <rect y="95.5" width="100%" height="50%" class="IDd9c59be7-8312-4176-aab4-1b760903a748_cls" />
+                    <text text-anchor="middle" x="150" y="67.75" class="oddstyleIDd9c59be7-8312-4176-aab4-1b760903a748">Meta</text>
+                    <text text-anchor="middle" x="150" y="70.75" fill="#000" opacity="0.25" class="oddstyleIDd9c59be7-8312-4176-aab4-1b760903a748">Meta</text>
+                    <text text-anchor="middle" x="150" y="163.25" class="evenstyleIDd9c59be7-8312-4176-aab4-1b760903a748">Facebook</text>
+                    <text text-anchor="middle" x="150" y="166.25" fill="#000" opacity="0.25" class="evenstyleIDd9c59be7-8312-4176-aab4-1b760903a748">Facebook</text>
+                </g>
+            </svg>
+                   </a><a xlink:href="https://www.facebook.com" href="https://www.facebook.com" class="btnclass1">
+<text x="660" y="640" class="link" fill="#000" opacity="0.25">Facebook</text>
+<text x="661" y="639" class="title link">Facebook</text>
+</a>
 <text x="660" y="658" class="category btnclass1">Social Butterfly</text>
 <text x="660" y="660" class="longdesc">
 
-                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Facebook is an American online social media and </tspan><tspan x="660" dy="18" class="longdesc">social networking service owned by Meta </tspan><tspan x="660" dy="18" class="longdesc">Platforms. </tspan></text></svg><svg> <a xlink:href="https://www.instagram.com" target="_blank">
- <use x="10" y="830" class="card" xlink:href="#myLargeRect"><title class="description">Instagram is an American photo and video sharing social networking service founded by Kevin Systrom and Mike Krieger. </title></use>
-<use x="10" y="830" class="card" fill="#A6C1EE" xlink:href="#myLargerHeroRect"/>
-</a><text x="20" y="1050" class="link">
-    <a href="https://www.instagram.com" class="title btnclass1">
-        Instagram
-    </a>
-</text>
+                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Facebook is an American online social media and </tspan><tspan x="660" dy="18" class="longdesc">social networking service owned by Meta </tspan><tspan x="660" dy="18" class="longdesc">Platforms. </tspan></text></svg><svg>                    <a xlink:href="https://www.instagram.com" target="_blank">
+                    <use x="10" y="830" class="card shape" xlink:href="#myLargeRect"><title class="description">Instagram is an American photo and video sharing social networking service founded by Kevin Systrom and Mike Krieger. </title></use>
+                   <use x="10" y="830" class="card ID4ae810db-ae94-4bd3-a868-db77facea795_cls" fill="#A6C1EE" xlink:href="#myLargerHeroRect"/>            <svg id="twotone_ID4ae810db-ae94-4bd3-a868-db77facea795" x="10" y="830" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ICON</title>
+                <defs>
+           <linearGradient id="ID4ae810db-ae94-4bd3-a868-db77facea795" x2="1" y2="1">
+            <stop class="stop1" offset="0%"/>
+            <stop class="stop2" offset="50%"/>
+            <stop class="stop3" offset="100%"/>
+            </linearGradient>
+        </defs>
+                <style>
+                    .oddstyleID4ae810db-ae94-4bd3-a868-db77facea795 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #A6C1EE;
+                    }
+
+                    .evenstyleID4ae810db-ae94-4bd3-a868-db77facea795 {
+                        font: bold 40px Arial, Helvetica, sans-serif;
+                        fill: #ffffff;
+                    }
+
+.ID4ae810db-ae94-4bd3-a868-db77facea795_cls { fill: url(#ID4ae810db-ae94-4bd3-a868-db77facea795); }
+
+#ID4ae810db-ae94-4bd3-a868-db77facea795 .stop1 {stop-color: #d2e0f6;}
+
+#ID4ae810db-ae94-4bd3-a868-db77facea795 .stop2 {stop-color: #bcd0f2;}
+
+#ID4ae810db-ae94-4bd3-a868-db77facea795 .stop3 {stop-color: #A6C1EE;}
+
+                </style>
+                <g id="Page-1ID4ae810db-ae94-4bd3-a868-db77facea795" stroke="none" stroke-width="1" fill="#FFFFFF">
+                    <rect width="100%" height="100%" fill="none" />
+                    <rect width="100%" height="50%" fill="#FFFFFF"/>
+                    <rect y="95.5" width="100%" height="50%" class="ID4ae810db-ae94-4bd3-a868-db77facea795_cls" />
+                    <text text-anchor="middle" x="150" y="67.75" class="oddstyleID4ae810db-ae94-4bd3-a868-db77facea795">Instagram</text>
+                    <text text-anchor="middle" x="150" y="70.75" fill="#000" opacity="0.25" class="oddstyleID4ae810db-ae94-4bd3-a868-db77facea795">Instagram</text>
+                    <text text-anchor="middle" x="150" y="163.25" class="evenstyleID4ae810db-ae94-4bd3-a868-db77facea795">Pictures</text>
+                    <text text-anchor="middle" x="150" y="166.25" fill="#000" opacity="0.25" class="evenstyleID4ae810db-ae94-4bd3-a868-db77facea795">Pictures</text>
+                </g>
+            </svg>
+                   </a><a xlink:href="https://www.instagram.com" href="https://www.instagram.com" class="btnclass1">
+<text x="20" y="1050" class="link" fill="#000" opacity="0.25">Instagram</text>
+<text x="21" y="1049" class="title link">Instagram</text>
+</a>
 <text x="20" y="1068" class="category btnclass1">Beach</text>
 <text x="20" y="1070" class="longdesc">
 
@@ -4301,6 +5025,13 @@ font-family:  Helvetica, Arial, sans-serif;
 <text x="54%" y="1270" class="legendText">Movie Theater</text><use x="50%" y="1280" style="fill:#FDCBF1" class="card" xlink:href="#legendRect"/>
 <text x="54%" y="1290" class="legendText">Social Butterfly</text><use x="50%" y="1300" style="fill:#A6C1EE" class="card" xlink:href="#legendRect"/>
 <text x="54%" y="1310" class="legendText">Beach</text></svg></svg>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -4398,17 +5129,13 @@ function genColors() {
 <div class="ulist">
 <ul>
 <li>
-<p>A simple Utility to generate a pastel themed the colormap for your convenience.</p>
+<p>A simple Utility to generate a pastel themed the colormap for your convenience.
+== Badges/Shield</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_badgesshield">8. Badges/Shield</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_syntax">8.1. Syntax</h3>
+<h3 id="_syntax">7.1. Syntax</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="asciidoc">[badge]
@@ -4468,10 +5195,10 @@ Still needs pipe character with empty url
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.google.com"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iOTUiIGhlaWdodD0iMTgiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iQmVsb3c6ICsgKyI+PHRpdGxlPkJlbG93OiArICs8L3RpdGxlPjxsaW5lYXJHcmFkaWVudCBpZD0icyIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiICBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9Ii43Ii8+PHN0b3Agb2Zmc2V0PSIuMSIgc3RvcC1jb2xvcj0iI2FhYSIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iLjkiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iLjMiLz48c3RvcCBvZmZzZXQ9IjEiICBzdG9wLWNvbG9yPSIjMDAwIiBzdG9wLW9wYWNpdHk9Ii41Ii8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSI5NSIgaGVpZ2h0PSIxOCIgcng9IjQiIGZpbGw9IiNmZmYiLz48L2NsaXBQYXRoPjxnIGNsaXAtcGF0aD0idXJsKCNyKSI+PHJlY3Qgd2lkdGg9IjYyIiBoZWlnaHQ9IjE4IiBmaWxsPSIjZTA1ZDQ0Ii8+PHJlY3QgeD0iNjIiIHdpZHRoPSIzMyIgaGVpZ2h0PSIxOCIgZmlsbD0iIzAwN2VjNiIvPjxyZWN0IHdpZHRoPSI5NSIgaGVpZ2h0PSIxOCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjxpbWFnZSB4PSI1IiB5PSIyIiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQUVBQUFBQkNBUUFBQUMxSEF3Q0FBQUFDMGxFUVZRWVYyTmdZQUFBQUFNQUFXZ21XUTBBQUFBQVNVVk9SSzVDWUlJPSIvPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSI0MDUiIHk9IjE0MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjM1MCI+QmVsb3c8L3RleHQ+PHRleHQgeD0iNDA1IiB5PSIxMzAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIzNTAiPkJlbG93PC90ZXh0Pjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSI3NzUiIHk9IjE0MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjIzMCI+KyArPC90ZXh0Pjx0ZXh0IHg9Ijc3NSIgeT0iMTMwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iMjMwIj4rICs8L3RleHQ+PC9nPjwvc3ZnPg==" alt="item?payload=H4sIAAAAAAAA 1NwSs3JL6 RVtCuySgpKSi20tcvLy XS8 PT89J1UvOz60JcnWpccopTa0BAE8iGtsrAAAA&amp;type=SVG&amp;finalname=abc 1678637148110"></a></span>
-<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTE3IiBoZWlnaHQ9IjE4IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRlY2huaWNhbDogRGVidCI+PHRpdGxlPlRlY2huaWNhbDogRGVidDwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iLjciLz48c3RvcCBvZmZzZXQ9Ii4xIiBzdG9wLWNvbG9yPSIjYWFhIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIuOSIgc3RvcC1jb2xvcj0iIzAwMCIgc3RvcC1vcGFjaXR5PSIuMyIvPjxzdG9wIG9mZnNldD0iMSIgIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iLjUiLz48L2xpbmVhckdyYWRpZW50PjxjbGlwUGF0aCBpZD0iciI+PHJlY3Qgd2lkdGg9IjExNyIgaGVpZ2h0PSIxOCIgcng9IjQiIGZpbGw9IiNmZmYiLz48L2NsaXBQYXRoPjxnIGNsaXAtcGF0aD0idXJsKCNyKSI+PHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjE4IiBmaWxsPSIjMDA3ZWM2Ii8+PHJlY3QgeD0iODAiIHdpZHRoPSIzNyIgaGVpZ2h0PSIxOCIgZmlsbD0iI2ZlN2QzNyIvPjxyZWN0IHdpZHRoPSIxMTciIGhlaWdodD0iMTgiIGZpbGw9InVybCgjcykiLz48L2c+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IlZlcmRhbmEsR2VuZXZhLERlamFWdSBTYW5zLHNhbnMtc2VyaWYiIHRleHQtcmVuZGVyaW5nPSJnZW9tZXRyaWNQcmVjaXNpb24iIGZvbnQtc2l6ZT0iMTEwIj48aW1hZ2UgeD0iNSIgeT0iMiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiB4bGluazpocmVmPSJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBEOTRiV3dnZG1WeWMybHZiajBpTVM0d0lpQmxibU52WkdsdVp6MGlWVlJHTFRnaUlITjBZVzVrWVd4dmJtVTlJbTV2SWo4K0NqeHpkbWNnZUcxc2JuTTlJbWgwZEhBNkx5OTNkM2N1ZHpNdWIzSm5Mekl3TURBdmMzWm5JaUJtYVd4c1BTSWpRVGhDT1VORElpQm9aV2xuYUhROUlqRXdNSEI0SWlCeWIyeGxQU0pwYldjaUlIWnBaWGRDYjNnOUlqQWdNQ0F5TkNBeU5DSWdkMmxrZEdnOUlqRXdNSEI0SWo0S0lDQWdJQ0E4ZEdsMGJHVStRend2ZEdsMGJHVStDaUFnSUNBZ1BIQmhkR2dnWkQwaVRURTJMalU1TWpFZ09TNHhPVFl5Y3kwdU16VTBMVE11TWprNExUTXVOakkzTFRNdU16bGpMVE11TWpjME1TMHVNRGt0TkM0NU5UVXlJREl1TkRjMExUUXVPVFUxTWlBMkxqRTBJREFnTXk0Mk5qVXhJREV1T0RVNElEWXVOVGszTWlBMUxqQTBOVEVnTmk0MU9UY3lJRE11TVRnMElEQWdNeTQxTXpneExUTXVOalkxSURNdU5UTTRNUzB6TGpZMk5XdzJMakV3TkRFdU16WTFjeTR6TmlBekxqTXhMVEl1TVRrMklEVXVPRE0yWXkweUxqVTFNaUF5TGpVeU5ERXROUzQyT1RBeElESXVPVE0zTVMwM0xqZzNOaklnTWk0NU1qQXhMVEl1TVRrdExqQXhOeTAxTGpJeU5qRXVNRE0wTFRndU1UWXdNaTB5TGprM0xUSXVPVE00TFRNdU1ERXdNUzB6TGpRek5pMDFMamt6TURJdE15NDBNell0T0M0NE1EQXlJREF0TWk0NE56QXhMalUxTmkwMkxqWTNNRElnTkM0d05EY3RPUzQxTlRBeVF6Y3VORFEwTGpjeUlEa3VPRFE1SURBZ01USXVNalUwSURCak1UQXVNRFF5TWlBd0lERXdMamN4TnpJZ09TNHlOakF5SURFd0xqY3hOeklnT1M0eU5qQXllaUl2UGdvOEwzTjJaejRLIi8+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjQ5NSIgeT0iMTQwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iNTMwIj5UZWNobmljYWw8L3RleHQ+PHRleHQgeD0iNDk1IiB5PSIxMzAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSI1MzAiPlRlY2huaWNhbDwvdGV4dD48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iOTc1IiB5PSIxNDAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIyNzAiPkRlYnQ8L3RleHQ+PHRleHQgeD0iOTc1IiB5PSIxMzAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIyNzAiPkRlYnQ8L3RleHQ+PC9nPjwvc3ZnPg==" alt="item?payload=H4sIAAAAAAAA 1MISU3OyMtMTsypcUlNKqnJKCkpKLbS1y8vL9erTMzIz9dLzs tcfIJda3xD3L0c3etsXG2AwDjWs pNQAAAA==&amp;type=SVG&amp;finalname=abc 1678637148110"></a></span>
-<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjA3IiBoZWlnaHQ9IjE4IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkFyY2hpdGVjdHVyZTogUmVjY29tZW5kYXRpb25zIj48dGl0bGU+QXJjaGl0ZWN0dXJlOiBSZWNjb21lbmRhdGlvbnM8L3RpdGxlPjxsaW5lYXJHcmFkaWVudCBpZD0icyIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiICBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9Ii43Ii8+PHN0b3Agb2Zmc2V0PSIuMSIgc3RvcC1jb2xvcj0iI2FhYSIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iLjkiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iLjMiLz48c3RvcCBvZmZzZXQ9IjEiICBzdG9wLWNvbG9yPSIjMDAwIiBzdG9wLW9wYWNpdHk9Ii41Ii8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIyMDciIGhlaWdodD0iMTgiIHJ4PSI0IiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI5NiIgaGVpZ2h0PSIxOCIgZmlsbD0iIzAwN2VjNiIvPjxyZWN0IHg9Ijk2IiB3aWR0aD0iMTExIiBoZWlnaHQ9IjE4IiBmaWxsPSIjZmU3ZDM3Ii8+PHJlY3Qgd2lkdGg9IjIwNyIgaGVpZ2h0PSIxOCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjxpbWFnZSB4PSI1IiB5PSIyIiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEQ5NGJXd2dkbVZ5YzJsdmJqMGlNUzR3SWlCbGJtTnZaR2x1WnowaVZWUkdMVGdpSUhOMFlXNWtZV3h2Ym1VOUltNXZJajgrQ2p4emRtY2dlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklpQm1hV3hzUFNJalFUaENPVU5ESWlCb1pXbG5hSFE5SWpFd01IQjRJaUJ5YjJ4bFBTSnBiV2NpSUhacFpYZENiM2c5SWpBZ01DQXlOQ0F5TkNJZ2QybGtkR2c5SWpFd01IQjRJajRLSUNBZ0lDQThkR2wwYkdVK1F6d3ZkR2wwYkdVK0NpQWdJQ0FnUEhCaGRHZ2daRDBpVFRFMkxqVTVNakVnT1M0eE9UWXljeTB1TXpVMExUTXVNams0TFRNdU5qSTNMVE11TXpsakxUTXVNamMwTVMwdU1Ea3ROQzQ1TlRVeUlESXVORGMwTFRRdU9UVTFNaUEyTGpFMElEQWdNeTQyTmpVeElERXVPRFU0SURZdU5UazNNaUExTGpBME5URWdOaTQxT1RjeUlETXVNVGcwSURBZ015NDFNemd4TFRNdU5qWTFJRE11TlRNNE1TMHpMalkyTld3MkxqRXdOREV1TXpZMWN5NHpOaUF6TGpNeExUSXVNVGsySURVdU9ETTJZeTB5TGpVMU1pQXlMalV5TkRFdE5TNDJPVEF4SURJdU9UTTNNUzAzTGpnM05qSWdNaTQ1TWpBeExUSXVNVGt0TGpBeE55MDFMakl5TmpFdU1ETTBMVGd1TVRZd01pMHlMamszTFRJdU9UTTRMVE11TURFd01TMHpMalF6TmkwMUxqa3pNREl0TXk0ME16WXRPQzQ0TURBeUlEQXRNaTQ0TnpBeExqVTFOaTAyTGpZM01ESWdOQzR3TkRjdE9TNDFOVEF5UXpjdU5EUTBMamN5SURrdU9EUTVJREFnTVRJdU1qVTBJREJqTVRBdU1EUXlNaUF3SURFd0xqY3hOeklnT1M0eU5qQXlJREV3TGpjeE56SWdPUzR5TmpBeWVpSXZQZ284TDNOMlp6NEsiLz48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iNTc1IiB5PSIxNDAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI2OTAiPkFyY2hpdGVjdHVyZTwvdGV4dD48dGV4dCB4PSI1NzUiIHk9IjEzMCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjY5MCI+QXJjaGl0ZWN0dXJlPC90ZXh0Pjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIxNTA1IiB5PSIxNDAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIxMDEwIj5SZWNjb21lbmRhdGlvbnM8L3RleHQ+PHRleHQgeD0iMTUwNSIgeT0iMTMwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iMTAxMCI+UmVjY29tZW5kYXRpb25zPC90ZXh0PjwvZz48L3N2Zz4=" alt="item?payload=H4sIAAAAAAAA 1NwLErOyCxJTS4pLUqtCUpNTs7PTc1LSSzJzM8rrskoKSkottLXLy8v16tMzMjP1wNK1zj5hLrW Ac5 rm71tg42wEAd c3n0MAAAA=&amp;type=SVG&amp;finalname=abc 1678637148110"></a></span>
-<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTE1IiBoZWlnaHQ9IjE4IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IllhaG9vOiBGaW5hbmNlIj48dGl0bGU+WWFob286IEZpbmFuY2U8L3RpdGxlPjxsaW5lYXJHcmFkaWVudCBpZD0icyIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiICBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9Ii43Ii8+PHN0b3Agb2Zmc2V0PSIuMSIgc3RvcC1jb2xvcj0iI2FhYSIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iLjkiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iLjMiLz48c3RvcCBvZmZzZXQ9IjEiICBzdG9wLWNvbG9yPSIjMDAwIiBzdG9wLW9wYWNpdHk9Ii41Ii8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIxMTUiIGhlaWdodD0iMTgiIHJ4PSI0IiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI2MiIgaGVpZ2h0PSIxOCIgZmlsbD0iI2NjRkZjYyIvPjxyZWN0IHg9IjYyIiB3aWR0aD0iNTMiIGhlaWdodD0iMTgiIGZpbGw9IlBVUlBMRSIvPjxyZWN0IHdpZHRoPSIxMTUiIGhlaWdodD0iMTgiIGZpbGw9InVybCgjcykiLz48L2c+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IlZlcmRhbmEsR2VuZXZhLERlamFWdSBTYW5zLHNhbnMtc2VyaWYiIHRleHQtcmVuZGVyaW5nPSJnZW9tZXRyaWNQcmVjaXNpb24iIGZvbnQtc2l6ZT0iMTEwIj48aW1hZ2UgeD0iNSIgeT0iMiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiB4bGluazpocmVmPSJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBEOTRiV3dnZG1WeWMybHZiajBpTVM0d0lpQmxibU52WkdsdVp6MGlWVlJHTFRnaUlITjBZVzVrWVd4dmJtVTlJbTV2SWo4K0NqeHpkbWNnZUcxc2JuTTlJbWgwZEhBNkx5OTNkM2N1ZHpNdWIzSm5Mekl3TURBdmMzWm5JaUJtYVd4c1BTSWpRVGhDT1VORElpQm9aV2xuYUhROUlqRXdNSEI0SWlCeWIyeGxQU0pwYldjaUlIWnBaWGRDYjNnOUlqQWdNQ0F5TkNBeU5DSWdkMmxrZEdnOUlqRXdNSEI0SWo0S0lDQWdJQ0E4ZEdsMGJHVStRend2ZEdsMGJHVStDaUFnSUNBZ1BIQmhkR2dnWkQwaVRURTJMalU1TWpFZ09TNHhPVFl5Y3kwdU16VTBMVE11TWprNExUTXVOakkzTFRNdU16bGpMVE11TWpjME1TMHVNRGt0TkM0NU5UVXlJREl1TkRjMExUUXVPVFUxTWlBMkxqRTBJREFnTXk0Mk5qVXhJREV1T0RVNElEWXVOVGszTWlBMUxqQTBOVEVnTmk0MU9UY3lJRE11TVRnMElEQWdNeTQxTXpneExUTXVOalkxSURNdU5UTTRNUzB6TGpZMk5XdzJMakV3TkRFdU16WTFjeTR6TmlBekxqTXhMVEl1TVRrMklEVXVPRE0yWXkweUxqVTFNaUF5TGpVeU5ERXROUzQyT1RBeElESXVPVE0zTVMwM0xqZzNOaklnTWk0NU1qQXhMVEl1TVRrdExqQXhOeTAxTGpJeU5qRXVNRE0wTFRndU1UWXdNaTB5TGprM0xUSXVPVE00TFRNdU1ERXdNUzB6TGpRek5pMDFMamt6TURJdE15NDBNell0T0M0NE1EQXlJREF0TWk0NE56QXhMalUxTmkwMkxqWTNNRElnTkM0d05EY3RPUzQxTlRBeVF6Y3VORFEwTGpjeUlEa3VPRFE1SURBZ01USXVNalUwSURCak1UQXVNRFF5TWlBd0lERXdMamN4TnpJZ09TNHlOakF5SURFd0xqY3hOeklnT1M0eU5qQXllaUl2UGdvOEwzTjJaejRLIi8+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjQwNSIgeT0iMTQwIiBmaWxsPSIjY2NjIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzUwIj5ZYWhvbzwvdGV4dD48dGV4dCB4PSI0MDUiIHk9IjEzMCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiMzMzMiIHRleHRMZW5ndGg9IjM1MCI+WWFob288L3RleHQ+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9Ijg3NSIgeT0iMTQwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iNDMwIj5GaW5hbmNlPC90ZXh0Pjx0ZXh0IHg9Ijg3NSIgeT0iMTMwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iNDMwIj5GaW5hbmNlPC90ZXh0PjwvZz48L3N2Zz4=" alt="item?payload=H4sIAAAAAAAA 1OITMzIz69xy8xLzEtOrckoKSkottLXLy8v16sEyegl5 fWKCcnu7klJ9cEhAYF LjW2DjbAQAuVB 9NwAAAA==&amp;type=SVG&amp;finalname=abc 1678637148110"></a></span> </p>
+<p><span class="image"><a class="image" href="https://www.google.com"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNzguNicgaGVpZ2h0PScyMCcgdmlld0JveD0nMCAwIDc4Ni4wIDIwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyByb2xlPSdpbWcnIGFyaWEtbGFiZWw9JyBCZWxvdzogKyArJz48dGl0bGU+IEJlbG93OiArICs8L3RpdGxlPjxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz48c3RvcCBvZmZzZXQ9JzAnIHN0b3Atb3BhY2l0eT0nLjEnIHN0b3AtY29sb3I9JyNFRUUnLz48c3RvcCBvZmZzZXQ9JzEnIHN0b3Atb3BhY2l0eT0nLjEnLz48L2xpbmVhckdyYWRpZW50PjxtYXNrIGlkPSdtJz48cmVjdCB3aWR0aD0nNzg2LjAnIGhlaWdodD0nMjAwJyByeD0nMzAnIGZpbGw9JyNGRkYnLz48L21hc2s+PGcgbWFzaz0ndXJsKCNtKSc+PHJlY3QgZmlsbD0nUkVEJyB3aWR0aD0nNDY3LjAnIGhlaWdodD0nMjAwJy8+PHJlY3QgZmlsbD0nQmx1ZScgeD0nNDY3LjAnIHdpZHRoPSczMTkuMCcgaGVpZ2h0PScyMDAnLz48cmVjdCB3aWR0aD0nNzg2LjAnIGhlaWdodD0nMjAwJyBmaWxsPSd1cmwoI2EpJy8+PC9nPjxnIGFyaWEtaGlkZGVuPSd0cnVlJyBmaWxsPScjZmZmJyB0ZXh0LWFuY2hvcj0nc3RhcnQnIGZvbnQtZmFtaWx5PSdWZXJkYW5hLERlamFWdSBTYW5zLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0nMTEwJz48dGV4dCB4PSc2MC4wJyB5PScxNDgnIHRleHRMZW5ndGg9JzM2Ny4wJyBmaWxsPScjMDAwJyBvcGFjaXR5PScwLjI1Jz4gQmVsb3c8L3RleHQ+PHRleHQgeD0nNTAuMCcgeT0nMTM4JyB0ZXh0TGVuZ3RoPSczNjcuMCc+IEJlbG93PC90ZXh0Pjx0ZXh0IHg9JzUyMi4wJyB5PScxNDgnIHRleHRMZW5ndGg9JzIxOS4wJyBmaWxsPScjMDAwJyBvcGFjaXR5PScwLjI1Jz4rICs8L3RleHQ+PHRleHQgeD0nNTEyLjAnIHk9JzEzOCcgdGV4dExlbmd0aD0nMjE5LjAnPisgKzwvdGV4dD48L2c+PC9zdmc+" alt="item?payload=H4sIAAAAAAAA 1NwSs3JL6 RVtCuySgpKSi20tcvLy XS8 PT89J1UvOz60JcnWpccopTa0BAE8iGtsrAAAA&amp;type=SVG&amp;finalname=abc 1680563836371"></a></span> 
+<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAxLjYnIGhlaWdodD0nMjAnIHZpZXdCb3g9JzAgMCAxMDE2LjAgMjAwJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHJvbGU9J2ltZycgYXJpYS1sYWJlbD0nIFRlY2huaWNhbDogRGVidCc+PHRpdGxlPiBUZWNobmljYWw6IERlYnQ8L3RpdGxlPjxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz48c3RvcCBvZmZzZXQ9JzAnIHN0b3Atb3BhY2l0eT0nLjEnIHN0b3AtY29sb3I9JyNFRUUnLz48c3RvcCBvZmZzZXQ9JzEnIHN0b3Atb3BhY2l0eT0nLjEnLz48L2xpbmVhckdyYWRpZW50PjxtYXNrIGlkPSdtJz48cmVjdCB3aWR0aD0nMTAxNi4wJyBoZWlnaHQ9JzIwMCcgcng9JzMwJyBmaWxsPScjRkZGJy8+PC9tYXNrPjxnIG1hc2s9J3VybCgjbSknPjxyZWN0IGZpbGw9J0JMVUUnIHdpZHRoPSc2NTMuMCcgaGVpZ2h0PScyMDAnLz48cmVjdCBmaWxsPSdPUkFOR0UnIHg9JzY1My4wJyB3aWR0aD0nMzYzLjAnIGhlaWdodD0nMjAwJy8+PHJlY3Qgd2lkdGg9JzEwMTYuMCcgaGVpZ2h0PScyMDAnIGZpbGw9J3VybCgjYSknLz48L2c+PGcgYXJpYS1oaWRkZW49J3RydWUnIGZpbGw9JyNmZmYnIHRleHQtYW5jaG9yPSdzdGFydCcgZm9udC1mYW1pbHk9J1ZlcmRhbmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZicgZm9udC1zaXplPScxMTAnPjx0ZXh0IHg9JzYwLjAnIHk9JzE0OCcgdGV4dExlbmd0aD0nNTUzLjAnIGZpbGw9JyMwMDAnIG9wYWNpdHk9JzAuMjUnPiBUZWNobmljYWw8L3RleHQ+PHRleHQgeD0nNTAuMCcgeT0nMTM4JyB0ZXh0TGVuZ3RoPSc1NTMuMCc+IFRlY2huaWNhbDwvdGV4dD48dGV4dCB4PSc3MDguMCcgeT0nMTQ4JyB0ZXh0TGVuZ3RoPScyNjMuMCcgZmlsbD0nIzAwMCcgb3BhY2l0eT0nMC4yNSc+RGVidDwvdGV4dD48dGV4dCB4PSc2OTguMCcgeT0nMTM4JyB0ZXh0TGVuZ3RoPScyNjMuMCc+RGVidDwvdGV4dD48L2c+PC9zdmc+" alt="item?payload=H4sIAAAAAAAA 1MISU3OyMtMTsypcUlNKqnJKCkpKLbS1y8vL9erTMzIz9dLzs tcfIJda3xD3L0c3etsXG2AwDjWs pNQAAAA==&amp;type=SVG&amp;finalname=abc 1680563836371"></a></span> 
+<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTg4LjEnIGhlaWdodD0nMjAnIHZpZXdCb3g9JzAgMCAxODgxLjAgMjAwJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHJvbGU9J2ltZycgYXJpYS1sYWJlbD0nIEFyY2hpdGVjdHVyZTogUmVjY29tZW5kYXRpb25zJz48dGl0bGU+IEFyY2hpdGVjdHVyZTogUmVjY29tZW5kYXRpb25zPC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9J2EnIHgyPScwJyB5Mj0nMTAwJSc+PHN0b3Agb2Zmc2V0PScwJyBzdG9wLW9wYWNpdHk9Jy4xJyBzdG9wLWNvbG9yPScjRUVFJy8+PHN0b3Agb2Zmc2V0PScxJyBzdG9wLW9wYWNpdHk9Jy4xJy8+PC9saW5lYXJHcmFkaWVudD48bWFzayBpZD0nbSc+PHJlY3Qgd2lkdGg9JzE4ODEuMCcgaGVpZ2h0PScyMDAnIHJ4PSczMCcgZmlsbD0nI0ZGRicvPjwvbWFzaz48ZyBtYXNrPSd1cmwoI20pJz48cmVjdCBmaWxsPSdCTFVFJyB3aWR0aD0nODEwLjAnIGhlaWdodD0nMjAwJy8+PHJlY3QgZmlsbD0nT1JBTkdFJyB4PSc4MTAuMCcgd2lkdGg9JzEwNzEuMCcgaGVpZ2h0PScyMDAnLz48cmVjdCB3aWR0aD0nMTg4MS4wJyBoZWlnaHQ9JzIwMCcgZmlsbD0ndXJsKCNhKScvPjwvZz48ZyBhcmlhLWhpZGRlbj0ndHJ1ZScgZmlsbD0nI2ZmZicgdGV4dC1hbmNob3I9J3N0YXJ0JyBmb250LWZhbWlseT0nVmVyZGFuYSxEZWphVnUgU2FucyxzYW5zLXNlcmlmJyBmb250LXNpemU9JzExMCc+PHRleHQgeD0nNjAuMCcgeT0nMTQ4JyB0ZXh0TGVuZ3RoPSc3MTAuMCcgZmlsbD0nIzAwMCcgb3BhY2l0eT0nMC4yNSc+IEFyY2hpdGVjdHVyZTwvdGV4dD48dGV4dCB4PSc1MC4wJyB5PScxMzgnIHRleHRMZW5ndGg9JzcxMC4wJz4gQXJjaGl0ZWN0dXJlPC90ZXh0Pjx0ZXh0IHg9Jzg2NS4wJyB5PScxNDgnIHRleHRMZW5ndGg9Jzk3MS4wJyBmaWxsPScjMDAwJyBvcGFjaXR5PScwLjI1Jz5SZWNjb21lbmRhdGlvbnM8L3RleHQ+PHRleHQgeD0nODU1LjAnIHk9JzEzOCcgdGV4dExlbmd0aD0nOTcxLjAnPlJlY2NvbWVuZGF0aW9uczwvdGV4dD48L2c+PC9zdmc+" alt="item?payload=H4sIAAAAAAAA 1NwLErOyCxJTS4pLUqtCUpNTs7PTc1LSSzJzM8rrskoKSkottLXLy8v16tMzMjP1wNK1zj5hLrW Ac5 rm71tg42wEAd c3n0MAAAA=&amp;type=SVG&amp;finalname=abc 1680563836371"></a></span> 
+<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nOTkuOScgaGVpZ2h0PScyMCcgdmlld0JveD0nMCAwIDk5OS4wIDIwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyByb2xlPSdpbWcnIGFyaWEtbGFiZWw9JyBZYWhvbzogRmluYW5jZSc+PHRpdGxlPiBZYWhvbzogRmluYW5jZTwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSdhJyB4Mj0nMCcgeTI9JzEwMCUnPjxzdG9wIG9mZnNldD0nMCcgc3RvcC1vcGFjaXR5PScuMScgc3RvcC1jb2xvcj0nI0VFRScvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1vcGFjaXR5PScuMScvPjwvbGluZWFyR3JhZGllbnQ+PG1hc2sgaWQ9J20nPjxyZWN0IHdpZHRoPSc5OTkuMCcgaGVpZ2h0PScyMDAnIHJ4PSczMCcgZmlsbD0nI0ZGRicvPjwvbWFzaz48ZyBtYXNrPSd1cmwoI20pJz48cmVjdCBmaWxsPScjY2NGRmNjJyB3aWR0aD0nNDc3LjAnIGhlaWdodD0nMjAwJy8+PHJlY3QgZmlsbD0nUFVSUExFJyB4PSc0NzcuMCcgd2lkdGg9JzUyMi4wJyBoZWlnaHQ9JzIwMCcvPjxyZWN0IHdpZHRoPSc5OTkuMCcgaGVpZ2h0PScyMDAnIGZpbGw9J3VybCgjYSknLz48L2c+PGcgYXJpYS1oaWRkZW49J3RydWUnIGZpbGw9JyNmZmYnIHRleHQtYW5jaG9yPSdzdGFydCcgZm9udC1mYW1pbHk9J1ZlcmRhbmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZicgZm9udC1zaXplPScxMTAnPjx0ZXh0IHg9JzYwLjAnIHk9JzE0OCcgdGV4dExlbmd0aD0nMzc3LjAnIGZpbGw9JyMwMDAnIG9wYWNpdHk9JzAuMjUnPiBZYWhvbzwvdGV4dD48dGV4dCB4PSc1MC4wJyB5PScxMzgnIHRleHRMZW5ndGg9JzM3Ny4wJz4gWWFob288L3RleHQ+PHRleHQgeD0nNTMyLjAnIHk9JzE0OCcgdGV4dExlbmd0aD0nNDIyLjAnIGZpbGw9JyMwMDAnIG9wYWNpdHk9JzAuMjUnPkZpbmFuY2U8L3RleHQ+PHRleHQgeD0nNTIyLjAnIHk9JzEzOCcgdGV4dExlbmd0aD0nNDIyLjAnPkZpbmFuY2U8L3RleHQ+PC9nPjwvc3ZnPg==" alt="item?payload=H4sIAAAAAAAA 1OITMzIz69xy8xLzEtOrckoKSkottLXLy8v16sEyegl5 fWKCcnu7klJ9cEhAYF LjW2DjbAQAuVB 9NwAAAA==&amp;type=SVG&amp;finalname=abc 1680563836371"></a></span> </p>
 </div>
 </div>
 </div>

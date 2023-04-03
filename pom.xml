@@ -87,7 +87,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
-        <kotlin.version>1.8.0</kotlin.version>
+        <kotlin.version>1.8.20</kotlin.version>
         <kotlin-maven-plugin.version>1.6.20</kotlin-maven-plugin.version>
         <junit.version>5.9.2</junit.version>
         <mojo.version>1.6.0</mojo.version>
