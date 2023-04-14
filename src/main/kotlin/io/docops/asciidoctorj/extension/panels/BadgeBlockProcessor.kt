@@ -35,15 +35,15 @@ class BadgeBlockProcessor : BlockProcessor() {
         val backend = parent.document.getAttribute("backend") as String
         val block: Block = createBlock(parent, "open", null as String?)
         val lines: MutableList<String> = if ("pdf" == backend) {
-            makeContentForPdf(content)
+            makeContentForPdf(content, localDebug)
         } else {
-            makeContentForHtml(content)
+            makeContentForHtml(content, localDebug)
         }
         parseContent(block, lines)
         return block
     }
 
-    private fun makeContentForHtml(content: String): MutableList<String> {
+    private fun makeContentForHtml(content: String, debug: Boolean): MutableList<String> {
         val lines = mutableListOf<String>()
         content.lines().forEach { line ->
             val payload = compressString(" $line")
@@ -57,18 +57,19 @@ class BadgeBlockProcessor : BlockProcessor() {
                 "$imageLink$webserver/api/badge/item?payload=$payload&type=SVG&finalname=abc_${System.currentTimeMillis()}.svg[format=svg$link] "
             lines.add(str)
         }
+        if(debug) {
+            lines.forEach { println(it) }
+        }
         return lines
     }
 
-    private fun makeContentForPdf(content: String): MutableList<String> {
+    private fun makeContentForPdf(content: String, debug: Boolean): MutableList<String> {
         val lines = mutableListOf<String>()
-        lines.add("""[cols="1,1,1", grid=none, frame=none]""")
+        lines.add("""[cols="1,1,1,1", grid=none, frame=none, role="center",width="90%"]""")
         lines.add("|===")
         content.lines().forEachIndexed { index, line ->
             val payload = compressString(" $line")
             val imageLink = "image::"
-            val type = "PDF"
-            val ext = "png"
             val split = line.split("|")
             var link = ""
             if (split.size > 2) {
@@ -76,17 +77,24 @@ class BadgeBlockProcessor : BlockProcessor() {
             }
             val str =
                 "$imageLink$webserver/api/badge/item?payload=$payload&type=PDF&finalname=abc_${System.currentTimeMillis()}.png[format=png$link] "
-            lines.add("a|$str")
+            var direction = ">"
+            if(index >0) {
+                direction = "<"
+            }
+            lines.add("${direction}a|$str")
         }
         val size = content.lines().size
-        val rem = size % 3
+        val rem = size % 4
         if(rem == 1) {
             lines.add("|")
             lines.add("|")
-        } else if(rem == 1) {
+        } else if(rem == 2) {
             lines.add("|")
         }
         lines.add("|===")
+        if(debug) {
+            lines.forEach { println(it) }
+        }
         return lines
     }
 

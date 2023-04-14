@@ -92,6 +92,9 @@ open class PanelsBlockProcessor : BlockProcessor() {
                 "$server/api/panel?type=${isPdf}&data=$payload&file=xyz.$ext"
             }
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
+            if(localDebug) {
+                println("Url for request is $url")
+            }
             val linesArray = mutableListOf<String>()
             // language=asciidoc
             linesArray.add("""[cols="1a",role="$role", $width,frame="none"]""")
