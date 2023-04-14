@@ -4,7 +4,7 @@
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
 :major: 2023
-:minor: .09
+:minor: .11
 :patch:
 :build:
 :extension:
@@ -46,7 +46,10 @@ link:docs/panel.html[{artifact}.html]
 
 == History
 
-2023.10 - 2023-04-03::
+2023.11 - 2023-04-14::
+* Kotlin 1.8.20 updates
+
+2023.10 - 2023-04-13::
 * Button Updates
 * Badge fix for PDF
 
