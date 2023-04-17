@@ -100,7 +100,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             linesArray.add("""[cols="1a",role="$role", $width,frame="none"]""")
             linesArray.add("|===")
             linesArray.add("")
-            linesArray.add("a|image::$url[Embedded,opts=inline]")
+            linesArray.add("a|image::$url[format=$ext,opts=inline]")
             linesArray.add("")
             linesArray.add("|===")
             val svgBlock = createBlock(parent, "open", "", HashMap(), HashMap<Any, Any>())
@@ -124,7 +124,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
         return null
     }
 
-   /* private fun produceBlock(url: String, filename: String, parent: StructuralNode): Block {
+    private fun produceBlock(url: String, filename: String, parent: StructuralNode): Block {
 
         val svgMap = mutableMapOf<String, Any>(
             "role" to "docops.io.panels",
@@ -139,7 +139,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
 
     private fun createImageBlockFromString(parent: StructuralNode, svg: String): Block {
         return createBlock(parent, "pass", svg)
-    }*/
+    }
 
     /*private fun strToPanelButtons(str: String): MutableList<PanelButton> {
         val result = mutableListOf<PanelButton>()
