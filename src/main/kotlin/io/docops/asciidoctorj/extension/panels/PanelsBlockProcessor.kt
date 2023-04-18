@@ -103,7 +103,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             linesArray.add("a|image::$url[format=$ext,opts=inline]")
             linesArray.add("")
             linesArray.add("|===")
-            val svgBlock = createBlock(parent, "open", "", HashMap(), HashMap<Any, Any>())
+            val svgBlock = createBlock(parent, "open", "")
             parseContent(svgBlock, linesArray)
 
             var pdfBlock: Block? = null
@@ -114,7 +114,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             }
             val argAttributes: MutableMap<String, Any> = HashMap()
             argAttributes["content_model"] = ":raw"
-            val block: Block = createBlock(parent, "open", "", argAttributes, HashMap<Any, Any>())
+            val block: Block = createBlock(parent, "open", "")
             block.blocks.add(svgBlock)
             pdfBlock?.let {
                 block.blocks.add(it)
