@@ -749,11 +749,6 @@ endif::[]
 == Badges/Shield
 
 === Syntax
-[cols="1",frame="none"]
-!===
-a|image::http://localhost:8010/extension/api/panel?type=SVG&data=H4sIAAAAAAAA_ytIzEvNKVao5lIAggIQB8oGgZzMvGwFWwWljJKSgmIrff3y8nK99Pz89JxUveT8XCWEusQkoD6gwpCMzGIFz2IFx7z8kozUIgV3sGKIwlqirUgsKMBpgyNIjlQDczOTi_KL89NKcBjqC5Mn2aW5iVX5ebicCpYk1ci81JK0nMwKHGb6QWRhhtYCADFl-A2_AQAA&file=xyz.svg[format=svg,opts=inline]
-!===
-
 
 
 [source,asciidoc]

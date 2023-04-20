@@ -28,6 +28,7 @@ import org.asciidoctor.extension.Reader
 import org.asciidoctor.log.LogRecord
 import org.asciidoctor.log.Severity
 import java.io.ByteArrayOutputStream
+import java.math.BigDecimal
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -84,23 +85,26 @@ open class PanelsBlockProcessor : BlockProcessor() {
                 isPdf = "IDEA"
             }
             val url = if ("csv" == format) {
-                "$server/api/panel/csv?type=$isPdf&data=$payload&file=xyz.$ext"
+                "$webserver/api/panel/csv?type=$isPdf&data=$payload&file=panel_${System.currentTimeMillis()}.$ext"
             } else {
-                if (width.isNotEmpty()) {
-                    width = "width=\"$width\""
-                }
                 "$server/api/panel?type=${isPdf}&data=$payload&file=xyz.$ext"
             }
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
             if(localDebug) {
                 println("Url for request is $url")
             }
+            var widthNum = 970
+            if (width.isNotEmpty()) {
+                val pct = BigDecimal(width.substring(0, width.length - 1))
+                val fact = pct.divide(BigDecimal(100))
+                widthNum = fact.multiply(BigDecimal(widthNum)).intValueExact()
+            }
             val linesArray = mutableListOf<String>()
             // language=asciidoc
             linesArray.add("""[cols="1a",role="$role", $width,frame="none"]""")
             linesArray.add("|===")
             linesArray.add("")
-            linesArray.add("a|image::$url[format=$ext,opts=inline]")
+            linesArray.add("a|image::$url[format=$ext,width=\"$widthNum\",role=\"$role\",opts=\"inline\",align=\"$role\"]")
             linesArray.add("")
             linesArray.add("|===")
             val svgBlock = createBlock(parent, "open", "")
