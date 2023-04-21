@@ -67,6 +67,8 @@ open class PanelsBlockProcessor : BlockProcessor() {
         val role = attributes.getOrDefault("role", "center")
         val backend = parent.document.getAttribute("backend") as String
         val idea = parent.document.getAttribute("env", "") as String
+        val table = attributes.getOrDefault("table", "false") as String
+        val filename = attributes.getOrDefault("name", "${System.currentTimeMillis()}_unk") as String
         if (serverPresent(server, parent, this, localDebug)) {
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Server is present"))
             val payload: String = try {
@@ -78,20 +80,13 @@ open class PanelsBlockProcessor : BlockProcessor() {
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "payload compressed is $payload"))
             var isPdf = "HTML"
             var ext = "svg"
+            var imageType = "svg+xml"
             if ("pdf" == backend) {
                 isPdf = "PDF"
                 ext = "png"
+                imageType = "png"
             } else if ("idea" == idea) {
                 isPdf = "IDEA"
-            }
-            val url = if ("csv" == format) {
-                "$webserver/api/panel/csv?type=$isPdf&data=$payload&file=panel_${System.currentTimeMillis()}.$ext"
-            } else {
-                "$server/api/panel?type=${isPdf}&data=$payload&file=xyz.$ext"
-            }
-            log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
-            if(localDebug) {
-                println("Url for request is $url")
             }
             var widthNum = 970
             if (width.isNotEmpty()) {
@@ -99,50 +94,99 @@ open class PanelsBlockProcessor : BlockProcessor() {
                 val fact = pct.divide(BigDecimal(100))
                 widthNum = fact.multiply(BigDecimal(widthNum)).intValueExact()
             }
-            val linesArray = mutableListOf<String>()
-            // language=asciidoc
-            linesArray.add("""[cols="1a",role="$role", $width,frame="none"]""")
-            linesArray.add("|===")
-            linesArray.add("")
-            linesArray.add("a|image::$url[format=$ext,width=\"$widthNum\",role=\"$role\",opts=\"inline\",align=\"$role\"]")
-            linesArray.add("")
-            linesArray.add("|===")
-            val svgBlock = createBlock(parent, "open", "")
-            parseContent(svgBlock, linesArray)
-
-            var pdfBlock: Block? = null
-            if ("PDF" == isPdf) {
-                val lines = dslToLines(dsl = payload, parent = parent)
-                pdfBlock = createBlock(parent, "open", lines)
-                parseContent(pdfBlock, lines)
+            val url = if ("csv" == format) {
+                "$webserver/api/panel/csv?type=$isPdf&data=$payload&file=panel_${System.currentTimeMillis()}.$ext"
+            } else {
+                "$server/api/panel?width=$widthNum&type=${isPdf}&data=$payload&file=xyz.$ext"
             }
+            log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
+            if (localDebug) {
+                println("Url for request is $url")
+            }
+
             val argAttributes: MutableMap<String, Any> = HashMap()
             argAttributes["content_model"] = ":raw"
-            val block: Block = createBlock(parent, "open", "")
-            block.blocks.add(svgBlock)
-            pdfBlock?.let {
-                block.blocks.add(it)
+
+            if (table.toBoolean()) {
+                val linesArray = mutableListOf<String>()
+                // language=asciidoc
+                linesArray.add("""[cols="1",role="$role",$width,frame="none"]""")
+                linesArray.add("|===")
+                linesArray.add("")
+                linesArray.add("a|image::$url[format=$ext,width=\"$widthNum\",role=\"$role\",opts=\"inline\",align=\"$role\"]")
+                linesArray.add("")
+                linesArray.add("|===")
+                val svgBlock = createBlock(parent, "open", "", HashMap(), HashMap<Any, Any>())
+                var pdfBlock: Block? = null
+                if ("PDF" == isPdf) {
+                    val lines = dslToLines(dsl = payload, parent = parent)
+                    pdfBlock = createBlock(parent, "open", lines)
+                    parseContent(pdfBlock, lines)
+                }
+                parseContent(svgBlock, linesArray)
+                val block: Block = createBlock(parent, "open", "")
+                block.blocks.add(svgBlock)
+                pdfBlock?.let {
+                    block.blocks.add(it)
+                }
+                return block
+            } else {
+                val svgBlock: Block?
+                var pdfBlock: Block? = null
+                if ("PDF" == isPdf) {
+                    val lines = dslToLines(dsl = payload, parent = parent)
+                    pdfBlock = createBlock(parent, "open", lines)
+                    parseContent(pdfBlock, lines)
+                    svgBlock = produceBlock(url, filename, parent, widthNum.toString(), role, format = ext)
+                } else {
+                    val image = getContentFromServer(url, parent, this, debug = localDebug)
+                    val dataUri = "data:image/$imageType;base64," + Base64.getEncoder()
+                        .encodeToString(image.toByteArray())
+                    svgBlock = createImageBlockFromString(parent, image)
+                    //svgBlock = produceBlock(dataUri, filename, parent, widthNum.toString(), role, format = ext)
+                }
+                val block: Block = createBlock(parent, "open", "")
+                block.blocks.add(svgBlock)
+                pdfBlock?.let {
+                    block.blocks.add(it)
+                }
+                return block
             }
-            return block
         }
         return null
     }
 
-    private fun produceBlock(url: String, filename: String, parent: StructuralNode): Block {
+    private fun produceBlock(
+        dataSrc: String,
+        filename: String,
+        parent: StructuralNode,
+        width: String,
+        role: Any,
+        format: String
+    ): Block {
 
         val svgMap = mutableMapOf<String, Any>(
-            "role" to "docops.io.panels",
-            "target" to url,
+            "role" to "center",
+            "opts" to "inline",
+            "align" to "$role",
+            "width" to width,
+            "target" to dataSrc,
             "alt" to "IMG not available",
             "title" to "Figure. $filename",
-            "opts" to "interactive",
-            "format" to "svg"
+            "format" to format
         )
-        return this.createBlock(parent, "image", ArrayList(), svgMap, HashMap())
+        return this.createBlock(parent, "image", "", svgMap, HashMap())
     }
 
     private fun createImageBlockFromString(parent: StructuralNode, svg: String): Block {
-        return createBlock(parent, "pass", svg)
+        val svgMap = mutableMapOf<String, Any>(
+            "role" to "center",
+            "opts" to "inline",
+            "align" to "center",
+            "width" to "500",
+            "alt" to "IMG not available",
+        )
+        return createBlock(parent, "pass", svg, svgMap, HashMap())
     }
 
     /*private fun strToPanelButtons(str: String): MutableList<PanelButton> {

@@ -607,7 +607,7 @@ theme {
 ----
 -----
 
-[panels,"large"]
+[panels,"large", table="false", width="60%"]
 ----
 panels {
 theme {

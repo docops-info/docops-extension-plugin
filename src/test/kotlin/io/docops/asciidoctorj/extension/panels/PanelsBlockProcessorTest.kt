@@ -38,6 +38,7 @@ internal class PanelsBlockProcessorTest {
             .attribute("feedback")
             .attribute("tocbot")
             .attribute("local-debug", "true")
+            .attribute("panel-webserver", "http://localhost:8010/extension")
             .build()
 
         val asciidoctor = Asciidoctor.Factory.create()
