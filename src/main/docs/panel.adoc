@@ -787,7 +787,7 @@ Yahoo|Finance|https://www.yahoo.com|#ccFFcc|PURPLE|<C>
 ----
 
 
-[panel, default, width=50,role=right]
+[panel, default, width=33%,role=right]
 ----
 panel {
     theme {

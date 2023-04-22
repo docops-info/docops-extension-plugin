@@ -29,6 +29,7 @@ import org.asciidoctor.log.LogRecord
 import org.asciidoctor.log.Severity
 import java.io.ByteArrayOutputStream
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -88,7 +89,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             } else if ("idea" == idea) {
                 isPdf = "IDEA"
             }
-            var widthNum = 970
+            var widthNum = BigDecimal(970)
             if (width.isNotEmpty()) {
                 val pct: BigDecimal
                 if(width.contains("%")) {
@@ -97,8 +98,10 @@ open class PanelsBlockProcessor : BlockProcessor() {
                 } else {
                     pct = BigDecimal(width)
                 }
+                pct.setScale(2)
                 val fact = pct.divide(BigDecimal(100))
-                widthNum = fact.multiply(BigDecimal(widthNum)).intValueExact()
+                fact.setScale(2, RoundingMode.FLOOR)
+                widthNum = fact.multiply(widthNum).setScale(2, RoundingMode.FLOOR)
             }
             val url = if ("csv" == format) {
                 "$webserver/api/panel/csv?type=$isPdf&data=$payload&file=panel_${System.currentTimeMillis()}.$ext"
