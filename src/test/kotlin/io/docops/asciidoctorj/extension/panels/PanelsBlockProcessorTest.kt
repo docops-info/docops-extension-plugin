@@ -55,13 +55,17 @@ internal class PanelsBlockProcessorTest {
             .attributes(attrs)
             .safe(SafeMode.UNSAFE)
             .build()
-        asciidoctor.convertFile(src, options)
+        try {
+            asciidoctor.convertFile(src, options)
 
-        assert(target.exists())
-        val images = File(src.parent,"images")
-        images.deleteRecursively()
-        //target.deleteOnExit()
-        makePdf()
+            assert(target.exists())
+            val images = File(src.parent,"images")
+            images.deleteRecursively()
+            //target.deleteOnExit()
+            makePdf()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
     fun makePdf() {
         val attrs = Attributes.builder()

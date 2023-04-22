@@ -787,3 +787,25 @@ Yahoo|Finance|https://www.yahoo.com|#ccFFcc|PURPLE|<C>
 ----
 
 
+[panel, default, width=50,role=right]
+----
+panel {
+    theme {
+    newWin = false
+    }
+    button {
+        label = "This Is On"
+        link = "https://docops.io/"
+    }
+    button {
+        label = "This Is Two"
+        link = "https://docops.io/"
+    }
+    button {
+        label = "This Is Three"
+        link = "https://docops.io/"
+    }
+}
+----
+
+

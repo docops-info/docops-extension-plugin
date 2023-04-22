@@ -64,7 +64,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
         }
         val format = attributes.getOrDefault("format", "dsl")
         var width = attributes.getOrDefault("width", "") as String
-        val role = attributes.getOrDefault("role", "center")
+        val role = attributes.getOrDefault("role", "center") as String
         val backend = parent.document.getAttribute("backend") as String
         val idea = parent.document.getAttribute("env", "") as String
         val table = attributes.getOrDefault("table", "false") as String
@@ -90,7 +90,13 @@ open class PanelsBlockProcessor : BlockProcessor() {
             }
             var widthNum = 970
             if (width.isNotEmpty()) {
-                val pct = BigDecimal(width.substring(0, width.length - 1))
+                val pct: BigDecimal
+                if(width.contains("%")) {
+                     pct = BigDecimal(width.substring(0, width.length - 1))
+
+                } else {
+                    pct = BigDecimal(width)
+                }
                 val fact = pct.divide(BigDecimal(100))
                 widthNum = fact.multiply(BigDecimal(widthNum)).intValueExact()
             }
@@ -142,7 +148,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
                     val image = getContentFromServer(url, parent, this, debug = localDebug)
                     val dataUri = "data:image/$imageType;base64," + Base64.getEncoder()
                         .encodeToString(image.toByteArray())
-                    svgBlock = createImageBlockFromString(parent, image)
+                    svgBlock = createImageBlockFromString(parent, image, role)
                     //svgBlock = produceBlock(dataUri, filename, parent, widthNum.toString(), role, format = ext)
                 }
                 val block: Block = createBlock(parent, "open", "")
@@ -178,7 +184,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
         return this.createBlock(parent, "image", "", svgMap, HashMap())
     }
 
-    private fun createImageBlockFromString(parent: StructuralNode, svg: String): Block {
+    private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String): Block {
         val svgMap = mutableMapOf<String, Any>(
             "role" to "center",
             "opts" to "inline",
@@ -186,7 +192,16 @@ open class PanelsBlockProcessor : BlockProcessor() {
             "width" to "500",
             "alt" to "IMG not available",
         )
-        return createBlock(parent, "pass", svg, svgMap, HashMap())
+        val content: String = """
+            <div class="openblock">
+            <div class="content" align="$role">
+            $svg
+            </div>
+            </div>
+        """.trimIndent()
+
+
+        return createBlock(parent, "pass", content, svgMap, HashMap())
     }
 
     /*private fun strToPanelButtons(str: String): MutableList<PanelButton> {
