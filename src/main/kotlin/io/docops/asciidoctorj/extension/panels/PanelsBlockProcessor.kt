@@ -28,8 +28,6 @@ import org.asciidoctor.extension.Reader
 import org.asciidoctor.log.LogRecord
 import org.asciidoctor.log.Severity
 import java.io.ByteArrayOutputStream
-import java.math.BigDecimal
-import java.math.RoundingMode
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -89,19 +87,19 @@ open class PanelsBlockProcessor : BlockProcessor() {
             } else if ("idea" == idea) {
                 isPdf = "IDEA"
             }
-            var widthNum = BigDecimal(970)
+            var widthNum = 970
             if (width.isNotEmpty()) {
-                val pct: BigDecimal
+                val pct: Int
                 if(width.contains("%")) {
-                     pct = BigDecimal(width.substring(0, width.length - 1))
+                     pct = width.substring(0, width.length - 1).toInt()
 
                 } else {
-                    pct = BigDecimal(width)
+                    pct = width.toInt()
                 }
-                pct.setScale(2)
-                val fact = pct.divide(BigDecimal(100))
-                fact.setScale(2, RoundingMode.FLOOR)
-                widthNum = fact.multiply(widthNum).setScale(2, RoundingMode.FLOOR)
+
+                val fact = pct.toDouble().div(100)
+
+                widthNum = fact.times(widthNum).toInt()
             }
             val url = if ("csv" == format) {
                 "$webserver/api/panel/csv?type=$isPdf&data=$payload&file=panel_${System.currentTimeMillis()}.$ext"
@@ -151,7 +149,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
                     val image = getContentFromServer(url, parent, this, debug = localDebug)
                     val dataUri = "data:image/$imageType;base64," + Base64.getEncoder()
                         .encodeToString(image.toByteArray())
-                    svgBlock = createImageBlockFromString(parent, image, role)
+                    return createImageBlockFromString(parent, image, role)
                     //svgBlock = produceBlock(dataUri, filename, parent, widthNum.toString(), role, format = ext)
                 }
                 val block: Block = createBlock(parent, "open", "")

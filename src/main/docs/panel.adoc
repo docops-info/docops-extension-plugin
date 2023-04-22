@@ -451,7 +451,7 @@ panels {
 -----
 
 
-[panels,"slim",width="80%"]
+[panels,"slim",width="40%"]
 ----
 panels {
     theme {
@@ -463,12 +463,11 @@ panels {
             color = "#000000"
         }
         colorMap{
-            color("#9cefc5")
+            color("#9F2B68")
 
         }
         legendOn = false
         dropShadow = 1
-        gradientStyle = GradientStyle(gradientId= "grad_1679021189141", color1 = "#282525", color2 = "#252424", color3 = "#252424", fontColor = "#cd9d72", titleColor = "#e06666", panelStroke = PanelStroke(color = "#cd9d72", width = 5))
     }
     slim {
         link = "https://www.google.com"
