@@ -51,6 +51,30 @@ Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netfl
 [panels,"buttons",width="80%"]
 ----
 panels {
+    theme {
+        colorMap {
+				color("#a1f196")
+                color("#165578")
+                color("#7d746c")
+                color("#2442d1")
+                color("#c0adef")
+                color("#4d2666")
+                color("#fbb103")
+                color("#1eb3f1")
+                color("#4f49eb")
+                color("#f3b304")
+                color("#e693ce")
+                color("#a6b23b")
+                color("#ad217f")
+                color("#2fb6ee")
+                color("#81392e")
+                color("#071e9b")
+                color("#675b01")
+                color("#ed6b19")
+                color("#a02cae")
+                color("#88683f")
+			}
+    }
     panel {
         link = "https://www.google.com"
         label = "Google"
@@ -78,6 +102,30 @@ panels {
 [panels,"buttons",width="80%"]
 ----
 panels {
+    theme {
+        colorMap {
+				color("#a1f196")
+                color("#165578")
+                color("#7d746c")
+                color("#2442d1")
+                color("#c0adef")
+                color("#4d2666")
+                color("#fbb103")
+                color("#1eb3f1")
+                color("#4f49eb")
+                color("#f3b304")
+                color("#e693ce")
+                color("#a6b23b")
+                color("#ad217f")
+                color("#2fb6ee")
+                color("#81392e")
+                color("#071e9b")
+                color("#675b01")
+                color("#ed6b19")
+                color("#a02cae")
+                color("#88683f")
+			}
+    }
     panel {
         link = "https://www.google.com"
         label = "#[Google]"
@@ -153,14 +201,28 @@ panels{
 panels {
     theme {
         	colorMap {
-				color("#D362C4")
-				color("#DC1D15")
-				color("#AC3F42")
-				color("#E335B3")
-				color("#BA79D7")
-				color("#B0082E")
+				color("#a1f196")
+                color("#165578")
+                color("#7d746c")
+                color("#2442d1")
+                color("#c0adef")
+                color("#4d2666")
+                color("#fbb103")
+                color("#1eb3f1")
+                color("#4f49eb")
+                color("#f3b304")
+                color("#e693ce")
+                color("#a6b23b")
+                color("#ad217f")
+                color("#2fb6ee")
+                color("#81392e")
+                color("#071e9b")
+                color("#675b01")
+                color("#ed6b19")
+                color("#a02cae")
+                color("#88683f")
 			}
-        dropShadow = 1
+        dropShadow = 5
     }
     round {
         link = "https://www.google.com"
@@ -230,11 +292,26 @@ a|
 [source,kotlin]
 ----
 colorMap{
-    color("#ff6385")
-    color("#36a3eb")
-    color("#9966ff")
-    color("#ffcf56")
-    color("#4bc0c0")
+    color("#a1f196")
+    color("#165578")
+    color("#7d746c")
+    color("#2442d1")
+    color("#c0adef")
+    color("#4d2666")
+    color("#fbb103")
+    color("#1eb3f1")
+    color("#4f49eb")
+    color("#f3b304")
+    color("#e693ce")
+    color("#a6b23b")
+    color("#ad217f")
+    color("#2fb6ee")
+    color("#81392e")
+    color("#071e9b")
+    color("#675b01")
+    color("#ed6b19")
+    color("#a02cae")
+    color("#88683f")
     color("#FDCBF1")
 }
 ----
@@ -451,7 +528,7 @@ panels {
 -----
 
 
-[panels,"slim",width="40%"]
+[panels,"slim",width="70%"]
 ----
 panels {
     theme {
@@ -460,14 +537,27 @@ panels {
             groupOrder = GroupingOrder.ASCENDING
         }
         font = font {
-            color = "#000000"
+            color = "#ffffff"
         }
         colorMap{
-            color("#9F2B68")
-
+            color("#165578")
+            color("#7d746c")
+            color("#2442d1")
+            color("#4d2666")
+            color("#1eb3f1")
+            color("#4f49eb")
+            color("#a6b23b")
+            color("#ad217f")
+            color("#2fb6ee")
+            color("#81392e")
+            color("#071e9b")
+            color("#675b01")
+            color("#ed6b19")
+            color("#a02cae")
+            color("#88683f")
         }
         legendOn = false
-        dropShadow = 1
+        dropShadow = 5
     }
     slim {
         link = "https://www.google.com"
@@ -645,15 +735,28 @@ theme {
             color = "#000000"
             bold = true
         }
-        colorMap{
-            color("#ff6385")
-            color("#36a3eb")
-            color("#9966ff")
-            color("#ffcf56")
-            color("#4bc0c0")
-            color("#FDCBF1")
-            color("#A6C1EE")
-        }
+        colorMap {
+            color("#a1f196")
+            color("#165578")
+            color("#7d746c")
+            color("#2442d1")
+            color("#c0adef")
+            color("#4d2666")
+            color("#fbb103")
+            color("#1eb3f1")
+            color("#4f49eb")
+            color("#f3b304")
+            color("#e693ce")
+            color("#a6b23b")
+            color("#ad217f")
+            color("#2fb6ee")
+            color("#81392e")
+            color("#071e9b")
+            color("#675b01")
+            color("#ed6b19")
+            color("#a02cae")
+            color("#88683f")
+			}
         dropShadow = 5
     }
     large {
