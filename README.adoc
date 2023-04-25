@@ -46,6 +46,9 @@ link:docs/panel.html[{artifact}.html]
 
 == History
 
+2023.16 - 2023-04-25::
+* updating colors
+
 2023.15 - 2023-04-22::
 * removed extra block
 
