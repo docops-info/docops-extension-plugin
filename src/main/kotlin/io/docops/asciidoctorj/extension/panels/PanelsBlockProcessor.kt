@@ -104,7 +104,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
             val url = if ("csv" == format) {
                 "$webserver/api/panel/csv?type=$isPdf&data=$payload&file=panel_${System.currentTimeMillis()}.$ext"
             } else {
-                "$server/api/panel?width=$widthNum&type=${isPdf}&data=$payload&file=xyz.$ext"
+                "$server/api/panel?type=${isPdf}&data=$payload&file=xyz.$ext"
             }
             log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
             if (localDebug) {
@@ -147,10 +147,7 @@ open class PanelsBlockProcessor : BlockProcessor() {
                     svgBlock = produceBlock(url, filename, parent, widthNum.toString(), role, format = ext)
                 } else {
                     val image = getContentFromServer(url, parent, this, debug = localDebug)
-                    val dataUri = "data:image/$imageType;base64," + Base64.getEncoder()
-                        .encodeToString(image.toByteArray())
-                    return createImageBlockFromString(parent, image, role)
-                    //svgBlock = produceBlock(dataUri, filename, parent, widthNum.toString(), role, format = ext)
+                    return createImageBlockFromString(parent, image, role, width)
                 }
                 val block: Block = createBlock(parent, "open", "")
                 block.blocks.add(svgBlock)
@@ -185,24 +182,22 @@ open class PanelsBlockProcessor : BlockProcessor() {
         return this.createBlock(parent, "image", "", svgMap, HashMap())
     }
 
-    private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String): Block {
-        val svgMap = mutableMapOf<String, Any>(
-            "role" to "center",
-            "opts" to "inline",
-            "align" to "center",
-            "width" to "500",
-            "alt" to "IMG not available",
+    private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
+
+        val align = mutableMapOf(
+            "right" to "margin-left: auto; margin-right: 0;",
+            "left" to "",
+            "center" to "margin: auto;"
         )
+        val center = align[role.lowercase()]
         val content: String = """
             <div class="openblock">
-            <div class="content" align="$role">
+            <div class="content" style="width: $width;padding: 10px;$center">
             $svg
             </div>
             </div>
         """.trimIndent()
-
-
-        return createBlock(parent, "pass", content, svgMap, HashMap())
+        return createBlock(parent, "pass", content)
     }
 
     /*private fun strToPanelButtons(str: String): MutableList<PanelButton> {
