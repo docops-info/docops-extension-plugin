@@ -7,6 +7,12 @@ import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
 import org.asciidoctor.extension.Reader
+import org.asciidoctor.log.LogRecord
+import org.asciidoctor.log.Severity
+import java.net.URI
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
 
 
 @Name("badge")
@@ -19,7 +25,7 @@ class BadgeBlockProcessor : BlockProcessor() {
     private var localDebug = false
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
         val debug = parent.document.attributes["local-debug"]
-        if(debug != null) {
+        if (debug != null) {
             debug as String
             localDebug = debug.toBoolean()
         }
@@ -33,14 +39,63 @@ class BadgeBlockProcessor : BlockProcessor() {
             webserver = it as String
         }
         val backend = parent.document.getAttribute("backend") as String
-        val block: Block = createBlock(parent, "open", null as String?)
-        val lines: MutableList<String> = if ("pdf" == backend) {
+        val idea = parent.document.getAttribute("env", "") as String
+        var isPdf = "HTML"
+        if ("pdf" == backend) {
+            isPdf = "PDF"
+        } else if ("idea" == idea) {
+            isPdf = "IDEA"
+        }
+        val results = getSvgContentFromServer(content, parent)
+        var width = attributes.getOrDefault("width", "") as String
+        val role = attributes.getOrDefault("role", "center") as String
+
+        var widthNum = 970
+        if (width.isNotEmpty()) {
+            val pct: Int
+            if (width.contains("%")) {
+                pct = width.substring(0, width.length - 1).toInt()
+
+            } else {
+                pct = width.toInt()
+            }
+
+            val fact = pct.toDouble().div(100)
+
+            widthNum = fact.times(widthNum).toInt()
+        }
+        /*val lines: MutableList<String> = if ("pdf" == backend) {
             makeContentForPdf(content, localDebug)
         } else {
             makeContentForHtml(content, localDebug)
         }
-        parseContent(block, lines)
-        return block
+        parseContent(block, lines)*/
+        if("PDF" == isPdf) {
+            val block: Block = createBlock(parent, "open", null as String?)
+            val lines = makeContentForPdf(content, localDebug)
+            parseContent(block, lines)
+            return block
+        } else {
+            return createImageBlockFromString(parent, results, role, widthNum.toString())
+        }
+    }
+
+    private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
+
+        val align = mutableMapOf(
+            "right" to "margin-left: auto; margin-right: 0;",
+            "left" to "",
+            "center" to "margin: auto;"
+        )
+        val center = align[role.lowercase()]
+        val content: String = """
+            <div class="openblock">
+            <div class="content" style="width: $width;padding: 10px;$center">
+            $svg
+            </div>
+            </div>
+        """.trimIndent()
+        return createBlock(parent, "pass", content)
     }
 
     private fun makeContentForHtml(content: String, debug: Boolean): MutableList<String> {
@@ -63,6 +118,27 @@ class BadgeBlockProcessor : BlockProcessor() {
         return lines
     }
 
+    private fun produceBlock(
+        dataSrc: String,
+        filename: String,
+        parent: StructuralNode,
+        width: String,
+        role: Any,
+        format: String
+    ): Block {
+
+        val svgMap = mutableMapOf<String, Any>(
+            "role" to "center",
+            "opts" to "inline",
+            "align" to "$role",
+            "width" to width,
+            "target" to dataSrc,
+            "alt" to "IMG not available",
+            "title" to "Figure. $filename",
+            "format" to format
+        )
+        return this.createBlock(parent, "image", "", svgMap, HashMap())
+    }
     private fun makeContentForPdf(content: String, debug: Boolean): MutableList<String> {
         val lines = mutableListOf<String>()
         lines.add("""[cols="1,1,1,1", grid=none, frame=none, role="center",width="90%"]""")
@@ -96,6 +172,23 @@ class BadgeBlockProcessor : BlockProcessor() {
             lines.forEach { println(it) }
         }
         return lines
+    }
+    private fun getSvgContentFromServer(content: String, parent: StructuralNode) : String {
+        val request = HttpRequest.newBuilder()
+            .uri(URI.create("$webserver/api/badges?type=SVG"))
+            .POST(HttpRequest.BodyPublishers.ofString(content))
+            .build()
+        val client: HttpClient = HttpClient.newHttpClient()
+        try {
+            val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+            if (200 == response.statusCode()) {
+                return response.body()
+            }
+        } catch (e: Exception) {
+            log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
+            return ""
+        }
+        return ""
     }
 
 }
