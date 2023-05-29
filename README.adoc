@@ -4,7 +4,7 @@
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
 :major: 2023
-:minor: .18
+:minor: .19
 :patch:
 :build:
 :extension:
@@ -45,6 +45,9 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 link:docs/panel.html[{artifact}.html]
 
 == History
+
+2023.19 - 2023-05-26::
+* new badges!
 
 2023.18 - 2023-05-26::
 * we need stinkin' badges
