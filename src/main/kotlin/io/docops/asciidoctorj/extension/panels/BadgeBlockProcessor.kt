@@ -64,12 +64,8 @@ class BadgeBlockProcessor : BlockProcessor() {
 
             widthNum = fact.times(widthNum).toInt()
         }
-        /*val lines: MutableList<String> = if ("pdf" == backend) {
-            makeContentForPdf(content, localDebug)
-        } else {
-            makeContentForHtml(content, localDebug)
-        }
-        parseContent(block, lines)*/
+
+        /*parseContent(block, lines)
         if("PDF" == isPdf) {
             val block: Block = createBlock(parent, "open", null as String?)
             val lines = makeContentForPdf(content, localDebug)
@@ -77,7 +73,15 @@ class BadgeBlockProcessor : BlockProcessor() {
             return block
         } else {
             return createImageBlockFromString(parent, results, role, widthNum.toString())
+        }*/
+        val block: Block = createBlock(parent, "open", null as String?)
+        val lines: MutableList<String> = if ("pdf" == backend) {
+            makeContentForPdf(content, localDebug)
+        } else {
+            makeContentForHtml(content, localDebug)
         }
+        parseContent(block, lines)
+        return block
     }
 
     private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
