@@ -2841,7 +2841,7 @@ Now you can create a set of panels that links to various contents, an alternativ
             <div class="openblock">
             <div class="content" style="width: 80%;padding: 10px;margin: auto;">
             <?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23"
+                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 945 100"
                 >
         <defs>
@@ -2859,6 +2859,22 @@ Now you can create a set of panels that links to various contents, an alternativ
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
+        </filter>
+        <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="0000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -2907,31 +2923,32 @@ Now you can create a set of panels that links to various contents, an alternativ
         </linearGradient>
 
 
-           <linearGradient id="IDdd261fda-153f-42e8-9580-71758b725099" x2="1" y2="1">
+
+           <linearGradient id="ID0aa3381c-c1db-4280-90e4-362bce99bedd" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#d0f8ca"/>
             <stop class="stop2" offset="50%" stop-color="#b8f4b0"/>
             <stop class="stop3" offset="100%" stop-color="#a1f196"/>
             </linearGradient>
 
-           <linearGradient id="ID72fbfbbe-c7d0-4bd4-b4ce-65f786c91643" x2="1" y2="1">
+           <linearGradient id="ID0ee2dc29-b3b5-4946-aa65-cc160061868e" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#8aaabb"/>
             <stop class="stop2" offset="50%" stop-color="#507f99"/>
             <stop class="stop3" offset="100%" stop-color="#165578"/>
             </linearGradient>
 
-           <linearGradient id="IDc3915a23-f7db-4e93-b70d-4703c72da40b" x2="1" y2="1">
+           <linearGradient id="IDe87f33d5-d5ea-42e6-b78c-85281d8a03ba" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#beb9b5"/>
             <stop class="stop2" offset="50%" stop-color="#9d9690"/>
             <stop class="stop3" offset="100%" stop-color="#7d746c"/>
             </linearGradient>
 
-           <linearGradient id="ID48ced040-c22e-4cdc-82e5-c0861c521644" x2="1" y2="1">
+           <linearGradient id="ID80850f0f-c64e-4cd6-bbc4-af222d74c5d5" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#91a0e8"/>
             <stop class="stop2" offset="50%" stop-color="#5a71dc"/>
             <stop class="stop3" offset="100%" stop-color="#2442d1"/>
             </linearGradient>
 
-           <linearGradient id="IDa108e885-348d-4982-b730-384a30f19ade" x2="1" y2="1">
+           <linearGradient id="IDd8ebaaa5-6a87-4556-9040-7885d621906f" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#dfd6f7"/>
             <stop class="stop2" offset="50%" stop-color="#cfc1f3"/>
             <stop class="stop3" offset="100%" stop-color="#c0adef"/>
@@ -2948,34 +2965,34 @@ Now you can create a set of panels that links to various contents, an alternativ
 
     </defs>
     <style>
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 rect.card:hover { opacity: 0.9; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 .card { pointer-events: bounding-box; opacity: 1; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 .card:hover { opacity: 0.9; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 rect.card:hover { opacity: 0.9; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 .card { pointer-events: bounding-box; opacity: 1; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 .card:hover { opacity: 0.9; }
 .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 rect.legend { pointer-events: bounding-box; opacity: 1; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 rect.legend { pointer-events: bounding-box; opacity: 1; }
 
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 rect.legend:hover { opacity: 0.9; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 .label { font-family: Helvetica, Arial, sans-serif; }
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 rect.legend:hover { opacity: 0.9; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 .label { font-family: Helvetica, Arial, sans-serif; }
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
 
 @keyframes draw {
     0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
     100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
 }
 
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 .shape{ stroke:black;}
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 .shape{ stroke:black;}
 
-.IDdd261fda-153f-42e8-9580-71758b725099_cls { fill: url(#IDdd261fda-153f-42e8-9580-71758b725099); }
-    .ID72fbfbbe-c7d0-4bd4-b4ce-65f786c91643_cls { fill: url(#ID72fbfbbe-c7d0-4bd4-b4ce-65f786c91643); }
-    .IDc3915a23-f7db-4e93-b70d-4703c72da40b_cls { fill: url(#IDc3915a23-f7db-4e93-b70d-4703c72da40b); }
-    .ID48ced040-c22e-4cdc-82e5-c0861c521644_cls { fill: url(#ID48ced040-c22e-4cdc-82e5-c0861c521644); }
-    .IDa108e885-348d-4982-b730-384a30f19ade_cls { fill: url(#IDa108e885-348d-4982-b730-384a30f19ade); }
+.ID0aa3381c-c1db-4280-90e4-362bce99bedd_cls { fill: url(#ID0aa3381c-c1db-4280-90e4-362bce99bedd); }
+    .ID0ee2dc29-b3b5-4946-aa65-cc160061868e_cls { fill: url(#ID0ee2dc29-b3b5-4946-aa65-cc160061868e); }
+    .IDe87f33d5-d5ea-42e6-b78c-85281d8a03ba_cls { fill: url(#IDe87f33d5-d5ea-42e6-b78c-85281d8a03ba); }
+    .ID80850f0f-c64e-4cd6-bbc4-af222d74c5d5_cls { fill: url(#ID80850f0f-c64e-4cd6-bbc4-af222d74c5d5); }
+    .IDd8ebaaa5-6a87-4556-9040-7885d621906f_cls { fill: url(#IDd8ebaaa5-6a87-4556-9040-7885d621906f); }
 
-#DocOps-73d6c336-f1a9-465e-b1b0-7702864eba23 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+#DocOps-6d7766fa-c43b-4984-9b7b-8e0edd781067 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
             .glass {
     overflow: hidden;
     color: white;
@@ -3028,9 +3045,9 @@ Now you can create a set of panels that links to various contents, an alternativ
 .glass:active:before {
     height: 25px;
 }
-            </style><g><a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
+            </style><g filter="url(#Bevel2)"><a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
     <g transform="translate(10,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDdd261fda-153f-42e8-9580-71758b725099_cls shape" fill="#a1f196"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID0aa3381c-c1db-4280-90e4-362bce99bedd_cls shape" fill="#a1f196"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3048,9 +3065,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="category" visibility="hidden">This Is Another Google</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="162" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.google.com" class="glass title btnclass1">This Is Another Google</a></text><a xlink:href="https://www.apple.com" target="_blank" style='text-decoration: none;'>
+</a><text x="162" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.google.com" class="glass title btnclass1">This Is Another Google</a></text><a xlink:href="https://www.apple.com" target="_blank" style='text-decoration: none;'>
     <g transform="translate(320,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID72fbfbbe-c7d0-4bd4-b4ce-65f786c91643_cls shape" fill="#165578"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID0ee2dc29-b3b5-4946-aa65-cc160061868e_cls shape" fill="#165578"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3068,9 +3085,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="category" visibility="hidden">Apple</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="472" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.apple.com" class="glass title btnclass1">Apple</a></text><a xlink:href="https://www.microsoft.com" target="_blank" style='text-decoration: none;'>
+</a><text x="472" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.apple.com" class="glass title btnclass1">Apple</a></text><a xlink:href="https://www.microsoft.com" target="_blank" style='text-decoration: none;'>
     <g transform="translate(630,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDc3915a23-f7db-4e93-b70d-4703c72da40b_cls shape" fill="#7d746c"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDe87f33d5-d5ea-42e6-b78c-85281d8a03ba_cls shape" fill="#7d746c"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3088,9 +3105,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="category" visibility="hidden">Microsoft</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="782" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.microsoft.com" class="glass title btnclass1">Microsoft</a></text></g><g><a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
+</a><text x="782" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.microsoft.com" class="glass title btnclass1">Microsoft</a></text></g><g filter="url(#Bevel2)"><a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
     <g transform="translate(10,50)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID48ced040-c22e-4cdc-82e5-c0861c521644_cls shape" fill="#2442d1"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID80850f0f-c64e-4cd6-bbc4-af222d74c5d5_cls shape" fill="#2442d1"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3108,9 +3125,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="category" visibility="hidden">Amazon</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="162" y="70" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.amazon.com" class="glass title btnclass1">Amazon</a></text><a xlink:href="https://www.netflix.com" target="_blank" style='text-decoration: none;'>
+</a><text x="162" y="70" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.amazon.com" class="glass title btnclass1">Amazon</a></text><a xlink:href="https://www.netflix.com" target="_blank" style='text-decoration: none;'>
     <g transform="translate(320,50)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDa108e885-348d-4982-b730-384a30f19ade_cls shape" fill="#c0adef"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDd8ebaaa5-6a87-4556-9040-7885d621906f_cls shape" fill="#c0adef"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3128,7 +3145,7 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="category" visibility="hidden">Netflix</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="472" y="70" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.netflix.com" class="glass title btnclass1">Netflix</a></text></g></svg>
+</a><text x="472" y="70" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.netflix.com" class="glass title btnclass1">Netflix</a></text></g></svg>
             </div>
             </div>
 <div class="paragraph">
@@ -3185,7 +3202,7 @@ Now you can create a set of panels that links to various contents, an alternativ
             <div class="openblock">
             <div class="content" style="width: 60%;padding: 10px;margin: auto;">
             <?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7"
+                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 450 330"
                 >
         <defs>
@@ -3203,6 +3220,22 @@ Now you can create a set of panels that links to various contents, an alternativ
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
+        </filter>
+        <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="0000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -3251,31 +3284,32 @@ Now you can create a set of panels that links to various contents, an alternativ
         </linearGradient>
 
 
-           <linearGradient id="ID98daa5b8-9b83-438e-b07a-bd721a43e8a2" x2="1" y2="1">
+
+           <linearGradient id="ID2a20a13a-aff9-43bb-bd91-2e4a1c517c9d" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#d0f8ca"/>
             <stop class="stop2" offset="50%" stop-color="#b8f4b0"/>
             <stop class="stop3" offset="100%" stop-color="#a1f196"/>
             </linearGradient>
 
-           <linearGradient id="ID610204eb-64e8-4d15-8831-565bc82c876c" x2="1" y2="1">
+           <linearGradient id="ID9ad0e4a6-4d56-4583-b254-d17574c5122b" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#8aaabb"/>
             <stop class="stop2" offset="50%" stop-color="#507f99"/>
             <stop class="stop3" offset="100%" stop-color="#165578"/>
             </linearGradient>
 
-           <linearGradient id="IDe98ad69a-4064-4df4-b1fa-06f844caabe4" x2="1" y2="1">
+           <linearGradient id="ID49bf143d-c04a-4622-a48d-0c867dbb5eb0" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#beb9b5"/>
             <stop class="stop2" offset="50%" stop-color="#9d9690"/>
             <stop class="stop3" offset="100%" stop-color="#7d746c"/>
             </linearGradient>
 
-           <linearGradient id="ID3246a991-3fd3-4514-9160-f2139aa34178" x2="1" y2="1">
+           <linearGradient id="ID3241677f-dce6-409c-b416-7a9c996be557" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#91a0e8"/>
             <stop class="stop2" offset="50%" stop-color="#5a71dc"/>
             <stop class="stop3" offset="100%" stop-color="#2442d1"/>
             </linearGradient>
 
-           <linearGradient id="IDe4a0c5cb-50cd-41fc-91e3-5e908d796b5b" x2="1" y2="1">
+           <linearGradient id="ID95aa8728-df9c-481a-9a35-90104e237e0d" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#dfd6f7"/>
             <stop class="stop2" offset="50%" stop-color="#cfc1f3"/>
             <stop class="stop3" offset="100%" stop-color="#c0adef"/>
@@ -3292,31 +3326,31 @@ Now you can create a set of panels that links to various contents, an alternativ
 
     </defs>
     <style>
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 circle.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.5)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 circle.card:hover { opacity: 0.9; transition: fill .5s ease-in;}
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.5)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 use.card:hover { opacity: 0.9; stroke-width: 3,stroke: gold; transition: fill .5s ease-in;}
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 9pt; }
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 rect.legend { pointer-events: bounding-box; opacity: 1; }
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea circle.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.5)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea circle.card:hover { opacity: 0.9; transition: fill .5s ease-in;}
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.5)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea use.card:hover { opacity: 0.9; stroke-width: 3,stroke: gold; transition: fill .5s ease-in;}
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 9pt; }
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea rect.legend { pointer-events: bounding-box; opacity: 1; }
 
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 rect.legend:hover { opacity: 0.9; }
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 .label { font-family: Helvetica, Arial, sans-serif; font-size: 9pt; }
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 .legendText { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea rect.legend:hover { opacity: 0.9; }
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea .label { font-family: Helvetica, Arial, sans-serif; font-size: 9pt; }
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea .legendText { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
 
 @keyframes draw {
     0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
     100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
 }
 
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 .shape{ stroke:gold;}
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea .shape{ stroke:gold;}
 
-.ID98daa5b8-9b83-438e-b07a-bd721a43e8a2_cls { fill: url(#ID98daa5b8-9b83-438e-b07a-bd721a43e8a2); }
-    .ID610204eb-64e8-4d15-8831-565bc82c876c_cls { fill: url(#ID610204eb-64e8-4d15-8831-565bc82c876c); }
-    .IDe98ad69a-4064-4df4-b1fa-06f844caabe4_cls { fill: url(#IDe98ad69a-4064-4df4-b1fa-06f844caabe4); }
-    .ID3246a991-3fd3-4514-9160-f2139aa34178_cls { fill: url(#ID3246a991-3fd3-4514-9160-f2139aa34178); }
-    .IDe4a0c5cb-50cd-41fc-91e3-5e908d796b5b_cls { fill: url(#IDe4a0c5cb-50cd-41fc-91e3-5e908d796b5b); }
+.ID2a20a13a-aff9-43bb-bd91-2e4a1c517c9d_cls { fill: url(#ID2a20a13a-aff9-43bb-bd91-2e4a1c517c9d); }
+    .ID9ad0e4a6-4d56-4583-b254-d17574c5122b_cls { fill: url(#ID9ad0e4a6-4d56-4583-b254-d17574c5122b); }
+    .ID49bf143d-c04a-4622-a48d-0c867dbb5eb0_cls { fill: url(#ID49bf143d-c04a-4622-a48d-0c867dbb5eb0); }
+    .ID3241677f-dce6-409c-b416-7a9c996be557_cls { fill: url(#ID3241677f-dce6-409c-b416-7a9c996be557); }
+    .ID95aa8728-df9c-481a-9a35-90104e237e0d_cls { fill: url(#ID95aa8728-df9c-481a-9a35-90104e237e0d); }
 
-#DocOps-ff3f5816-77c4-4778-94c3-8d536b4ea6c7 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+#DocOps-5cf8759f-367d-40b7-bad6-01a9fab1b0ea .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
 
             .glass {
     overflow: hidden;
@@ -3370,8 +3404,8 @@ Now you can create a set of panels that links to various contents, an alternativ
 .glass:active:before {
     height: 25px;
 }
-            </style><g><a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
-    <use x="80" y="65" xlink:href="#myCircle" class="card ID98daa5b8-9b83-438e-b07a-bd721a43e8a2_cls" fill="#a1f196"
+            </style><g filter="url(#Bevel2)"><a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
+    <use x="80" y="65" xlink:href="#myCircle" class="card ID2a20a13a-aff9-43bb-bd91-2e4a1c517c9d_cls" fill="#a1f196"
     stroke-width="2" stroke="gold" stroke-dasharray="2000" stroke-dashoffset="2000">
     <animate id="p2"
       attributeName="stroke-dashoffset"
@@ -3389,9 +3423,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="date" visibility="hidden"></text>
 </a>
                 <a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
-                    <text x="80" y="70" text-anchor="middle" ><tspan class="glass title btnclass1" x="80" dy="0">Google</tspan></text>
+                    <text filter="url(#Bevel2)" x="80" y="70" text-anchor="middle" ><tspan class="glass title btnclass1" x="80" dy="0">Google</tspan></text>
 </a><a xlink:href="https://www.apple.com" target="_blank" style='text-decoration: none;'>
-    <use x="205" y="65" xlink:href="#myCircle" class="card ID610204eb-64e8-4d15-8831-565bc82c876c_cls" fill="#165578"
+    <use x="205" y="65" xlink:href="#myCircle" class="card ID9ad0e4a6-4d56-4583-b254-d17574c5122b_cls" fill="#165578"
     stroke-width="2" stroke="gold" stroke-dasharray="2000" stroke-dashoffset="2000">
     <animate id="p2"
       attributeName="stroke-dashoffset"
@@ -3409,9 +3443,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="date" visibility="hidden"></text>
 </a>
                 <a xlink:href="https://www.apple.com" target="_blank" style='text-decoration: none;'>
-                    <text x="205" y="70" text-anchor="middle" ><tspan class="glass title btnclass1" x="205" dy="0">Apple</tspan></text>
+                    <text filter="url(#Bevel2)" x="205" y="70" text-anchor="middle" ><tspan class="glass title btnclass1" x="205" dy="0">Apple</tspan></text>
 </a><a xlink:href="https://www.microsoft.com" target="_blank" style='text-decoration: none;'>
-    <use x="330" y="65" xlink:href="#myCircle" class="card IDe98ad69a-4064-4df4-b1fa-06f844caabe4_cls" fill="#7d746c"
+    <use x="330" y="65" xlink:href="#myCircle" class="card ID49bf143d-c04a-4622-a48d-0c867dbb5eb0_cls" fill="#7d746c"
     stroke-width="2" stroke="gold" stroke-dasharray="2000" stroke-dashoffset="2000">
     <animate id="p2"
       attributeName="stroke-dashoffset"
@@ -3429,9 +3463,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="date" visibility="hidden"></text>
 </a>
                 <a xlink:href="https://www.microsoft.com" target="_blank" style='text-decoration: none;'>
-                    <text x="330" y="70" text-anchor="middle" ><tspan class="glass title btnclass1" x="330" dy="0">Microsoft</tspan></text>
-</a></g><g><a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
-    <use x="80" y="195" xlink:href="#myCircle" class="card ID3246a991-3fd3-4514-9160-f2139aa34178_cls" fill="#2442d1"
+                    <text filter="url(#Bevel2)" x="330" y="70" text-anchor="middle" ><tspan class="glass title btnclass1" x="330" dy="0">Microsoft</tspan></text>
+</a></g><g filter="url(#Bevel2)"><a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
+    <use x="80" y="195" xlink:href="#myCircle" class="card ID3241677f-dce6-409c-b416-7a9c996be557_cls" fill="#2442d1"
     stroke-width="2" stroke="gold" stroke-dasharray="2000" stroke-dashoffset="2000">
     <animate id="p2"
       attributeName="stroke-dashoffset"
@@ -3449,9 +3483,9 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="date" visibility="hidden"></text>
 </a>
                 <a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
-                    <text x="80" y="200" text-anchor="middle" ><tspan class="glass title btnclass1" x="80" dy="0">Amazon</tspan></text>
+                    <text filter="url(#Bevel2)" x="80" y="200" text-anchor="middle" ><tspan class="glass title btnclass1" x="80" dy="0">Amazon</tspan></text>
 </a><a xlink:href="https://www.netflix.com" target="_blank" style='text-decoration: none;'>
-    <use x="205" y="195" xlink:href="#myCircle" class="card IDe4a0c5cb-50cd-41fc-91e3-5e908d796b5b_cls" fill="#c0adef"
+    <use x="205" y="195" xlink:href="#myCircle" class="card ID95aa8728-df9c-481a-9a35-90104e237e0d_cls" fill="#c0adef"
     stroke-width="2" stroke="gold" stroke-dasharray="2000" stroke-dashoffset="2000">
     <animate id="p2"
       attributeName="stroke-dashoffset"
@@ -3469,7 +3503,7 @@ Now you can create a set of panels that links to various contents, an alternativ
     <text class="date" visibility="hidden"></text>
 </a>
                 <a xlink:href="https://www.netflix.com" target="_blank" style='text-decoration: none;'>
-                    <text x="205" y="200" text-anchor="middle" ><tspan class="glass title btnclass1" x="205" dy="0">Netflix</tspan></text>
+                    <text filter="url(#Bevel2)" x="205" y="200" text-anchor="middle" ><tspan class="glass title btnclass1" x="205" dy="0">Netflix</tspan></text>
 </a></g></svg>
             </div>
             </div>
@@ -3708,7 +3742,7 @@ New Attributes added, dropShadow &amp; font
             <div class="openblock">
             <div class="content" style="width: ;padding: 10px;margin: auto;">
             <?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60"
+                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1260 100"
                 >
         <defs>
@@ -3726,6 +3760,22 @@ New Attributes added, dropShadow &amp; font
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
+        </filter>
+        <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="0000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -3774,31 +3824,32 @@ New Attributes added, dropShadow &amp; font
         </linearGradient>
 
 
-           <linearGradient id="ID16412825-0497-4ac9-be11-7ad62e157f6c" x2="1" y2="1">
+
+           <linearGradient id="ID3a62ef86-c7d8-4417-8820-d8fc6da4dd17" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#ffb1c2"/>
             <stop class="stop2" offset="50%" stop-color="#ff8aa3"/>
             <stop class="stop3" offset="100%" stop-color="#ff6385"/>
             </linearGradient>
 
-           <linearGradient id="IDf9792756-29b6-4ccb-851f-f70be4246a72" x2="1" y2="1">
+           <linearGradient id="ID641926ef-9c7e-477c-aa97-49a0606bdd4f" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#9ad1f5"/>
             <stop class="stop2" offset="50%" stop-color="#68baf0"/>
             <stop class="stop3" offset="100%" stop-color="#36a3eb"/>
             </linearGradient>
 
-           <linearGradient id="ID5d552622-ce60-416d-a166-49fe852ebcf7" x2="1" y2="1">
+           <linearGradient id="ID78489bb5-0119-4a7e-b0a5-31eca0ddfddb" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#ccb2ff"/>
             <stop class="stop2" offset="50%" stop-color="#b28cff"/>
             <stop class="stop3" offset="100%" stop-color="#9966ff"/>
             </linearGradient>
 
-           <linearGradient id="ID9c26711e-97dd-410d-9b82-21d22f8c02f8" x2="1" y2="1">
+           <linearGradient id="IDf997936b-1d6b-48fa-8d9f-2caebb46a966" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#ffe7aa"/>
             <stop class="stop2" offset="50%" stop-color="#ffdb80"/>
             <stop class="stop3" offset="100%" stop-color="#ffcf56"/>
             </linearGradient>
 
-           <linearGradient id="ID3082bab5-cafa-4a12-9627-3c7c318fe5db" x2="1" y2="1">
+           <linearGradient id="IDf9379787-f77e-45f8-9206-88f290fd2a78" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#a5dfdf"/>
             <stop class="stop2" offset="50%" stop-color="#78cfcf"/>
             <stop class="stop3" offset="100%" stop-color="#4bc0c0"/>
@@ -3815,34 +3866,34 @@ New Attributes added, dropShadow &amp; font
 
     </defs>
     <style>
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 rect.card:hover { opacity: 0.9; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 .card { pointer-events: bounding-box; opacity: 1; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 .card:hover { opacity: 0.9; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa rect.card:hover { opacity: 0.9; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa .card { pointer-events: bounding-box; opacity: 1; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa .card:hover { opacity: 0.9; }
 .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 rect.legend { pointer-events: bounding-box; opacity: 1; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa rect.legend { pointer-events: bounding-box; opacity: 1; }
 
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 rect.legend:hover { opacity: 0.9; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 .label { font-family: Helvetica, Arial, sans-serif; }
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa rect.legend:hover { opacity: 0.9; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa .label { font-family: Helvetica, Arial, sans-serif; }
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
 
 @keyframes draw {
     0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
     100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
 }
 
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 .shape{ stroke:black;}
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa .shape{ stroke:black;}
 
-.ID16412825-0497-4ac9-be11-7ad62e157f6c_cls { fill: url(#ID16412825-0497-4ac9-be11-7ad62e157f6c); }
-    .IDf9792756-29b6-4ccb-851f-f70be4246a72_cls { fill: url(#IDf9792756-29b6-4ccb-851f-f70be4246a72); }
-    .ID5d552622-ce60-416d-a166-49fe852ebcf7_cls { fill: url(#ID5d552622-ce60-416d-a166-49fe852ebcf7); }
-    .ID9c26711e-97dd-410d-9b82-21d22f8c02f8_cls { fill: url(#ID9c26711e-97dd-410d-9b82-21d22f8c02f8); }
-    .ID3082bab5-cafa-4a12-9627-3c7c318fe5db_cls { fill: url(#ID3082bab5-cafa-4a12-9627-3c7c318fe5db); }
+.ID3a62ef86-c7d8-4417-8820-d8fc6da4dd17_cls { fill: url(#ID3a62ef86-c7d8-4417-8820-d8fc6da4dd17); }
+    .ID641926ef-9c7e-477c-aa97-49a0606bdd4f_cls { fill: url(#ID641926ef-9c7e-477c-aa97-49a0606bdd4f); }
+    .ID78489bb5-0119-4a7e-b0a5-31eca0ddfddb_cls { fill: url(#ID78489bb5-0119-4a7e-b0a5-31eca0ddfddb); }
+    .IDf997936b-1d6b-48fa-8d9f-2caebb46a966_cls { fill: url(#IDf997936b-1d6b-48fa-8d9f-2caebb46a966); }
+    .IDf9379787-f77e-45f8-9206-88f290fd2a78_cls { fill: url(#IDf9379787-f77e-45f8-9206-88f290fd2a78); }
 
-#DocOps-6934028f-4d8f-406d-99f2-5f6ffee6ba60 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+#DocOps-17a9584b-794e-40c0-bfd5-da3c2191c1fa .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
             .glass {
     overflow: hidden;
     color: white;
@@ -3895,9 +3946,9 @@ New Attributes added, dropShadow &amp; font
 .glass:active:before {
     height: 25px;
 }
-            </style><g><a xlink:href="https://www.amazon.com" target="_top" style='text-decoration: none;'>
+            </style><g filter="url(#Bevel2)"><a xlink:href="https://www.amazon.com" target="_top" style='text-decoration: none;'>
     <g transform="translate(10,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID16412825-0497-4ac9-be11-7ad62e157f6c_cls shape" fill="#ff6385"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID3a62ef86-c7d8-4417-8820-d8fc6da4dd17_cls shape" fill="#ff6385"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3915,9 +3966,9 @@ New Attributes added, dropShadow &amp; font
     <text class="category" visibility="hidden">Amazon</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="162" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.amazon.com" class="glass title btnclass1">Amazon</a></text><a xlink:href="https://www.apple.com" target="_top" style='text-decoration: none;'>
+</a><text x="162" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.amazon.com" class="glass title btnclass1">Amazon</a></text><a xlink:href="https://www.apple.com" target="_top" style='text-decoration: none;'>
     <g transform="translate(320,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDf9792756-29b6-4ccb-851f-f70be4246a72_cls shape" fill="#36a3eb"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID641926ef-9c7e-477c-aa97-49a0606bdd4f_cls shape" fill="#36a3eb"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3935,9 +3986,9 @@ New Attributes added, dropShadow &amp; font
     <text class="category" visibility="hidden">Apple</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="472" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.apple.com" class="glass title btnclass1">Apple</a></text><a xlink:href="https://www.google.com" target="_top" style='text-decoration: none;'>
+</a><text x="472" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.apple.com" class="glass title btnclass1">Apple</a></text><a xlink:href="https://www.google.com" target="_top" style='text-decoration: none;'>
     <g transform="translate(630,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID5d552622-ce60-416d-a166-49fe852ebcf7_cls shape" fill="#9966ff"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID78489bb5-0119-4a7e-b0a5-31eca0ddfddb_cls shape" fill="#9966ff"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3955,9 +4006,9 @@ New Attributes added, dropShadow &amp; font
     <text class="category" visibility="hidden">Google</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="782" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.google.com" class="glass title btnclass1">Google</a></text><a xlink:href="https://www.microsoft.com" target="_top" style='text-decoration: none;'>
+</a><text x="782" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.google.com" class="glass title btnclass1">Google</a></text><a xlink:href="https://www.microsoft.com" target="_top" style='text-decoration: none;'>
     <g transform="translate(940,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID9c26711e-97dd-410d-9b82-21d22f8c02f8_cls shape" fill="#ffcf56"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDf997936b-1d6b-48fa-8d9f-2caebb46a966_cls shape" fill="#ffcf56"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3975,9 +4026,9 @@ New Attributes added, dropShadow &amp; font
     <text class="category" visibility="hidden">Microsoft</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="1092" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.microsoft.com" class="glass title btnclass1">Microsoft</a></text></g><g><a xlink:href="https://www.netflix.com" target="_top" style='text-decoration: none;'>
+</a><text x="1092" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.microsoft.com" class="glass title btnclass1">Microsoft</a></text></g><g filter="url(#Bevel2)"><a xlink:href="https://www.netflix.com" target="_top" style='text-decoration: none;'>
     <g transform="translate(10,50)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID3082bab5-cafa-4a12-9627-3c7c318fe5db_cls shape" fill="#4bc0c0"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDf9379787-f77e-45f8-9206-88f290fd2a78_cls shape" fill="#4bc0c0"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -3995,7 +4046,7 @@ New Attributes added, dropShadow &amp; font
     <text class="category" visibility="hidden">Netflix</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="162" y="70" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.netflix.com" class="glass title btnclass1">Netflix</a></text></g></svg>
+</a><text x="162" y="70" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://www.netflix.com" class="glass title btnclass1">Netflix</a></text></g></svg>
             </div>
             </div>
 </div>
@@ -4173,7 +4224,7 @@ New Attributes added, dropShadow &amp; font
             <div class="openblock">
             <div class="content" style="width: 70%;padding: 10px;margin: auto;">
             <?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-365861ab-f03c-420e-95a6-e205d466dcb3"
+                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 660 360"
                 >
         <defs>
@@ -4191,6 +4242,22 @@ New Attributes added, dropShadow &amp; font
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
+        </filter>
+        <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="0000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -4239,49 +4306,50 @@ New Attributes added, dropShadow &amp; font
         </linearGradient>
 
 
-           <linearGradient id="IDf8907495-1011-4cae-ab61-c0d02d645088" x2="1" y2="1">
+
+           <linearGradient id="IDc423e0b0-fb50-43a8-852b-6243a0fb5df9" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#8aaabb"/>
             <stop class="stop2" offset="50%" stop-color="#507f99"/>
             <stop class="stop3" offset="100%" stop-color="#165578"/>
             </linearGradient>
 
-           <linearGradient id="IDb97f2223-e760-466d-8c2b-343be23e9663" x2="1" y2="1">
+           <linearGradient id="ID99eca79b-1d27-4da9-be75-a4185cf0e966" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#beb9b5"/>
             <stop class="stop2" offset="50%" stop-color="#9d9690"/>
             <stop class="stop3" offset="100%" stop-color="#7d746c"/>
             </linearGradient>
 
-           <linearGradient id="IDc9dd819e-c2b7-4c9f-8abc-0f5fc077b9d9" x2="1" y2="1">
+           <linearGradient id="ID511f7964-0f86-41a4-8791-8c8c7f200c75" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#91a0e8"/>
             <stop class="stop2" offset="50%" stop-color="#5a71dc"/>
             <stop class="stop3" offset="100%" stop-color="#2442d1"/>
             </linearGradient>
 
-           <linearGradient id="IDc062d4a7-4a13-4d11-8bb4-113f1a8a0090" x2="1" y2="1">
+           <linearGradient id="IDa5072ba0-3b56-4333-9991-8e234dbf9df8" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#a692b2"/>
             <stop class="stop2" offset="50%" stop-color="#795c8c"/>
             <stop class="stop3" offset="100%" stop-color="#4d2666"/>
             </linearGradient>
 
-           <linearGradient id="ID4b0c32c1-647f-402c-991d-f144a02f05bf" x2="1" y2="1">
+           <linearGradient id="IDbb600540-f14e-4bed-befb-0cc1dc91a365" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#8ed9f8"/>
             <stop class="stop2" offset="50%" stop-color="#56c6f4"/>
             <stop class="stop3" offset="100%" stop-color="#1eb3f1"/>
             </linearGradient>
 
-           <linearGradient id="ID91f0d662-2862-4a81-be35-d0c01f07725b" x2="1" y2="1">
+           <linearGradient id="ID86d0e7e4-5f35-4d9a-bd27-8038faa28dc6" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#a7a4f5"/>
             <stop class="stop2" offset="50%" stop-color="#7b76f0"/>
             <stop class="stop3" offset="100%" stop-color="#4f49eb"/>
             </linearGradient>
 
-           <linearGradient id="IDfcf831ad-bfa1-4597-b971-4318bd050df9" x2="1" y2="1">
+           <linearGradient id="IDb6973659-bddf-45af-b3e8-3120c1e413d7" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#d2d89d"/>
             <stop class="stop2" offset="50%" stop-color="#bcc56c"/>
             <stop class="stop3" offset="100%" stop-color="#a6b23b"/>
             </linearGradient>
 
-           <linearGradient id="ID50742c45-a6b0-45fc-abb8-4f2f8a190b46" x2="1" y2="1">
+           <linearGradient id="ID0122eed8-ded6-4088-9492-25e821063183" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#d690bf"/>
             <stop class="stop2" offset="50%" stop-color="#c1589f"/>
             <stop class="stop3" offset="100%" stop-color="#ad217f"/>
@@ -4298,34 +4366,34 @@ New Attributes added, dropShadow &amp; font
 
     </defs>
     <style>
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 use { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.5));  pointer-events: bounding-box; opacity: 1; }
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 use:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .lineHead { fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 9pt; }
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .description { fill: white; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; }
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .category { fill: whitesmoke; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; font-weight: bold; font-style: italic}
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .title { fill: whitesmoke; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal; font-size: 9pt; }
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .author { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 8pt; fill: white; }
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .legendText { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 9pt; }
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .date { fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf use { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.5));  pointer-events: bounding-box; opacity: 1; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf use:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .lineHead { fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 9pt; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .description { fill: white; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .category { fill: whitesmoke; font-family: Helvetica, Arial, sans-serif; font-size: 8pt; font-weight: bold; font-style: italic}
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .title { fill: whitesmoke; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal; font-size: 9pt; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .author { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 8pt; fill: white; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .legendText { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 9pt; }
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .date { fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
 
 @keyframes draw {
     0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
     100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
 }
 
-#DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .shape{ stroke:black;}
+#DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .shape{ stroke:black;}
 
 
 
- .IDf8907495-1011-4cae-ab61-c0d02d645088_cls { fill: url(#IDf8907495-1011-4cae-ab61-c0d02d645088); }
-    .IDb97f2223-e760-466d-8c2b-343be23e9663_cls { fill: url(#IDb97f2223-e760-466d-8c2b-343be23e9663); }
-    .IDc9dd819e-c2b7-4c9f-8abc-0f5fc077b9d9_cls { fill: url(#IDc9dd819e-c2b7-4c9f-8abc-0f5fc077b9d9); }
-    .IDc062d4a7-4a13-4d11-8bb4-113f1a8a0090_cls { fill: url(#IDc062d4a7-4a13-4d11-8bb4-113f1a8a0090); }
-    .ID4b0c32c1-647f-402c-991d-f144a02f05bf_cls { fill: url(#ID4b0c32c1-647f-402c-991d-f144a02f05bf); }
-    .ID91f0d662-2862-4a81-be35-d0c01f07725b_cls { fill: url(#ID91f0d662-2862-4a81-be35-d0c01f07725b); }
-    .IDfcf831ad-bfa1-4597-b971-4318bd050df9_cls { fill: url(#IDfcf831ad-bfa1-4597-b971-4318bd050df9); }
-    .ID50742c45-a6b0-45fc-abb8-4f2f8a190b46_cls { fill: url(#ID50742c45-a6b0-45fc-abb8-4f2f8a190b46); }
-    #DocOps-365861ab-f03c-420e-95a6-e205d466dcb3 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#ffffff;letter-spacing:normal;}
+ .IDc423e0b0-fb50-43a8-852b-6243a0fb5df9_cls { fill: url(#IDc423e0b0-fb50-43a8-852b-6243a0fb5df9); }
+    .ID99eca79b-1d27-4da9-be75-a4185cf0e966_cls { fill: url(#ID99eca79b-1d27-4da9-be75-a4185cf0e966); }
+    .ID511f7964-0f86-41a4-8791-8c8c7f200c75_cls { fill: url(#ID511f7964-0f86-41a4-8791-8c8c7f200c75); }
+    .IDa5072ba0-3b56-4333-9991-8e234dbf9df8_cls { fill: url(#IDa5072ba0-3b56-4333-9991-8e234dbf9df8); }
+    .IDbb600540-f14e-4bed-befb-0cc1dc91a365_cls { fill: url(#IDbb600540-f14e-4bed-befb-0cc1dc91a365); }
+    .ID86d0e7e4-5f35-4d9a-bd27-8038faa28dc6_cls { fill: url(#ID86d0e7e4-5f35-4d9a-bd27-8038faa28dc6); }
+    .IDb6973659-bddf-45af-b3e8-3120c1e413d7_cls { fill: url(#IDb6973659-bddf-45af-b3e8-3120c1e413d7); }
+    .ID0122eed8-ded6-4088-9492-25e821063183_cls { fill: url(#ID0122eed8-ded6-4088-9492-25e821063183); }
+    #DocOps-4cf73985-4b2d-4f11-b7db-a54de40b95bf .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#ffffff;letter-spacing:normal;}
 
             .glass {
     overflow: hidden;
@@ -4379,85 +4447,85 @@ New Attributes added, dropShadow &amp; font
 .glass:active:before {
     height: 25px;
 }
-            </style><g> <a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
-<use x="10" y="10" class=" IDf8907495-1011-4cae-ab61-c0d02d645088_cls shape" fill="#165578" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+            </style><g filter="url(#Bevel2)"> <a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
+<use x="10" y="10" class=" IDc423e0b0-fb50-43a8-852b-6243a0fb5df9_cls shape" fill="#165578" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Google is is an American multinational technology company that specializes in Internet-related services and products </title>
 </use>
-</a> <text x="14" y="30" class="glass title  btnclass1" fill="#000" >Google</text>
+</a> <text filter="url(#Bevel2)" x="14" y="30" class="glass title  btnclass1" fill="#000" >Google</text>
 <text x="12" y="30">
-    <tspan x="14" dy="16" class="description  btnclass1">Google is is an American</tspan><tspan x="14" dy="16" class="description  btnclass1">multinational technology</tspan><tspan x="14" dy="16" class="description  btnclass1">company that specializes in</tspan><tspan x="14" dy="16" class="description  btnclass1">Internet-related services</tspan>
-    <tspan x="14" dy="16" class="glass category btnclass1">Advertising</tspan>
-    <tspan x="14" dy="16" class="author  btnclass1">Sergey Brin</tspan><tspan x="14" dy="16" class="author  btnclass1">Larry Page</tspan>
+    <tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">Google is is an American</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">multinational technology</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">company that specializes in</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">Internet-related services</tspan>
+    <tspan filter="url(#Bevel2)" x="14" dy="16" class="glass category btnclass1">Advertising</tspan>
+    <tspan filter="url(#Bevel2)" x="14" dy="16" class="glass author  btnclass1">Sergey Brin</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass author  btnclass1">Larry Page</tspan>
     <tspan x="12" dy="16" class="date">07/30/1998</tspan>
 </text> <a xlink:href="https://www.apple.com" target="_blank" style='text-decoration: none;'>
-<use x="170" y="10" class=" IDb97f2223-e760-466d-8c2b-343be23e9663_cls shape" fill="#7d746c" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="170" y="10" class=" ID99eca79b-1d27-4da9-be75-a4185cf0e966_cls shape" fill="#7d746c" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. </title>
 </use>
-</a> <text x="174" y="30" class="glass title  btnclass1" fill="#000" >Apple</text>
+</a> <text filter="url(#Bevel2)" x="174" y="30" class="glass title  btnclass1" fill="#000" >Apple</text>
 <text x="172" y="30">
-    <tspan x="174" dy="16" class="description  btnclass1">Apple Inc. is an American</tspan><tspan x="174" dy="16" class="description  btnclass1">multinational technology</tspan><tspan x="174" dy="16" class="description  btnclass1">company that specializes in</tspan><tspan x="174" dy="16" class="description  btnclass1">consumer electronics,</tspan>
-    <tspan x="174" dy="16" class="glass category btnclass1">Personal Devices</tspan>
-    <tspan x="174" dy="16" class="author  btnclass1">Steve Jobs</tspan><tspan x="174" dy="16" class="author  btnclass1">Steve Wozniak</tspan>
+    <tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">Apple Inc. is an American</tspan><tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">multinational technology</tspan><tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">company that specializes in</tspan><tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">consumer electronics,</tspan>
+    <tspan filter="url(#Bevel2)" x="174" dy="16" class="glass category btnclass1">Personal Devices</tspan>
+    <tspan filter="url(#Bevel2)" x="174" dy="16" class="glass author  btnclass1">Steve Jobs</tspan><tspan filter="url(#Bevel2)" x="174" dy="16" class="glass author  btnclass1">Steve Wozniak</tspan>
     <tspan x="172" dy="16" class="date">01/30/1977</tspan>
 </text> <a xlink:href="https://www.microsoft.com" target="_blank" style='text-decoration: none;'>
-<use x="330" y="10" class=" IDc9dd819e-c2b7-4c9f-8abc-0f5fc077b9d9_cls shape" fill="#2442d1" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="330" y="10" class=" ID511f7964-0f86-41a4-8791-8c8c7f200c75_cls shape" fill="#2442d1" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.</title>
 </use>
-</a> <text x="334" y="30" class="glass title  btnclass1" fill="#000" >Microsoft</text>
+</a> <text filter="url(#Bevel2)" x="334" y="30" class="glass title  btnclass1" fill="#000" >Microsoft</text>
 <text x="332" y="30">
-    <tspan x="334" dy="16" class="description  btnclass1">Microsoft Corporation is an</tspan><tspan x="334" dy="16" class="description  btnclass1">American multinational</tspan><tspan x="334" dy="16" class="description  btnclass1">technology corporation</tspan><tspan x="334" dy="16" class="description  btnclass1">which produces computer</tspan>
-    <tspan x="334" dy="16" class="glass category btnclass1">Software</tspan>
-    <tspan x="334" dy="16" class="author  btnclass1">Bill Gates</tspan>
+    <tspan filter="url(#Bevel2)" x="334" dy="16" class="glass description  btnclass1">Microsoft Corporation is an</tspan><tspan filter="url(#Bevel2)" x="334" dy="16" class="glass description  btnclass1">American multinational</tspan><tspan filter="url(#Bevel2)" x="334" dy="16" class="glass description  btnclass1">technology corporation</tspan><tspan filter="url(#Bevel2)" x="334" dy="16" class="glass description  btnclass1">which produces computer</tspan>
+    <tspan filter="url(#Bevel2)" x="334" dy="16" class="glass category btnclass1">Software</tspan>
+    <tspan filter="url(#Bevel2)" x="334" dy="16" class="glass author  btnclass1">Bill Gates</tspan>
     <tspan x="332" dy="16" class="date"></tspan>
 </text> <a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
-<use x="490" y="10" class=" IDc062d4a7-4a13-4d11-8bb4-113f1a8a0090_cls shape" fill="#4d2666" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="490" y="10" class=" IDa5072ba0-3b56-4333-9991-8e234dbf9df8_cls shape" fill="#4d2666" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence</title>
 </use>
-</a> <text x="494" y="30" class="glass title  btnclass1" fill="#000" >Amazon</text>
+</a> <text filter="url(#Bevel2)" x="494" y="30" class="glass title  btnclass1" fill="#000" >Amazon</text>
 <text x="492" y="30">
-    <tspan x="494" dy="16" class="description  btnclass1">Amazon.com, Inc. is an</tspan><tspan x="494" dy="16" class="description  btnclass1">American multinational</tspan><tspan x="494" dy="16" class="description  btnclass1">technology company which</tspan><tspan x="494" dy="16" class="description  btnclass1">focuses on e-commerce, cloud</tspan>
-    <tspan x="494" dy="16" class="glass category btnclass1">Super Store</tspan>
-    <tspan x="494" dy="16" class="author  btnclass1">Jeff Bezos</tspan>
+    <tspan filter="url(#Bevel2)" x="494" dy="16" class="glass description  btnclass1">Amazon.com, Inc. is an</tspan><tspan filter="url(#Bevel2)" x="494" dy="16" class="glass description  btnclass1">American multinational</tspan><tspan filter="url(#Bevel2)" x="494" dy="16" class="glass description  btnclass1">technology company which</tspan><tspan filter="url(#Bevel2)" x="494" dy="16" class="glass description  btnclass1">focuses on e-commerce, cloud</tspan>
+    <tspan filter="url(#Bevel2)" x="494" dy="16" class="glass category btnclass1">Super Store</tspan>
+    <tspan filter="url(#Bevel2)" x="494" dy="16" class="glass author  btnclass1">Jeff Bezos</tspan>
     <tspan x="492" dy="16" class="date"></tspan>
-</text></g><g> <a xlink:href="https://www.netflix.com" target="_blank" style='text-decoration: none;'>
-<use x="10" y="170" class=" ID4b0c32c1-647f-402c-991d-f144a02f05bf_cls shape" fill="#1eb3f1" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+</text></g><g filter="url(#Bevel2)"> <a xlink:href="https://www.netflix.com" target="_blank" style='text-decoration: none;'>
+<use x="10" y="170" class=" IDbb600540-f14e-4bed-befb-0cc1dc91a365_cls shape" fill="#1eb3f1" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Netflix, Inc. is an American subscription streaming service and production company.</title>
 </use>
-</a> <text x="14" y="190" class="glass title  btnclass1" fill="#000" >Netflix</text>
+</a> <text filter="url(#Bevel2)" x="14" y="190" class="glass title  btnclass1" fill="#000" >Netflix</text>
 <text x="12" y="190">
-    <tspan x="14" dy="16" class="description  btnclass1">Netflix, Inc. is an American</tspan><tspan x="14" dy="16" class="description  btnclass1">subscription streaming</tspan><tspan x="14" dy="16" class="description  btnclass1">service and production</tspan><tspan x="14" dy="16" class="description  btnclass1">company.</tspan>
-    <tspan x="14" dy="16" class="glass category btnclass1">Movie Theater</tspan>
-    <tspan x="14" dy="16" class="author  btnclass1">Reed</tspan><tspan x="14" dy="16" class="author  btnclass1">Marc</tspan>
+    <tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">Netflix, Inc. is an American</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">subscription streaming</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">service and production</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass description  btnclass1">company.</tspan>
+    <tspan filter="url(#Bevel2)" x="14" dy="16" class="glass category btnclass1">Movie Theater</tspan>
+    <tspan filter="url(#Bevel2)" x="14" dy="16" class="glass author  btnclass1">Reed</tspan><tspan filter="url(#Bevel2)" x="14" dy="16" class="glass author  btnclass1">Marc</tspan>
     <tspan x="12" dy="16" class="date"></tspan>
 </text> <a xlink:href="https://www.facebook.com" target="_blank" style='text-decoration: none;'>
-<use x="170" y="170" class=" ID91f0d662-2862-4a81-be35-d0c01f07725b_cls shape" fill="#4f49eb" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="170" y="170" class=" ID86d0e7e4-5f35-4d9a-bd27-8038faa28dc6_cls shape" fill="#4f49eb" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Facebook is an American online social media and social networking service owned by Meta Platforms.</title>
 </use>
-</a> <text x="174" y="190" class="glass title  btnclass1" fill="#000" >Facebook</text>
+</a> <text filter="url(#Bevel2)" x="174" y="190" class="glass title  btnclass1" fill="#000" >Facebook</text>
 <text x="172" y="190">
-    <tspan x="174" dy="16" class="description  btnclass1">Facebook is an American</tspan><tspan x="174" dy="16" class="description  btnclass1">online social media and</tspan><tspan x="174" dy="16" class="description  btnclass1">social networking service</tspan><tspan x="174" dy="16" class="description  btnclass1">owned by Meta Platforms.</tspan>
-    <tspan x="174" dy="16" class="glass category btnclass1">Social Butterfly</tspan>
-    <tspan x="174" dy="16" class="author  btnclass1">Mark Zukerberg</tspan>
+    <tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">Facebook is an American</tspan><tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">online social media and</tspan><tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">social networking service</tspan><tspan filter="url(#Bevel2)" x="174" dy="16" class="glass description  btnclass1">owned by Meta Platforms.</tspan>
+    <tspan filter="url(#Bevel2)" x="174" dy="16" class="glass category btnclass1">Social Butterfly</tspan>
+    <tspan filter="url(#Bevel2)" x="174" dy="16" class="glass author  btnclass1">Mark Zukerberg</tspan>
     <tspan x="172" dy="16" class="date"></tspan>
 </text> <a xlink:href="https://www.instagram.com" target="_blank" style='text-decoration: none;'>
-<use x="330" y="170" class=" IDfcf831ad-bfa1-4597-b971-4318bd050df9_cls shape" fill="#a6b23b" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="330" y="170" class=" IDb6973659-bddf-45af-b3e8-3120c1e413d7_cls shape" fill="#a6b23b" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Instagram is an American photo and video sharing social networking service. </title>
 </use>
-</a> <text x="334" y="190" class="glass title  btnclass1" fill="#000" >Instagram</text>
+</a> <text filter="url(#Bevel2)" x="334" y="190" class="glass title  btnclass1" fill="#000" >Instagram</text>
 <text x="332" y="190">
-    <tspan x="334" dy="16" class="description  btnclass1">Instagram is an American</tspan><tspan x="334" dy="16" class="description  btnclass1">photo and video sharing</tspan><tspan x="334" dy="16" class="description  btnclass1">social networking service.</tspan>
-    <tspan x="334" dy="16" class="glass category btnclass1">Beach</tspan>
-    <tspan x="334" dy="16" class="author  btnclass1">Kevin</tspan><tspan x="334" dy="16" class="author  btnclass1">Mike</tspan>
+    <tspan filter="url(#Bevel2)" x="334" dy="16" class="glass description  btnclass1">Instagram is an American</tspan><tspan filter="url(#Bevel2)" x="334" dy="16" class="glass description  btnclass1">photo and video sharing</tspan><tspan filter="url(#Bevel2)" x="334" dy="16" class="glass description  btnclass1">social networking service.</tspan>
+    <tspan filter="url(#Bevel2)" x="334" dy="16" class="glass category btnclass1">Beach</tspan>
+    <tspan filter="url(#Bevel2)" x="334" dy="16" class="glass author  btnclass1">Kevin</tspan><tspan filter="url(#Bevel2)" x="334" dy="16" class="glass author  btnclass1">Mike</tspan>
     <tspan x="332" dy="16" class="date"></tspan>
 </text> <a xlink:href="https://docops.io/extension" target="_blank" style='text-decoration: none;'>
-<use x="490" y="170" class=" ID50742c45-a6b0-45fc-abb8-4f2f8a190b46_cls shape" fill="#ad217f" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
+<use x="490" y="170" class=" ID0122eed8-ded6-4088-9492-25e821063183_cls shape" fill="#ad217f" aria-hidden="true" focusable="false" xlink:href="#mySlimRect">
     <title class="description">Sharing documentation experience for developers to extend with AsciiDoctor</title>
 </use>
-</a> <text x="494" y="190" class="glass title  btnclass1" fill="#000" >DocOps</text>
+</a> <text filter="url(#Bevel2)" x="494" y="190" class="glass title  btnclass1" fill="#000" >DocOps</text>
 <text x="492" y="190">
-    <tspan x="494" dy="16" class="description  btnclass1">Sharing documentation</tspan><tspan x="494" dy="16" class="description  btnclass1">experience for developers to</tspan><tspan x="494" dy="16" class="description  btnclass1">extend with AsciiDoctor</tspan>
-    <tspan x="494" dy="16" class="glass category btnclass1">Documentation</tspan>
-    <tspan x="494" dy="16" class="author  btnclass1">Steve Roach</tspan><tspan x="494" dy="16" class="author  btnclass1">Ian Rose</tspan>
+    <tspan filter="url(#Bevel2)" x="494" dy="16" class="glass description  btnclass1">Sharing documentation</tspan><tspan filter="url(#Bevel2)" x="494" dy="16" class="glass description  btnclass1">experience for developers to</tspan><tspan filter="url(#Bevel2)" x="494" dy="16" class="glass description  btnclass1">extend with AsciiDoctor</tspan>
+    <tspan filter="url(#Bevel2)" x="494" dy="16" class="glass category btnclass1">Documentation</tspan>
+    <tspan filter="url(#Bevel2)" x="494" dy="16" class="glass author  btnclass1">Steve Roach</tspan><tspan filter="url(#Bevel2)" x="494" dy="16" class="glass author  btnclass1">Ian Rose</tspan>
     <tspan x="492" dy="16" class="date"></tspan>
 </text></g></svg>
             </div>
@@ -4649,7 +4717,7 @@ New Attributes added, dropShadow &amp; font
             <div class="openblock">
             <div class="content" style="width: 80%;padding: 10px;margin: auto;">
             <?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53"
+                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 1250"
                 >
         <defs>
@@ -4667,6 +4735,22 @@ New Attributes added, dropShadow &amp; font
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
+        </filter>
+        <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="0000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -4715,43 +4799,44 @@ New Attributes added, dropShadow &amp; font
         </linearGradient>
 
 
-           <linearGradient id="ID2802f8d4-f9e3-410d-b373-15352937448c" x2="1" y2="1">
+
+           <linearGradient id="ID75b1c116-69d7-49bf-b2c8-f0895779d062" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#d0f8ca"/>
             <stop class="stop2" offset="50%" stop-color="#b8f4b0"/>
             <stop class="stop3" offset="100%" stop-color="#a1f196"/>
             </linearGradient>
 
-           <linearGradient id="ID0207a4f1-c193-45f1-9be1-728990b9aa56" x2="1" y2="1">
+           <linearGradient id="ID4c871ffe-9f67-4b54-9e01-afd326dbccb8" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#8aaabb"/>
             <stop class="stop2" offset="50%" stop-color="#507f99"/>
             <stop class="stop3" offset="100%" stop-color="#165578"/>
             </linearGradient>
 
-           <linearGradient id="IDc046864e-518f-40a9-ba62-4681aad2fb4f" x2="1" y2="1">
+           <linearGradient id="IDbaf1f93d-794b-4d21-b7e0-d69194ee5779" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#beb9b5"/>
             <stop class="stop2" offset="50%" stop-color="#9d9690"/>
             <stop class="stop3" offset="100%" stop-color="#7d746c"/>
             </linearGradient>
 
-           <linearGradient id="ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc" x2="1" y2="1">
+           <linearGradient id="ID65c249b7-c4cc-4d0e-85da-96c43c188e7a" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#91a0e8"/>
             <stop class="stop2" offset="50%" stop-color="#5a71dc"/>
             <stop class="stop3" offset="100%" stop-color="#2442d1"/>
             </linearGradient>
 
-           <linearGradient id="IDd5803a5a-480c-44ce-a1c9-03b17b720b7b" x2="1" y2="1">
+           <linearGradient id="ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#dfd6f7"/>
             <stop class="stop2" offset="50%" stop-color="#cfc1f3"/>
             <stop class="stop3" offset="100%" stop-color="#c0adef"/>
             </linearGradient>
 
-           <linearGradient id="IDb4ad13d2-a613-4661-96e3-f10e873010d8" x2="1" y2="1">
+           <linearGradient id="ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#a692b2"/>
             <stop class="stop2" offset="50%" stop-color="#795c8c"/>
             <stop class="stop3" offset="100%" stop-color="#4d2666"/>
             </linearGradient>
 
-           <linearGradient id="ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5" x2="1" y2="1">
+           <linearGradient id="ID293fcef6-f940-45f5-9654-95fce456eae4" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#fdd881"/>
             <stop class="stop2" offset="50%" stop-color="#fcc442"/>
             <stop class="stop3" offset="100%" stop-color="#fbb103"/>
@@ -4768,34 +4853,34 @@ New Attributes added, dropShadow &amp; font
 
     </defs>
     <style>
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 rect.card { pointer-events: bounding-box; opacity: 1; }
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .card { pointer-events: bounding-box; opacity: 1; }
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .card:hover {  transition: mask-position 2s ease,-webkit-mask-position 2s ease;
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad rect.card { pointer-events: bounding-box; opacity: 1; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .card { pointer-events: bounding-box; opacity: 1; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .card:hover {  transition: mask-position 2s ease,-webkit-mask-position 2s ease;
     -webkit-mask-position: 120%;
     mask-position: 120%;
     opacity: 1;}
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .headline { font-family:  Helvetica, Arial, sans-serif; fill: #46494d; }
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .link { font-family:  Helvetica, Arial, sans-serif; fill: #335D79; }
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .description { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .category { font-size: 10pt; font-family:  Helvetica, Arial, sans-serif; }
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .longdesc { font-family:  Helvetica, Arial, sans-serif; font-size: 9pt; }
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .legendText { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .headline { font-family:  Helvetica, Arial, sans-serif; fill: #46494d; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .link { font-family:  Helvetica, Arial, sans-serif; fill: #335D79; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .description { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .category { font-size: 10pt; font-family:  Helvetica, Arial, sans-serif; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .longdesc { font-family:  Helvetica, Arial, sans-serif; font-size: 9pt; }
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .legendText { font-size: 9pt; font-family:  Helvetica, Arial, sans-serif; }
 
 @keyframes draw {
     0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
     100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
 }
 
-#DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .shape{ stroke:black;}
+#DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .shape{ stroke:black;}
 
-.ID2802f8d4-f9e3-410d-b373-15352937448c_cls { fill: url(#ID2802f8d4-f9e3-410d-b373-15352937448c); }
-    .ID0207a4f1-c193-45f1-9be1-728990b9aa56_cls { fill: url(#ID0207a4f1-c193-45f1-9be1-728990b9aa56); }
-    .IDc046864e-518f-40a9-ba62-4681aad2fb4f_cls { fill: url(#IDc046864e-518f-40a9-ba62-4681aad2fb4f); }
-    .ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc_cls { fill: url(#ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc); }
-    .IDd5803a5a-480c-44ce-a1c9-03b17b720b7b_cls { fill: url(#IDd5803a5a-480c-44ce-a1c9-03b17b720b7b); }
-    .IDb4ad13d2-a613-4661-96e3-f10e873010d8_cls { fill: url(#IDb4ad13d2-a613-4661-96e3-f10e873010d8); }
-    .ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5_cls { fill: url(#ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5); }
-    #DocOps-1ddc29ef-1f8d-4040-99b2-5ffbb8667b53 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+.ID75b1c116-69d7-49bf-b2c8-f0895779d062_cls { fill: url(#ID75b1c116-69d7-49bf-b2c8-f0895779d062); }
+    .ID4c871ffe-9f67-4b54-9e01-afd326dbccb8_cls { fill: url(#ID4c871ffe-9f67-4b54-9e01-afd326dbccb8); }
+    .IDbaf1f93d-794b-4d21-b7e0-d69194ee5779_cls { fill: url(#IDbaf1f93d-794b-4d21-b7e0-d69194ee5779); }
+    .ID65c249b7-c4cc-4d0e-85da-96c43c188e7a_cls { fill: url(#ID65c249b7-c4cc-4d0e-85da-96c43c188e7a); }
+    .ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61_cls { fill: url(#ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61); }
+    .ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f_cls { fill: url(#ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f); }
+    .ID293fcef6-f940-45f5-9654-95fce456eae4_cls { fill: url(#ID293fcef6-f940-45f5-9654-95fce456eae4); }
+    #DocOps-507a772d-18d1-4de1-ab34-a81f4b6f46ad .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
             .glass {
     overflow: hidden;
     color: white;
@@ -4848,7 +4933,7 @@ New Attributes added, dropShadow &amp; font
 .glass:active:before {
     height: 25px;
 }
-            </style><svg>                    <a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
+            </style><svg filter="url(#Bevel2)">                    <a xlink:href="https://www.google.com" target="_blank" style='text-decoration: none;'>
                    <g class="glass" transform="translate(10,10)" id="largePanelId">
                      <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 378.0 A 22.0 22.0 0 0 1 278.0 400.0 L 22.0 400.0 A 22.0 22.0 0 0 1 0 378.0 Z"
                         filter="url(#dropShadow)" class="card shape" fill="#ffffff"
@@ -4866,43 +4951,44 @@ New Attributes added, dropShadow &amp; font
                         </path>
                     </g>
                     <g transform="translate(10,10)">
-<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID2802f8d4-f9e3-410d-b373-15352937448c_cls" fill="#a1f196" filter="url(#dropShadow)"/>
-</g>    <svg class="glass" id="twotone_ID2802f8d4-f9e3-410d-b373-15352937448c" x="10" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID75b1c116-69d7-49bf-b2c8-f0895779d062_cls" fill="#a1f196" filter="url(#dropShadow)"/>
+</g>    <svg class="glass" id="twotone_ID75b1c116-69d7-49bf-b2c8-f0895779d062" x="10" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>ICON</title>
         <defs>
-   <linearGradient id="ID2802f8d4-f9e3-410d-b373-15352937448c" x2="1" y2="1">
+   <linearGradient id="ID75b1c116-69d7-49bf-b2c8-f0895779d062" x2="1" y2="1">
     <stop class="stop1" offset="0%" stop-color="#d0f8ca"/>
     <stop class="stop2" offset="50%" stop-color="#b8f4b0"/>
     <stop class="stop3" offset="100%" stop-color="#a1f196"/>
     </linearGradient>
 </defs>
         <style>
-            .oddstyleID2802f8d4-f9e3-410d-b373-15352937448c {
+            .oddstyleID75b1c116-69d7-49bf-b2c8-f0895779d062 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #a1f196;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .evenstyleID2802f8d4-f9e3-410d-b373-15352937448c {
+            .evenstyleID75b1c116-69d7-49bf-b2c8-f0895779d062 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            .ID2802f8d4-f9e3-410d-b373-15352937448c_cls { fill: url(#ID2802f8d4-f9e3-410d-b373-15352937448c); }
+            .ID75b1c116-69d7-49bf-b2c8-f0895779d062_cls { fill: url(#ID75b1c116-69d7-49bf-b2c8-f0895779d062); }
 
         </style>
-        <g id="Page-1ID2802f8d4-f9e3-410d-b373-15352937448c" stroke="none" stroke-width="1" fill="#FFFFFF" >
+        <g id="Page-1ID75b1c116-69d7-49bf-b2c8-f0895779d062" stroke="none" stroke-width="1" fill="#FFFFFF" >
             <rect width="100%" height="100%" fill="none" />
-            <path  d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
+            <path  filter="url(#Bevel2)" d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
 
             <g transform="translate(0,95.5)">
-                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID2802f8d4-f9e3-410d-b373-15352937448c_cls" />
+                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID75b1c116-69d7-49bf-b2c8-f0895779d062_cls" filter="url(#Bevel2)"/>
             </g>
-            <text text-anchor="middle" x="150" y="67.75" class="oddstyleID2802f8d4-f9e3-410d-b373-15352937448c">Google</text>
-            <text text-anchor="middle" x="150" y="163.25" class="evenstyleID2802f8d4-f9e3-410d-b373-15352937448c">Search</text>
+            <text text-anchor="middle" x="150" y="67.75" class="glass oddstyleID75b1c116-69d7-49bf-b2c8-f0895779d062" filter="url(#Bevel2)">Google</text>
+            <text text-anchor="middle" x="150" y="163.25" class="glass evenstyleID75b1c116-69d7-49bf-b2c8-f0895779d062" filter="url(#Bevel2)">Search</text>
         </g>
     </svg>
                    </a><a xlink:href="https://www.google.com" href="https://www.google.com" class="btnclass1" style='text-decoration: none;'>
-<text x="20" y="230" class="link" fill="#000" opacity="0.25">Google</text>
-<text x="21" y="229" class="title link">Google</text>
+<text filter="url(#Bevel2)" x="20" y="230" class="link glass title" fill="#000" >Google</text>
 </a>
 <text x="20" y="244" class="category btnclass1"><tspan x="20" dy="0">Search </tspan></text>
 <text x="20" y="250" class="longdesc">
@@ -4925,43 +5011,44 @@ New Attributes added, dropShadow &amp; font
                         </path>
                     </g>
                     <g transform="translate(330,10)">
-<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID0207a4f1-c193-45f1-9be1-728990b9aa56_cls" fill="#165578" filter="url(#dropShadow)"/>
-</g>    <svg class="glass" id="twotone_ID0207a4f1-c193-45f1-9be1-728990b9aa56" x="330" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID4c871ffe-9f67-4b54-9e01-afd326dbccb8_cls" fill="#165578" filter="url(#dropShadow)"/>
+</g>    <svg class="glass" id="twotone_ID4c871ffe-9f67-4b54-9e01-afd326dbccb8" x="330" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>ICON</title>
         <defs>
-   <linearGradient id="ID0207a4f1-c193-45f1-9be1-728990b9aa56" x2="1" y2="1">
+   <linearGradient id="ID4c871ffe-9f67-4b54-9e01-afd326dbccb8" x2="1" y2="1">
     <stop class="stop1" offset="0%" stop-color="#8aaabb"/>
     <stop class="stop2" offset="50%" stop-color="#507f99"/>
     <stop class="stop3" offset="100%" stop-color="#165578"/>
     </linearGradient>
 </defs>
         <style>
-            .oddstyleID0207a4f1-c193-45f1-9be1-728990b9aa56 {
+            .oddstyleID4c871ffe-9f67-4b54-9e01-afd326dbccb8 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #165578;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .evenstyleID0207a4f1-c193-45f1-9be1-728990b9aa56 {
+            .evenstyleID4c871ffe-9f67-4b54-9e01-afd326dbccb8 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            .ID0207a4f1-c193-45f1-9be1-728990b9aa56_cls { fill: url(#ID0207a4f1-c193-45f1-9be1-728990b9aa56); }
+            .ID4c871ffe-9f67-4b54-9e01-afd326dbccb8_cls { fill: url(#ID4c871ffe-9f67-4b54-9e01-afd326dbccb8); }
 
         </style>
-        <g id="Page-1ID0207a4f1-c193-45f1-9be1-728990b9aa56" stroke="none" stroke-width="1" fill="#FFFFFF" >
+        <g id="Page-1ID4c871ffe-9f67-4b54-9e01-afd326dbccb8" stroke="none" stroke-width="1" fill="#FFFFFF" >
             <rect width="100%" height="100%" fill="none" />
-            <path  d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
+            <path  filter="url(#Bevel2)" d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
 
             <g transform="translate(0,95.5)">
-                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID0207a4f1-c193-45f1-9be1-728990b9aa56_cls" />
+                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID4c871ffe-9f67-4b54-9e01-afd326dbccb8_cls" filter="url(#Bevel2)"/>
             </g>
-            <text text-anchor="middle" x="150" y="67.75" class="oddstyleID0207a4f1-c193-45f1-9be1-728990b9aa56">Apple</text>
-            <text text-anchor="middle" x="150" y="163.25" class="evenstyleID0207a4f1-c193-45f1-9be1-728990b9aa56">Inc.</text>
+            <text text-anchor="middle" x="150" y="67.75" class="glass oddstyleID4c871ffe-9f67-4b54-9e01-afd326dbccb8" filter="url(#Bevel2)">Apple</text>
+            <text text-anchor="middle" x="150" y="163.25" class="glass evenstyleID4c871ffe-9f67-4b54-9e01-afd326dbccb8" filter="url(#Bevel2)">Inc.</text>
         </g>
     </svg>
                    </a><a xlink:href="https://www.apple.com" href="https://www.apple.com" class="btnclass1" style='text-decoration: none;'>
-<text x="340" y="230" class="link" fill="#000" opacity="0.25">Apple</text>
-<text x="341" y="229" class="title link">Apple</text>
+<text filter="url(#Bevel2)" x="340" y="230" class="link glass title" fill="#000" >Apple</text>
 </a>
 <text x="340" y="244" class="category btnclass1"><tspan x="340" dy="0">Personal Devices </tspan></text>
 <text x="340" y="250" class="longdesc">
@@ -4984,48 +5071,49 @@ New Attributes added, dropShadow &amp; font
                         </path>
                     </g>
                     <g transform="translate(650,10)">
-<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card IDc046864e-518f-40a9-ba62-4681aad2fb4f_cls" fill="#7d746c" filter="url(#dropShadow)"/>
-</g>    <svg class="glass" id="twotone_IDc046864e-518f-40a9-ba62-4681aad2fb4f" x="650" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card IDbaf1f93d-794b-4d21-b7e0-d69194ee5779_cls" fill="#7d746c" filter="url(#dropShadow)"/>
+</g>    <svg class="glass" id="twotone_IDbaf1f93d-794b-4d21-b7e0-d69194ee5779" x="650" y="10" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>ICON</title>
         <defs>
-   <linearGradient id="IDc046864e-518f-40a9-ba62-4681aad2fb4f" x2="1" y2="1">
+   <linearGradient id="IDbaf1f93d-794b-4d21-b7e0-d69194ee5779" x2="1" y2="1">
     <stop class="stop1" offset="0%" stop-color="#beb9b5"/>
     <stop class="stop2" offset="50%" stop-color="#9d9690"/>
     <stop class="stop3" offset="100%" stop-color="#7d746c"/>
     </linearGradient>
 </defs>
         <style>
-            .oddstyleIDc046864e-518f-40a9-ba62-4681aad2fb4f {
+            .oddstyleIDbaf1f93d-794b-4d21-b7e0-d69194ee5779 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #7d746c;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .evenstyleIDc046864e-518f-40a9-ba62-4681aad2fb4f {
+            .evenstyleIDbaf1f93d-794b-4d21-b7e0-d69194ee5779 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            .IDc046864e-518f-40a9-ba62-4681aad2fb4f_cls { fill: url(#IDc046864e-518f-40a9-ba62-4681aad2fb4f); }
+            .IDbaf1f93d-794b-4d21-b7e0-d69194ee5779_cls { fill: url(#IDbaf1f93d-794b-4d21-b7e0-d69194ee5779); }
 
         </style>
-        <g id="Page-1IDc046864e-518f-40a9-ba62-4681aad2fb4f" stroke="none" stroke-width="1" fill="#FFFFFF" >
+        <g id="Page-1IDbaf1f93d-794b-4d21-b7e0-d69194ee5779" stroke="none" stroke-width="1" fill="#FFFFFF" >
             <rect width="100%" height="100%" fill="none" />
-            <path  d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
+            <path  filter="url(#Bevel2)" d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
 
             <g transform="translate(0,95.5)">
-                <path d="M0,00 300,0 300,95.5 0,95.5" class="IDc046864e-518f-40a9-ba62-4681aad2fb4f_cls" />
+                <path d="M0,00 300,0 300,95.5 0,95.5" class="IDbaf1f93d-794b-4d21-b7e0-d69194ee5779_cls" filter="url(#Bevel2)"/>
             </g>
-            <text text-anchor="middle" x="150" y="67.75" class="oddstyleIDc046864e-518f-40a9-ba62-4681aad2fb4f">Microsoft</text>
-            <text text-anchor="middle" x="150" y="163.25" class="evenstyleIDc046864e-518f-40a9-ba62-4681aad2fb4f">Corp</text>
+            <text text-anchor="middle" x="150" y="67.75" class="glass oddstyleIDbaf1f93d-794b-4d21-b7e0-d69194ee5779" filter="url(#Bevel2)">Microsoft</text>
+            <text text-anchor="middle" x="150" y="163.25" class="glass evenstyleIDbaf1f93d-794b-4d21-b7e0-d69194ee5779" filter="url(#Bevel2)">Corp</text>
         </g>
     </svg>
                    </a><a xlink:href="https://www.microsoft.com" href="https://www.microsoft.com" class="btnclass1" style='text-decoration: none;'>
-<text x="660" y="230" class="link" fill="#000" opacity="0.25">Microsoft</text>
-<text x="661" y="229" class="title link">Microsoft</text>
+<text filter="url(#Bevel2)" x="660" y="230" class="link glass title" fill="#000" >Microsoft</text>
 </a>
 <text x="660" y="244" class="category btnclass1"><tspan x="660" dy="0">Software </tspan></text>
 <text x="660" y="250" class="longdesc">
 
-                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Microsoft Corporation is an American </tspan><tspan x="660" dy="18" class="longdesc">multinational technology corporation </tspan><tspan x="660" dy="18" class="longdesc">which produces computer software, </tspan><tspan x="660" dy="18" class="longdesc">consumer electronics, personal </tspan><tspan x="660" dy="18" class="longdesc">computers, and related services. </tspan></text></svg><svg>                    <a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
+                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Microsoft Corporation is an American </tspan><tspan x="660" dy="18" class="longdesc">multinational technology corporation </tspan><tspan x="660" dy="18" class="longdesc">which produces computer software, </tspan><tspan x="660" dy="18" class="longdesc">consumer electronics, personal </tspan><tspan x="660" dy="18" class="longdesc">computers, and related services. </tspan></text></svg><svg filter="url(#Bevel2)">                    <a xlink:href="https://www.amazon.com" target="_blank" style='text-decoration: none;'>
                    <g class="glass" transform="translate(10,420)" id="largePanelId">
                      <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 378.0 A 22.0 22.0 0 0 1 278.0 400.0 L 22.0 400.0 A 22.0 22.0 0 0 1 0 378.0 Z"
                         filter="url(#dropShadow)" class="card shape" fill="#ffffff"
@@ -5043,43 +5131,44 @@ New Attributes added, dropShadow &amp; font
                         </path>
                     </g>
                     <g transform="translate(10,420)">
-<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc_cls" fill="#2442d1" filter="url(#dropShadow)"/>
-</g>    <svg class="glass" id="twotone_ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc" x="10" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID65c249b7-c4cc-4d0e-85da-96c43c188e7a_cls" fill="#2442d1" filter="url(#dropShadow)"/>
+</g>    <svg class="glass" id="twotone_ID65c249b7-c4cc-4d0e-85da-96c43c188e7a" x="10" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>ICON</title>
         <defs>
-   <linearGradient id="ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc" x2="1" y2="1">
+   <linearGradient id="ID65c249b7-c4cc-4d0e-85da-96c43c188e7a" x2="1" y2="1">
     <stop class="stop1" offset="0%" stop-color="#91a0e8"/>
     <stop class="stop2" offset="50%" stop-color="#5a71dc"/>
     <stop class="stop3" offset="100%" stop-color="#2442d1"/>
     </linearGradient>
 </defs>
         <style>
-            .oddstyleID7267a100-ada3-47d5-b6e6-3bda3e8df6bc {
+            .oddstyleID65c249b7-c4cc-4d0e-85da-96c43c188e7a {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #2442d1;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .evenstyleID7267a100-ada3-47d5-b6e6-3bda3e8df6bc {
+            .evenstyleID65c249b7-c4cc-4d0e-85da-96c43c188e7a {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            .ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc_cls { fill: url(#ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc); }
+            .ID65c249b7-c4cc-4d0e-85da-96c43c188e7a_cls { fill: url(#ID65c249b7-c4cc-4d0e-85da-96c43c188e7a); }
 
         </style>
-        <g id="Page-1ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc" stroke="none" stroke-width="1" fill="#FFFFFF" >
+        <g id="Page-1ID65c249b7-c4cc-4d0e-85da-96c43c188e7a" stroke="none" stroke-width="1" fill="#FFFFFF" >
             <rect width="100%" height="100%" fill="none" />
-            <path  d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
+            <path  filter="url(#Bevel2)" d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
 
             <g transform="translate(0,95.5)">
-                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID7267a100-ada3-47d5-b6e6-3bda3e8df6bc_cls" />
+                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID65c249b7-c4cc-4d0e-85da-96c43c188e7a_cls" filter="url(#Bevel2)"/>
             </g>
-            <text text-anchor="middle" x="150" y="67.75" class="oddstyleID7267a100-ada3-47d5-b6e6-3bda3e8df6bc">Amazon</text>
-            <text text-anchor="middle" x="150" y="163.25" class="evenstyleID7267a100-ada3-47d5-b6e6-3bda3e8df6bc">Inc.</text>
+            <text text-anchor="middle" x="150" y="67.75" class="glass oddstyleID65c249b7-c4cc-4d0e-85da-96c43c188e7a" filter="url(#Bevel2)">Amazon</text>
+            <text text-anchor="middle" x="150" y="163.25" class="glass evenstyleID65c249b7-c4cc-4d0e-85da-96c43c188e7a" filter="url(#Bevel2)">Inc.</text>
         </g>
     </svg>
                    </a><a xlink:href="https://www.amazon.com" href="https://www.amazon.com" class="btnclass1" style='text-decoration: none;'>
-<text x="20" y="640" class="link" fill="#000" opacity="0.25">Amazon</text>
-<text x="21" y="639" class="title link">Amazon</text>
+<text filter="url(#Bevel2)" x="20" y="640" class="link glass title" fill="#000" >Amazon</text>
 </a>
 <text x="20" y="654" class="category btnclass1"><tspan x="20" dy="0">Super Store </tspan></text>
 <text x="20" y="660" class="longdesc">
@@ -5102,43 +5191,44 @@ New Attributes added, dropShadow &amp; font
                         </path>
                     </g>
                     <g transform="translate(330,420)">
-<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card IDd5803a5a-480c-44ce-a1c9-03b17b720b7b_cls" fill="#c0adef" filter="url(#dropShadow)"/>
-</g>    <svg class="glass" id="twotone_IDd5803a5a-480c-44ce-a1c9-03b17b720b7b" x="330" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61_cls" fill="#c0adef" filter="url(#dropShadow)"/>
+</g>    <svg class="glass" id="twotone_ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61" x="330" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>ICON</title>
         <defs>
-   <linearGradient id="IDd5803a5a-480c-44ce-a1c9-03b17b720b7b" x2="1" y2="1">
+   <linearGradient id="ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61" x2="1" y2="1">
     <stop class="stop1" offset="0%" stop-color="#dfd6f7"/>
     <stop class="stop2" offset="50%" stop-color="#cfc1f3"/>
     <stop class="stop3" offset="100%" stop-color="#c0adef"/>
     </linearGradient>
 </defs>
         <style>
-            .oddstyleIDd5803a5a-480c-44ce-a1c9-03b17b720b7b {
+            .oddstyleID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #c0adef;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .evenstyleIDd5803a5a-480c-44ce-a1c9-03b17b720b7b {
+            .evenstyleID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            .IDd5803a5a-480c-44ce-a1c9-03b17b720b7b_cls { fill: url(#IDd5803a5a-480c-44ce-a1c9-03b17b720b7b); }
+            .ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61_cls { fill: url(#ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61); }
 
         </style>
-        <g id="Page-1IDd5803a5a-480c-44ce-a1c9-03b17b720b7b" stroke="none" stroke-width="1" fill="#FFFFFF" >
+        <g id="Page-1ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61" stroke="none" stroke-width="1" fill="#FFFFFF" >
             <rect width="100%" height="100%" fill="none" />
-            <path  d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
+            <path  filter="url(#Bevel2)" d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
 
             <g transform="translate(0,95.5)">
-                <path d="M0,00 300,0 300,95.5 0,95.5" class="IDd5803a5a-480c-44ce-a1c9-03b17b720b7b_cls" />
+                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61_cls" filter="url(#Bevel2)"/>
             </g>
-            <text text-anchor="middle" x="150" y="67.75" class="oddstyleIDd5803a5a-480c-44ce-a1c9-03b17b720b7b">Netflix</text>
-            <text text-anchor="middle" x="150" y="163.25" class="evenstyleIDd5803a5a-480c-44ce-a1c9-03b17b720b7b">Movies</text>
+            <text text-anchor="middle" x="150" y="67.75" class="glass oddstyleID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61" filter="url(#Bevel2)">Netflix</text>
+            <text text-anchor="middle" x="150" y="163.25" class="glass evenstyleID3b3f70f4-45c1-4d66-a715-a6dcee0c9b61" filter="url(#Bevel2)">Movies</text>
         </g>
     </svg>
                    </a><a xlink:href="https://www.netflix.com" href="https://www.netflix.com" class="btnclass1" style='text-decoration: none;'>
-<text x="340" y="640" class="link" fill="#000" opacity="0.25">Netflix</text>
-<text x="341" y="639" class="title link">Netflix</text>
+<text filter="url(#Bevel2)" x="340" y="640" class="link glass title" fill="#000" >Netflix</text>
 </a>
 <text x="340" y="654" class="category btnclass1"><tspan x="340" dy="0">Movie Theater </tspan></text>
 <text x="340" y="660" class="longdesc">
@@ -5161,48 +5251,49 @@ New Attributes added, dropShadow &amp; font
                         </path>
                     </g>
                     <g transform="translate(650,420)">
-<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card IDb4ad13d2-a613-4661-96e3-f10e873010d8_cls" fill="#4d2666" filter="url(#dropShadow)"/>
-</g>    <svg class="glass" id="twotone_IDb4ad13d2-a613-4661-96e3-f10e873010d8" x="650" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f_cls" fill="#4d2666" filter="url(#dropShadow)"/>
+</g>    <svg class="glass" id="twotone_ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f" x="650" y="420" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>ICON</title>
         <defs>
-   <linearGradient id="IDb4ad13d2-a613-4661-96e3-f10e873010d8" x2="1" y2="1">
+   <linearGradient id="ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f" x2="1" y2="1">
     <stop class="stop1" offset="0%" stop-color="#a692b2"/>
     <stop class="stop2" offset="50%" stop-color="#795c8c"/>
     <stop class="stop3" offset="100%" stop-color="#4d2666"/>
     </linearGradient>
 </defs>
         <style>
-            .oddstyleIDb4ad13d2-a613-4661-96e3-f10e873010d8 {
+            .oddstyleID6008b3c4-ad06-4a0b-924f-d4bf62e2525f {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #4d2666;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .evenstyleIDb4ad13d2-a613-4661-96e3-f10e873010d8 {
+            .evenstyleID6008b3c4-ad06-4a0b-924f-d4bf62e2525f {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            .IDb4ad13d2-a613-4661-96e3-f10e873010d8_cls { fill: url(#IDb4ad13d2-a613-4661-96e3-f10e873010d8); }
+            .ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f_cls { fill: url(#ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f); }
 
         </style>
-        <g id="Page-1IDb4ad13d2-a613-4661-96e3-f10e873010d8" stroke="none" stroke-width="1" fill="#FFFFFF" >
+        <g id="Page-1ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f" stroke="none" stroke-width="1" fill="#FFFFFF" >
             <rect width="100%" height="100%" fill="none" />
-            <path  d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
+            <path  filter="url(#Bevel2)" d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
 
             <g transform="translate(0,95.5)">
-                <path d="M0,00 300,0 300,95.5 0,95.5" class="IDb4ad13d2-a613-4661-96e3-f10e873010d8_cls" />
+                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID6008b3c4-ad06-4a0b-924f-d4bf62e2525f_cls" filter="url(#Bevel2)"/>
             </g>
-            <text text-anchor="middle" x="150" y="67.75" class="oddstyleIDb4ad13d2-a613-4661-96e3-f10e873010d8">Meta</text>
-            <text text-anchor="middle" x="150" y="163.25" class="evenstyleIDb4ad13d2-a613-4661-96e3-f10e873010d8">Facebook</text>
+            <text text-anchor="middle" x="150" y="67.75" class="glass oddstyleID6008b3c4-ad06-4a0b-924f-d4bf62e2525f" filter="url(#Bevel2)">Meta</text>
+            <text text-anchor="middle" x="150" y="163.25" class="glass evenstyleID6008b3c4-ad06-4a0b-924f-d4bf62e2525f" filter="url(#Bevel2)">Facebook</text>
         </g>
     </svg>
                    </a><a xlink:href="https://www.facebook.com" href="https://www.facebook.com" class="btnclass1" style='text-decoration: none;'>
-<text x="660" y="640" class="link" fill="#000" opacity="0.25">Facebook</text>
-<text x="661" y="639" class="title link">Facebook</text>
+<text filter="url(#Bevel2)" x="660" y="640" class="link glass title" fill="#000" >Facebook</text>
 </a>
 <text x="660" y="654" class="category btnclass1"><tspan x="660" dy="0">Social Butterfly </tspan></text>
 <text x="660" y="660" class="longdesc">
 
-                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Facebook is an American online social </tspan><tspan x="660" dy="18" class="longdesc">media and social networking service </tspan><tspan x="660" dy="18" class="longdesc">owned by Meta Platforms. </tspan></text></svg><svg>                    <a xlink:href="https://www.instagram.com" target="_blank" style='text-decoration: none;'>
+                    <tspan x="660" dy="18" class="date"></tspan><tspan x="660" dy="18" class="longdesc">Facebook is an American online social </tspan><tspan x="660" dy="18" class="longdesc">media and social networking service </tspan><tspan x="660" dy="18" class="longdesc">owned by Meta Platforms. </tspan></text></svg><svg filter="url(#Bevel2)">                    <a xlink:href="https://www.instagram.com" target="_blank" style='text-decoration: none;'>
                    <g class="glass" transform="translate(10,830)" id="largePanelId">
                      <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 378.0 A 22.0 22.0 0 0 1 278.0 400.0 L 22.0 400.0 A 22.0 22.0 0 0 1 0 378.0 Z"
                         filter="url(#dropShadow)" class="card shape" fill="#ffffff"
@@ -5220,43 +5311,44 @@ New Attributes added, dropShadow &amp; font
                         </path>
                     </g>
                     <g transform="translate(10,830)">
-<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5_cls" fill="#fbb103" filter="url(#dropShadow)"/>
-</g>    <svg class="glass" id="twotone_ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5" x="10" y="830" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 191.0 A 0.0 0.0 0 0 1 300.0 191.0 L 0.0 191.0 A 0.0 0.0 0 0 1 0 191.0 Z" class="card ID293fcef6-f940-45f5-9654-95fce456eae4_cls" fill="#fbb103" filter="url(#dropShadow)"/>
+</g>    <svg class="glass" id="twotone_ID293fcef6-f940-45f5-9654-95fce456eae4" x="10" y="830" width="300px" height="191px" viewBox="0 0 300 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>ICON</title>
         <defs>
-   <linearGradient id="ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5" x2="1" y2="1">
+   <linearGradient id="ID293fcef6-f940-45f5-9654-95fce456eae4" x2="1" y2="1">
     <stop class="stop1" offset="0%" stop-color="#fdd881"/>
     <stop class="stop2" offset="50%" stop-color="#fcc442"/>
     <stop class="stop3" offset="100%" stop-color="#fbb103"/>
     </linearGradient>
 </defs>
         <style>
-            .oddstyleID40f20a91-05e1-4041-8f25-5d65a1c0b2a5 {
+            .oddstyleID293fcef6-f940-45f5-9654-95fce456eae4 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #fbb103;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            .evenstyleID40f20a91-05e1-4041-8f25-5d65a1c0b2a5 {
+            .evenstyleID293fcef6-f940-45f5-9654-95fce456eae4 {
                 font: bold 30px Arial, Helvetica, sans-serif;
                 fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            .ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5_cls { fill: url(#ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5); }
+            .ID293fcef6-f940-45f5-9654-95fce456eae4_cls { fill: url(#ID293fcef6-f940-45f5-9654-95fce456eae4); }
 
         </style>
-        <g id="Page-1ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5" stroke="none" stroke-width="1" fill="#FFFFFF" >
+        <g id="Page-1ID293fcef6-f940-45f5-9654-95fce456eae4" stroke="none" stroke-width="1" fill="#FFFFFF" >
             <rect width="100%" height="100%" fill="none" />
-            <path  d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
+            <path  filter="url(#Bevel2)" d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 95.0 A 0.0 0.0 0 0 1 300.0 95.0 L 0.0 95.0 A 0.0 0.0 0 0 1 0 95.0 Z" />
 
             <g transform="translate(0,95.5)">
-                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID40f20a91-05e1-4041-8f25-5d65a1c0b2a5_cls" />
+                <path d="M0,00 300,0 300,95.5 0,95.5" class="ID293fcef6-f940-45f5-9654-95fce456eae4_cls" filter="url(#Bevel2)"/>
             </g>
-            <text text-anchor="middle" x="150" y="67.75" class="oddstyleID40f20a91-05e1-4041-8f25-5d65a1c0b2a5">Instagram</text>
-            <text text-anchor="middle" x="150" y="163.25" class="evenstyleID40f20a91-05e1-4041-8f25-5d65a1c0b2a5">Pictures</text>
+            <text text-anchor="middle" x="150" y="67.75" class="glass oddstyleID293fcef6-f940-45f5-9654-95fce456eae4" filter="url(#Bevel2)">Instagram</text>
+            <text text-anchor="middle" x="150" y="163.25" class="glass evenstyleID293fcef6-f940-45f5-9654-95fce456eae4" filter="url(#Bevel2)">Pictures</text>
         </g>
     </svg>
                    </a><a xlink:href="https://www.instagram.com" href="https://www.instagram.com" class="btnclass1" style='text-decoration: none;'>
-<text x="20" y="1050" class="link" fill="#000" opacity="0.25">Instagram</text>
-<text x="21" y="1049" class="title link">Instagram</text>
+<text filter="url(#Bevel2)" x="20" y="1050" class="link glass title" fill="#000" >Instagram</text>
 </a>
 <text x="20" y="1064" class="category btnclass1"><tspan x="20" dy="0">Beach </tspan></text>
 <text x="20" y="1070" class="longdesc">
@@ -5425,17 +5517,17 @@ Still needs pipe character with empty url
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.google.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nNzIuMTE2NjQnIGhlaWdodD0nMjAnIHZpZXdCb3g9JzAgMCA3MjEuMTY2NCAyMDAnIAogICAgICAgICAgICB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHJvbGU9J2ltZycgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGFyaWEtbGFiZWw9JyBCZWxvdzogKyArJz4KICAgICAgICAgICAgIDx0aXRsZT4gQmVsb3c6ICsgKzwvdGl0bGU+CiAgICAgICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgICAgIDxmaWx0ZXIgaWQ9IkJldmVsIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMyIgcmVzdWx0PSJibHVyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlU3BlY3VsYXJMaWdodGluZyBpbj0iYmx1ciIgc3VyZmFjZVNjYWxlPSI1IiBzcGVjdWxhckNvbnN0YW50PSIwLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSJ3aGl0ZSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMjAwMDAiLz4KICAgICAgICAgICAgICAgICAgICA8L2ZlU3BlY3VsYXJMaWdodGluZz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49InNwZWNPdXQiIGluMj0iU291cmNlQWxwaGEiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJzcGVjT3V0MiIvPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJzcGVjT3V0MiIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsxPSIwIiBrMj0iMSIgazM9IjEiIGs0PSIwIiByZXN1bHQ9ImxpdFBhaW50IiAvPgogICAgICAgICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbDIiIGZpbHRlclVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeD0iLTEwJSIgeT0iLTEwJSIgd2lkdGg9IjE1MCUiIGhlaWdodD0iMTUwJSI+CiAgICAgICAgICAgICAgICAgICAgPGZlR2F1c3NpYW5CbHVyIGluPSJTb3VyY2VBbHBoYSIgc3RkRGV2aWF0aW9uPSIwLjUiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjAwMDAiLz4KICAgICAgICAgICAgICAgICAgICA8L2ZlU3BlY3VsYXJMaWdodGluZz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49InNwZWNPdXQiIGluMj0iU291cmNlQWxwaGEiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJzcGVjT3V0MiIvPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJzcGVjT3V0MiIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsxPSIwIiBrMj0iMSIgazM9IjEiIGs0PSIwIiByZXN1bHQ9ImxpdFBhaW50IiAvPgogICAgICAgICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbDMiIGZpbHRlclVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeD0iLTEwJSIgeT0iLTEwJSIgd2lkdGg9IjE1MCUiIGhlaWdodD0iMTUwJSI+CiAgICAgICAgICAgICAgICAgICAgPGZlR2F1c3NpYW5CbHVyIGluPSJTb3VyY2VBbHBoYSIgc3RkRGV2aWF0aW9uPSIwLjIiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iMTAiIHNwZWN1bGFyQ29uc3RhbnQ9IjMuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IiNmZmZmZmYiPgogICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgICAgIDwvZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSdhJyB4Mj0nMCcgeTI9JzEwMCUnPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScwJyBzdG9wLW9wYWNpdHk9Jy4xJyBzdG9wLWNvbG9yPScjRUVFJy8+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9JzEnIHN0b3Atb3BhY2l0eT0nLjEnLz4KICAgICAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsYWJlbF8wMThmYzZlNS03YjQ1LTQ5YjctOTc0Yy01NTkwODdkYzM4YzYiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZjQ4YWY3Ii8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZWU0ZmYzIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5MTVmMCIvPgo8L2xpbmVhckdyYWRpZW50PiAKPGxpbmVhckdyYWRpZW50IGlkPSJtZXNzYWdlXzAxOGZjNmU1LTdiNDUtNDliNy05NzRjLTU1OTA4N2RjMzhjNiIgeDI9IjAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDEiIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNkMmM5YWYiLz4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMiIgb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNiY2FlODciLz4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMyIgb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTY5NDYwIi8+CjwvbGluZWFyR3JhZGllbnQ+IAogICAgICAgICAgICA8bWFzayBpZD0nMDE4ZmM2ZTUtN2I0NS00OWI3LTk3NGMtNTU5MDg3ZGMzOGM2Jz4KICAgICAgICAgICAgICAgIDxyZWN0IHdpZHRoPSc3MjEuMTY2NCcgaGVpZ2h0PScyMDAnIHJ4PSczMCcgZmlsbD0nI0ZGRicvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxnIG1hc2s9J3VybCgjMDE4ZmM2ZTUtN2I0NS00OWI3LTk3NGMtNTU5MDg3ZGMzOGM2KSc+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI2xhYmVsXzAxOGZjNmU1LTdiNDUtNDliNy05NzRjLTU1OTA4N2RjMzhjNiknIHdpZHRoPSc0NjAuOTk5OCcgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI21lc3NhZ2VfMDE4ZmM2ZTUtN2I0NS00OWI3LTk3NGMtNTU5MDg3ZGMzOGM2KScgeD0nNDYwLjk5OTgnIHdpZHRoPScyNjAuMTY2NjMnIGhlaWdodD0nMjAwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSIvPgogICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9JzcyMS4xNjY0JyBoZWlnaHQ9JzIwMCcgZmlsbD0ndXJsKCNhKScgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8ZyBhcmlhLWhpZGRlbj0ndHJ1ZScgIHRleHQtYW5jaG9yPSdzdGFydCcgZm9udC1mYW1pbHk9J0FyaWFsLERlamFWdSBTYW5zLHNhbnMtc2VyaWYnCiAgICAgICAgICAgICAgIGZvbnQtc2l6ZT0nMTEwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSI+CiAgICAgICAgICAgICAgICA8dGV4dCB4PSc1MCcgeT0nMTM4JyB0ZXh0TGVuZ3RoPSczMDAuOTk5OCcgIGZpbGw9IiMwMDAwMDAiID48YSBocmVmPScrICsnPiBCZWxvdzwvYT48L3RleHQ+CiAgICAgICAgICAgICAgICA8dGV4dCB4PSc1MTUuOTk5NzYnIHk9JzEzOCcgdGV4dExlbmd0aD0nMTYwLjE2NjYzJyAgZmlsbD0iIzAwMDAwMCIgPjxhIGhyZWY9JysgKyc+KyArPC9hPjwvdGV4dD4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAKICAgICAgICAgICAgIDwvc3ZnPg==" alt="item?payload=H4sIAAAAAAAA 1NwSs3JL6 RVtCuySgpKSi20tcvLy XS8 PT89J1UvOz61RTrU0NE0zqFFONLM0MTOoAQDIjLMsMgAAAA==&amp;type=SVG&amp;finalname=abc 1685359768583"></a></span> 
-<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nMTA0Ljg0OTk3NicgaGVpZ2h0PScyMCcgdmlld0JveD0nMCAwIDEwNDguNDk5OCAyMDAnIAogICAgICAgICAgICB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHJvbGU9J2ltZycgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGFyaWEtbGFiZWw9JyBUZWNobmljYWw6IERlYnQnPgogICAgICAgICAgICAgPHRpdGxlPiBUZWNobmljYWw6IERlYnQ8L3RpdGxlPgogICAgICAgICAgICAgPGRlZnM+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbCIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSItMTAlIiB5PSItMTAlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTAlIj4KICAgICAgICAgICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwyIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjUiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IndoaXRlIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwzIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC4yIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjEwIiBzcGVjdWxhckNvbnN0YW50PSIzLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIj4KICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMDAwMCIvPgogICAgICAgICAgICAgICAgICAgIDwvZmVTcGVjdWxhckxpZ2h0aW5nPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0ic3BlY091dCIgaW4yPSJTb3VyY2VBbHBoYSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNwZWNPdXQyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9InNwZWNPdXQyIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIHJlc3VsdD0ibGl0UGFpbnQiIC8+CiAgICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICA8L2RlZnM+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0nMCcgc3RvcC1vcGFjaXR5PScuMScgc3RvcC1jb2xvcj0nI0VFRScvPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScxJyBzdG9wLW9wYWNpdHk9Jy4xJy8+CiAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFiZWxfZDkzNzdiYzctYjk3YS00MDNjLWIzMDAtM2EwOTg3OGRkZTEzIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMSIgb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U1OTI5ZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AyIiBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2Q4NWM2ZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AzIiBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjYzI2M2YiLz4KPC9saW5lYXJHcmFkaWVudD4gCjxsaW5lYXJHcmFkaWVudCBpZD0ibWVzc2FnZV9kOTM3N2JjNy1iOTdhLTQwM2MtYjMwMC0zYTA5ODc4ZGRlMTMiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYWViNmJlIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODU5MTllIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVkNmQ3ZSIvPgo8L2xpbmVhckdyYWRpZW50PiAKICAgICAgICAgICAgPG1hc2sgaWQ9J2Q5Mzc3YmM3LWI5N2EtNDAzYy1iMzAwLTNhMDk4NzhkZGUxMyc+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTA0OC40OTk4JyBoZWlnaHQ9JzIwMCcgcng9JzMwJyBmaWxsPScjRkZGJy8+CiAgICAgICAgICAgIDwvbWFzaz4KICAgICAgICAgICAgPGcgbWFzaz0ndXJsKCNkOTM3N2JjNy1iOTdhLTQwM2MtYjMwMC0zYTA5ODc4ZGRlMTMpJz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbGFiZWxfZDkzNzdiYzctYjk3YS00MDNjLWIzMDAtM2EwOTg3OGRkZTEzKScgd2lkdGg9JzY3Ny4xNjY0NCcgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI21lc3NhZ2VfZDkzNzdiYzctYjk3YS00MDNjLWIzMDAtM2EwOTg3OGRkZTEzKScgeD0nNjc3LjE2NjQ0JyB3aWR0aD0nMzcxLjMzMzMnIGhlaWdodD0nMjAwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSIvPgogICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9JzEwNDguNDk5OCcgaGVpZ2h0PScyMDAnIGZpbGw9J3VybCgjYSknIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPGcgYXJpYS1oaWRkZW49J3RydWUnICB0ZXh0LWFuY2hvcj0nc3RhcnQnIGZvbnQtZmFtaWx5PSdBcmlhbCxEZWphVnUgU2FucyxzYW5zLXNlcmlmJwogICAgICAgICAgICAgICBmb250LXNpemU9JzExMCcgZmlsdGVyPSJ1cmwoI0JldmVsMikiPgogICAgICAgICAgICAgICAgPHRleHQgeD0nNTAnIHk9JzEzOCcgdGV4dExlbmd0aD0nNTE3LjE2NjQ0JyAgZmlsbD0iIzAwMDAwMCIgPjxhIGhyZWY9J0RlYnQnPiBUZWNobmljYWw8L2E+PC90ZXh0PgogICAgICAgICAgICAgICAgPHRleHQgeD0nNzMyLjE2NjQ0JyB5PScxMzgnIHRleHRMZW5ndGg9JzI3MS4zMzMzJyAgZmlsbD0iIzAwMDAwMCIgPjxhIGhyZWY9J0RlYnQnPkRlYnQ8L2E+PC90ZXh0PgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIAogICAgICAgICAgICAgPC9zdmc+" alt="item?payload=H4sIAAAAAAAA 1MISU3OyMtMTsypcUlNKqnJKCkpKLbS1y8vL9erTMzIz9dLzs tUU5ONjIzTqtRNk0xSzFPrQEA5iECFzYAAAA=&amp;type=SVG&amp;finalname=abc 1685359768583"></a></span> 
-<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nMTk1LjY4MzMyJyBoZWlnaHQ9JzIwJyB2aWV3Qm94PScwIDAgMTk1Ni44MzMzIDIwMCcgCiAgICAgICAgICAgIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgcm9sZT0naW1nJyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgYXJpYS1sYWJlbD0nIEFyY2hpdGVjdHVyZTogUmVjY29tZW5kYXRpb25zJz4KICAgICAgICAgICAgIDx0aXRsZT4gQXJjaGl0ZWN0dXJlOiBSZWNjb21lbmRhdGlvbnM8L3RpdGxlPgogICAgICAgICAgICAgPGRlZnM+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbCIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSItMTAlIiB5PSItMTAlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTAlIj4KICAgICAgICAgICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwyIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjUiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IndoaXRlIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwzIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC4yIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjEwIiBzcGVjdWxhckNvbnN0YW50PSIzLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIj4KICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMDAwMCIvPgogICAgICAgICAgICAgICAgICAgIDwvZmVTcGVjdWxhckxpZ2h0aW5nPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0ic3BlY091dCIgaW4yPSJTb3VyY2VBbHBoYSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNwZWNPdXQyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9InNwZWNPdXQyIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIHJlc3VsdD0ibGl0UGFpbnQiIC8+CiAgICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICA8L2RlZnM+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0nMCcgc3RvcC1vcGFjaXR5PScuMScgc3RvcC1jb2xvcj0nI0VFRScvPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScxJyBzdG9wLW9wYWNpdHk9Jy4xJy8+CiAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFiZWxfZDc4NWEzYWYtNDdmOC00ZTUyLWE0ODMtZWU5OGQ4MmY1ZTFhIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMSIgb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZiZGZkMyIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AyIiBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2Y5Y2ZiZCIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AzIiBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmOGJmYTgiLz4KPC9saW5lYXJHcmFkaWVudD4gCjxsaW5lYXJHcmFkaWVudCBpZD0ibWVzc2FnZV9kNzg1YTNhZi00N2Y4LTRlNTItYTQ4My1lZTk4ZDgyZjVlMWEiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYWViNmJlIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODU5MTllIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVkNmQ3ZSIvPgo8L2xpbmVhckdyYWRpZW50PiAKICAgICAgICAgICAgPG1hc2sgaWQ9J2Q3ODVhM2FmLTQ3ZjgtNGU1Mi1hNDgzLWVlOThkODJmNWUxYSc+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTk1Ni44MzMzJyBoZWlnaHQ9JzIwMCcgcng9JzMwJyBmaWxsPScjRkZGJy8+CiAgICAgICAgICAgIDwvbWFzaz4KICAgICAgICAgICAgPGcgbWFzaz0ndXJsKCNkNzg1YTNhZi00N2Y4LTRlNTItYTQ4My1lZTk4ZDgyZjVlMWEpJz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbGFiZWxfZDc4NWEzYWYtNDdmOC00ZTUyLWE0ODMtZWU5OGQ4MmY1ZTFhKScgd2lkdGg9JzgzMC42NjY3JyBoZWlnaHQ9JzIwMCcgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbWVzc2FnZV9kNzg1YTNhZi00N2Y4LTRlNTItYTQ4My1lZTk4ZDgyZjVlMWEpJyB4PSc4MzAuNjY2Nycgd2lkdGg9JzExMjYuMTY2NScgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTk1Ni44MzMzJyBoZWlnaHQ9JzIwMCcgZmlsbD0ndXJsKCNhKScgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8ZyBhcmlhLWhpZGRlbj0ndHJ1ZScgIHRleHQtYW5jaG9yPSdzdGFydCcgZm9udC1mYW1pbHk9J0FyaWFsLERlamFWdSBTYW5zLHNhbnMtc2VyaWYnCiAgICAgICAgICAgICAgIGZvbnQtc2l6ZT0nMTEwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSI+CiAgICAgICAgICAgICAgICA8dGV4dCB4PSc1MCcgeT0nMTM4JyB0ZXh0TGVuZ3RoPSc2NzAuNjY2NycgIGZpbGw9IiMwMDAwMDAiID48YSBocmVmPSdSZWNjb21lbmRhdGlvbnMnPiBBcmNoaXRlY3R1cmU8L2E+PC90ZXh0PgogICAgICAgICAgICAgICAgPHRleHQgeD0nODg1LjY2NjcnIHk9JzEzOCcgdGV4dExlbmd0aD0nMTAyNi4xNjY1JyAgZmlsbD0iIzAwMDAwMCIgPjxhIGhyZWY9J1JlY2NvbWVuZGF0aW9ucyc+UmVjY29tZW5kYXRpb25zPC9hPjwvdGV4dD4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAKICAgICAgICAgICAgIDwvc3ZnPg==" alt="item?payload=H4sIAAAAAAAA 1NwLErOyCxJTS4pLUqtCUpNTs7PTc1LSSzJzM8rrskoKSkottLXLy8v16tMzMjP1wNK1yinWSSlJVrUKJummKWYp9YAAI5 XAlEAAAA&amp;type=SVG&amp;finalname=abc 1685359768583"></a></span> 
-<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nMTAzLjkxNjY0JyBoZWlnaHQ9JzIwJyB2aWV3Qm94PScwIDAgMTAzOS4xNjY0IDIwMCcgCiAgICAgICAgICAgIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgcm9sZT0naW1nJyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgYXJpYS1sYWJlbD0nIFlhaG9vOiBGaW5hbmNlJz4KICAgICAgICAgICAgIDx0aXRsZT4gWWFob286IEZpbmFuY2U8L3RpdGxlPgogICAgICAgICAgICAgPGRlZnM+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbCIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSItMTAlIiB5PSItMTAlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTAlIj4KICAgICAgICAgICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwyIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjUiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IndoaXRlIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwzIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC4yIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjEwIiBzcGVjdWxhckNvbnN0YW50PSIzLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIj4KICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMDAwMCIvPgogICAgICAgICAgICAgICAgICAgIDwvZmVTcGVjdWxhckxpZ2h0aW5nPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0ic3BlY091dCIgaW4yPSJTb3VyY2VBbHBoYSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNwZWNPdXQyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9InNwZWNPdXQyIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIHJlc3VsdD0ibGl0UGFpbnQiIC8+CiAgICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICA8L2RlZnM+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0nMCcgc3RvcC1vcGFjaXR5PScuMScgc3RvcC1jb2xvcj0nI0VFRScvPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScxJyBzdG9wLW9wYWNpdHk9Jy4xJy8+CiAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFiZWxfODJjMzI1NjUtY2EwMi00OWUxLWExODYtMWQwYTg3OGY5YWNmIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMSIgb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JmN2ZiZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AyIiBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzlmM2Y5ZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AzIiBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4MDAwODAiLz4KPC9saW5lYXJHcmFkaWVudD4gCjxsaW5lYXJHcmFkaWVudCBpZD0ibWVzc2FnZV84MmMzMjU2NS1jYTAyLTQ5ZTEtYTE4Ni0xZDBhODc4ZjlhY2YiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOTNiZTg5Ii8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNWQ5ZTRlIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzI3N2UxNCIvPgo8L2xpbmVhckdyYWRpZW50PiAKICAgICAgICAgICAgPG1hc2sgaWQ9JzgyYzMyNTY1LWNhMDItNDllMS1hMTg2LTFkMGE4NzhmOWFjZic+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTAzOS4xNjY0JyBoZWlnaHQ9JzIwMCcgcng9JzMwJyBmaWxsPScjRkZGJy8+CiAgICAgICAgICAgIDwvbWFzaz4KICAgICAgICAgICAgPGcgbWFzaz0ndXJsKCM4MmMzMjU2NS1jYTAyLTQ5ZTEtYTE4Ni0xZDBhODc4ZjlhY2YpJz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbGFiZWxfODJjMzI1NjUtY2EwMi00OWUxLWExODYtMWQwYTg3OGY5YWNmKScgd2lkdGg9JzQ3Ny42NjY0NycgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI21lc3NhZ2VfODJjMzI1NjUtY2EwMi00OWUxLWExODYtMWQwYTg3OGY5YWNmKScgeD0nNDc3LjY2NjQ3JyB3aWR0aD0nNTYxLjQ5OTk0JyBoZWlnaHQ9JzIwMCcgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgICAgIDxyZWN0IHdpZHRoPScxMDM5LjE2NjQnIGhlaWdodD0nMjAwJyBmaWxsPSd1cmwoI2EpJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSIvPgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDxnIGFyaWEtaGlkZGVuPSd0cnVlJyAgdGV4dC1hbmNob3I9J3N0YXJ0JyBmb250LWZhbWlseT0nQXJpYWwsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZicKICAgICAgICAgICAgICAgZm9udC1zaXplPScxMTAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIj4KICAgICAgICAgICAgICAgIDx0ZXh0IHg9JzUwJyB5PScxMzgnIHRleHRMZW5ndGg9JzMxNy42NjY0NycgIGZpbGw9IiMwMDAwMDAiID48YSBocmVmPSdGaW5hbmNlJz4gWWFob288L2E+PC90ZXh0PgogICAgICAgICAgICAgICAgPHRleHQgeD0nNTMyLjY2NjUnIHk9JzEzOCcgdGV4dExlbmd0aD0nNDYxLjQ5OTk0JyAgZmlsbD0iIzAwMDAwMCIgPjxhIGhyZWY9J0ZpbmFuY2UnPkZpbmFuY2U8L2E+PC90ZXh0PgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIAogICAgICAgICAgICAgPC9zdmc+" alt="item?payload=H4sIAAAAAAAA 1OITMzIz69xy8xLzEtOrckoKSkottLXLy8v16sEyegl5 fWKFsYGBhYGNQoG5mbpxqa1AAARs6vwzUAAAA=&amp;type=SVG&amp;finalname=abc 1685359768583"></a></span> </p>
+<p><span class="image"><a class="image" href="https://www.google.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nNzMuMTE2NjQnIGhlaWdodD0nMjAnIHZpZXdCb3g9JzAgMCA3MzEuMTY2NCAyMDAnIAogICAgICAgICAgICB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHJvbGU9J2ltZycgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGFyaWEtbGFiZWw9JyBCZWxvdzogKyArJz4KICAgICAgICAgICAgIDx0aXRsZT4gQmVsb3c6ICsgKzwvdGl0bGU+CiAgICAgICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgICAgIDxmaWx0ZXIgaWQ9IkJldmVsIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMyIgcmVzdWx0PSJibHVyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlU3BlY3VsYXJMaWdodGluZyBpbj0iYmx1ciIgc3VyZmFjZVNjYWxlPSI1IiBzcGVjdWxhckNvbnN0YW50PSIwLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSJ3aGl0ZSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMjAwMDAiLz4KICAgICAgICAgICAgICAgICAgICA8L2ZlU3BlY3VsYXJMaWdodGluZz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49InNwZWNPdXQiIGluMj0iU291cmNlQWxwaGEiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJzcGVjT3V0MiIvPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJzcGVjT3V0MiIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsxPSIwIiBrMj0iMSIgazM9IjEiIGs0PSIwIiByZXN1bHQ9ImxpdFBhaW50IiAvPgogICAgICAgICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbDIiIGZpbHRlclVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeD0iLTEwJSIgeT0iLTEwJSIgd2lkdGg9IjE1MCUiIGhlaWdodD0iMTUwJSI+CiAgICAgICAgICAgICAgICAgICAgPGZlR2F1c3NpYW5CbHVyIGluPSJTb3VyY2VBbHBoYSIgc3RkRGV2aWF0aW9uPSIwLjUiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjAwMDAiLz4KICAgICAgICAgICAgICAgICAgICA8L2ZlU3BlY3VsYXJMaWdodGluZz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49InNwZWNPdXQiIGluMj0iU291cmNlQWxwaGEiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJzcGVjT3V0MiIvPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJzcGVjT3V0MiIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsxPSIwIiBrMj0iMSIgazM9IjEiIGs0PSIwIiByZXN1bHQ9ImxpdFBhaW50IiAvPgogICAgICAgICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbDMiIGZpbHRlclVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeD0iLTEwJSIgeT0iLTEwJSIgd2lkdGg9IjE1MCUiIGhlaWdodD0iMTUwJSI+CiAgICAgICAgICAgICAgICAgICAgPGZlR2F1c3NpYW5CbHVyIGluPSJTb3VyY2VBbHBoYSIgc3RkRGV2aWF0aW9uPSIwLjIiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iMTAiIHNwZWN1bGFyQ29uc3RhbnQ9IjMuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IiNmZmZmZmYiPgogICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgICAgIDwvZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSdhJyB4Mj0nMCcgeTI9JzEwMCUnPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScwJyBzdG9wLW9wYWNpdHk9Jy4xJyBzdG9wLWNvbG9yPScjRUVFJy8+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9JzEnIHN0b3Atb3BhY2l0eT0nLjEnLz4KICAgICAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsYWJlbF83MDhmM2FlOC00OTZiLTRjMzEtODI3NS1jNjg0NTEzNjk5ZjYiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjODQ5Mzk5Ii8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNDc1ZDY2Ii8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMjczMyIvPgo8L2xpbmVhckdyYWRpZW50PiAKPGxpbmVhckdyYWRpZW50IGlkPSJtZXNzYWdlXzcwOGYzYWU4LTQ5NmItNGMzMS04Mjc1LWM2ODQ1MTM2OTlmNiIgeDI9IjAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDEiIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNkMmM5YWYiLz4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMiIgb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNiY2FlODciLz4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMyIgb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTY5NDYwIi8+CjwvbGluZWFyR3JhZGllbnQ+IAogICAgICAgICAgICA8bWFzayBpZD0nNzA4ZjNhZTgtNDk2Yi00YzMxLTgyNzUtYzY4NDUxMzY5OWY2Jz4KICAgICAgICAgICAgICAgIDxyZWN0IHdpZHRoPSc3MzEuMTY2NCcgaGVpZ2h0PScyMDAnIHJ4PSczMCcgZmlsbD0nI0ZGRicvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxnIG1hc2s9J3VybCgjNzA4ZjNhZTgtNDk2Yi00YzMxLTgyNzUtYzY4NDUxMzY5OWY2KSc+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI2xhYmVsXzcwOGYzYWU4LTQ5NmItNGMzMS04Mjc1LWM2ODQ1MTM2OTlmNiknIHdpZHRoPSc0NzAuOTk5OCcgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI21lc3NhZ2VfNzA4ZjNhZTgtNDk2Yi00YzMxLTgyNzUtYzY4NDUxMzY5OWY2KScgeD0nNDcwLjk5OTgnIHdpZHRoPScyNjAuMTY2NjMnIGhlaWdodD0nMjAwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSIvPgogICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9JzczMS4xNjY0JyBoZWlnaHQ9JzIwMCcgZmlsbD0ndXJsKCNhKScgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8ZyBhcmlhLWhpZGRlbj0ndHJ1ZScgIHRleHQtYW5jaG9yPSdzdGFydCcgZm9udC1mYW1pbHk9J0FyaWFsLERlamFWdSBTYW5zLHNhbnMtc2VyaWYnCiAgICAgICAgICAgICAgIGZvbnQtc2l6ZT0nMTEwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSI+CiAgICAgICAgICAgICAgICA8dGV4dCB4PScxMzInIHk9JzEzOCcgdGV4dExlbmd0aD0nMzEwLjk5OTgnICBmaWxsPSIjZmZmZmZmIiA+PGEgaHJlZj0nKyArJz4gQmVsb3c8L2E+PC90ZXh0PgogICAgICAgICAgICAgICAgPHRleHQgeD0nNTI1Ljk5OTc2JyB5PScxMzgnIHRleHRMZW5ndGg9JzE2MC4xNjY2MycgIGZpbGw9IiNmZmZmZmYiID48YSBocmVmPScrICsnPisgKzwvYT48L3RleHQ+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPGltYWdlIHg9JzEwJyB5PSczNScgd2lkdGg9JzExMicgaGVpZ2h0PScxMzAnIHhsaW5rOmhyZWY9J2RhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEQ5NGJXd2dkbVZ5YzJsdmJqMGlNUzR3SWlCbGJtTnZaR2x1WnowaVZWUkdMVGdpSUhOMFlXNWtZV3h2Ym1VOUltNXZJajgrQ2p4emRtY2dlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklpQm1hV3hzUFNJalJUUXdNRFEySWlCb1pXbG5hSFE5SWpFd01IQjRJaUJ5YjJ4bFBTSnBiV2NpSUhacFpYZENiM2c5SWpBZ01DQXlOQ0F5TkNJZ2QybGtkR2c5SWpFd01IQjRJajRLSUNBZ0lDQThkR2wwYkdVK1FYTmphV2xrYjJOMGIzSThMM1JwZEd4bFBnb2dJQ0FnSUR4d1lYUm9JR1E5SWsweE9DNHdOamcxSURCSU5TNDVNekU0UXpJdU5qVTNPU0F3SURBZ01pNDJOVGM0SURBZ05TNDVNekUyZGpFeUxqRXpOamRETUNBeU1TNHpOREl4SURJdU5qVTRJREkwSURVdU9UTXhPQ0F5TkdneE1pNHhNelkzUXpJeExqTTBNak1nTWpRZ01qUWdNakV1TXpReU1TQXlOQ0F4T0M0d05qZ3pWalV1T1RNeE5rTXlOQ0F5TGpZMU56Z2dNakV1TXpReU15QXdJREU0TGpBMk9EVWdNSHBOTVRBdU56QTRJREUxTGpRd016aElPQzQ0TVRBeVl5MHVNREF4T0M0d01EUTFMUzR3TURNeExqQXdPUzB1TURBMUxqQXhNelZNTnk0eE9UZzJJREU1TGpJNE1tRXVOVEExT0M0MU1EVTRJREFnTVRFdExqa3pOQzB1TXpnNE0yd3hMalExTURjdE15NDBPVWcwTGpnMk56ZGhMalV3TlRndU5UQTFPQ0F3SURFeE1DMHhMakF4TVROb05TNDROREF6WVM0MU1EVTRMalV3TlRnZ01DQXhNVEFnTVM0d01URXplbTAzTGpreE9Ea2dOQzR4TmpRM1lTNDFNRFU0TGpVd05UZ2dNQ0F3TVMwdU5qVTBOUzB1TWpnNE5rd3hNaTQyTWpBMklEWXVNak13Tm13dE1pNHpPVFVnTlM0M05qRm9NUzQxTlRGaExqVXdOVGd1TlRBMU9DQXdJREV4TUNBeExqQXhNVE5JTlM0NU16WTVZUzQxTURVNExqVXdOVGdnTUNBeE1UQXRNUzR3TVRFemFETXVNVGswWXk0d01ERTFMUzR3TURNNExqQXdNall0TGpBd056VXVNREEwTWkwdU1ERXhNbXd6TGpBeU1qTXROeTR5TmprellTNDFNRFU0TGpVd05UZ2dNQ0F3TVM0ME5UY3RMak14TVRJdU5UQTFPQzQxTURVNElEQWdNREV1TkRjM05DNHpNVE0zVERFNExqa3dPQ0F4T0M0NE9UWmhMalV3TlRndU5UQTFPQ0F3SURBeExTNHlPREV5TGpZM01qVjZJaTgrQ2p3dmMzWm5QZ289Jy8+CiAgICAgICAgICAgICA8L3N2Zz4=" alt="item?payload=H4sIAAAAAAAA 1NwSs3JL6 RVtCuySgpKSi20tcvLy XS8 PT89J1UvOz61RNkg0Mjc2rlFONLM0MTOosXEsTs7MTMlPLskvsgMA fAEIz8AAAA=&amp;type=SVG&amp;finalname=abc 1685443359548"></a></span> 
+<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nMTA1Ljg0OTk3NicgaGVpZ2h0PScyMCcgdmlld0JveD0nMCAwIDEwNTguNDk5OCAyMDAnIAogICAgICAgICAgICB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHJvbGU9J2ltZycgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGFyaWEtbGFiZWw9JyBUZWNobmljYWw6IERlYnQnPgogICAgICAgICAgICAgPHRpdGxlPiBUZWNobmljYWw6IERlYnQ8L3RpdGxlPgogICAgICAgICAgICAgPGRlZnM+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbCIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSItMTAlIiB5PSItMTAlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTAlIj4KICAgICAgICAgICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwyIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjUiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IndoaXRlIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwzIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC4yIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjEwIiBzcGVjdWxhckNvbnN0YW50PSIzLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIj4KICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMDAwMCIvPgogICAgICAgICAgICAgICAgICAgIDwvZmVTcGVjdWxhckxpZ2h0aW5nPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0ic3BlY091dCIgaW4yPSJTb3VyY2VBbHBoYSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNwZWNPdXQyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9InNwZWNPdXQyIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIHJlc3VsdD0ibGl0UGFpbnQiIC8+CiAgICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICA8L2RlZnM+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0nMCcgc3RvcC1vcGFjaXR5PScuMScgc3RvcC1jb2xvcj0nI0VFRScvPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScxJyBzdG9wLW9wYWNpdHk9Jy4xJy8+CiAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFiZWxfN2YxNjIyOTMtMTliYy00YjJmLWIzMWEtNDAzYWVjZWJmYTc3IiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMSIgb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U1OTI5ZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AyIiBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2Q4NWM2ZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AzIiBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjYzI2M2YiLz4KPC9saW5lYXJHcmFkaWVudD4gCjxsaW5lYXJHcmFkaWVudCBpZD0ibWVzc2FnZV83ZjE2MjI5My0xOWJjLTRiMmYtYjMxYS00MDNhZWNlYmZhNzciIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYWViNmJlIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODU5MTllIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVkNmQ3ZSIvPgo8L2xpbmVhckdyYWRpZW50PiAKICAgICAgICAgICAgPG1hc2sgaWQ9JzdmMTYyMjkzLTE5YmMtNGIyZi1iMzFhLTQwM2FlY2ViZmE3Nyc+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTA1OC40OTk4JyBoZWlnaHQ9JzIwMCcgcng9JzMwJyBmaWxsPScjRkZGJy8+CiAgICAgICAgICAgIDwvbWFzaz4KICAgICAgICAgICAgPGcgbWFzaz0ndXJsKCM3ZjE2MjI5My0xOWJjLTRiMmYtYjMxYS00MDNhZWNlYmZhNzcpJz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbGFiZWxfN2YxNjIyOTMtMTliYy00YjJmLWIzMWEtNDAzYWVjZWJmYTc3KScgd2lkdGg9JzY4Ny4xNjY0NCcgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI21lc3NhZ2VfN2YxNjIyOTMtMTliYy00YjJmLWIzMWEtNDAzYWVjZWJmYTc3KScgeD0nNjg3LjE2NjQ0JyB3aWR0aD0nMzcxLjMzMzMnIGhlaWdodD0nMjAwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSIvPgogICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9JzEwNTguNDk5OCcgaGVpZ2h0PScyMDAnIGZpbGw9J3VybCgjYSknIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPGcgYXJpYS1oaWRkZW49J3RydWUnICB0ZXh0LWFuY2hvcj0nc3RhcnQnIGZvbnQtZmFtaWx5PSdBcmlhbCxEZWphVnUgU2FucyxzYW5zLXNlcmlmJwogICAgICAgICAgICAgICBmb250LXNpemU9JzExMCcgZmlsdGVyPSJ1cmwoI0JldmVsMikiPgogICAgICAgICAgICAgICAgPHRleHQgeD0nMTMyJyB5PScxMzgnIHRleHRMZW5ndGg9JzUyNy4xNjY0NCcgIGZpbGw9IiNmZmZmZmYiID48YSBocmVmPSdEZWJ0Jz4gVGVjaG5pY2FsPC9hPjwvdGV4dD4KICAgICAgICAgICAgICAgIDx0ZXh0IHg9Jzc0Mi4xNjY0NCcgeT0nMTM4JyB0ZXh0TGVuZ3RoPScyNzEuMzMzMycgIGZpbGw9IiNmZmZmZmYiID48YSBocmVmPSdEZWJ0Jz5EZWJ0PC9hPjwvdGV4dD4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8aW1hZ2UgeD0nMTAnIHk9JzM1JyB3aWR0aD0nMTEyJyBoZWlnaHQ9JzEzMCcgeGxpbms6aHJlZj0nZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQRDk0Yld3Z2RtVnljMmx2YmowaU1TNHdJaUJsYm1OdlpHbHVaejBpVlZSR0xUZ2lJSE4wWVc1a1lXeHZibVU5SW01dklqOCtDanh6ZG1jZ2VHMXNibk05SW1oMGRIQTZMeTkzZDNjdWR6TXViM0puTHpJd01EQXZjM1puSWlCbWFXeHNQU0lqTmpBd01VUXlJaUJvWldsbmFIUTlJakV3TUhCNElpQnliMnhsUFNKcGJXY2lJSFpwWlhkQ2IzZzlJakFnTUNBeU5DQXlOQ0lnZDJsa2RHZzlJakV3TUhCNElqNEtJQ0FnSUNBOGRHbDBiR1UrV1dGb2IyOGhQQzkwYVhSc1pUNEtJQ0FnSUNBOGNHRjBhQ0JrUFNKTk1UZ3VPRFlnTVM0MU5rd3hOQzR5TnlBeE1TNDROMGd4T1M0MFRESTBJREV1TlRaSU1UZ3VPRFpOTUNBMkxqY3hURFV1TVRVZ01UZ3VNamRNTXk0eklESXlMalEwU0RjdU9ETk1NVFF1TmprZ05pNDNNVWd4TUM0eE9VdzNMak01SURFekxqUTBURFF1TmpJZ05pNDNNVWd3VFRFMUxqWXlJREV5TGpnM1F6RXpMamsxSURFeUxqZzNJREV5TGpjeElERTBMakV5SURFeUxqY3hJREUxTGpVNFF6RXlMamN4SURFM0lERXpMamt4SURFNExqRTVJREUxTGpVZ01UZ3VNVGxETVRjdU1UZ2dNVGd1TVRrZ01UZ3VORE1nTVRZdU9UWWdNVGd1TkRNZ01UVXVOVU14T0M0ME15QXhOQzR3TXlBeE55NHlNeUF4TWk0NE55QXhOUzQyTWlBeE1pNDROMW9pTHo0S1BDOXpkbWMrQ2c9PScvPgogICAgICAgICAgICAgPC9zdmc+" alt="item?payload=H4sIAAAAAAAA 1MISU3OyMtMTsypcUlNKqnJKCkpKLbS1y8vL9erTMzIz9dLzs tUU5ONjIzTqtRNk0xSzFPrbGJBEnZAQBQV  4PQAAAA==&amp;type=SVG&amp;finalname=abc 1685443359548"></a></span> 
+<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nMTk2LjY4MzMyJyBoZWlnaHQ9JzIwJyB2aWV3Qm94PScwIDAgMTk2Ni44MzMzIDIwMCcgCiAgICAgICAgICAgIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgcm9sZT0naW1nJyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgYXJpYS1sYWJlbD0nIEFyY2hpdGVjdHVyZTogUmVjY29tZW5kYXRpb25zJz4KICAgICAgICAgICAgIDx0aXRsZT4gQXJjaGl0ZWN0dXJlOiBSZWNjb21lbmRhdGlvbnM8L3RpdGxlPgogICAgICAgICAgICAgPGRlZnM+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbCIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSItMTAlIiB5PSItMTAlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTAlIj4KICAgICAgICAgICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwyIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjUiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IndoaXRlIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwzIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC4yIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjEwIiBzcGVjdWxhckNvbnN0YW50PSIzLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIj4KICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMDAwMCIvPgogICAgICAgICAgICAgICAgICAgIDwvZmVTcGVjdWxhckxpZ2h0aW5nPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0ic3BlY091dCIgaW4yPSJTb3VyY2VBbHBoYSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNwZWNPdXQyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9InNwZWNPdXQyIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIHJlc3VsdD0ibGl0UGFpbnQiIC8+CiAgICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICA8L2RlZnM+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0nMCcgc3RvcC1vcGFjaXR5PScuMScgc3RvcC1jb2xvcj0nI0VFRScvPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScxJyBzdG9wLW9wYWNpdHk9Jy4xJy8+CiAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFiZWxfNGIxMzViODAtZjhmMi00N2MyLTgxNjktNDg4NGJiMzZmOWVlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMSIgb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZiZGZkMyIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AyIiBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2Y5Y2ZiZCIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AzIiBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmOGJmYTgiLz4KPC9saW5lYXJHcmFkaWVudD4gCjxsaW5lYXJHcmFkaWVudCBpZD0ibWVzc2FnZV80YjEzNWI4MC1mOGYyLTQ3YzItODE2OS00ODg0YmIzNmY5ZWUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYWViNmJlIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODU5MTllIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVkNmQ3ZSIvPgo8L2xpbmVhckdyYWRpZW50PiAKICAgICAgICAgICAgPG1hc2sgaWQ9JzRiMTM1YjgwLWY4ZjItNDdjMi04MTY5LTQ4ODRiYjM2ZjllZSc+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTk2Ni44MzMzJyBoZWlnaHQ9JzIwMCcgcng9JzMwJyBmaWxsPScjRkZGJy8+CiAgICAgICAgICAgIDwvbWFzaz4KICAgICAgICAgICAgPGcgbWFzaz0ndXJsKCM0YjEzNWI4MC1mOGYyLTQ3YzItODE2OS00ODg0YmIzNmY5ZWUpJz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbGFiZWxfNGIxMzViODAtZjhmMi00N2MyLTgxNjktNDg4NGJiMzZmOWVlKScgd2lkdGg9Jzg0MC42NjY3JyBoZWlnaHQ9JzIwMCcgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbWVzc2FnZV80YjEzNWI4MC1mOGYyLTQ3YzItODE2OS00ODg0YmIzNmY5ZWUpJyB4PSc4NDAuNjY2Nycgd2lkdGg9JzExMjYuMTY2NScgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTk2Ni44MzMzJyBoZWlnaHQ9JzIwMCcgZmlsbD0ndXJsKCNhKScgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8ZyBhcmlhLWhpZGRlbj0ndHJ1ZScgIHRleHQtYW5jaG9yPSdzdGFydCcgZm9udC1mYW1pbHk9J0FyaWFsLERlamFWdSBTYW5zLHNhbnMtc2VyaWYnCiAgICAgICAgICAgICAgIGZvbnQtc2l6ZT0nMTEwJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSI+CiAgICAgICAgICAgICAgICA8dGV4dCB4PScxMzInIHk9JzEzOCcgdGV4dExlbmd0aD0nNjgwLjY2NjcnICBmaWxsPSIjZmZmZmZmIiA+PGEgaHJlZj0nUmVjY29tZW5kYXRpb25zJz4gQXJjaGl0ZWN0dXJlPC9hPjwvdGV4dD4KICAgICAgICAgICAgICAgIDx0ZXh0IHg9Jzg5NS42NjY3JyB5PScxMzgnIHRleHRMZW5ndGg9JzEwMjYuMTY2NScgIGZpbGw9IiNmZmZmZmYiID48YSBocmVmPSdSZWNjb21lbmRhdGlvbnMnPlJlY2NvbWVuZGF0aW9uczwvYT48L3RleHQ+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPGltYWdlIHg9JzEwJyB5PSczNScgd2lkdGg9JzExMicgaGVpZ2h0PScxMzAnIHhsaW5rOmhyZWY9J2RhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEQ5NGJXd2dkbVZ5YzJsdmJqMGlNUzR3SWlCbGJtTnZaR2x1WnowaVZWUkdMVGdpSUhOMFlXNWtZV3h2Ym1VOUltNXZJajgrQ2p4emRtY2dlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklpQm1hV3hzUFNJalF6Y3dSREpESWlCb1pXbG5hSFE5SWpFd01IQjRJaUJ5YjJ4bFBTSnBiV2NpSUhacFpYZENiM2c5SWpBZ01DQXlOQ0F5TkNJZ2QybGtkR2c5SWpFd01IQjRJajRLSUNBZ0lDQThkR2wwYkdVK1FXUmliRzlqYXlCUWJIVnpQQzkwYVhSc1pUNEtJQ0FnSUNBOGNHRjBhQ0JrUFNKTk55NHdNamNnTUV3d0lEY3VNREkzZGprdU9UUXhURGN1TURJM0lESTBhRGt1T1RReFRESTBJREUyTGprMk9IWXRPUzQ1TkV3eE5pNDVOek1nTUhwdExqSXdNaTQwT0dnNUxqVTBNbXcyTGpjME9TQTJMamMwT1hZNUxqVTBNbXd0Tmk0M05Ea2dOaTQzTkRsSU55NHlNMHd1TkRnZ01UWXVOemN4VmpjdU1qTjZiUzQxTlRjZ01TNHpORFJNTVM0NE1qUWdOeTQzT0RaMk9DNDBNamhzTlM0NU5qSWdOUzQ1TmpKb09DNDBNamhzTlM0NU5qSXROUzQ1TmpKV055NDNPRFpzTFRVdU9UWXlMVFV1T1RZeWVrMDBMak01TmlBM0xqWTRTRFl1TXpoc01pNHlPRFVnT0M0ME1VZzJMamt4TjJ3dExqUTBOeTB5TGpBd01rZzBMakl6T0d3dExqUTBOaUF4TGprNU4yZ3RNUzQyT0hwdE5TNHpJREJvTWk0ME9URmpMak0xTlMwdU1EQTFMamN4TGpBeU9TQXhMakEyTVM0d09UWXVNekF5TGpBMU9DNDFPVFV1TVRjekxqZzFMak0wTGpJMExqRTJOQzQwTXpZdU16ZzFMalUzTGpZME5DNHhOQzR5TmprdU1qQTNMall3TlM0eU1EY2dNUzR3TURnZ01DQXVNVGt5TFM0d01qUXVNemcwTFM0d056SXVOVFkyTFM0d05EZ3VNVGc0TFM0eE1pNHpOalV0TGpJeE5pNDFNamd0TGpFdU1UWTRMUzR5TXk0ek1UY3RMak0zT1M0ME16Y3RMakUyTXk0eE15MHVNelV1TWpJMkxTNDFORGN1TWpnemRpNHdOVE5qTGpVeU15NHhNUzQ1TVRjdU16STNJREV1TVRndU5qUXpMakkyTlM0ek1UY3VNems1TGpjMU9TNHpPVGtnTVM0ek15QXdJQzQwTXpJdExqQTNNaTQ0TURJdExqSXhOaUF4TGpFd09TMHVNVFF1TXpBeUxTNHpORFl1TlRZeExTNDJNRFV1TnpZNExTNHlOamt1TWpBMkxTNDFOell1TXpZdExqa3dNaTQwTlRFdExqTTJMakV0TGpjek5TNHhOVFF0TVM0eE1Ea3VNVFE1U0RrdU5qazJlbTAyTGpZMk55QXdhREl1TmpZNVl5NHpOelF0TGpBd05TNDNORGt1TURReklERXVNVEUwTGpFek5DNHpNeTR3T0RJdU5qUXpMakl6Tmk0NU1EY3VORFV5TGpJMk9TNHlNalV1TkRndU5URXpMall4TGpnMExqRTBPQzR6TkRVdU1qSTFMamMzTWk0eU1qVWdNUzR5T0RFZ01DQXVORGt0TGpBM055NDVNVGN0TGpJeklERXVNamMzTFM0eE5DNHpOQzB1TXpVdU5qUXpMUzQyTWpRdU9EZzRZVEl1TlRVeklESXVOVFV6SURBZ01DQXhMUzQ1TURndU5URTRJRE11TlRVeElETXVOVFV4SURBZ01DQXhMVEV1TURrNUxqRTJPRWd4T0M0d01YWXlMamcxTW1ndE1TNDJORGQ2VFRVdU16STRJRGt1TVRJMVl5MHVNRGt4TGpRME5pMHVNVGd5TGprd055MHVNamMwSURFdU16Y3pMUzR3T1M0ME5qVXRMakU1TWk0NU1USXRMakk1TnlBeExqTXpOR3d0TGpFM09DNDNOek5vTVM0MU5UVnNMUzR4TmpndExqYzNNMkV6TVM0MUlETXhMalVnTUNBd0lERXRMak13TWkweExqTTBJRFUxTGpZeU15QTFOUzQyTWpNZ01DQXdJREF0TGpJNU15MHhMak0yTjNwdE5pNHdNRFV1TURJNWRqRXVPVEpvTGpjM00yTXVOREF6SURBZ0xqWTVOaTB1TURreUxqZzNPQzB1TWpjNUxqRTRNaTB1TVRnM0xqSTNOQzB1TkRNM0xqSTNOQzB1TnpVeklEQXRMak14TnkwdU1Ea3lMUzQxTkRndExqSTNPUzB1TmpneUxTNHhPRGN0TGpFek5DMHVORGMxTFM0eU1EWXRMamcyTkMwdU1qQTJlbTAyTGpZNE1TNHdNemgyTWk0MU5HZ3VPVEUzWXk0NE9UZ2dNQ0F4TGpNME5DMHVORFEzSURFdU16UTBMVEV1TXpRZ01DMHVORE0zTFM0eE1UVXRMamMwT1MwdU16UXRMamt6TVMwdU1qSTJMUzR4T0RNdExqVTJNaTB1TWpZNUxURXVNREEwTFM0eU5qbDZiUzAyTGpZNE1TQXpMakl5ZGpJdU1qQTBhQzQ1TXpGakxqa3dNaUF3SURFdU16VTBMUzR6T0RRZ01TNHpOVFF0TVM0eE5EY2dNQzB1TXpjdExqRXhMUzQyTXprdExqTXpOaTB1T0RBM0xTNHlNall0TGpFMk9DMHVOVFl5TFM0eU5TMHhMakF4T0MwdU1qVjZJaTgrQ2p3dmMzWm5QZ289Jy8+CiAgICAgICAgICAgICA8L3N2Zz4=" alt="item?payload=H4sIAAAAAAAA 1NwLErOyCxJTS4pLUqtCUpNTs7PTc1LSSzJzM8rrskoKSkottLXLy8v16tMzMjP1wNK1yinWSSlJVrUKJummKWYp9bYOKYk5eQnZxfklBbbAQAi1xf6UQAAAA==&amp;type=SVG&amp;finalname=abc 1685443359548"></a></span> 
+<span class="image"><a class="image" href="https://www.yahoo.com"><img src="data:image/svg+xml;base64,ICAgICAgICAgICAgPHN2ZyB3aWR0aD0nMTA0LjkxNjY0JyBoZWlnaHQ9JzIwJyB2aWV3Qm94PScwIDAgMTA0OS4xNjY0IDIwMCcgCiAgICAgICAgICAgIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgcm9sZT0naW1nJyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgYXJpYS1sYWJlbD0nIFlhaG9vOiBGaW5hbmNlJz4KICAgICAgICAgICAgIDx0aXRsZT4gWWFob286IEZpbmFuY2U8L3RpdGxlPgogICAgICAgICAgICAgPGRlZnM+CiAgICAgICAgICAgICAgICA8ZmlsdGVyIGlkPSJCZXZlbCIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSItMTAlIiB5PSItMTAlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTAlIj4KICAgICAgICAgICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICAgICAgICAgICAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImJsdXIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iMC41IiBzcGVjdWxhckV4cG9uZW50PSIxMCIgcmVzdWx0PSJzcGVjT3V0IiBsaWdodGluZy1jb2xvcj0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZmVQb2ludExpZ2h0IHg9Ii01MDAwIiB5PSItMTAwMDAiIHo9IjIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwyIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjUiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNSIgc3BlY3VsYXJFeHBvbmVudD0iMTAiIHJlc3VsdD0ic3BlY091dCIgbGlnaHRpbmctY29sb3I9IndoaXRlIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGZlUG9pbnRMaWdodCB4PSItNTAwMCIgeT0iLTEwMDAwIiB6PSIwMDAwIi8+CiAgICAgICAgICAgICAgICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJzcGVjT3V0IiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ic3BlY091dDIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ic3BlY091dDIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIxIiBrND0iMCIgcmVzdWx0PSJsaXRQYWludCIgLz4KICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICAgICAgPGZpbHRlciBpZD0iQmV2ZWwzIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9Ii0xMCUiIHk9Ii0xMCUiIHdpZHRoPSIxNTAlIiBoZWlnaHQ9IjE1MCUiPgogICAgICAgICAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMC4yIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgICAgICAgICAgICAgICA8ZmVTcGVjdWxhckxpZ2h0aW5nIGluPSJibHVyIiBzdXJmYWNlU2NhbGU9IjEwIiBzcGVjdWxhckNvbnN0YW50PSIzLjUiIHNwZWN1bGFyRXhwb25lbnQ9IjEwIiByZXN1bHQ9InNwZWNPdXQiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIj4KICAgICAgICAgICAgICAgICAgICAgIDxmZVBvaW50TGlnaHQgeD0iLTUwMDAiIHk9Ii0xMDAwMCIgej0iMDAwMCIvPgogICAgICAgICAgICAgICAgICAgIDwvZmVTcGVjdWxhckxpZ2h0aW5nPgogICAgICAgICAgICAgICAgICAgIDxmZUNvbXBvc2l0ZSBpbj0ic3BlY091dCIgaW4yPSJTb3VyY2VBbHBoYSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNwZWNPdXQyIi8+CiAgICAgICAgICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9InNwZWNPdXQyIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIHJlc3VsdD0ibGl0UGFpbnQiIC8+CiAgICAgICAgICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgICAgICA8L2RlZnM+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0nYScgeDI9JzAnIHkyPScxMDAlJz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0nMCcgc3RvcC1vcGFjaXR5PScuMScgc3RvcC1jb2xvcj0nI0VFRScvPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PScxJyBzdG9wLW9wYWNpdHk9Jy4xJy8+CiAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFiZWxfZmFjMTRmZTAtNDNiYi00NjliLWFhZDYtMGJhMmMzMDY0NzlmIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIGNsYXNzPSJzdG9wMSIgb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JmN2ZiZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AyIiBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzlmM2Y5ZiIvPgogICAgPHN0b3AgY2xhc3M9InN0b3AzIiBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4MDAwODAiLz4KPC9saW5lYXJHcmFkaWVudD4gCjxsaW5lYXJHcmFkaWVudCBpZD0ibWVzc2FnZV9mYWMxNGZlMC00M2JiLTQ2OWItYWFkNi0wYmEyYzMwNjQ3OWYiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3AgY2xhc3M9InN0b3AxIiBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOTNiZTg5Ii8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDIiIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNWQ5ZTRlIi8+CiAgICA8c3RvcCBjbGFzcz0ic3RvcDMiIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzI3N2UxNCIvPgo8L2xpbmVhckdyYWRpZW50PiAKICAgICAgICAgICAgPG1hc2sgaWQ9J2ZhYzE0ZmUwLTQzYmItNDY5Yi1hYWQ2LTBiYTJjMzA2NDc5Zic+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0nMTA0OS4xNjY0JyBoZWlnaHQ9JzIwMCcgcng9JzMwJyBmaWxsPScjRkZGJy8+CiAgICAgICAgICAgIDwvbWFzaz4KICAgICAgICAgICAgPGcgbWFzaz0ndXJsKCNmYWMxNGZlMC00M2JiLTQ2OWItYWFkNi0wYmEyYzMwNjQ3OWYpJz4KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9J3VybCgjbGFiZWxfZmFjMTRmZTAtNDNiYi00NjliLWFhZDYtMGJhMmMzMDY0NzlmKScgd2lkdGg9JzQ4Ny42NjY0NycgaGVpZ2h0PScyMDAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIi8+CiAgICAgICAgICAgICAgICA8cmVjdCBmaWxsPSd1cmwoI21lc3NhZ2VfZmFjMTRmZTAtNDNiYi00NjliLWFhZDYtMGJhMmMzMDY0NzlmKScgeD0nNDg3LjY2NjQ3JyB3aWR0aD0nNTYxLjQ5OTk0JyBoZWlnaHQ9JzIwMCcgZmlsdGVyPSJ1cmwoI0JldmVsMikiLz4KICAgICAgICAgICAgICAgIDxyZWN0IHdpZHRoPScxMDQ5LjE2NjQnIGhlaWdodD0nMjAwJyBmaWxsPSd1cmwoI2EpJyBmaWx0ZXI9InVybCgjQmV2ZWwyKSIvPgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDxnIGFyaWEtaGlkZGVuPSd0cnVlJyAgdGV4dC1hbmNob3I9J3N0YXJ0JyBmb250LWZhbWlseT0nQXJpYWwsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZicKICAgICAgICAgICAgICAgZm9udC1zaXplPScxMTAnIGZpbHRlcj0idXJsKCNCZXZlbDIpIj4KICAgICAgICAgICAgICAgIDx0ZXh0IHg9JzEzMicgeT0nMTM4JyB0ZXh0TGVuZ3RoPSczMjcuNjY2NDcnICBmaWxsPSIjZWVlZWVlCiIgPjxhIGhyZWY9J0ZpbmFuY2UnPiBZYWhvbzwvYT48L3RleHQ+CiAgICAgICAgICAgICAgICA8dGV4dCB4PSc1NDIuNjY2NScgeT0nMTM4JyB0ZXh0TGVuZ3RoPSc0NjEuNDk5OTQnICBmaWxsPSIjZWVlZWVlCiIgPjxhIGhyZWY9J0ZpbmFuY2UnPkZpbmFuY2U8L2E+PC90ZXh0PgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDxpbWFnZSB4PScxMCcgeT0nMzUnIHdpZHRoPScxMTInIGhlaWdodD0nMTMwJyB4bGluazpocmVmPSdkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBEOTRiV3dnZG1WeWMybHZiajBpTVM0d0lpQmxibU52WkdsdVp6MGlWVlJHTFRnaUlITjBZVzVrWVd4dmJtVTlJbTV2SWo4K0NqeHpkbWNnZUcxc2JuTTlJbWgwZEhBNkx5OTNkM2N1ZHpNdWIzSm5Mekl3TURBdmMzWm5JaUJtYVd4c1BTSWpRVGhDT1VORElpQm9aV2xuYUhROUlqRXdNSEI0SWlCeWIyeGxQU0pwYldjaUlIWnBaWGRDYjNnOUlqQWdNQ0F5TkNBeU5DSWdkMmxrZEdnOUlqRXdNSEI0SWo0S0lDQWdJQ0E4ZEdsMGJHVStRend2ZEdsMGJHVStDaUFnSUNBZ1BIQmhkR2dnWkQwaVRURTJMalU1TWpFZ09TNHhPVFl5Y3kwdU16VTBMVE11TWprNExUTXVOakkzTFRNdU16bGpMVE11TWpjME1TMHVNRGt0TkM0NU5UVXlJREl1TkRjMExUUXVPVFUxTWlBMkxqRTBJREFnTXk0Mk5qVXhJREV1T0RVNElEWXVOVGszTWlBMUxqQTBOVEVnTmk0MU9UY3lJRE11TVRnMElEQWdNeTQxTXpneExUTXVOalkxSURNdU5UTTRNUzB6TGpZMk5XdzJMakV3TkRFdU16WTFjeTR6TmlBekxqTXhMVEl1TVRrMklEVXVPRE0yWXkweUxqVTFNaUF5TGpVeU5ERXROUzQyT1RBeElESXVPVE0zTVMwM0xqZzNOaklnTWk0NU1qQXhMVEl1TVRrdExqQXhOeTAxTGpJeU5qRXVNRE0wTFRndU1UWXdNaTB5TGprM0xUSXVPVE00TFRNdU1ERXdNUzB6TGpRek5pMDFMamt6TURJdE15NDBNell0T0M0NE1EQXlJREF0TWk0NE56QXhMalUxTmkwMkxqWTNNRElnTkM0d05EY3RPUzQxTlRBeVF6Y3VORFEwTGpjeUlEa3VPRFE1SURBZ01USXVNalUwSURCak1UQXVNRFF5TWlBd0lERXdMamN4TnpJZ09TNHlOakF5SURFd0xqY3hOeklnT1M0eU5qQXllaUl2UGdvOEwzTjJaejRLJy8+CiAgICAgICAgICAgICA8L3N2Zz4=" alt="item?payload=H4sIAAAAAAAA 1OITMzIz69xy8xLzEtOrckoKSkottLXLy8v16sEyegl5 fWKFsYGBhYGNQoG5mbpxqa1Ng429Uop4IBAEbqwSZAAAAA&amp;type=SVG&amp;finalname=abc 1685443359548"></a></span> </p>
 </div>
 </div>
 </div>
             <div class="openblock">
             <div class="content" style="width: 66%;padding: 10px;margin-left: auto; margin-right: 0;">
             <?xml version="1.0" standalone="no"?>
-                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-63907f67-2449-40e2-8b99-17cabb437727"
+                <svg xmlns="http://www.w3.org/2000/svg" id="DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 945 80"
                 >
         <defs>
@@ -5453,6 +5545,22 @@ Still needs pipe character with empty url
         <filter id="filter">
             <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
             <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+        </filter>
+        <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
+        </filter>
+        <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                <fePointLight x="-5000" y="-10000" z="0000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
         </filter>
         <linearGradient id="linear-gradient-0" gradientUnits="userSpaceOnUse" x1="162.375" y1="40.053" x2="162.375" y2="9.99">
             <stop offset="0" stop-color="#ff857a" stop-opacity="1"/>
@@ -5501,19 +5609,20 @@ Still needs pipe character with empty url
         </linearGradient>
 
 
-           <linearGradient id="ID5a08f9f6-81d2-4552-b5ae-67c4e8baf118" x2="1" y2="1">
+
+           <linearGradient id="ID15804006-f351-4831-8eac-d4370b859b84" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#9489f6"/>
             <stop class="stop2" offset="50%" stop-color="#5e4ef1"/>
             <stop class="stop3" offset="100%" stop-color="#2913ED"/>
             </linearGradient>
 
-           <linearGradient id="ID7c5deacf-828f-4332-8528-9c9512f3f49a" x2="1" y2="1">
+           <linearGradient id="IDa240330f-ca9f-449d-a51e-277d7a45c7ef" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#98a6f2"/>
             <stop class="stop2" offset="50%" stop-color="#6579eb"/>
             <stop class="stop3" offset="100%" stop-color="#324DE5"/>
             </linearGradient>
 
-           <linearGradient id="IDd40ada3c-1535-4052-b425-a5127f23c17d" x2="1" y2="1">
+           <linearGradient id="IDe003fe5b-f46a-4b58-a34b-c62a9380fd8e" x2="1" y2="1">
             <stop class="stop1" offset="0%" stop-color="#98d7d0"/>
             <stop class="stop2" offset="50%" stop-color="#65c3b8"/>
             <stop class="stop3" offset="100%" stop-color="#32B0A1"/>
@@ -5530,32 +5639,32 @@ Still needs pipe character with empty url
 
     </defs>
     <style>
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 rect.card:hover { opacity: 0.9; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 .card { pointer-events: bounding-box; opacity: 1; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 .card:hover { opacity: 0.9; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 rect.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 rect.card:hover { opacity: 0.9; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 use.card { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.1)); pointer-events: bounding-box; opacity: 1; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 use.card:hover { opacity: 0.9; -webkit-animation: 0.5s draw linear forwards; animation: 0.5s draw linear forwards; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 .card { pointer-events: bounding-box; opacity: 1; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 .card:hover { opacity: 0.9; }
 .subtitle { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 10px; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 rect.legend { pointer-events: bounding-box; opacity: 1; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 rect.legend { pointer-events: bounding-box; opacity: 1; }
 
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 rect.legend:hover { opacity: 0.9; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 .label { font-family: Helvetica, Arial, sans-serif; }
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 rect.legend:hover { opacity: 0.9; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 .label { font-family: Helvetica, Arial, sans-serif; }
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 .title {fill: white; font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; font-size: 9pt;}
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 .legendText {font-size: 9pt;font-family:  Helvetica, Arial, sans-serif; }
 
 @keyframes draw {
     0% { stroke-dasharray: 140 540; stroke-dashoffset: -474; stroke-width:3px; }
     100%{ stroke-dasharray: 760; stroke-dashoffset:0; stroke-width:3px; }
 }
 
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 .shape{ stroke:black;}
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 .shape{ stroke:black;}
 
-.ID5a08f9f6-81d2-4552-b5ae-67c4e8baf118_cls { fill: url(#ID5a08f9f6-81d2-4552-b5ae-67c4e8baf118); }
-    .ID7c5deacf-828f-4332-8528-9c9512f3f49a_cls { fill: url(#ID7c5deacf-828f-4332-8528-9c9512f3f49a); }
-    .IDd40ada3c-1535-4052-b425-a5127f23c17d_cls { fill: url(#IDd40ada3c-1535-4052-b425-a5127f23c17d); }
+.ID15804006-f351-4831-8eac-d4370b859b84_cls { fill: url(#ID15804006-f351-4831-8eac-d4370b859b84); }
+    .IDa240330f-ca9f-449d-a51e-277d7a45c7ef_cls { fill: url(#IDa240330f-ca9f-449d-a51e-277d7a45c7ef); }
+    .IDe003fe5b-f46a-4b58-a34b-c62a9380fd8e_cls { fill: url(#IDe003fe5b-f46a-4b58-a34b-c62a9380fd8e); }
 
-#DocOps-63907f67-2449-40e2-8b99-17cabb437727 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
+#DocOps-7aace0e2-87b9-40b7-ab0b-18f115d2df79 .btnclass1 {font-family:Arial, Helvetica, sans-serif;font-size:11px;fill:#FFFFFF;letter-spacing:normal;}
             .glass {
     overflow: hidden;
     color: white;
@@ -5608,9 +5717,9 @@ Still needs pipe character with empty url
 .glass:active:before {
     height: 25px;
 }
-            </style><g><a xlink:href="https://docops.io/" target="_top" style='text-decoration: none;'>
+            </style><g filter="url(#Bevel2)"><a xlink:href="https://docops.io/" target="_top" style='text-decoration: none;'>
     <g transform="translate(10,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID5a08f9f6-81d2-4552-b5ae-67c4e8baf118_cls shape" fill="#2913ED"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID15804006-f351-4831-8eac-d4370b859b84_cls shape" fill="#2913ED"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -5628,9 +5737,9 @@ Still needs pipe character with empty url
     <text class="category" visibility="hidden">This Is On</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="162" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://docops.io/" class="glass title btnclass1">This Is On</a></text><a xlink:href="https://docops.io/" target="_top" style='text-decoration: none;'>
+</a><text x="162" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://docops.io/" class="glass title btnclass1">This Is On</a></text><a xlink:href="https://docops.io/" target="_top" style='text-decoration: none;'>
     <g transform="translate(320,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card ID7c5deacf-828f-4332-8528-9c9512f3f49a_cls shape" fill="#324DE5"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDa240330f-ca9f-449d-a51e-277d7a45c7ef_cls shape" fill="#324DE5"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -5648,9 +5757,9 @@ Still needs pipe character with empty url
     <text class="category" visibility="hidden">This Is Two</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="472" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://docops.io/" class="glass title btnclass1">This Is Two</a></text><a xlink:href="https://docops.io/" target="_top" style='text-decoration: none;'>
+</a><text x="472" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://docops.io/" class="glass title btnclass1">This Is Two</a></text><a xlink:href="https://docops.io/" target="_top" style='text-decoration: none;'>
     <g transform="translate(630,10)">
-     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDd40ada3c-1535-4052-b425-a5127f23c17d_cls shape" fill="#32B0A1"
+     <path d="M 0 10.0 A 10.0 10.0 0 0 1 10.0 0 L 290.0 0 A 10.0 10.0 0 0 1 300.0 10.0 L 300.0 20.0 A 10.0 10.0 0 0 1 290.0 30.0 L 10.0 30.0 A 10.0 10.0 0 0 1 0 20.0 Z" class="glass card IDe003fe5b-f46a-4b58-a34b-c62a9380fd8e_cls shape" fill="#32B0A1"
     stroke-width="2" stroke="black" stroke-dasharray="2000" stroke-dashoffset="2000">
      <title class="description"></title>
      <animate id="p1"
@@ -5668,7 +5777,7 @@ Still needs pipe character with empty url
     <text class="category" visibility="hidden">This Is Three</text>
     <text class="author" visibility="hidden">null</text>
     <text class="date" visibility="hidden"></text>
-</a><text x="782" y="30" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://docops.io/" class="glass title btnclass1">This Is Three</a></text></g></svg>
+</a><text x="782" y="30" filter="url(#Bevel2)" text-anchor="middle" class="label"><a style='text-decoration: none;' xlink:href="https://docops.io/" class="glass title btnclass1">This Is Three</a></text></g></svg>
             </div>
             </div>
 </div>

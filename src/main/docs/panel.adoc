@@ -882,10 +882,10 @@ a|Color for label, e.g. Red
 
 [badge]
 ----
-Below|+ +|https://www.google.com|#e915f0|#a69460|
-Technical|Debt|https://www.yahoo.com|#cc263f|#5d6d7e|
-Architecture|Reccomendations|https://www.yahoo.com|#f8bfa8|#5d6d7e|
-Yahoo|Finance|https://www.yahoo.com|#800080|#277e14|
+Below|+ +|https://www.google.com|#0a2733|#a69460|<Asciidoctor>
+Technical|Debt|https://www.yahoo.com|#cc263f|#5d6d7e|<Yahoo>
+Architecture|Reccomendations|https://www.yahoo.com|#f8bfa8|#5d6d7e|<Adblockplus>
+Yahoo|Finance|https://www.yahoo.com|#800080|#277e14|<C>|#eeeeee
 ----
 
 
