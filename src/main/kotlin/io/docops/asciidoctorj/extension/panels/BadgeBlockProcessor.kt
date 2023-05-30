@@ -40,40 +40,6 @@ class BadgeBlockProcessor : BlockProcessor() {
         }
         val backend = parent.document.getAttribute("backend") as String
         val idea = parent.document.getAttribute("env", "") as String
-        var isPdf = "HTML"
-        if ("pdf" == backend) {
-            isPdf = "PDF"
-        } else if ("idea" == idea) {
-            isPdf = "IDEA"
-        }
-        val results = getSvgContentFromServer(content, parent)
-        var width = attributes.getOrDefault("width", "") as String
-        val role = attributes.getOrDefault("role", "center") as String
-
-        var widthNum = 970
-        if (width.isNotEmpty()) {
-            val pct: Int
-            if (width.contains("%")) {
-                pct = width.substring(0, width.length - 1).toInt()
-
-            } else {
-                pct = width.toInt()
-            }
-
-            val fact = pct.toDouble().div(100)
-
-            widthNum = fact.times(widthNum).toInt()
-        }
-
-        /*parseContent(block, lines)
-        if("PDF" == isPdf) {
-            val block: Block = createBlock(parent, "open", null as String?)
-            val lines = makeContentForPdf(content, localDebug)
-            parseContent(block, lines)
-            return block
-        } else {
-            return createImageBlockFromString(parent, results, role, widthNum.toString())
-        }*/
         val block: Block = createBlock(parent, "open", null as String?)
         val lines: MutableList<String> = if ("pdf" == backend) {
             makeContentForPdf(content, localDebug)
@@ -82,24 +48,6 @@ class BadgeBlockProcessor : BlockProcessor() {
         }
         parseContent(block, lines)
         return block
-    }
-
-    private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
-
-        val align = mutableMapOf(
-            "right" to "margin-left: auto; margin-right: 0;",
-            "left" to "",
-            "center" to "margin: auto;"
-        )
-        val center = align[role.lowercase()]
-        val content: String = """
-            <div class="openblock">
-            <div class="content" style="width: $width;padding: 10px;$center">
-            $svg
-            </div>
-            </div>
-        """.trimIndent()
-        return createBlock(parent, "pass", content)
     }
 
     private fun makeContentForHtml(content: String, debug: Boolean): MutableList<String> {
