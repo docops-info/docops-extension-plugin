@@ -2,7 +2,7 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: asciidoctor.css
+:stylesheet: cerulean.css
 :toc: left
 :sectnums:
 :title-page:
@@ -884,8 +884,9 @@ a|Color for label, e.g. Red
 ----
 Below|+ +|https://www.google.com|#0a2733|#a69460|<Asciidoctor>|#ffffff
 Technical|Debt|https://www.yahoo.com|#cc263f|#5d6d7e|<Yahoo>|#000000
-Architecture|Reccomendations|https://www.yahoo.com|#f8bfa8|#5d6d7e|<Adblockplus>
-Yahoo|Finance|https://www.yahoo.com|#800080|#277e14||#eeeeee
+Architecture|Recomendations|https://www.yahoo.com|#f8bfa8|#5d6d7e|<Adblockplus>
+Yahoo|Finance|https://www.yahoo.com|#800080|#277e14|<Yahoo>|#eeeeee
+BUILD|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 ----
 
 
