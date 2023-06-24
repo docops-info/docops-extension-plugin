@@ -65,7 +65,7 @@ class ReleaseStrategyBlockProcessor : BlockProcessor(){
                     ""
                 }
                 val url = "$server/api/release/?payload=$payload"
-                return produceBlock(url, "filename", parent, widthNum.toString(), role)
+                return produceBlock(url, "release-strategy", parent, widthNum.toString(), role)
             }
             else {
                 val url = "$server/api/release/"

@@ -848,6 +848,7 @@ colorMap::[]
 
 * A simple Utility to generate a pastel themed the colormap for your convenience.
 endif::[]
+
 == Badges/Shield
 
 === Syntax
@@ -857,26 +858,30 @@ endif::[]
 -----
 [badge]
 ----
-Badges|Are|https://www.google.com|RED|Blue|
-Cool|Aren't They?|https://www.yahoo.com|BLUE|ORANGE|C
+Build|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
+Technical|Debt|https://www.yahoo.com|#cc263f|#5d6d7e|<Yahoo>|#000000
 ----
 -----
 
 .Pipe Delimited Values
-[cols="1,1,3,1,3,1"]
+[cols="1,1,3,1,3,1,1"]
 |===
-|Label |Message |Url |Label Color | Message Color |Icon
+|Label |Message |Url |Label Color | Message Color |Icon|Font Color
 
 |Label for the Badge
 |Message For Badge
 a|Optional Url
 
-TIP: Still needs pipe character with empty url
+[TIP]
+====
+Still needs pipe character with empty url
+====
 
-a|Color for label, e.g. Red
+a|Color for label, e.g. #ff0000
 
 |Color for message, e.g. #ffccb9
-|SimpleIcon name, eg C
+|SimpleIcon name, eg <C>
+|Color of the font
 |===
 
 
@@ -889,6 +894,7 @@ Yahoo|Finance|https://www.yahoo.com|#800080|#277e14|<Yahoo>|#eeeeee
 BUILD|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 ----
 
+== ButtonPanel at 66% width
 
 [panel, default, width=66%,role=right]
 ----
@@ -912,7 +918,25 @@ panel {
 ----
 
 
-[release]
+== Building Out a Release Strategy
+
+[release,width="70%",role="left"]
 ----
 include::example.json[]
 ----
+
+=== Example Source
+
+[source,asciidoc]
+-----
+[release,width="70%"]
+----
+include::example.json[]
+----
+-----
+
+=== JSON Schema
+
+Link to schema for the JSON used for creating a release strategy.
+
+https://docops.io/extension/schemas/release-strategy-schema.json
