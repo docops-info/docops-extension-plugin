@@ -912,3 +912,7 @@ panel {
 ----
 
 
+[release]
+----
+include::example.json[]
+----
