@@ -920,18 +920,33 @@ panel {
 
 == Building Out a Release Strategy
 
+=== Style is timeline
+
 [release,width="70%",role="left"]
 ----
-include::example.json[]
+include::example1.json[]
 ----
 
+=== Style is timeline grouped
+
+[release,width="70%",role="left"]
+----
+include::example2.json[]
+----
+
+=== Style is Roads
+
+[release,width="70%",role="left"]
+----
+include::example3.json[]
+----
 === Example Source
 
 [source,asciidoc]
 -----
 [release,width="70%"]
 ----
-include::example.json[]
+include::example1.json[]
 ----
 -----
 
