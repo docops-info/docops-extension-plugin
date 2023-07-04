@@ -955,3 +955,39 @@ include::example1.json[]
 Link to schema for the JSON used for creating a release strategy.
 
 https://docops.io/extension/schemas/release-strategy-schema.json
+
+== Timeline Builder
+
+[timeline,title="Demo timeline Builder by docops.io"]
+----
+-
+date: July 23rd, 2023
+text: DocOps extension Server releases a new feature, Timeline Maker
+for asciidoctorj. With a simple text markup block you can
+create very powerful timeline images. Enjoy!
+-
+date: August 15th, 2023
+text: DocOps.io revamping website with updated documentation. All
+our work will be updated with latest documentation for Panels,
+for extension server are the various plug-ing for asciidoctorj.
+-
+date: September 1st, 2023
+text: DocOps.io will begin work on revamping the asciidoctorj converter.
+with the asciidoctorj 3.0.0 release coming we will need to migrate
+custom plug-ins to the new version of the extensions as they will bring braking changes.
+-
+date: October 18th, 2023
+text: Time to reimagine the future. Is it possible
+to write a lexer parser for custom language?
+-
+date: November 16th, 2023
+text: Another year been on this earth.
+Time to celebrate. Good times.
+-
+date: December 11th, 2023
+text: Annual start of vacation, time to relax
+and plugin the controller.
+----
+
+
+

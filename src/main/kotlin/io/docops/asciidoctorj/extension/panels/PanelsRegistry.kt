@@ -30,6 +30,7 @@ class PanelsRegistry : ExtensionRegistry {
         registry.block(EChartTreeBlockProcessor::class.java)
         registry.block(EChartCustomBlockProcessor::class.java)
         registry.block(ReleaseStrategyBlockProcessor::class.java)
+        registry.block(TimelineBlockProcessor::class.java)
         registry.docinfoProcessor(FeedbackDocinfoProcessor::class.java)
         registry.docinfoProcessor(FeedbackDivDocInfoProcessor::class.java)
         registry.blockMacro(ColorMapBlockMacroProcessor::class.java)
