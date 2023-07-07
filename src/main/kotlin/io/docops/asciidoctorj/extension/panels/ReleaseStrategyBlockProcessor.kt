@@ -14,6 +14,7 @@ import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.time.Duration
+import java.util.*
 
 @Name("release")
 @Contexts(Contexts.LISTING)
@@ -46,15 +47,13 @@ class ReleaseStrategyBlockProcessor : BlockProcessor(){
             var widthNum = 970
             if (width.isNotEmpty()) {
                 val pct: Int
-                if(width.contains("%")) {
-                    pct = width.substring(0, width.length - 1).toInt()
+                pct = if(width.contains("%")) {
+                    width.substring(0, width.length - 1).toInt()
 
                 } else {
-                    pct = width.toInt()
+                    width.toInt()
                 }
-
                 val fact = pct.toDouble().div(100)
-
                 widthNum = fact.times(widthNum).toInt()
             }
             if ("pdf" == backend) {
@@ -64,18 +63,26 @@ class ReleaseStrategyBlockProcessor : BlockProcessor(){
                     log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
                     ""
                 }
-                val url = "$server/api/release/?payload=$payload"
+                val url = "$webserver/api/release/?payload=$payload"
                 return produceBlock(url, "release-strategy", parent, widthNum.toString(), role)
             }
             else {
-                val url = "$server/api/release/"
+                //val url = "$webserver/api/release/?payload=$payload&type=SVG&filename=def.svg[format=svg]"
+                val url = "$webserver/api/release/"
                 val resp = getContentFromServerPut(url, parent, this, localDebug, content)
+                //val lines = toDataUri(resp, role, width)
+                //parseContent(block, url.lines())
                 return createImageBlockFromString(parent, resp, role, width)
             }
         }
         return block
     }
 
+    private fun toDataUri(svg: String, role: String, width: String): List<String> {
+
+        val b64  = Base64.getEncoder().encodeToString(svg.toByteArray())
+        return "image::data:image/svg+xml;base64,$b64[opts=inline,role=$role]".lines()
+    }
     private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
 
         val align = mutableMapOf(
@@ -84,10 +91,15 @@ class ReleaseStrategyBlockProcessor : BlockProcessor(){
             "center" to "margin: auto;"
         )
         val center = align[role.lowercase()]
+        val b64  = Base64.getEncoder().encodeToString(svg.toByteArray())
+        //language=html
         val content: String = """
             <div class="openblock">
             <div class="content" style="width: $width;padding: 10px;$center">
-            $svg
+            <object type="image/svg+xml" data='data:image/svg+xml;base64,$b64'>
+            fallback
+            </object>
+           
             </div>
             </div>
         """.trimIndent()
@@ -127,8 +139,6 @@ class ReleaseStrategyBlockProcessor : BlockProcessor(){
         val svgMap = mutableMapOf<String, Any>(
             "role" to "center",
             "opts" to "inline",
-            "align" to "$role",
-            "width" to width,
             "target" to dataSrc,
             "alt" to "IMG not available",
             "title" to "Figure. $filename",

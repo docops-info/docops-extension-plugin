@@ -1,5 +1,6 @@
 {
   "title": "Release Strategy Builder",
+
   "releases": [
     {
       "type": "M1",

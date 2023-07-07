@@ -16,6 +16,7 @@ import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.nio.charset.StandardCharsets
 import java.time.Duration
+import java.util.*
 
 @Name("timeline")
 @Contexts(Contexts.LISTING)
@@ -91,10 +92,11 @@ class TimelineBlockProcessor : BlockProcessor() {
             "center" to "margin: auto;"
         )
         val center = align[role.lowercase()]
+        val b64 = Base64.getEncoder().encodeToString(svg.toByteArray())
         val content: String = """
             <div class="openblock">
             <div class="content" style="width: $width;padding: 10px;$center">
-            $svg
+            <img src="data:image/svg+xml;base64,$b64"/>
             </div>
             </div>
         """.trimIndent()
