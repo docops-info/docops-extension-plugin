@@ -46,6 +46,9 @@ link:docs/panel.html[{artifact}.html]
 
 == History
 
+2023.23 - 2023-07-08::
+* timeline builder updates
+
 2023.23 - 2023-07-04::
 * timeline builder
 
