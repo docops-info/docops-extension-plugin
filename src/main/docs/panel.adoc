@@ -929,7 +929,7 @@ include::example1.json[]
 
 === Style is timeline grouped
 
-[release,width="70%",role="left"]
+[release,width="50%",role="left"]
 ----
 include::example2.json[]
 ----
@@ -958,7 +958,7 @@ https://docops.io/extension/schemas/release-strategy-schema.json
 
 == Timeline Builder
 
-[timeline,title="Demo timeline Builder by docops.io"]
+[timeline,title="Demo timeline Builder by docops.io",scale="0.7"]
 ----
 -
 date: July 23rd, 2023
@@ -989,6 +989,4 @@ text: Annual start of vacation, time to relax
 and plugin the controller.
 ----
 
-
-image::http://localhost:8010/extension/api/release/?payload=H4sIAAAAAAAA_91UTU_DMAy971dYPU8THzdufIkPgQaMG-KQpaaNliWV4zAqxH_H6bqujAESFyQuVRq_9_wcO3kdAGRs2GJ2ANkdWlQBYcKkGIsajqKxOVI2HCQcLcNBoA_yD_DafJNCXTUC17sCbfescT1os3WPag4LYy3kWFlfA3tQVWWNVmy8g4D0jAQ6EqFjqMjnUTcR7XPspEVpghwruDifJNBL3Q-tk1wrmoGPDAuchqpEwjZDAOVymKewcWDNFInrVWy71rOyJpdDgfGMFehSuQIDiLOrJbvPGjuNHSEH7kTmK0MbKT_Y-WS2L317uGHnZn1GJkDgFFx4mhlXbC-EUHvKQcnST1OG5uh_qtr6YumypfepoIKYtvb_SLQKj90sJ2qa78toa9jf4XIIezt7--thD3I1tDRbQEwRu_3CK5uI40iQ1qlJMvSngdXUmlACl7gaIWn-E6kgfM1R2r8wXC7HDZ2gRbxRfRtuv3t3x99fvq-ruj86-V0lo9Hoe09nh39nadDqZoHr9nnLBm_vPYysH_EEAAA=&type=svg&f=abc.svg[type=svg,opts=inline]
 

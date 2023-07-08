@@ -45,6 +45,7 @@ class TimelineBlockProcessor : BlockProcessor() {
         val width = attributes.getOrDefault("width", "") as String
         val role = attributes.getOrDefault("role", "center") as String
         val title = attributes.getOrDefault("title", "Title") as String
+        val scale = attributes.getOrDefault("scale", "1.0") as String
         val block: Block = createBlock(parent, "open", null as String?)
         if (serverPresent(server, parent, this, localDebug)) {
             var widthNum = 970
@@ -61,24 +62,25 @@ class TimelineBlockProcessor : BlockProcessor() {
 
                 widthNum = fact.times(widthNum).toInt()
             }
+            val payload: String = try {
+                compressString(content)
+            } catch (e: Exception) {
+                log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
+                ""
+            }
             if ("pdf" == backend) {
-                val payload: String = try {
-                    compressString(content)
-                } catch (e: Exception) {
-                    log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
-                    ""
-                }
-                val url = "$server/api/timeline/?payload=$payload&title=${title.encodeUrl()}"
-                val lines =  getContentFromServer(url, parent,this, true)
+                val url = "$server/api/timeline/table?payload=$payload&title=${title.encodeUrl()}"
+                val lines = getContentFromServer(url, parent, this, true)
                 val pdfBlock = createBlock(parent, "open", lines)
                 parseContent(pdfBlock, lines.lines())
                 block.blocks.add(pdfBlock)
                 return block
-            }
-            else {
-                val url = "$server/api/timeline/?title=${title.encodeUrl()}"
-                val resp = getContentFromServerPut(url, parent, this, localDebug, content)
-                return createImageBlockFromString(parent, resp, role, width)
+            }else {
+                val url = "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&filename=def.svg[format=svg,opts=inline,role=$role,width=$widthNum]"
+                parseContent(block, url.lines())
+                if(localDebug){
+                    println(url)
+                }
             }
         }
         return block

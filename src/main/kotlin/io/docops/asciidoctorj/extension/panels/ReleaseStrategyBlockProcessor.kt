@@ -56,24 +56,16 @@ class ReleaseStrategyBlockProcessor : BlockProcessor(){
                 val fact = pct.toDouble().div(100)
                 widthNum = fact.times(widthNum).toInt()
             }
-            if ("pdf" == backend) {
+
                 val payload: String = try {
                     compressString(content)
                 } catch (e: Exception) {
                     log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
                     ""
                 }
-                val url = "$webserver/api/release/?payload=$payload"
-                return produceBlock(url, "release-strategy", parent, widthNum.toString(), role)
-            }
-            else {
-                //val url = "$webserver/api/release/?payload=$payload&type=SVG&filename=def.svg[format=svg]"
-                val url = "$webserver/api/release/"
-                val resp = getContentFromServerPut(url, parent, this, localDebug, content)
-                //val lines = toDataUri(resp, role, width)
-                //parseContent(block, url.lines())
-                return createImageBlockFromString(parent, resp, role, width)
-            }
+                //val url = "$webserver/api/release/?payload=$payload"
+                val url = "image::$webserver/api/release/?payload=$payload&type=SVG&filename=def.svg[format=svg,opts=inline,role=$role,width=$widthNum]"
+                parseContent(block, url.lines())
         }
         return block
     }
