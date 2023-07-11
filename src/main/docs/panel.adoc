@@ -724,12 +724,13 @@ theme {
 ----
 -----
 
-[panels,"large",width="80%",role="center"]
+[panels,"large",role="center"]
 ----
 panels {
 theme {
         layout {
             columns = 3
+
         }
         font {
             color = "#000000"

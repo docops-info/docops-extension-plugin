@@ -64,8 +64,14 @@ class ReleaseStrategyBlockProcessor : BlockProcessor(){
                     ""
                 }
                 //val url = "$webserver/api/release/?payload=$payload"
+            val lines = mutableListOf<String>()
                 val url = "image::$webserver/api/release/?payload=$payload&type=SVG&filename=def.svg[format=svg,opts=inline,role=$role,width=$widthNum]"
-                parseContent(block, url.lines())
+                if(localDebug) {
+                    println(url)
+                }
+            lines.add(url)
+            lines.add("$webserver/api/release/?payload=$payload&type=XLS&filename=def.xls[Excel]")
+            parseContent(block, lines)
         }
         return block
     }

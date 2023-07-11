@@ -82,8 +82,8 @@ open class PanelsBlockProcessor : BlockProcessor() {
             var imageType = "svg+xml"
             if ("pdf" == backend) {
                 isPdf = "PDF"
-                ext = "png"
-                imageType = "png"
+                ext = "svg"
+                imageType = "svg"
             } else if ("idea" == idea) {
                 isPdf = "IDEA"
             }
@@ -141,16 +141,18 @@ open class PanelsBlockProcessor : BlockProcessor() {
                 val svgBlock: Block?
                 var pdfBlock: Block? = null
                 if ("PDF" == isPdf) {
-                    val lines = dslToLines(dsl = payload, parent = parent)
-                    pdfBlock = createBlock(parent, "open", lines)
-                    parseContent(pdfBlock, lines)
-                    svgBlock = produceBlock(url, filename, parent, widthNum.toString(), role, format = ext)
+                    //val lines : MutableList = dslToLines(dsl = payload, parent = parent)
+                    pdfBlock = createBlock(parent, "open", null as String?)
+                    val co = "image::$server/api/panel?type=SVG&data=$payload&filename=def.svg[format=svg,opts=inline,role=$role,width=$widthNum]"
+
+                    parseContent(pdfBlock,  co.lines())
+                    //svgBlock = produceBlock(url, filename, parent, widthNum.toString(), role, format = ext)
                 } else {
                     val image = getContentFromServer(url, parent, this, debug = localDebug)
                     return createImageBlockFromString(parent, image, role, width)
                 }
                 val block: Block = createBlock(parent, "open", "")
-                block.blocks.add(svgBlock)
+                //block.blocks.add(svgBlock)
                 pdfBlock?.let {
                     block.blocks.add(it)
                 }
