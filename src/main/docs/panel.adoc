@@ -991,3 +991,22 @@ and plugin the controller.
 ----
 
 
+== Roadmap Planning
+
+[roadmap,scale="0.5"]
+----
+- now
+Architect the application security model [[https://medium.com/bytebytego-system-design-alliance/top-10-architecture-characteristics-non-functional-requirements-with-cheatsheat-7ad14bbb0a9b NFR]] using OAuth2
+- now
+Solution application migration from legacy platform
+- now
+Migrate application workloads to public cloud
+- now
+Strategic Initiative for API
+- now
+API Versioning and Release Strategy
+- later
+Event Driven Architecture
+- next
+Domain Events
+----
