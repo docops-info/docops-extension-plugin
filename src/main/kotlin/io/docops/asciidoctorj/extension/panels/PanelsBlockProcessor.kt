@@ -17,8 +17,6 @@
 
 package io.docops.asciidoctorj.extension.panels
 
-import io.docops.asciidoc.buttons.service.ScriptLoader
-import org.asciidoctor.ast.Block
 import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
 import org.asciidoctor.extension.BlockProcessor
@@ -40,204 +38,18 @@ import java.util.zip.GZIPOutputStream
 @Name("panels")
 @Contexts(Contexts.LISTING)
 @ContentModel(ContentModel.COMPOUND)
-open class PanelsBlockProcessor : BlockProcessor() {
-    private var scriptLoader = ScriptLoader()
-    private var server = "http://localhost:8010/extension"
-    private var webserver = "http://localhost:8010/extension"
-    private var localDebug = false
-    override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any? {
-        val remoteServer = parent.document.attributes["panel-server"]
-        if (remoteServer != null) {
-            remoteServer as String
-            server = remoteServer
-        }
-        val remoteWebserver = parent.document.attributes["panel-webserver"]
-        remoteWebserver?.let {
-            webserver = it as String
-        }
-        val content = subContent(reader, parent, localDebug)
-        val debug = parent.document.attributes["local-debug"]
-        if (debug != null) {
-            debug as String
-            localDebug = debug.toBoolean()
-        }
-        val format = attributes.getOrDefault("format", "dsl")
-        var width = attributes.getOrDefault("width", "") as String
-        val role = attributes.getOrDefault("role", "center") as String
-        val backend = parent.document.getAttribute("backend") as String
-        val idea = parent.document.getAttribute("env", "") as String
-        val table = attributes.getOrDefault("table", "false") as String
-        val filename = attributes.getOrDefault("name", "${System.currentTimeMillis()}_unk") as String
-        if (serverPresent(server, parent, this, localDebug)) {
-            log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Server is present"))
-            val payload: String = try {
-                compressString(content)
-            } catch (e: Exception) {
-                log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
-                ""
-            }
-            log(LogRecord(Severity.DEBUG, parent.sourceLocation, "payload compressed is $payload"))
-            var isPdf = "HTML"
-            var ext = "svg"
-            var imageType = "svg+xml"
-            if ("pdf" == backend) {
-                isPdf = "PDF"
-                ext = "svg"
-                imageType = "svg"
-            } else if ("idea" == idea) {
-                isPdf = "IDEA"
-            }
-            var widthNum = 970
-            if (width.isNotEmpty()) {
-                val pct: Int
-                if(width.contains("%")) {
-                     pct = width.substring(0, width.length - 1).toInt()
+open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
 
-                } else {
-                    pct = width.toInt()
-                }
-
-                val fact = pct.toDouble().div(100)
-
-                widthNum = fact.times(widthNum).toInt()
-            }
-            val url = if ("csv" == format) {
-                "$webserver/api/panel/csv?type=$isPdf&data=$payload&file=panel_${System.currentTimeMillis()}.$ext"
-            } else {
-                "$server/api/panel?type=${isPdf}&data=$payload&file=xyz.$ext"
-            }
-            log(LogRecord(Severity.DEBUG, parent.sourceLocation, "Url for request is $url"))
-            if (localDebug) {
-                println("Url for request is $url")
-            }
-
-            val argAttributes: MutableMap<String, Any> = HashMap()
-            argAttributes["content_model"] = ":raw"
-
-            if (table.toBoolean()) {
-                val linesArray = mutableListOf<String>()
-                // language=asciidoc
-                linesArray.add("""[cols="1",role="$role",$width,frame="none"]""")
-                linesArray.add("|===")
-                linesArray.add("")
-                linesArray.add("a|image::$url[format=$ext,width=\"$widthNum\",role=\"$role\",opts=\"inline\",align=\"$role\"]")
-                linesArray.add("")
-                linesArray.add("|===")
-                val svgBlock = createBlock(parent, "open", "", HashMap(), HashMap<Any, Any>())
-                var pdfBlock: Block? = null
-                if ("PDF" == isPdf) {
-                    val lines = dslToLines(dsl = payload, parent = parent)
-                    pdfBlock = createBlock(parent, "open", lines)
-                    parseContent(pdfBlock, lines)
-                }
-                parseContent(svgBlock, linesArray)
-                val block: Block = createBlock(parent, "open", "")
-                block.blocks.add(svgBlock)
-                pdfBlock?.let {
-                    block.blocks.add(it)
-                }
-                return block
-            } else {
-                val svgBlock: Block?
-                var pdfBlock: Block? = null
-                if ("PDF" == isPdf) {
-                    //val lines : MutableList = dslToLines(dsl = payload, parent = parent)
-                    pdfBlock = createBlock(parent, "open", null as String?)
-                    val co = "image::$server/api/panel?type=SVG&data=$payload&filename=def.svg[format=svg,opts=inline,role=$role,width=$widthNum]"
-
-                    parseContent(pdfBlock,  co.lines())
-                    //svgBlock = produceBlock(url, filename, parent, widthNum.toString(), role, format = ext)
-                } else {
-                    val image = getContentFromServer(url, parent, this, debug = localDebug)
-                    return createImageBlockFromString(parent, image, role, width)
-                }
-                val block: Block = createBlock(parent, "open", "")
-                //block.blocks.add(svgBlock)
-                pdfBlock?.let {
-                    block.blocks.add(it)
-                }
-                return block
-            }
-        }
-        return null
+    override fun buildUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode
+    ): String {
+        return "image::$webserver/api/panel?type=SVG&data=$payload&filename=def.svg[format=svg,opts=inline,float=\"$role\",align='$role']"
     }
-
-    private fun produceBlock(
-        dataSrc: String,
-        filename: String,
-        parent: StructuralNode,
-        width: String,
-        role: Any,
-        format: String
-    ): Block {
-
-        val svgMap = mutableMapOf<String, Any>(
-            "role" to "center",
-            "opts" to "inline",
-            "align" to "$role",
-            "width" to width,
-            "target" to dataSrc,
-            "alt" to "IMG not available",
-            "title" to "Figure. $filename",
-            "format" to format
-        )
-        return this.createBlock(parent, "image", "", svgMap, HashMap())
-    }
-
-    private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
-
-        val align = mutableMapOf(
-            "right" to "margin-left: auto; margin-right: 0;",
-            "left" to "",
-            "center" to "margin: auto;"
-        )
-        val center = align[role.lowercase()]
-        val content: String = """
-            <div class="openblock">
-            <div class="content" style="width: $width;padding: 10px;$center">
-            $svg
-            </div>
-            </div>
-        """.trimIndent()
-        return createBlock(parent, "pass", content)
-    }
-
-    /*private fun strToPanelButtons(str: String): MutableList<PanelButton> {
-        val result = mutableListOf<PanelButton>()
-        str.lines().forEach { line ->
-            val items = line.split("|")
-            val pb = PanelButton()
-            pb.label = items[0].trim()
-            pb.link = items[1].trim()
-            if (items.size == 3) {
-                pb.description = items[2]
-            }
-            result.add(pb)
-        }
-        return result
-    }*/
-
-
-    private fun dslToLines(dsl: String, parent: StructuralNode): List<String> {
-        val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
-            .connectTimeout(Duration.ofSeconds(10))
-            .build()
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create("$server/api/panel/lines?data=$dsl&server=$webserver"))
-            .timeout(Duration.ofSeconds(10))
-            .build()
-        try {
-            val response = client.send(request, BodyHandlers.ofString())
-            if (200 == response.statusCode()) {
-                return response.body().lines()
-            }
-        } catch (e: Exception) {
-            log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
-            return emptyList()
-        }
-        return emptyList()
-    }
-
 
 }
 
@@ -322,6 +134,4 @@ fun subs(content: String, parent: StructuralNode, debug: Boolean = false): Strin
 @Name("panel")
 @Contexts(Contexts.LISTING)
 @ContentModel(ContentModel.COMPOUND)
-class PanelBlockProcessor : PanelsBlockProcessor() {
-
-}
+class PanelBlockProcessor : PanelsBlockProcessor()

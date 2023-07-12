@@ -923,21 +923,21 @@ panel {
 
 === Style is timeline
 
-[release,width="70%",role="center"]
+[release,scale=0.7,role="center"]
 ----
 include::example1.json[]
 ----
 
 === Style is timeline grouped
 
-[release,width="50%",role="center"]
+[release,scale=0.5,role="center"]
 ----
 include::example2.json[]
 ----
 
 === Style is Roads
 
-[release,width="70%",role="center"]
+[release,scale=0.7,role="center"]
 ----
 include::example3.json[]
 ----
@@ -945,7 +945,7 @@ include::example3.json[]
 
 [source,asciidoc]
 -----
-[release,width="70%"]
+[release,scale=0.7]
 ----
 include::example1.json[]
 ----
