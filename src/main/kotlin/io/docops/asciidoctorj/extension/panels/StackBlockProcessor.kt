@@ -25,4 +25,15 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         return imageBlock(env, pdf, parent, imageUrl, fig)
     }
 
+    override fun buildUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode
+    ): String {
+        return "http://localhost:7001/imageserver/api/stacked?encoded=$payload&title=$title&type=$type"
+    }
+
 }

@@ -2,7 +2,7 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: cerulean.css
+:stylesheet: foundation.css
 :toc: left
 :sectnums:
 :title-page:
@@ -923,21 +923,21 @@ panel {
 
 === Style is timeline
 
-[release,width="70%",role="left"]
+[release,width="70%",role="center"]
 ----
 include::example1.json[]
 ----
 
 === Style is timeline grouped
 
-[release,width="50%",role="left"]
+[release,width="50%",role="center"]
 ----
 include::example2.json[]
 ----
 
 === Style is Roads
 
-[release,width="70%",role="left"]
+[release,width="70%",role="center"]
 ----
 include::example3.json[]
 ----
@@ -993,7 +993,7 @@ and plugin the controller.
 
 == Roadmap Planning
 
-[roadmap,scale="0.5"]
+[roadmap,scale="1.0", role="center"]
 ----
 - now
 Architect the application security model [[https://medium.com/bytebytego-system-design-alliance/top-10-architecture-characteristics-non-functional-requirements-with-cheatsheat-7ad14bbb0a9b NFR]] using OAuth2
