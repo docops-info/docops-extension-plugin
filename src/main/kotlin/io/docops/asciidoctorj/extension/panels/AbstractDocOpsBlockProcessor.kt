@@ -81,7 +81,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
             if(localDebug) {
                 println(url)
             }
-            lines.add(url)
+            lines.addAll(url.lines())
             parseContent(block, lines)
         }
         return block

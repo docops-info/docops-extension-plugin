@@ -20,12 +20,9 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         role: String,
         block: StructuralNode
     ): String {
-        return if ("pdf" == type) {
-            val url = "$server/api/timeline/table?payload=$payload&title=${title.encodeUrl()}"
-            getContentFromServer(url, block, this, true)
-        }else {
-            "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&filename=def.svg[format=svg,opts=inline,float=\"$role\",align='$role']"
-        }
+        return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&filename=def.svg[format=svg,opts=inline,float=\"$role\",align='$role']"
+
+
     }
 
 }
