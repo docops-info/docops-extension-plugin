@@ -2,7 +2,7 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: foundation.css
+:stylesheet: cerulean.css
 :toc: left
 :sectnums:
 :title-page:
@@ -970,6 +970,13 @@ The macro would look like this
 Each entry inside the macro consists of an array delimiter (-),a date: key and a text: key
 Similar to the example below. Repeat those three elements as needed.
 
+[NOTE]
+====
+In addition, the text value can contain http links, but the format needs to be [[https://website display]]
+
+- First part is the url and second part is the display link label.
+====
+
 [source,text]
 ----
 -
@@ -986,7 +993,7 @@ for asciidoctorj. With a simple text markup block you can
 create very powerful timeline images. Enjoy!
 -
 date: August 15th, 2023
-text: DocOps.io revamping website with updated documentation. All
+text: [[https://DocOps.io docops.io]] revamping website with updated documentation. All
 our work will be updated with latest documentation for Panels,
 for extension server are the various plug-ing for asciidoctorj.
 -
