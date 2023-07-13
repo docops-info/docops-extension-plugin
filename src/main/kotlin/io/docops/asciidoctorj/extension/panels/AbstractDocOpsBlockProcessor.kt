@@ -55,7 +55,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         }
         val scale = attributes.getOrDefault("scale", "1.0") as String
         val block: Block = createBlock(parent, "open", null as String?)
-        val title = attributes.getOrDefault("3", "") as String
+        val title = attributes.getOrDefault("title", "Roadmap Title Here") as String
         val backend = parent.document.getAttribute("backend") as String
         val role = attributes.getOrDefault("role", "center") as String
         if (serverPresent(server, parent, this, localDebug)) {

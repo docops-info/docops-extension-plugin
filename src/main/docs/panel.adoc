@@ -958,8 +958,26 @@ Link to schema for the JSON used for creating a release strategy.
 https://docops.io/extension/schemas/release-strategy-schema.json
 
 == Timeline Builder
+A timeline can be created with a simple text markup with an asciidoctor block macro.
+The macro would look like this
+`[timeline,title="Demo timeline Builder by docops.io",scale="0.7",role="center"]`
 
-[timeline,title="Demo timeline Builder by docops.io",scale="0.7"]
+* *timeline* is the macro to be used
+* *title* is title of the timeline image
+* *scale* is a decimal value on how to scale(zoom) the image 1.0 is default
+* *role* for aligning _left_, _center_, _right_
+
+Each entry inside the macro consists of an array delimiter (-),a date: key and a text: key
+Similar to the example below. Repeat those three elements as needed.
+
+[source,text]
+----
+-
+date: TBD
+text: xxyz
+----
+
+[timeline,title="Demo timeline Builder by docops.io",scale="1.0"]
 ----
 -
 date: July 23rd, 2023

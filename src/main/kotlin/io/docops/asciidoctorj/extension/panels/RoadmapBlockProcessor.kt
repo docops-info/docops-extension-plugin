@@ -20,6 +20,6 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         block: StructuralNode
     ): String {
         val fname = System.currentTimeMillis()
-        return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&filename=ghi_$fname.svg[format=svg,opts=inline,float=\"$role\",align='$role']"
+        return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&title=$title&filename=ghi_$fname.svg[format=svg,opts=inline,float=\"$role\",align='$role']"
     }
 }
