@@ -2,8 +2,8 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: cerulean.css
-:toc: left
+:stylesheet: lumen.css
+:toc: middle
 :sectnums:
 :title-page:
 :source-highlighter: rouge
@@ -537,7 +537,7 @@ panels {
             groupOrder = GroupingOrder.ASCENDING
         }
         font = font {
-            color = "#ffffff"
+            color = "#000000"
         }
         colorMap{
             color("#165578")
@@ -724,10 +724,11 @@ theme {
 ----
 -----
 
-[panels,"large",role="center"]
+[panels,"large",role="center",scale="0.5"]
 ----
 panels {
 theme {
+        scale=0.5f
         layout {
             columns = 3
 
@@ -1018,7 +1019,7 @@ and plugin the controller.
 
 == Roadmap Planning
 
-[roadmap,scale="1.0", role="center"]
+[roadmap,scale="1.0", role="left"]
 ----
 - now
 Architect the application security model [[https://medium.com/bytebytego-system-design-alliance/top-10-architecture-characteristics-non-functional-requirements-with-cheatsheat-7ad14bbb0a9b NFR]] using OAuth2
