@@ -4,7 +4,7 @@
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
 :major: 2023
-:minor: .23
+:minor: .26
 :patch:
 :build:
 :extension:
@@ -46,11 +46,13 @@ link:docs/panel.html[{artifact}.html]
 
 == History
 
+2023.26 - 2023-07-13::
+* updates
 
-2023.24 - 2023-07-12::
+2023.25 - 2023-07-12::
 * scalable
 
-2023.23 - 2023-07-08::
+2023.24 - 2023-07-08::
 * timeline builder updates
 
 2023.23 - 2023-07-04::
