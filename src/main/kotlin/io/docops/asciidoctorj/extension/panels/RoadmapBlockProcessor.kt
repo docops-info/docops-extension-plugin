@@ -18,13 +18,9 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         type: String,
         role: String,
         block: StructuralNode,
-        idea: String
+        opts: String,
+        attributes: MutableMap<String, Any>
     ): String {
-        var opts = "format=svg,opts=inline,float=\"$role\",align='$role'"
-        if("idea".equals(idea, true))
-        {
-            opts=""
-        }
         val fname = System.currentTimeMillis()
         return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&title=$title&filename=ghi$fname.svg[$opts]"
     }

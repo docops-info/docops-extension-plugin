@@ -32,7 +32,8 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         type: String,
         role: String,
         block: StructuralNode,
-        idea: String
+        opts: String,
+        attributes: MutableMap<String, Any>
     ): String {
         return "http://localhost:7001/imageserver/api/stacked?encoded=$payload&title=$title&type=$type"
     }

@@ -17,16 +17,10 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         type: String,
         role: String,
         block: StructuralNode,
-        idea: String
+        opts: String,
+        attributes: MutableMap<String, Any>
     ): String {
-        var opts = "format=svg,opts=inline,float=\"$role\",align='$role'"
-        if("idea".equals(idea, true))
-        {
-            opts=""
-        }
         return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&filename=def.svg[$opts]"
-
-
     }
 
 }

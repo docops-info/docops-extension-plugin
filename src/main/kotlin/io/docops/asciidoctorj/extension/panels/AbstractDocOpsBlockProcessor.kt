@@ -61,6 +61,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         val backend = parent.document.getAttribute("backend") as String
         val role = attributes.getOrDefault("role", "center") as String
         val idea = parent.document.getAttribute("env", "") as String
+        val ideaOn = "idea".equals(idea, true)
+
         if (serverPresent(server, parent, this, localDebug)) {
             var type ="SVG"
             if("pdf" == backend) {
@@ -72,6 +74,10 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                 log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
                 ""
             }
+            var opts = "format=svg,opts=inline,float=\"$role\",align='$role'"
+            if(ideaOn) {
+                opts = ""
+            }
             val lines = mutableListOf<String>()
             val url = buildUrl(
                 payload = payload,
@@ -80,7 +86,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                 type = type,
                 role = role,
                 block = parent,
-                idea = idea
+                opts = opts,
+                attributes = attributes
             )
             if(localDebug) {
                 println(url)
@@ -100,6 +107,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         type: String,
         role: String,
         block: StructuralNode,
-        idea: String
+        opts: String,
+        attributes: MutableMap<String, Any>
     ): String
 }
