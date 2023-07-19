@@ -58,6 +58,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         val title = attributes.getOrDefault("title", "Roadmap Title Here") as String
         val backend = parent.document.getAttribute("backend") as String
         val role = attributes.getOrDefault("role", "center") as String
+        val idea = parent.document.getAttribute("env", "") as String
         if (serverPresent(server, parent, this, localDebug)) {
             var type ="SVG"
             if("pdf" == backend) {
@@ -76,7 +77,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                 title = title,
                 type = type,
                 role = role,
-                block = parent
+                block = parent,
+                idea = idea
             )
             if(localDebug) {
                 println(url)
@@ -92,6 +94,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         title: String,
         type: String,
         role: String,
-        block: StructuralNode
+        block: StructuralNode,
+        idea: String
     ): String
 }

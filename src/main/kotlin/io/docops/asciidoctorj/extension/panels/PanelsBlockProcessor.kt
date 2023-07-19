@@ -46,9 +46,14 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
         title: String,
         type: String,
         role: String,
-        block: StructuralNode
+        block: StructuralNode,
+        idea: String
     ): String {
-        return "image::$webserver/api/panel?type=SVG&data=$payload&filename=def.svg[format=svg,opts=inline,float=\"$role\",align='$role']"
+        var opts = "format=svg,opts=inline,float=\"$role\",align='$role'"
+        if("idea".equals(idea, true)) {
+            opts = ""
+        }
+        return "image::$webserver/api/panel?type=SVG&data=$payload&filename=def.svg[$opts]"
     }
 
 }

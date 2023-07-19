@@ -18,9 +18,15 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         title: String,
         type: String,
         role: String,
-        block: StructuralNode
+        block: StructuralNode,
+        idea: String
     ): String {
-        return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&filename=def.svg[format=svg,opts=inline,float=\"$role\",align='$role']"
+        var opts = "format=svg,opts=inline,float=\"$role\",align='$role'"
+        if("idea".equals(idea, true))
+        {
+            opts=""
+        }
+        return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&filename=def.svg[$opts]"
 
 
     }

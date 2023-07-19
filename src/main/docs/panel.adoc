@@ -1036,3 +1036,9 @@ Event Driven Architecture
 - next
 Domain Events
 ----
+
+[roadmap,scale="1.0", role="left"]
+----
+- now
+
+----

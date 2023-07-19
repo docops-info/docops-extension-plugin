@@ -31,7 +31,8 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         title: String,
         type: String,
         role: String,
-        block: StructuralNode
+        block: StructuralNode,
+        idea: String
     ): String {
         return "http://localhost:7001/imageserver/api/stacked?encoded=$payload&title=$title&type=$type"
     }
