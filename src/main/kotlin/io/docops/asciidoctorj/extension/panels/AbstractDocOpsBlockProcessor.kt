@@ -6,6 +6,8 @@ import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Reader
 import org.asciidoctor.log.LogRecord
 import org.asciidoctor.log.Severity
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
     protected var server = "http://localhost:8010/extension"
@@ -87,6 +89,9 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
             parseContent(block, lines)
         }
         return block
+    }
+    protected fun String.encodeUrl(): String {
+        return URLEncoder.encode(this, StandardCharsets.UTF_8.toString());
     }
     abstract fun buildUrl(
         payload: String,

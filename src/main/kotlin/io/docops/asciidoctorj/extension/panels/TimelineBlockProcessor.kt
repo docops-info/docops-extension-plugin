@@ -4,8 +4,6 @@ import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 @Name("timeline")
 @Contexts(Contexts.LISTING)
@@ -31,7 +29,4 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
 
     }
 
-}
-fun String.encodeUrl(): String {
-    return URLEncoder.encode(this, StandardCharsets.UTF_8.toString());
 }
