@@ -6,8 +6,13 @@ import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Reader
 import org.asciidoctor.log.LogRecord
 import org.asciidoctor.log.Severity
+import java.net.URI
 import java.net.URLEncoder
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
 import java.nio.charset.StandardCharsets
+import java.time.Duration
 
 abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
     protected var server = "http://localhost:8010/extension"
@@ -87,7 +92,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                     block = parent,
                     opts = opts,
                     attributes = attributes)
-                ideaBlock(url, parent)
+                val image = getContentFromServer(url, parent, this, debug = localDebug)
+                return createImageBlockFromString(parent, image, role, "970")
             } else {
                 val url = buildUrl(
                     payload = payload,
@@ -108,9 +114,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         }
         return block
     }
-     fun ideaBlock(url: String, parent: StructuralNode) {
-        createBlock(parent, "pass", "<img src='$url'></img>")
-    }
+
     protected fun String.encodeUrl(): String {
         return URLEncoder.encode(this, StandardCharsets.UTF_8.toString());
     }
@@ -137,4 +141,63 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                         block: StructuralNode,
                         opts: String,
                         attributes: MutableMap<String, Any>): String
+
+     private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
+
+        val align = mutableMapOf(
+            "right" to "margin-left: auto; margin-right: 0;",
+            "left" to "",
+            "center" to "margin: auto;"
+        )
+        val center = align[role.lowercase()]
+        val content: String = """
+            <div class="openblock">
+            <div class="content" style="width: $width;padding: 10px;$center">
+            $svg
+            </div>
+            </div>
+        """.trimIndent()
+        return createBlock(parent, "pass", content)
+    }
+}
+fun getContentFromServer(url: String, parent: StructuralNode, pb: BlockProcessor, debug: Boolean = false): String {
+    if (debug) {
+        println("getting image from url $url")
+    }
+    val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
+        .connectTimeout(Duration.ofSeconds(20))
+        .build()
+    val request = HttpRequest.newBuilder()
+        .uri(URI.create(url))
+        .timeout(Duration.ofMinutes(1))
+        .build()
+    return try {
+        val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+        response.body()
+    } catch (e: Exception) {
+        pb.log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
+        e.printStackTrace()
+        ""
+    }
+}
+
+fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor, debug: Boolean = false): Boolean {
+    if (debug) {
+        println("Checking if server is present ${server}/api/ping")
+    }
+    val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
+        .connectTimeout(Duration.ofSeconds(20))
+        .build()
+    val request = HttpRequest.newBuilder()
+        .uri(URI.create("$server/api/ping"))
+        .timeout(Duration.ofMinutes(1))
+        .build()
+    return try {
+        val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+        (200 == response.statusCode())
+    } catch (e: Exception) {
+        pb.log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
+        e.printStackTrace()
+        false
+    }
 }

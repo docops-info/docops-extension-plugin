@@ -19,18 +19,10 @@ package io.docops.asciidoctorj.extension.panels
 
 import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
-import org.asciidoctor.extension.BlockProcessor
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
 import org.asciidoctor.extension.Reader
-import org.asciidoctor.log.LogRecord
-import org.asciidoctor.log.Severity
 import java.io.ByteArrayOutputStream
-import java.net.URI
-import java.net.http.HttpClient
-import java.net.http.HttpRequest
-import java.net.http.HttpResponse.BodyHandlers
-import java.time.Duration
 import java.util.*
 import java.util.zip.GZIPOutputStream
 
@@ -71,47 +63,6 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
 
 }
 
-fun getContentFromServer(url: String, parent: StructuralNode, pb: BlockProcessor, debug: Boolean = false): String {
-    if (debug) {
-        println("getting image from url $url")
-    }
-    val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
-        .connectTimeout(Duration.ofSeconds(20))
-        .build()
-    val request = HttpRequest.newBuilder()
-        .uri(URI.create(url))
-        .timeout(Duration.ofMinutes(1))
-        .build()
-    return try {
-        val response = client.send(request, BodyHandlers.ofString())
-        response.body()
-    } catch (e: Exception) {
-        pb.log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
-        e.printStackTrace()
-        ""
-    }
-}
-
-fun serverPresent(server: String, parent: StructuralNode, pb: BlockProcessor, debug: Boolean = false): Boolean {
-    if (debug) {
-        println("Checking if server is present ${server}/api/ping")
-    }
-    val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1)
-        .connectTimeout(Duration.ofSeconds(20))
-        .build()
-    val request = HttpRequest.newBuilder()
-        .uri(URI.create("$server/api/ping"))
-        .timeout(Duration.ofMinutes(1))
-        .build()
-    return try {
-        val response = client.send(request, BodyHandlers.ofString())
-        (200 == response.statusCode())
-    } catch (e: Exception) {
-        pb.log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
-        e.printStackTrace()
-        false
-    }
-}
 
 fun compressString(body: String): String {
     val baos = ByteArrayOutputStream()
