@@ -20,7 +20,8 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         opts: String,
         attributes: MutableMap<String, Any>
     ): String {
-        return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&filename=def.svg[$opts]"
+        val numChars = getCharLength(attributes, 32)
+        return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&filename=def.svg[$opts]"
     }
 
 }

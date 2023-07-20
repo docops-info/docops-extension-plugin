@@ -50,7 +50,8 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
         opts: String,
         attributes: MutableMap<String, Any>
     ): String {
-        return "image::$webserver/api/panel?type=SVG&data=$payload&filename=def.svg[$opts]"
+        val numChars = getCharLength(attributes, 32)
+        return "image::$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&filename=def.svg[$opts]"
     }
 
 }

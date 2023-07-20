@@ -100,6 +100,10 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
     protected fun String.encodeUrl(): String {
         return URLEncoder.encode(this, StandardCharsets.UTF_8.toString());
     }
+
+    protected fun getCharLength(attributes: MutableMap<String, Any>, defaultLength: Int) : String {
+        return attributes.getOrDefault("numChars", "$defaultLength") as String
+    }
     abstract fun buildUrl(
         payload: String,
         scale: String,

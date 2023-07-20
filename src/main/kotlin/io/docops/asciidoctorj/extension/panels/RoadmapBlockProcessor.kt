@@ -22,6 +22,7 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         attributes: MutableMap<String, Any>
     ): String {
         val fname = System.currentTimeMillis()
-        return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&title=$title&filename=ghi$fname.svg[$opts]"
+        val numChars = getCharLength(attributes, 32)
+        return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&filename=ghi$fname.svg[$opts]"
     }
 }

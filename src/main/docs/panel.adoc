@@ -936,12 +936,21 @@ include::example1.json[]
 include::example2.json[]
 ----
 
-=== Style is Roads
+=== Style is Roadmap
 
 [release,scale=0.7,role="center", animate="ON"]
 ----
 include::example3.json[]
 ----
+
+==== Roadmap with Animation off
+
+[release,scale=0.7,role="center", animate="OFF", numChars="25"]
+----
+include::example3.json[]
+----
+
+
 === Example Source
 
 [source,asciidoc]
@@ -1019,7 +1028,7 @@ and plugin the controller.
 
 == Roadmap Planning
 
-[roadmap,scale="1.0", role="left"]
+[roadmap,scale="1.0", role="left", numChars="25"]
 ----
 - now
 Architect the application security model [[https://medium.com/bytebytego-system-design-alliance/top-10-architecture-characteristics-non-functional-requirements-with-cheatsheat-7ad14bbb0a9b NFR]] using OAuth2
