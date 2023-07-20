@@ -31,4 +31,19 @@ link:$webserver/api/release/?payload=$payload&type=XLS&filename=def.xls[Excel]
 """.trimIndent()
     }
 
+    override fun getUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode,
+        opts: String,
+        attributes: MutableMap<String, Any>
+    ): String {
+        val animate = attributes.getOrDefault("animate", "ON")
+        val numChars = getCharLength(attributes, 32)
+        return "$webserver/api/release/?payload=$payload&type=SVG&animate=$animate&numchars=$numChars&filename=def.svg"
+
+    }
 }

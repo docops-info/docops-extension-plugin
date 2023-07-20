@@ -62,7 +62,6 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         val role = attributes.getOrDefault("role", "center") as String
         val idea = parent.document.getAttribute("env", "") as String
         val ideaOn = "idea".equals(idea, true)
-
         if (serverPresent(server, parent, this, localDebug)) {
             var type ="SVG"
             if("pdf" == backend) {
@@ -79,23 +78,38 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                 opts = ""
             }
             val lines = mutableListOf<String>()
-            val url = buildUrl(
-                payload = payload,
-                scale = scale,
-                title = title,
-                type = type,
-                role = role,
-                block = parent,
-                opts = opts,
-                attributes = attributes
-            )
-            if(localDebug) {
-                println(url)
+            if(ideaOn) {
+                val url = getUrl(payload = payload,
+                    scale = scale,
+                    title = title,
+                    type = type,
+                    role = role,
+                    block = parent,
+                    opts = opts,
+                    attributes = attributes)
+                ideaBlock(url, parent)
+            } else {
+                val url = buildUrl(
+                    payload = payload,
+                    scale = scale,
+                    title = title,
+                    type = type,
+                    role = role,
+                    block = parent,
+                    opts = opts,
+                    attributes = attributes
+                )
+                if (localDebug) {
+                    println(url)
+                }
+                lines.addAll(url.lines())
+                parseContent(block, lines)
             }
-            lines.addAll(url.lines())
-            parseContent(block, lines)
         }
         return block
+    }
+     fun ideaBlock(url: String, parent: StructuralNode) {
+        createBlock(parent, "pass", "<img src='$url'></img>")
     }
     protected fun String.encodeUrl(): String {
         return URLEncoder.encode(this, StandardCharsets.UTF_8.toString());
@@ -114,4 +128,13 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         opts: String,
         attributes: MutableMap<String, Any>
     ): String
+
+    abstract fun getUrl(payload: String,
+                        scale: String,
+                        title: String,
+                        type: String,
+                        role: String,
+                        block: StructuralNode,
+                        opts: String,
+                        attributes: MutableMap<String, Any>): String
 }

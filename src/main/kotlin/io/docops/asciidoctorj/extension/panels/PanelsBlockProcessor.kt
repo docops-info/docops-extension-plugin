@@ -54,6 +54,21 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
         return "image::$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&filename=def.svg[$opts]"
     }
 
+    override fun getUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode,
+        opts: String,
+        attributes: MutableMap<String, Any>
+    ): String {
+        val numChars = getCharLength(attributes, 32)
+        return "$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&filename=def.svg"
+
+    }
+
 }
 
 fun getContentFromServer(url: String, parent: StructuralNode, pb: BlockProcessor, debug: Boolean = false): String {

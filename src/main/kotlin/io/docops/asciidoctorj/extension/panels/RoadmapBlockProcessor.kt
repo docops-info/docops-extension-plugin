@@ -25,4 +25,20 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         val numChars = getCharLength(attributes, 32)
         return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&filename=ghi$fname.svg[$opts]"
     }
+
+    override fun getUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode,
+        opts: String,
+        attributes: MutableMap<String, Any>
+    ): String {
+        val fname = System.currentTimeMillis()
+        val numChars = getCharLength(attributes, 32)
+        return "$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&filename=ghi$fname.svg"
+
+    }
 }

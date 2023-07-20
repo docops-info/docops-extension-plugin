@@ -24,4 +24,18 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&filename=def.svg[$opts]"
     }
 
+    override fun getUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode,
+        opts: String,
+        attributes: MutableMap<String, Any>
+    ): String {
+        val numChars = getCharLength(attributes, 32)
+        return "$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&filename=def.svg"
+
+    }
 }

@@ -38,4 +38,17 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         return "http://localhost:7001/imageserver/api/stacked?encoded=$payload&title=$title&type=$type"
     }
 
+    override fun getUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode,
+        opts: String,
+        attributes: MutableMap<String, Any>
+    ): String {
+        TODO("Not yet implemented")
+    }
+
 }
