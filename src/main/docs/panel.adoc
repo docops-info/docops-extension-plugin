@@ -938,7 +938,7 @@ include::example2.json[]
 
 === Style is Roads
 
-[release,scale=0.7,role="center"]
+[release,scale=0.7,role="center", animate="ON"]
 ----
 include::example3.json[]
 ----
@@ -1037,8 +1037,3 @@ Event Driven Architecture
 Domain Events
 ----
 
-[roadmap,scale="1.0", role="left"]
-----
-- now
-
-----

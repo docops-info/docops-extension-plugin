@@ -22,8 +22,9 @@ class ReleaseStrategyBlockProcessor : AbstractDocOpsBlockProcessor(){
         opts: String,
         attributes: MutableMap<String, Any>
     ): String {
+        val animate = attributes.getOrDefault("animate", "ON")
         return """
-image::$webserver/api/release/?payload=$payload&type=SVG&filename=def.svg[$opts]
+image::$webserver/api/release/?payload=$payload&type=SVG&animate=$animate&filename=def.svg[$opts]
 
 link:$webserver/api/release/?payload=$payload&type=XLS&filename=def.xls[Excel]
 """.trimIndent()
