@@ -929,6 +929,14 @@ panel {
 include::example1.json[]
 ----
 
+=== Style is timeline summarized
+
+[release,scale=0.7,role="center"]
+----
+include::example4.json[]
+----
+
+
 === Style is timeline grouped
 
 [release,scale=0.5,role="center"]
