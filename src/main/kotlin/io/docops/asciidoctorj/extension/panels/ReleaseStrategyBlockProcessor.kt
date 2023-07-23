@@ -25,7 +25,7 @@ class ReleaseStrategyBlockProcessor : AbstractDocOpsBlockProcessor(){
         val animate = attributes.getOrDefault("animate", "ON")
         val numChars = getCharLength(attributes, 32)
         return """
-image::$webserver/api/release/?payload=$payload&type=SVG&animate=$animate&numchars=$numChars&filename=def.svg[$opts]
+image::$webserver/api/release/?payload=$payload&type=$type&animate=$animate&numchars=$numChars&filename=def.svg[$opts]
 
 link:$webserver/api/release/?payload=$payload&type=XLS&filename=def.xls[Excel]
 """.trimIndent()

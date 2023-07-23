@@ -527,6 +527,55 @@ panels {
 }
 -----
 
+=== Pill Buttons
+
+[panels,"round2"]
+----
+panels {
+    theme {
+        layout {
+            columns = 4
+            groupBy = Grouping.TITLE
+            groupOrder = GroupingOrder.ASCENDING
+        }
+        font {
+            color = "#ffffff"
+        }
+        dropShadow = 1
+        colorMap{
+            color("#ff6385")
+            color("#36a3eb")
+            color("#9966ff")
+            color("#ffcf56")
+            color("#4bc0c0")
+            color("#FDCBF1")
+        }
+        newWin = false
+    }
+    pill {
+        link = "https://www.google.com"
+        label = "Google"
+    }
+    pill {
+        link = "https://www.apple.com"
+        label = "Apple"
+    }
+    pill {
+        link = "https://www.microsoft.com"
+        label = "Microsoft"
+    }
+    pill {
+        link = "https://www.amazon.com"
+        label = "Amazon"
+    }
+    pill {
+        link = "https://www.netflix.com"
+        label = "Netflix"
+    }
+}
+----
+
+== Slim Buttons
 
 [panels,"slim",width="70%"]
 ----
