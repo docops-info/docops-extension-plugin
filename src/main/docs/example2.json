@@ -22,7 +22,7 @@
       "goal": "Our goal is to Establish the Liberty infrastructure with Okta enabled"
     },
     {
-      "type": "RC1",
+      "type": "M2",
       "lines": [
         "Team will deploy to application server current production code",
         "Setup IHS proxy",
@@ -57,8 +57,19 @@
       ],
       "date": "TBD",
       "selected": true,
+      "completed": true,
       "goal": "Our goal is ..."
     }
   ],
-  "style": "TLG"
+  "style": "TLG",
+  "displayConfig": {
+    "colors": [ "#FF6F36", "#EAA213", "#01FF90"],
+    "fontColor": "#000000",
+    "circleColors": [
+      "#FFAF10", "#FFD373", "#45618E"
+    ],
+    "carColors": [
+      "#000000", "#000000", "#000000"
+    ]
+  }
 }

@@ -93,6 +93,7 @@
         <mojo.version>1.6.0</mojo.version>
         <dokka.version>1.6.10</dokka.version>
         <maven-plugin.version>3.0.0-M6</maven-plugin.version>
+        <maven-plugin.validation>VERBOSE</maven-plugin.validation>
         <maven-shared-utils.version>3.3.4</maven-shared-utils.version>
         <maven-deploy.version>3.1.0</maven-deploy.version>
         <maven-compiler.version>3.10.1</maven-compiler.version>

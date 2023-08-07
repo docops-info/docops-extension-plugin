@@ -2,7 +2,7 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: lumen.css
+:stylesheet: lumen-foundation.css
 :toc: middle
 :sectnums:
 :title-page:
@@ -13,6 +13,8 @@ Steve D Roach
 :google: This Is Another Google
 :title-page-background-image: coverpage.svg
 :data-uri:
+:icons: font
+
 
 include::base.adoc[]
 
@@ -676,7 +678,7 @@ panels {
 
 
 .Slim Cards Guide
-[cols="1,1,3"]
+[cols="1,1,3",frame=all,grid=all]
 |===
 |Item |Attribute |Notes
 

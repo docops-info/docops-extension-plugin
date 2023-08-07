@@ -19,6 +19,7 @@
       ],
       "date": "July 30th, 2023",
       "selected": true,
+      "completed": true,
       "goal": "Our goal is to Establish the Liberty infrastructure with Okta enabled"
     },
     {
@@ -41,7 +42,7 @@
       "goal": "Our goal is ..."
     },
     {
-      "type": "RC1",
+      "type": "RC2",
       "lines": [
         "Team will deploy to application server current production code",
         "Setup IHS proxy",
@@ -79,5 +80,15 @@
       "goal": "Our goal is ..."
     }
   ],
-  "style": "TLS"
+  "style": "TLS",
+  "displayConfig": {
+    "colors": [ "#FF6F36", "#EAA213", "#01FF90"],
+    "fontColor": "#000000",
+    "circleColors": [
+      "#FFAF10", "#FFD373", "#45618E"
+    ],
+    "carColors": [
+      "#000000", "#000000", "#000000"
+    ]
+  }
 }
