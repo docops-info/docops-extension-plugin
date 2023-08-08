@@ -20,7 +20,7 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         opts: String,
         attributes: MutableMap<String, Any>
     ): String {
-        val numChars = getCharLength(attributes, 32)
+        val numChars = getCharLength(attributes, 24)
         return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&filename=def.svg[$opts]"
     }
 
@@ -34,7 +34,7 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         opts: String,
         attributes: MutableMap<String, Any>
     ): String {
-        val numChars = getCharLength(attributes, 32)
+        val numChars = getCharLength(attributes, 24)
         return "$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&filename=def.svg"
 
     }
