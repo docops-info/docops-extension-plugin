@@ -78,7 +78,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                 log(LogRecord(Severity.ERROR, parent.sourceLocation, e.message))
                 ""
             }
-            var opts = "format=svg,opts=inline,float=\"$role\",align='$role'"
+            var opts = "format=svg,opts=inline,align='$role'"
             if(ideaOn) {
                 opts = ""
             }

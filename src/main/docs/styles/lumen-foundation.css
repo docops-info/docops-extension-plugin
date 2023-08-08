@@ -521,7 +521,7 @@ i.fa[class*=' icon-']::before {
     --important-color: var(--color-brand-primary);
     --important-shade-color: #c2003c;
     --important-on-color: var(--color-white);
-    --note-icon: "\f328";
+    --note-icon: "\f05a";
     --note-color: #2d7dd2;
     --note-shade-color: #266ab3;
     --note-on-color: var(--color-white);
