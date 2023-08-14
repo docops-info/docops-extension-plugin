@@ -1110,3 +1110,160 @@ Event Driven Architecture
 Domain Events
 ----
 
+
+== Buttons
+
+Revamped Panels into Buttons using JSON data structure
+JSON Schema TBD.
+
+
+[buttons, role="center"]
+----
+{
+  "buttons": [
+    {
+      "label": "Cookies & Cream",
+      "link": "https://www.apple.com",
+      "description": "Chocolate & Cheesecake Ice Creams with Chocolate Cookies & a Cheesecake Core",
+      "type": "Cookies",
+      "links": [
+        {
+          "href": "https://www.benjerry.com",
+          "label": "Ben & Jerry's"
+        },
+        {
+          "href": "https://www.benjerry.com/flavors",
+          "label": "Flavors"
+        }
+      ]
+    },
+    {
+      "label": "Mint Chocolate Chance",
+      "link": "https://www.google.com",
+      "type": "greens",
+      "cardLine1": {
+        "line": "Mint Chocolate",
+        "size": "34px"
+      },
+      "cardLine2": {
+        "line": "Chance",
+        "size": "34px"
+      }
+    },
+    {
+      "label": "New York Super Fudge Chunk",
+      "link": "https://www.microsoft.com",
+      "description": "Chocolate Ice Cream with White & Dark Fudge Chunks, Pecans, Walnuts & Fudge-Covered Almonds",
+      "type": "blues",
+      "cardLine1": {
+        "line": "New York",
+        "size": "34px"
+      },
+      "cardLine2": {
+        "line": "Super Fudge",
+        "size": "34px"
+      }
+    },
+    {
+      "label": "Cherry Garcia",
+      "link": "https://www.amazon.com",
+      "type": "exotic"
+    },
+    {
+      "label": "Chunky Monkey",
+      "link": "https://www.facebook.com",
+      "type": "legendary",
+      "description": "Banana Ice Cream with Fudge Chunks & Walnuts",
+      "author": [
+        "Ian Rose"
+      ],
+      "date": "Nov 16th, 2023"
+    },
+    {
+      "label": "Mint Chocolate Chance",
+      "link": "https://www.google.com",
+      "type": "greens",
+      "cardLine1": {
+        "line": "Mint Chocolate",
+        "size": "34px"
+      },
+      "cardLine2": {
+        "line": "Chance",
+        "size": "34px"
+      }
+    },
+    {
+      "label": "New York Super Fudge Chunk",
+      "link": "https://www.microsoft.com",
+      "description": "Chocolate Ice Cream with White & Dark Fudge Chunks, Pecans, Walnuts & Fudge-Covered Almonds",
+      "type": "blues",
+      "cardLine1": {
+        "line": "New York",
+        "size": "34px"
+      },
+      "cardLine2": {
+        "line": "Super Fudge",
+        "size": "34px"
+      }
+    },
+    {
+      "label": "Cherry Garcia",
+      "link": "https://www.amazon.com",
+      "type": "exotic"
+    },
+    {
+      "label": "Chunky Monkey",
+      "link": "https://www.facebook.com",
+      "type": "legendary",
+      "description": "Banana Ice Cream with Fudge Chunks & Walnuts",
+      "author": [
+        "Ian Rose"
+      ],
+      "date": "Nov 16th, 2023"
+    },
+    {
+      "label": "Cookies & Cream",
+      "link": "https://www.apple.com",
+      "description": "Chocolate & Cheesecake Ice Creams with Chocolate Cookies & a Cheesecake Core",
+      "type": "Cookies",
+      "links": [
+        {
+          "href": "https://www.benjerry.com",
+          "label": "Ben & Jerry's"
+        },
+        {
+          "href": "https://www.benjerry.com/flavors",
+          "label": "Flavors"
+        }
+      ]
+    },
+    {
+      "label": "Cookies & Cream",
+      "link": "https://www.apple.com",
+      "description": "Chocolate & Cheesecake Ice Creams with Chocolate Cookies & a Cheesecake Core",
+      "type": "Cookies",
+      "links": [
+        {
+          "href": "https://www.benjerry.com",
+          "label": "Ben & Jerry's"
+        },
+        {
+          "href": "https://www.benjerry.com/flavors",
+          "label": "Flavors"
+        }
+      ]
+    }
+  ],
+  "buttonType": "REGULAR",
+  "buttonDisplay": {
+    "columns": 5,
+    "colors": [
+    "#080000", "#100000", "#180000", "#200000", "#280000", "#300000", "#380000", "#400000"
+    ],
+    "buttonStyle": {
+      "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 14px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;"
+    },
+    "scale": 0.7
+  }
+}
+----
