@@ -32,6 +32,6 @@ class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
         opts: String,
         attributes: MutableMap<String, Any>
     ): String {
-        return """image::$webserver/api/buttons?payload=$payload&type=$type&filename=ghi.svg[$opts]"""
+        return """$webserver/api/buttons?payload=$payload&type=$type&filename=ghi.svg"""
     }
 }
