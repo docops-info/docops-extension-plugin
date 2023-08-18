@@ -4,7 +4,7 @@
 :group: io.docops
 :artifact: asciidoctorj-docops-panel
 :major: 2023
-:minor: .30
+:minor: .31
 :patch:
 :build:
 :extension:
@@ -45,6 +45,9 @@ link:https://search.maven.org/remotecontent?filepath=io/docops/{artifact}/{major
 link:docs/panel.html[{artifact}.html]
 
 == History
+
+2023.31 - 2023-08-18::
+* json block processor
 
 2023.30 - 2023-08-14::
 * json support
