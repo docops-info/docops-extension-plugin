@@ -17,9 +17,10 @@ class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
-        return """image::$webserver/api/buttons?payload=$payload&type=$type&filename=ghi.svg[$opts]"""
+        return """image::$webserver/api/buttons?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg[$opts]"""
     }
 
     override fun getUrl(
@@ -30,8 +31,9 @@ class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
-        return """$webserver/api/buttons?payload=$payload&type=$type&filename=ghi.svg"""
+        return """$webserver/api/buttons?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg"""
     }
 }

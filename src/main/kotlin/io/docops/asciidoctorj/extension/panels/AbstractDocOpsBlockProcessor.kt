@@ -65,8 +65,10 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         val title = attributes.getOrDefault("title", "Roadmap Title Here") as String
         val backend = parent.document.getAttribute("backend") as String
         val role = attributes.getOrDefault("role", "center") as String
+        val dark = attributes.getOrDefault("useDark", "false") as String
         val idea = parent.document.getAttribute("env", "") as String
         val ideaOn = "idea".equals(idea, true)
+        val useDark : Boolean = "true".equals(dark, true)
         if (serverPresent(server, parent, this, localDebug)) {
             var type ="SVG"
             if("pdf" == backend) {
@@ -91,6 +93,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                     role = role,
                     block = parent,
                     opts = opts,
+                    useDark = useDark,
                     attributes = attributes)
                 val image = getContentFromServer(url, parent, this, debug = localDebug)
                 return createImageBlockFromString(parent, image, role, "970")
@@ -103,6 +106,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                     role = role,
                     block = parent,
                     opts = opts,
+                    useDark = useDark,
                     attributes = attributes
                 )
                 if (localDebug) {
@@ -130,17 +134,21 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String
 
-    abstract fun getUrl(payload: String,
-                        scale: String,
-                        title: String,
-                        type: String,
-                        role: String,
-                        block: StructuralNode,
-                        opts: String,
-                        attributes: MutableMap<String, Any>): String
+    abstract fun getUrl(
+        payload: String,
+        scale: String,
+        title: String,
+        type: String,
+        role: String,
+        block: StructuralNode,
+        opts: String,
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
+    ): String
 
      private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {
 

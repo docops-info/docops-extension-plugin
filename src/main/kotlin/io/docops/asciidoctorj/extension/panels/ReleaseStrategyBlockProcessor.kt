@@ -20,12 +20,13 @@ class ReleaseStrategyBlockProcessor : AbstractDocOpsBlockProcessor(){
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
         val animate = attributes.getOrDefault("animate", "ON")
         val numChars = getCharLength(attributes, 32)
         return """
-image::$webserver/api/release/?payload=$payload&type=$type&animate=$animate&numchars=$numChars&filename=def.svg[$opts]
+image::$webserver/api/release/?payload=$payload&type=$type&animate=$animate&numchars=$numChars&useDark=$useDark&filename=def.svg[$opts]
 
 link:$webserver/api/release/?payload=$payload&type=XLS&filename=def.xls[Excel]
 """.trimIndent()
@@ -39,11 +40,12 @@ link:$webserver/api/release/?payload=$payload&type=XLS&filename=def.xls[Excel]
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
         val animate = attributes.getOrDefault("animate", "ON")
         val numChars = getCharLength(attributes, 32)
-        return "$webserver/api/release/?payload=$payload&type=SVG&animate=$animate&numchars=$numChars&filename=def.svg"
+        return "$webserver/api/release/?payload=$payload&type=SVG&animate=$animate&numchars=$numChars&useDark=$useDark&filename=def.svg"
 
     }
 }

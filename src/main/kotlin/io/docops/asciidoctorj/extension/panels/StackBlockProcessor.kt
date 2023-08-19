@@ -33,9 +33,10 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
-        return "http://localhost:7001/imageserver/api/stacked?encoded=$payload&title=$title&type=$type"
+        return "http://localhost:7001/imageserver/api/stacked?encoded=$payload&title=$title&useDark=$useDark&type=$type"
     }
 
     override fun getUrl(
@@ -46,7 +47,8 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
         TODO("Not yet implemented")
     }

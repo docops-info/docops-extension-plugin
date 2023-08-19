@@ -2,12 +2,12 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: lumen-foundation.css
+:stylesheet: slate.css
 :toc: middle
 :sectnums:
 :title-page:
-:source-highlighter: rouge
-:rouge-css: style
+:source-highlighter: highlightjs
+:highlightjs-theme: dark
 :nofooter:
 :imagesdir: images
 :google: This Is Another Google
@@ -31,7 +31,7 @@ AsciiDoctorJ Panels are built using a block processor. SO you will need to creat
 
 The first type of panels is just panels with a list of panel objects. See example below
 
-[source%linenums,kotlin]
+[source,kotlin]
 ----
 panels {
     panel{
@@ -48,7 +48,7 @@ panels {
 
 Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netflix
 
-[source%linenums,kotlin]
+[source,kotlin]
 -----
 [panels,"buttons",width="80%"]
 ----
@@ -101,53 +101,89 @@ panels {
 ----
 -----
 
-[panels,"buttons",width="80%"]
+[buttons,"buttons",width="80%"]
 ----
-panels {
-    theme {
-        colorMap {
-				color("#a1f196")
-                color("#165578")
-                color("#7d746c")
-                color("#2442d1")
-                color("#c0adef")
-                color("#4d2666")
-                color("#fbb103")
-                color("#1eb3f1")
-                color("#4f49eb")
-                color("#f3b304")
-                color("#e693ce")
-                color("#a6b23b")
-                color("#ad217f")
-                color("#2fb6ee")
-                color("#81392e")
-                color("#071e9b")
-                color("#675b01")
-                color("#ed6b19")
-                color("#a02cae")
-                color("#88683f")
-			}
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    panel {
-        link = "https://www.google.com"
-        label = "#[Google]"
-    }
-    panel {
-        link = "https://www.apple.com"
-        label = "Apple"
-    }
-    panel {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-    }
-    panel {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-    }
-    panel {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-    }
+  ],
+  "buttonType": "REGULAR",
+  "theme": {
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+
+    ],
+    "columns": 3,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 
@@ -158,94 +194,179 @@ The syntax is pretty small to make a panel of buttons.
 
 Similar to the buttons, we have a round object we can use.
 
-[source,kotlin]
+[source,asciidoc]
 -----
 [panels,buttons2]
 ----
-panels{
-    theme {
-        colorMap{
-            color("#ff6385")
-            color("#36a3eb")
-            color("#9966ff")
-            color("#ffcf56")
-            color("#4bc0c0")
-            color("#FDCBF1")
-        }
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    round {
-        link = "https://www.google.com"
-        label = "Google"
-    }
-    round {
-        link = "https://www.apple.com"
-        label = "Apple"
-    }
-    round {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-    }
-    round {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-    }
-    round {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-    }
+  ],
+  "buttonType": "ROUND",
+  "theme": {
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 -----
 
 
-[panels,"round",width="60%"]
+[buttons,"round",width="60%"]
 ----
-panels {
-    theme {
-        	colorMap {
-				color("#a1f196")
-                color("#165578")
-                color("#7d746c")
-                color("#2442d1")
-                color("#c0adef")
-                color("#4d2666")
-                color("#fbb103")
-                color("#1eb3f1")
-                color("#4f49eb")
-                color("#f3b304")
-                color("#e693ce")
-                color("#a6b23b")
-                color("#ad217f")
-                color("#2fb6ee")
-                color("#81392e")
-                color("#071e9b")
-                color("#675b01")
-                color("#ed6b19")
-                color("#a02cae")
-                color("#88683f")
-			}
-        dropShadow = 5
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    round {
-        link = "https://www.google.com"
-        label = "Google"
-    }
-    round {
-        link = "https://www.apple.com"
-        label = "Apple"
-    }
-    round {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-    }
-    round {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-    }
-    round {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-    }
+  ],
+  "buttonType": "ROUND",
+  "theme": {
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 
@@ -347,7 +468,7 @@ a|set of font to use
 
 Same Panel as above but with sorting ascending and different colors.
 
-[source%linenums,kotlin]
+[source,kotlin]
 -----
 [panels,"round2"]
 ----
@@ -396,49 +517,89 @@ panels {
 ----
 -----
 
-[panels,"round2"]
+[buttons,"regular2"]
 ----
-panels {
-    theme {
-        layout {
-            columns = 4
-            groupBy = Grouping.TITLE
-            groupOrder = GroupingOrder.ASCENDING
-        }
-        font {
-            color = "#ffffff"
-        }
-        dropShadow = 1
-        colorMap{
-            color("#ff6385")
-            color("#36a3eb")
-            color("#9966ff")
-            color("#ffcf56")
-            color("#4bc0c0")
-            color("#FDCBF1")
-        }
-        newWin = false
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    panel {
-        link = "https://www.google.com"
-        label = "Google"
-    }
-    panel {
-        link = "https://www.apple.com"
-        label = "Apple"
-    }
-    panel {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-    }
-    panel {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-    }
-    panel {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-    }
+  ],
+  "buttonType": "REGULAR",
+  "theme": {
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 
@@ -446,7 +607,7 @@ panels {
 
 More informational panels can be created with small cards
 
-[source%linenums,kotlin]
+[source,kotlin]
 -----
 panels {
     theme {
@@ -531,148 +692,177 @@ panels {
 
 === Pill Buttons
 
-[panels,"round2"]
+[buttons,"round2"]
 ----
-panels {
-    theme {
-        layout {
-            columns = 4
-            groupBy = Grouping.TITLE
-            groupOrder = GroupingOrder.ASCENDING
-        }
-        font {
-            color = "#ffffff"
-        }
-        dropShadow = 1
-        colorMap{
-            color("#ff6385")
-            color("#36a3eb")
-            color("#9966ff")
-            color("#ffcf56")
-            color("#4bc0c0")
-            color("#FDCBF1")
-        }
-        newWin = false
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    pill {
-        link = "https://www.google.com"
-        label = "Google"
-    }
-    pill {
-        link = "https://www.apple.com"
-        label = "Apple"
-    }
-    pill {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-    }
-    pill {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-    }
-    pill {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-    }
+  ],
+  "buttonType": "PILL",
+  "theme": {
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 
 == Slim Buttons
 
-[panels,"slim",width="70%"]
+[buttons,"slim",width="70%"]
 ----
-panels {
-    theme {
-        layout {
-            columns=4
-            groupOrder = GroupingOrder.ASCENDING
-        }
-        font = font {
-            color = "#000000"
-        }
-        colorMap{
-            color("#165578")
-            color("#7d746c")
-            color("#2442d1")
-            color("#4d2666")
-            color("#1eb3f1")
-            color("#4f49eb")
-            color("#a6b23b")
-            color("#ad217f")
-            color("#2fb6ee")
-            color("#81392e")
-            color("#071e9b")
-            color("#675b01")
-            color("#ed6b19")
-            color("#a02cae")
-            color("#88683f")
-        }
-        legendOn = false
-        dropShadow = 5
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    slim {
-        link = "https://www.google.com"
-        label = "Google"
-        type = "Advertising"
-        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
-        author("Sergey Brin")
-        author("Larry Page")
-        date ="07/30/1998"
-    }
-    slim {
-        link = "https://www.apple.com"
-        label = "Apple"
-        type = "Personal Devices"
-        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
-        author("Steve Jobs")
-        author("Steve Wozniak")
-        date ="01/30/1977"
-    }
-    slim {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-        type = "Software"
-        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
-        author("Bill Gates")
-    }
-    slim {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-        type = "Super Store"
-        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
-        author("Jeff Bezos")
-    }
-    slim {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-        type = "Movie Theater"
-        description = "Netflix, Inc. is an American subscription streaming service and production company."
-        author("Reed")
-        author("Marc")
-    }
-    slim {
-        link = "https://www.facebook.com"
-        label = "Facebook"
-        type = "Social Butterfly"
-        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
-        author("Mark Zukerberg")
-    }
-    slim {
-        link = "https://www.instagram.com"
-        label = "Instagram"
-        type = "Beach"
-        description = "Instagram is an American photo and video sharing social networking service. "
-        author("Kevin")
-        author("Mike")
-    }
-    slim {
-        link = "#[link-server]#[app]"
-        label = "DocOps"
-        type = "Documentation"
-        description = "Sharing documentation experience for developers to extend with AsciiDoctor"
-        author("Steve Roach")
-        author("Ian Rose")
-    }
+  ],
+  "buttonType": "SLIM",
+  "theme": {
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 
@@ -704,7 +894,7 @@ panels {
 
 The alternative to Slim Panel is Large Panels where the description is now displayed on the card
 
-[source%linenums,kotlin]
+[source,kotlin]
 -----
 [panels,"large"]
 ----
@@ -775,101 +965,84 @@ theme {
 ----
 -----
 
-[panels,"large",role="center",scale="0.5"]
+[buttons,"large",role="center",scale="0.5"]
 ----
-panels {
-theme {
-        scale=0.5f
-        layout {
-            columns = 3
-
-        }
-        font {
-            color = "#000000"
-            bold = true
-        }
-        colorMap {
-            color("#a1f196")
-            color("#165578")
-            color("#7d746c")
-            color("#2442d1")
-            color("#c0adef")
-            color("#4d2666")
-            color("#fbb103")
-            color("#1eb3f1")
-            color("#4f49eb")
-            color("#f3b304")
-            color("#e693ce")
-            color("#a6b23b")
-            color("#ad217f")
-            color("#2fb6ee")
-            color("#81392e")
-            color("#071e9b")
-            color("#675b01")
-            color("#ed6b19")
-            color("#a02cae")
-            color("#88683f")
-			}
-        dropShadow = 5
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    large {
-        link = "https://www.google.com"
-        label = "Google"
-        type = "Search"
-        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
-        date ="07/30/1998"
-        line1 = Line("Google")
-        line2 = Line("Search")
-    }
-    large {
-        link = "https://www.apple.com"
-        label = "Apple"
-        type = "Personal Devices"
-        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
-        date ="01/30/1977"
-        line1 = Line("Apple")
-        line2 = Line("Inc.")
-    }
-    large {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-        type = "Software"
-        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
-       line1 = Line("Microsoft")
-        line2 = Line("Corp")
-    }
-    large {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-        type = "Super Store"
-        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
-        line1 = Line("Amazon")
-        line2 = Line("Inc.")
-    }
-    large {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-        type = "Movie Theater"
-        description = "Netflix, Inc. is an American subscription streaming service and production company."
-        line1 = Line("Netflix")
-        line2 = Line("Movies")
-    }
-    large {
-        link = "https://www.facebook.com"
-        label = "Facebook"
-        type = "Social Butterfly"
-        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
-         line1 = Line("Meta")
-        line2 = Line("Facebook")
-    }
-    large {
-        link = "https://www.instagram.com"
-        label = "Instagram"
-        type = "Beach"
-        description = "Instagram is an American photo and video sharing social networking service founded by Kevin Systrom and Mike Krieger. "
-        line1 = Line("Instagram")
-        line2 = Line("Pictures")
-    }
+  ],
+  "buttonType": "LARGE",
+  "theme": {
+    "colors": [
+           "#080808", "#101010", "#181818","#202020","#282828", "#303030"
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #000000; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 
@@ -1009,7 +1182,7 @@ include::example3.json[]
 
 ==== Roadmap with Animation off
 
-[release,scale=0.7,role="center", animate="OFF", numChars="25"]
+[release,scale=0.7,role="center", animate="OFF", numChars="25",  useDark=true]
 ----
 include::example3.json[]
 ----
@@ -1058,7 +1231,7 @@ date: TBD
 text: xxyz
 ----
 
-[timeline,title="Demo timeline Builder by docops.io",scale="1.0"]
+[timeline,title="Demo timeline Builder by docops.io",scale="1.0",  useDark=true]
 ----
 -
 date: July 23rd, 2023
@@ -1092,7 +1265,7 @@ and plugin the controller.
 
 == Roadmap Planning
 
-[roadmap,scale="1.0", role="left", numChars="25"]
+[roadmap,scale="1.0", role="left", numChars="25", useDark=true]
 ----
 - now
 Architect the application security model [[https://medium.com/bytebytego-system-design-alliance/top-10-architecture-characteristics-non-functional-requirements-with-cheatsheat-7ad14bbb0a9b NFR]] using OAuth2
@@ -1255,7 +1428,7 @@ JSON Schema TBD.
     }
   ],
   "buttonType": "ROUND",
-  "buttonDisplay": {
+  "theme": {
     "columns": 4,
     "colors": [
       "#790e66",
@@ -1274,4 +1447,36 @@ JSON Schema TBD.
     "scale": 1.0
   }
 }
+----
+
+[buttons,role="center"]
+----
+{
+    "buttons": [
+    {
+      "label": "Cookies & Cream",
+      "link": "https://www.apple.com",
+      "type": "Cookies",
+      "color": "#400000"
+    }
+    ],
+    "buttonType": "REGULAR",
+    "themeUrl": "http://localhost:8010/extension/buttondisplay/forrest-theme.json"
+}
+----
+
+[roadmap,title="Steve's%20Work", useDark=true]
+----
+- done
+image embed rectangle
+- done
+image embed slim
+- later
+color background roadmap
+- later
+remove car from release strategy
+- now
+pass in theme (light,dark)
+- done
+refactor displayConfigUrl to displayTheme
 ----

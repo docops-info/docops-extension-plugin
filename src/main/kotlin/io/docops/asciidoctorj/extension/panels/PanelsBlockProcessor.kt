@@ -40,10 +40,11 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
         val numChars = getCharLength(attributes, 32)
-        return "image::$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&filename=def.svg[$opts]"
+        return "image::$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&useDark=$useDark&filename=def.svg[$opts]"
     }
 
     override fun getUrl(
@@ -54,10 +55,11 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
         val numChars = getCharLength(attributes, 32)
-        return "$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&filename=def.svg"
+        return "$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&useDark=$useDark&filename=def.svg"
 
     }
 

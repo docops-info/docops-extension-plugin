@@ -19,11 +19,12 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
         val fname = System.currentTimeMillis()
         val numChars = getCharLength(attributes, 32)
-        return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&filename=ghi$fname.svg[$opts]"
+        return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&useDark=$useDark&filename=ghi$fname.svg[$opts]"
     }
 
     override fun getUrl(
@@ -34,11 +35,12 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         role: String,
         block: StructuralNode,
         opts: String,
-        attributes: MutableMap<String, Any>
+        attributes: MutableMap<String, Any>,
+        useDark: Boolean
     ): String {
         val fname = System.currentTimeMillis()
         val numChars = getCharLength(attributes, 32)
-        return "$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&filename=ghi$fname.svg"
+        return "$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&useDark=$useDark&filename=ghi$fname.svg"
 
     }
 }
