@@ -1,0 +1,12 @@
+{
+  "buttons": [
+    {
+      "label": "Cookies & Cream",
+      "link": "https://www.apple.com",
+      "type": "Cookies",
+      "color": "#400000"
+    }
+  ],
+  "buttonType": "REGULAR",
+  "themeUrl": "http://localhost:8010/extension/buttondisplay/forrest-theme.json"
+}

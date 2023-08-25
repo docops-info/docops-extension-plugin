@@ -33,11 +33,14 @@ class PanelsRegistry : ExtensionRegistry {
         registry.block(ButtonsBlockProcessor::class.java)
         registry.block(TimelineBlockProcessor::class.java)
         registry.block(RoadmapBlockProcessor::class.java)
+        registry.block(ScorecardProcessor::class.java)
         registry.docinfoProcessor(FeedbackDocinfoProcessor::class.java)
         registry.docinfoProcessor(FeedbackDivDocInfoProcessor::class.java)
         registry.blockMacro(ColorMapBlockMacroProcessor::class.java)
         registry.docinfoProcessor(TocBotHeaderDocInfoProcessor::class.java)
         registry.docinfoProcessor(TocBotFooterDocInfoProcessor::class.java)
+
+        registry.includeProcessor(DocOpsInclude::class.java)
     }
 
 }
