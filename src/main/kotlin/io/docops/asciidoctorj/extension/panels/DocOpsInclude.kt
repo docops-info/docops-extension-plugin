@@ -7,7 +7,8 @@ import java.io.File
 
 class DocOpsInclude : IncludeProcessor() {
     override fun handles(target: String?): Boolean {
-        return true
+        println("Included File -> $target")
+        return false
     }
 
     override fun process(

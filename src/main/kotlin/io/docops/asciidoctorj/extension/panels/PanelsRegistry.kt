@@ -41,7 +41,7 @@ class PanelsRegistry : ExtensionRegistry {
         registry.docinfoProcessor(TocBotHeaderDocInfoProcessor::class.java)
         registry.docinfoProcessor(TocBotFooterDocInfoProcessor::class.java)
 
-        //registry.includeProcessor(DocOpsInclude::class.java)
+        registry.includeProcessor(DocOpsInclude::class.java)
     }
 
 }

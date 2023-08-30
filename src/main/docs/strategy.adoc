@@ -1,0 +1,78 @@
+= DocOps Release Strategy Builder
+Steve D Roach
+:email: sroachst@gmail.com
+:stylesdir: styles
+:stylesheet: slate.css
+:toc: middle
+:sectnums:
+:title-page:
+:source-highlighter: highlightjs
+:highlightjs-theme: dark
+:nofooter:
+:imagesdir: images
+:google: This Is Another Google
+:title-page-background-image: coverpage.svg
+:data-uri:
+:icons: font
+
+== Release Strategies
+
+Release strategies are approaches for introduction new functionality to a production system. This can be implementing a new system or application or even adding new capability to an existing application.
+
+There are three phases supported by the DocOps release strategy. This includes:
+
+. Milestones—this is when a development team feels comfortable projecting some feature complete and their desire to move it to a production environment without performing production workload. This is sometimes referred to as dark mode or technical release as the intent is to shake out the environment with the feature.
+. Release Candidate—this si when the team believes they are dev done and project to have minimal defects. Sometimes it's the case where there is another system dependency where it's not in a complete state however the team feels they need to move to production as to not have a lot of dev code in source control and not in the production branch.
+. General Availability—this is when all development are completed and defects are addressed and the team is ready to roll out changes to support production workload.
+
+== Visualizations
+
+DocOps support a few visualization approaches backed by a JSON format.
+
+The first visualization is a release strategy with a left to right timeline view that inititally shows the overview and the details can be visible by interacting with the visua;.
+
+=== Example of a timeline summary
+
+[source,json]
+----
+{
+    "title": "Release Strategy Builder", <1>
+    "releases": [ <2>
+        {
+            "type": "M1",
+            "lines": [
+                "Reason for "
+            ],
+            "date": "TBD",
+            "selected": true,
+            "goal": "Our goal is to ..."
+        }
+    ],
+    "style": "TLS", <3>
+    "displayConfig": { <4>
+      "colors": [ "#FF6F36", "#EAA213", "#01FF90"],
+      "fontColor": "#000000",
+      "circleColors": [
+          "#FFAF10", "#FFD373", "#45618E"
+        ]
+  }
+}
+----
+
+<1> Title of the visualization
+<2> this is a collection of releases by type, Milestones, release candidates and general availability.
+<3> Type here is TLS which is short for Timeline Summary
+<4> This section describes approach to set the color of the display `color` and the other is the `fontColor` which as the display text color. In addition, there is circleColors for the roadmap visualization.
+
+[release,scale=0.7,role="center"]
+----
+include::example4.json[]
+----
+
+
+=== Example of a Roadmap View
+
+[release,scale=0.7,role="center"]
+----
+include::example3.json[]
+----

@@ -63,12 +63,12 @@ internal class PanelsBlockProcessorTest {
             val images = File(src.parent,"images")
             images.deleteRecursively()
             //target.deleteOnExit()
-            makePdf()
+            makePdf(src)
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
-    fun makePdf() {
+    fun makePdf(filepath: File) {
         val attrs = Attributes.builder()
             .sourceHighlighter("rouge")
             .showTitle(true)
@@ -83,10 +83,11 @@ internal class PanelsBlockProcessorTest {
             .attribute("panel-webserver", "http://localhost:8010/extension")
             .build()
         val asciidoctor = Asciidoctor.Factory.create()
-        val src = File("src/main/docs/panel.adoc")
+        val src = filepath
         val build = File("docs/")
         build.mkdirs()
-        val target = File(build, "panel.pdf")
+        val targetName = filepath.name.replace(".adoc", ".pdf")
+        val target = File(build, targetName)
 
         if(target.exists()) {
             target.delete()
@@ -100,5 +101,49 @@ internal class PanelsBlockProcessorTest {
 
         asciidoctor.convertFile(src, options)
 
+    }
+    @Test
+    fun testRelease() {
+        val attrs = Attributes.builder()
+            .sourceHighlighter("highlightjs")
+            .allowUriRead(true)
+            .dataUri(true)
+            .copyCss(true)
+            .noFooter(true)
+            .attribute("highlightjs-theme", "dark")
+            .attribute("rouge-css", "style")
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
+            .attribute("feedback")
+            .attribute("tocbot")
+            .attribute("local-debug", "true")
+            .attribute("panel-webserver", "http://localhost:8010/extension")
+            .build()
+
+        val asciidoctor = Asciidoctor.Factory.create()
+        val src = File("src/main/docs/strategy.adoc")
+        val build = File("docs/")
+        build.mkdirs()
+        val target = File(build, "strategy.html")
+        if(target.exists()) {
+            target.delete()
+        }
+        val options = Options.builder()
+            .backend("html5")
+            .toDir(build)
+            .attributes(attrs)
+            .safe(SafeMode.UNSAFE)
+            .build()
+        try {
+            asciidoctor.convertFile(src, options)
+
+            assert(target.exists())
+            val images = File(src.parent,"images")
+            images.deleteRecursively()
+            //target.deleteOnExit()
+            makePdf(src)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }
