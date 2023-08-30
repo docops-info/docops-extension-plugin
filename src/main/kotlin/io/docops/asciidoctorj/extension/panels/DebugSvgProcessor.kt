@@ -5,10 +5,11 @@ import org.asciidoctor.ast.StructuralNode
 import org.asciidoctor.extension.Contexts
 import org.asciidoctor.extension.Name
 
-@Name("buttons")
+@Name("debug")
 @Contexts(Contexts.LISTING)
 @ContentModel(ContentModel.COMPOUND)
-class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
+class DebugSvgProcessor : AbstractDocOpsBlockProcessor() {
+
     override fun buildUrl(
         payload: String,
         scale: String,
@@ -20,12 +21,7 @@ class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
         attributes: MutableMap<String, Any>,
         useDark: Boolean
     ): String {
-        return if("PDF" == type) {
-            val iopts = "format=png,opts=inline,align='$role'"
-            """image::$webserver/api/buttons/png?payload=$payload&type=$type&useDark=$useDark&filename=ghi.png[$iopts]"""
-        } else {
-            """image::$webserver/api/buttons?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg[$opts]"""
-        }
+        return """image::$webserver/api/svg/debug?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg[$opts]"""
     }
 
     override fun getUrl(
@@ -39,6 +35,6 @@ class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
         attributes: MutableMap<String, Any>,
         useDark: Boolean
     ): String {
-        return """$webserver/api/buttons?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg"""
+        return """$webserver/api/svg/debug?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg"""
     }
 }

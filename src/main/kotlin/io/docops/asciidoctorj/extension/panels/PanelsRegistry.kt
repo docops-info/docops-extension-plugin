@@ -34,6 +34,7 @@ class PanelsRegistry : ExtensionRegistry {
         registry.block(TimelineBlockProcessor::class.java)
         registry.block(RoadmapBlockProcessor::class.java)
         registry.block(ScorecardProcessor::class.java)
+        registry.block(DebugSvgProcessor::class.java)
         registry.docinfoProcessor(FeedbackDocinfoProcessor::class.java)
         registry.docinfoProcessor(FeedbackDivDocInfoProcessor::class.java)
         registry.blockMacro(ColorMapBlockMacroProcessor::class.java)

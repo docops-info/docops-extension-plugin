@@ -858,9 +858,9 @@ panels {
     "scale": 0.7,
 "buttonStyle": {
     "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
-"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
-"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
-"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;font-style: italic;"
   }
   }
 }
@@ -1091,7 +1091,7 @@ Technical|Debt|https://www.yahoo.com|#cc263f|#5d6d7e|<Yahoo>|#000000
 
 [badge]
 ----
-Ninjutsu|Kakashi||||
+Ninjutsu|Kakashi||#800080|#00dd00||#00dd00|
 ----
 
 .Pipe Delimited Values
@@ -1127,26 +1127,40 @@ BUILD|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 
 == ButtonPanel at 66% width
 
-[panel, default, width=66%,role=right]
+[buttons, default, width=66%,role=right]
 ----
-panel {
-    theme {
-    newWin = false
-    }
-    button {
-        label = "This Is On"
-        link = "https://docops.io/"
-    }
-    button {
-        label = "This Is Two"
-        link = "https://docops.io/"
-    }
-    button {
-        label = "This Is Three"
-        link = "https://docops.io/"
-    }
+{
+    "buttons": [
+        {
+            "label": "This Is On",
+            "link": "https://docops.io/"
+        },
+        {
+            "label": "This Is Two",
+                "link":"https://docops.io/"
+        },
+        {
+            "label": "This Is Three",
+            "link":"https://docops.io/"
+        }
+    ],
+  "buttonType": "REGULAR",
+  "theme": {
+    "colors": [
+           "#080808", "#101010", "#181818","#202020","#282828", "#303030"
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #000000; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
+
 
 
 == Building Out a Release Strategy
@@ -1247,7 +1261,7 @@ for extension server are the various plug-ing for asciidoctorj.
 date: September 1st, 2023
 text: DocOps.io will begin work on revamping the asciidoctorj converter.
 with the asciidoctorj 3.0.0 release coming we will need to migrate
-custom plug-ins to the new version of the extensions as they will bring braking changes.
+custom plug-ins to the new version of the extensions as they will bring breaking changes.
 -
 date: October 18th, 2023
 text: Time to reimagine the future. Is it possible
@@ -1461,7 +1475,7 @@ JSON Schema TBD.
     }
     ],
     "buttonType": "REGULAR",
-    "themeUrl": "http://localhost:8010/extension/buttondisplay/forrest-theme.json"
+    "themeUrl": "http://localhost:8010/extension/buttondisplay/dark2.json"
 }
 ----
 
@@ -1485,4 +1499,8 @@ refactor displayConfigUrl to displayTheme
 ----
 {"title":"Digital Policy Service","initiativeTitle":"PCF to EKS","outcomeTitle":"TMVS++","initiativeItems":["Spring Boot 2.7 on Pcf Platform","Redis used for storing circuit breaker data","MySql for storing zipkin traces","RabbitMQ for sendign zipkin traces"],"outcomeItems":["Docker Containerized Spring Boot 3.x on EKS","Okta used for Authentication","PVC used for storing circuit breaker data","Open Search for zipkin trace storage","IBOB guidelines compliance","Flight check completed","Blue/Green/Canary deployments supported","Documented Local Setup for building & debugging","Production Support Guidelines documented","Splunk queries documented","Actuator Endpoints validated"],"scale":1.3}
 
+----
+
+[debug]
+----
 ----

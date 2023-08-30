@@ -71,9 +71,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         val useDark : Boolean = "true".equals(dark, true)
         if (serverPresent(server, parent, this, localDebug)) {
             var type ="SVG"
-            if("pdf" == backend) {
-                type = "PDF"
-            }
+
             val payload: String = try {
                 compressString(content)
             } catch (e: Exception) {
@@ -83,6 +81,9 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
             var opts = "format=svg,opts=inline,align='$role'"
             if(ideaOn) {
                 opts = ""
+            }
+            if("pdf" == backend) {
+                type = "PDF"
             }
             val lines = mutableListOf<String>()
             if(ideaOn) {
