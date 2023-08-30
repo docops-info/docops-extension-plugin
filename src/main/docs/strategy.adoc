@@ -76,3 +76,11 @@ include::example4.json[]
 ----
 include::example3.json[]
 ----
+
+== JSON Schema
+
+Release Strategy is supported by a JSON schema which can be found below link.
+
+Link to schema for the JSON used for creating a release strategy.
+
+https://docops.io/extension/schemas/release-strategy-schema.json

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="author" content="Steve D Roach">
+<title>DocOps Release Strategy Builder</title>
+<style>
+/* Based on Slate from Bootswatch (https://bootswatch.com/slate/) */
+:root {
+    --body-font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --maincolor: #1E1F22;
+    --color-white: #fff;
+    --primarycolor: #f39c12;
+    --secondarycolor: #03a9f4;
+    --tertiarycolor: #4db6ac;
+}
+/* document body (contains all content) */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #c8c8c8;
+    background-color: #272b30;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/* document header (contains title etc) */
+#header {
+    width: 100%;
+}
+#header>h1 {
+    border-bottom: 1px solid #ddddd8;
+    padding-bottom: 8px;
+    color: var(--primarycolor);
+}
+
+/* headings */
+h1 {
+    color: var(--primarycolor);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--secondarycolor);
+}
+h1,
+h2,
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+h4,
+h5,
+h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+h1 {
+    font-size: 4em;
+    /*   font-size: 36px; */
+}
+h2 {
+    font-size: 30px;
+}
+h3 {
+    font-size: 24px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 12px;
+}
+
+/* plain paragraph text */
+.paragraph {
+    /*   font-family: sans-serif; */
+    margin: 0 0 10px;
+}
+p {
+    /*   font-family: sans-serif; */
+    margin: 0 0 10px;
+}
+
+/* blockquote text */
+.quoteblock {
+    font-style: italic;
+}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #7a8288;
+}
+blockquote p:last-child,
+blockquote ul:last-child,
+blockquote ol:last-child {
+    margin-bottom: 0;
+}
+.blockquote-reverse,
+blockquote.pull-right {
+    padding-right: 15px;
+    padding-left: 0;
+    border-right: 5px solid #7a8288;
+    border-left: 0;
+    text-align: right;
+}
+.blockquote-reverse footer:before,
+blockquote.pull-right footer:before,
+.blockquote-reverse small:before,
+blockquote.pull-right small:before,
+.blockquote-reverse .small:before,
+blockquote.pull-right .small:before {
+    content: '';
+}
+.blockquote-reverse footer:after,
+blockquote.pull-right footer:after,
+.blockquote-reverse small:after,
+blockquote.pull-right small:after,
+.blockquote-reverse .small:after,
+blockquote.pull-right .small:after {
+    content: '\00A0 \2014';
+}
+
+/* blockquote attribution text */
+.attribution,
+.cite,
+blockquote footer,
+blockquote small,
+blockquote .small {
+    display: block;
+    line-height: 1.42857143;
+    color: #7a8288;
+}
+.attribution:before,
+blockquote footer:before,
+blockquote small:before,
+blockquote .small:before {
+    content: '\2014 \00A0';
+}
+
+/* unordered list */
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+    margin-bottom: 0;
+}
+
+
+/* links */
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #ffffff;
+    text-decoration: underline;
+}
+a:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+/* horizontal rules */
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #1c1e22;
+}
+
+/* table */
+table {
+    background-color: transparent;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 21px;
+    border-collapse: collapse;
+}
+table col[class*="col-"] {
+    position: static;
+    float: none;
+    display: table-column;
+}
+table td[class*="col-"],
+table th[class*="col-"] {
+    position: static;
+    float: none;
+    display: table-cell;
+}
+
+/* table caption */
+caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #7a8288;
+    text-align: left;
+}
+
+/* table header row */
+thead {
+    border-bottom: 2px solid #1c1e22;
+}
+
+/* table header cell */
+th {
+    text-align: left;
+    padding-left: 8px;
+}
+
+/* table footer */
+tfoot {
+    color: #807F81;
+    border-top: 1px solid #1c1e22;
+}
+
+/* table cell */
+td {
+    border-top: 1px solid #1c1e22;
+}
+td p {
+    margin: auto;
+    padding: 8px;
+}
+
+/* table body */
+tbody > tr:nth-of-type(odd) {
+    background-color: #353a41;
+}
+tbody > tr:hover {
+    background-color: #49515a;
+}
+
+/* inline code */
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #3a3f44;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+kbd {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #ffffff;
+    background-color: #333333;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+kbd kbd {
+    padding: 0;
+    font-size: 100%;
+    font-weight: bold;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #3a3f44;
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+/* image */
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+/* footer section */
+#footer {
+    margin-top: 22px;
+    padding: 14px 16px;
+    background-color: #3a3f44;
+}
+
+/* responsiveness fixes */
+video {
+    max-width: 100%;
+}
+
+/* table of Contents sidebar */
+#toctitle {
+    color: #272b30;
+}
+
+#toc ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#toc li {
+    display: block;
+}
+
+#toc a {
+    background-color: #3a3f44;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#toc li a:hover {
+    background-color: #272b2e;
+    text-decoration: none;
+}
+
+#toc:after {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+@media all and (max-width: 600px) {
+    table {
+        width: 55vw!important;
+        font-size: 3vw;
+    }
+}
+.admonitionblock {
+    margin: 1.4rem 0 0;
+}
+
+.admonitionblock p,
+.admonitionblock td.content {
+    font-size: calc(16 / var(--rem-base) * 1rem);
+}
+
+.admonitionblock td.content > :not(.title):first-child,
+.admonitionblock td.content > .title + * {
+    margin-top: 0;
+}
+
+.admonitionblock pre {
+    font-size: calc(15 / var(--rem-base) * 1rem);
+}
+
+.admonitionblock > table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    position: relative;
+    width: 100%;
+}
+
+.admonitionblock td.content {
+    padding: 1rem 1rem 0.75rem;
+    background: var(--admonition-background);
+    width: 100%;
+}
+
+.admonitionblock .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: calc(15 / var(--rem-base) * 1rem);
+    padding: 0 0.5rem;
+    height: 1.25rem;
+    line-height: 1;
+    border-radius: 0.45rem;
+    transform: translate(-0.5rem, -50%);
+}
+
+.admonitionblock.caution .icon {
+    background-color: var(--caution-color);
+    color: var(--caution-on-color);
+}
+
+.admonitionblock.important .icon {
+    background-color: var(--important-color);
+    color: var(--important-on-color);
+}
+
+.admonitionblock.note .icon {
+    background-color: var(--note-color);
+    color: var(--note-on-color);
+}
+
+.admonitionblock.tip .icon {
+    background-color: var(--tip-color);
+    color: var(--tip-on-color);
+}
+
+.admonitionblock.warning .icon {
+    background-color: var(--warning-color);
+    color: var(--warning-on-color);
+}
+
+.admonitionblock .icon i {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+}
+
+.admonitionblock .icon i::after {
+    content: attr(title);
+    font-family: var(--body-font-family);
+    font-weight: var(--admonition-label-font-weight);
+    text-transform: uppercase;
+}
+
+.admonitionblock .icon i::before {
+    font-size: calc(14 / var(--rem-base) * 1rem);
+    height: inherit;
+    width: 1.5rem;
+    margin-left: -0.5rem;
+    margin-right: 0.25rem;
+    padding-left: 0.1em;
+    padding-bottom: 0.05em;
+    border-radius: 0.45rem 0 0 0.45rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admonitionblock.note .icon i::before {
+    content: var(--note-icon);
+    background-color: var(--note-shade-color);
+}
+
+.admonitionblock.tip .icon i::before {
+    content: var(--tip-icon);
+    /*
+    font-weight: 400;
+    */
+    background-color: var(--tip-shade-color);
+}
+
+.admonitionblock.caution .icon i::before {
+    content: var(--caution-icon);
+    background-color: var(--caution-shade-color);
+}
+
+.admonitionblock.important .icon i::before {
+    content: var(--important-icon);
+    background-color: var(--important-shade-color);
+}
+
+.admonitionblock.warning .icon i::before {
+    content: var(--warning-icon);
+    background-color: var(--warning-shade-color);
+}
+
+.admonitionblock .icon i::after {
+    content: attr(title);
+    font-weight: var(--admonition-label-font-weight);
+    text-transform: uppercase;
+}
+
+i.fa[class^='icon-'],
+i.fa[class*=' icon-']::before {
+    content: "";
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: 0.25rem;
+    margin-left: -0.5rem;
+}
+
+.left { float: left !important; }
+
+.right { float: right !important; }
+
+.text-left { text-align: left !important; }
+
+.text-right { text-align: right !important; }
+
+.text-center { text-align: center !important; }
+
+.text-justify { text-align: justify !important; }
+
+.hide { display: none; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/dark.min.css">
+   
+   <style>
+    #slider {
+        width: 500px;
+        top: 100px;
+        position: absolute
+    }
+
+    #fbheader {
+        width: 260px;
+        height: 520px;
+        position: absolute;
+        right: 0;
+        border: 1px solid #d8d8d8;
+        margin-left: 40px;
+        padding: 20px 40px;
+        border-radius: 3px;
+        box-shadow: 0 0 8px gray;
+        background: darkgray;
+    }
+
+    #sidebar {
+        position: absolute;
+        top: 180px;
+        left: 113px;
+        box-shadow: 0 0 8px gray
+    }
+
+    #sidebar1 {
+        position: absolute;
+        top: 180px;
+        left: 113px;
+        box-shadow: 0 0 8px gray
+    }
+
+
+    #submitter {
+        background-color: white;
+        width: 200px;
+    }
+
+
+    textarea {
+        padding: 6px;
+        font-size: 15px;
+        border-radius: 2px;
+        margin-top: 10px;
+        height: 80px;
+        width: 100%;
+        background: #ffffff;
+    }
+    .error-message {
+        color:#CC1111;
+    }
+    .error {
+        box-shadow: 0 0 2px #CC1111;
+    }
+</style>    <script src="https://unpkg.com/htmx.org@1.6.1" ></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+    <script>
+    var FeedBack = (function (my) {
+        my.slideIn = function () {
+            const slidingDiv = document.getElementById("slider");
+            const stopPosition = -342;
+            if (parseInt(slidingDiv.style.right) > stopPosition) {
+                slidingDiv.style.right = parseInt(slidingDiv.style.right) - 2 + "px";
+                setTimeout(my.slideIn, 1);
+            }
+        };
+        my.close_panel = function () {
+            my.slideIn();
+            let a = document.getElementById("sidebar1");
+            a.setAttribute("id", "sidebar");
+            a.setAttribute("onclick", "FeedBack.open_panel()");
+        };
+        my.slideIt = function () {
+            const slidingDiv = document.getElementById("slider");
+            const stopPosition = 0;
+            if (parseInt(slidingDiv.style.right) < stopPosition) {
+                slidingDiv.style.right = parseInt(slidingDiv.style.right) + 2 + "px";
+                setTimeout(FeedBack.slideIt, 1);
+            }
+        };
+         my.open_panel = function () {
+            my.slideIt();
+            let a = document.getElementById("sidebar");
+            a.setAttribute("id", "sidebar1");
+            a.setAttribute("onclick", "FeedBack.close_panel()");
+        };
+         
+        return my;
+    }(FeedBack || {}));
+
+</script>
+<style>
+  /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
+  /* Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006 */
+  #tocbot a.toc-link.node-name--H1{ font-style: italic }
+  @media screen{
+    #tocbot > ul.toc-list{ margin-bottom: 0.5em; margin-left: 0.125em }
+    #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul{
+      padding-left: 0 }
+    #tocbot a.toc-link{ height:100% }
+    .is-collapsible{ max-height:3000px; overflow:hidden; }
+    .is-collapsed{ max-height:0 }
+    .is-active-link{ font-weight:700; color: #00fa00 }
+  }
+  @media print{
+    #tocbot a.toc-link.node-name--H4{ display:none }
+  }
+  .toc{overflow-y:auto}.toc>.toc-list{overflow:hidden;position:relative}.toc>.toc-list li{list-style:none}.toc-list{margin:0;padding-left:10px}a.toc-link{color:currentColor;height:100%}.is-collapsible{max-height:1000px;overflow:hidden;transition:all 300ms ease-in-out}.is-collapsed{max-height:0}.is-position-fixed{position:fixed !important;top:0}.is-active-link{font-weight:700}.toc-link::before{background-color:#EEE;content:' ';display:inline-block;height:inherit;left:0;margin-top:-12px;position:absolute;width:2px}.is-active-link::before{background-color:#54BC4B}
+  @media only screen and (min-width: 993px) {
+    .sticky {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0;
+          align-self: flex-start;
+      }
+  }
+  @media only screen and (max-width: 992px) {
+    .is-collapsed {
+      max-height: none;
+    }
+  }
+  .admin-bar .sticky {
+      top: 32px;
+  }
+  .sticky:before,
+  .sticky:after {
+      content: '';
+      display: table;
+  }
+  a.toc-link {
+      padding: 1px 0;
+      display: block;
+      line-height: 1.0;
+  }
+  a.toc-link:hover {
+      color: #54bc4b;
+  }
+  .is-collapsible a.toc-link {
+      padding: 5px 0;
+  }
+  a.toc-link {
+      line-height: 1.4;
+  }
+  .medium-zoom-overlay,
+        img.medium-zoom-image {
+        z-index: 1000;
+    }
+</style>
+<script>
+/*! medium-zoom 1.0.8 | MIT License | https://github.com/francoischalifour/medium-zoom */
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).mediumZoom=t()}(this,(function(){"use strict";var e=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},t=function(e){return"IMG"===e.tagName},o=function(e){return e&&1===e.nodeType},n=function(e){return".svg"===(e.currentSrc||e.src).substr(-4).toLowerCase()},i=function(e){try{return Array.isArray(e)?e.filter(t):function(e){return NodeList.prototype.isPrototypeOf(e)}(e)?[].slice.call(e).filter(t):o(e)?[e].filter(t):"string"==typeof e?[].slice.call(document.querySelectorAll(e)).filter(t):[]}catch(e){throw new TypeError("The provided selector is invalid.\nExpects a CSS selector, a Node element, a NodeList or an array.\nSee: https://github.com/francoischalifour/medium-zoom")}},r=function(e){var t=document.createElement("div");return t.classList.add("medium-zoom-overlay"),t.style.background=e,t},d=function(e){var t=e.getBoundingClientRect(),o=t.top,n=t.left,i=t.width,r=t.height,d=e.cloneNode(),a=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,m=window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft||0;return d.removeAttribute("id"),d.style.position="absolute",d.style.top=o+a+"px",d.style.left=n+m+"px",d.style.width=i+"px",d.style.height=r+"px",d.style.transform="",d},a=function(t,o){var n=e({bubbles:!1,cancelable:!1,detail:void 0},o);if("function"==typeof window.CustomEvent)return new CustomEvent(t,n);var i=document.createEvent("CustomEvent");return i.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),i};return function(e,t){void 0===t&&(t={});var o=t.insertAt;if(e&&"undefined"!=typeof document){var n=document.head||document.getElementsByTagName("head")[0],i=document.createElement("style");i.type="text/css","top"===o&&n.firstChild?n.insertBefore(i,n.firstChild):n.appendChild(i),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(document.createTextNode(e))}}(".medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}"),function t(m){var l=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},c=window.Promise||function(e){function t(){}e(t,t)},u=function(e){var t=e.target;t!==N?-1!==x.indexOf(t)&&w({target:t}):E()},s=function(){if(!A&&k.original){var e=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;Math.abs(S-e)>T.scrollOffset&&setTimeout(E,150)}},f=function(e){var t=e.key||e.keyCode;"Escape"!==t&&"Esc"!==t&&27!==t||E()},p=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t;if(t.background&&(N.style.background=t.background),t.container&&t.container instanceof Object&&(n.container=e({},T.container,t.container)),t.template){var i=o(t.template)?t.template:document.querySelector(t.template);n.template=i}return T=e({},T,n),x.forEach((function(e){e.dispatchEvent(a("medium-zoom:update",{detail:{zoom:j}}))})),j},g=function(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return t(e({},T,o))},v=function(){for(var e=arguments.length,t=Array(e),o=0;o<e;o++)t[o]=arguments[o];var n=t.reduce((function(e,t){return[].concat(e,i(t))}),[]);return n.filter((function(e){return-1===x.indexOf(e)})).forEach((function(e){x.push(e),e.classList.add("medium-zoom-image")})),O.forEach((function(e){var t=e.type,o=e.listener,i=e.options;n.forEach((function(e){e.addEventListener(t,o,i)}))})),j},h=function(){for(var e=arguments.length,t=Array(e),o=0;o<e;o++)t[o]=arguments[o];k.zoomed&&E();var n=t.length>0?t.reduce((function(e,t){return[].concat(e,i(t))}),[]):x;return n.forEach((function(e){e.classList.remove("medium-zoom-image"),e.dispatchEvent(a("medium-zoom:detach",{detail:{zoom:j}}))})),x=x.filter((function(e){return-1===n.indexOf(e)})),j},z=function(e,t){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return x.forEach((function(n){n.addEventListener("medium-zoom:"+e,t,o)})),O.push({type:"medium-zoom:"+e,listener:t,options:o}),j},y=function(e,t){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return x.forEach((function(n){n.removeEventListener("medium-zoom:"+e,t,o)})),O=O.filter((function(o){return!(o.type==="medium-zoom:"+e&&o.listener.toString()===t.toString())})),j},b=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},i=t.target,r=function(){var t={width:document.documentElement.clientWidth,height:document.documentElement.clientHeight,left:0,top:0,right:0,bottom:0},i=void 0,r=void 0;if(T.container)if(T.container instanceof Object)i=(t=e({},t,T.container)).width-t.left-t.right-2*T.margin,r=t.height-t.top-t.bottom-2*T.margin;else{var d=(o(T.container)?T.container:document.querySelector(T.container)).getBoundingClientRect(),a=d.width,m=d.height,l=d.left,c=d.top;t=e({},t,{width:a,height:m,left:l,top:c})}i=i||t.width-2*T.margin,r=r||t.height-2*T.margin;var u=k.zoomedHd||k.original,s=n(u)?i:u.naturalWidth||i,f=n(u)?r:u.naturalHeight||r,p=u.getBoundingClientRect(),g=p.top,v=p.left,h=p.width,z=p.height,y=Math.min(Math.max(h,s),i)/h,b=Math.min(Math.max(z,f),r)/z,E=Math.min(y,b),w="scale("+E+") translate3d("+((i-h)/2-v+T.margin+t.left)/E+"px, "+((r-z)/2-g+T.margin+t.top)/E+"px, 0)";k.zoomed.style.transform=w,k.zoomedHd&&(k.zoomedHd.style.transform=w)};return new c((function(e){if(i&&-1===x.indexOf(i))e(j);else{if(k.zoomed)e(j);else{if(i)k.original=i;else{if(!(x.length>0))return void e(j);var t=x;k.original=t[0]}if(k.original.dispatchEvent(a("medium-zoom:open",{detail:{zoom:j}})),S=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,A=!0,k.zoomed=d(k.original),document.body.appendChild(N),T.template){var n=o(T.template)?T.template:document.querySelector(T.template);k.template=document.createElement("div"),k.template.appendChild(n.content.cloneNode(!0)),document.body.appendChild(k.template)}if(k.original.parentElement&&"PICTURE"===k.original.parentElement.tagName&&k.original.currentSrc&&(k.zoomed.src=k.original.currentSrc),document.body.appendChild(k.zoomed),window.requestAnimationFrame((function(){document.body.classList.add("medium-zoom--opened")})),k.original.classList.add("medium-zoom-image--hidden"),k.zoomed.classList.add("medium-zoom-image--opened"),k.zoomed.addEventListener("click",E),k.zoomed.addEventListener("transitionend",(function t(){A=!1,k.zoomed.removeEventListener("transitionend",t),k.original.dispatchEvent(a("medium-zoom:opened",{detail:{zoom:j}})),e(j)})),k.original.getAttribute("data-zoom-src")){k.zoomedHd=k.zoomed.cloneNode(),k.zoomedHd.removeAttribute("srcset"),k.zoomedHd.removeAttribute("sizes"),k.zoomedHd.removeAttribute("loading"),k.zoomedHd.src=k.zoomed.getAttribute("data-zoom-src"),k.zoomedHd.onerror=function(){clearInterval(m),console.warn("Unable to reach the zoom image target "+k.zoomedHd.src),k.zoomedHd=null,r()};var m=setInterval((function(){k.zoomedHd.complete&&(clearInterval(m),k.zoomedHd.classList.add("medium-zoom-image--opened"),k.zoomedHd.addEventListener("click",E),document.body.appendChild(k.zoomedHd),r())}),10)}else if(k.original.hasAttribute("srcset")){k.zoomedHd=k.zoomed.cloneNode(),k.zoomedHd.removeAttribute("sizes"),k.zoomedHd.removeAttribute("loading");var l=k.zoomedHd.addEventListener("load",(function(){k.zoomedHd.removeEventListener("load",l),k.zoomedHd.classList.add("medium-zoom-image--opened"),k.zoomedHd.addEventListener("click",E),document.body.appendChild(k.zoomedHd),r()}))}else r()}}}))},E=function(){return new c((function(e){if(!A&&k.original){A=!0,document.body.classList.remove("medium-zoom--opened"),k.zoomed.style.transform="",k.zoomedHd&&(k.zoomedHd.style.transform=""),k.template&&(k.template.style.transition="opacity 150ms",k.template.style.opacity=0),k.original.dispatchEvent(a("medium-zoom:close",{detail:{zoom:j}})),k.zoomed.addEventListener("transitionend",(function t(){k.original.classList.remove("medium-zoom-image--hidden"),document.body.removeChild(k.zoomed),k.zoomedHd&&document.body.removeChild(k.zoomedHd),document.body.removeChild(N),k.zoomed.classList.remove("medium-zoom-image--opened"),k.template&&document.body.removeChild(k.template),A=!1,k.zoomed.removeEventListener("transitionend",t),k.original.dispatchEvent(a("medium-zoom:closed",{detail:{zoom:j}})),k.original=null,k.zoomed=null,k.zoomedHd=null,k.template=null,e(j)}))}else e(j)}))},w=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=e.target;return k.original?E():b({target:t})},L=function(){return T},H=function(){return x},C=function(){return k.original},x=[],O=[],A=!1,S=0,T=l,k={original:null,zoomed:null,zoomedHd:null,template:null};"[object Object]"===Object.prototype.toString.call(m)?T=m:(m||"string"==typeof m)&&v(m),T=e({margin:0,background:"#fff",scrollOffset:40,container:null,template:null},T);var N=r(T.background);document.addEventListener("click",u),document.addEventListener("keyup",f),document.addEventListener("scroll",s),window.addEventListener("resize",E);var j={open:b,close:E,toggle:w,update:p,clone:g,attach:v,detach:h,on:z,off:y,getOptions:L,getImages:H,getZoomedImage:C};return j}}));
+
+mediumZoom('.content img', {
+  background: '#fff'
+})
+
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>DocOps Release Strategy Builder</h1>
+<div class="details">
+<span id="author" class="author">Steve D Roach</span><br>
+<span id="email" class="email"><a href="mailto:sroachst@gmail.com">sroachst@gmail.com</a></span><br>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_release_strategies">1. Release Strategies</a></li>
+<li><a href="#_visualizations">2. Visualizations</a>
+<ul class="sectlevel2">
+<li><a href="#_example_of_a_timeline_summary">2.1. Example of a timeline summary</a></li>
+<li><a href="#_example_of_a_roadmap_view">2.2. Example of a Roadmap View</a></li>
+</ul>
+</li>
+<li><a href="#_json_schema">3. JSON Schema</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_release_strategies">1. Release Strategies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release strategies are approaches for introduction new functionality to a production system. This can be implementing a new system or application or even adding new capability to an existing application.</p>
+</div>
+<div class="paragraph">
+<p>There are three phases supported by the DocOps release strategy. This includes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Milestones—this is when a development team feels comfortable projecting some feature complete and their desire to move it to a production environment without performing production workload. This is sometimes referred to as dark mode or technical release as the intent is to shake out the environment with the feature.</p>
+</li>
+<li>
+<p>Release Candidate—this si when the team believes they are dev done and project to have minimal defects. Sometimes it&#8217;s the case where there is another system dependency where it&#8217;s not in a complete state however the team feels they need to move to production as to not have a lot of dev code in source control and not in the production branch.</p>
+</li>
+<li>
+<p>General Availability—this is when all development are completed and defects are addressed and the team is ready to roll out changes to support production workload.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visualizations">2. Visualizations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DocOps support a few visualization approaches backed by a JSON format.</p>
+</div>
+<div class="paragraph">
+<p>The first visualization is a release strategy with a left to right timeline view that inititally shows the overview and the details can be visible by interacting with the visua;.</p>
+</div>
+<div class="sect2">
+<h3 id="_example_of_a_timeline_summary">2.1. Example of a timeline summary</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    "title": "Release Strategy Builder", <i class="conum" data-value="1"></i><b>(1)</b>
+    "releases": [ <i class="conum" data-value="2"></i><b>(2)</b>
+        {
+            "type": "M1",
+            "lines": [
+                "Reason for "
+            ],
+            "date": "TBD",
+            "selected": true,
+            "goal": "Our goal is to ..."
+        }
+    ],
+    "style": "TLS", <i class="conum" data-value="3"></i><b>(3)</b>
+    "displayConfig": { <i class="conum" data-value="4"></i><b>(4)</b>
+      "colors": [ "#FF6F36", "#EAA213", "#01FF90"],
+      "fontColor": "#000000",
+      "circleColors": [
+          "#FFAF10", "#FFD373", "#45618E"
+        ]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Title of the visualization</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>this is a collection of releases by type, Milestones, release candidates and general availability.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Type here is TLS which is short for Timeline Summary</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This section describes approach to set the color of the display <code>color</code> and the other is the <code>fontColor</code> which as the display text color. In addition, there is circleColors for the roadmap visualization.</td>
+</tr>
+</table>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<svg width="1080.0" height="291.0" viewBox='0 0 1080.0 291.0' xmlns='http://www.w3.org/2000/svg' xmlns:xlink="http://www.w3.org/1999/xlink" role='img'
+aria-label='Docops: Release Strategy' id="IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e">
+<desc>https://docops.io/extension</desc>
+<title>Release Strategy Builder</title>             <defs>
+             <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+                 <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+                 <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+                     <fePointLight x="-5000" y="-10000" z="0000"/>
+                 </feSpecularLighting>
+                 <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+                 <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
+             </filter>
+             <linearGradient id="ID0756d7d2-2648-4a67-89af-c133b3a8d4c9" x2="1" y2="1">
+                 <stop class="stop1" offset="0%" stop-color="#a48bdb">
+                     <animate attributeName="stop-color"
+                              values="#a48bdb;#7651c9;#4918B8;#a48bdb;#7651c9;#4918B8;" dur="20s" repeatCount="indefinite">
+                     </animate>
+                 </stop>
+                 <stop class="stop2" offset="50%" stop-color="#7651c9">
+                     <animate attributeName="stop-color"
+                              values="#a48bdb;#7651c9;#4918B8;#a48bdb;#7651c9;#4918B8;" dur="20s" repeatCount="indefinite">
+                     </animate>
+                 </stop>
+                 <stop class="stop3" offset="100%" stop-color="#4918B8">
+                     <animate attributeName="stop-color"
+                              values="#a48bdb;#7651c9;#4918B8;#a48bdb;#7651c9;#4918B8;" dur="20s" repeatCount="indefinite">
+                     </animate>
+                 </stop>
+                 <animateTransform attributeName="gradientTransform" type="rotate" values="360 .5 .5;0 .5 .5"
+                                   dur="10s" repeatCount="indefinite" />
+             </linearGradient>
+            <svg id="completedCheck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" enable-background="new 0 0 64 64"><path d="M32,2C15.431,2,2,15.432,2,32c0,16.568,13.432,30,30,30c16.568,0,30-13.432,30-30C62,15.432,48.568,2,32,2z M25.025,50  l-0.02-0.02L24.988,50L11,35.6l7.029-7.164l6.977,7.184l21-21.619L53,21.199L25.025,50z" fill="#43a047"/></svg>
+
+
+        <linearGradient id="shadM_rect" x2="0%" y2="100%">
+            <stop class="stop1" offset="0%" stop-color="#ffb79a"/>
+            <stop class="stop2" offset="50%" stop-color="#ff9368"/>
+            <stop class="stop3" offset="100%" stop-color="#FF6F36"/>
+        </linearGradient>
+        <linearGradient id="shadR_rect" x2="0%" y2="100%">
+            <stop class="stop1" offset="0%" stop-color="#f4d089"/>
+            <stop class="stop2" offset="50%" stop-color="#efb94e"/>
+            <stop class="stop3" offset="100%" stop-color="#EAA213"/>
+        </linearGradient>
+        <linearGradient id="shadG_rect" x2="0%" y2="100%">
+            <stop class="stop1" offset="0%" stop-color="#80ffc7"/>
+            <stop class="stop2" offset="50%" stop-color="#40ffab"/>
+            <stop class="stop3" offset="100%" stop-color="#01FF90"/>
+        </linearGradient>
+                     <style>
+    #IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e .shadM { fill: #FF6F36; filter: drop-shadow(0 1mm 1mm #FF6F36); }
+    #IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e .shadR { fill: #EAA213; filter: drop-shadow(0 1mm 1mm #EAA213); }
+
+    #IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e .shadG { fill: #01FF90; filter: drop-shadow(0 1mm 1mm #01FF90); }
+    #IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e .milestoneTL { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-weight: bold; }
+    #IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e .lines { font-size: 10px; }
+
+    #IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e .milestoneTL > .entry { text-anchor: start; font-weight: normal; }
+    .raise { pointer-events: bounding-box; opacity: 1; filter: drop-shadow(3px 1px 2px rgb(0 0 0 / 0.4)); }
+
+    .raise:hover { stroke: gold; stroke-width: 3px; opacity: 0.9; }
+
+</style>
+    <script>
+     function strategyShowItem(item) {
+         var elem = document.querySelector("#"+item);
+         var display = elem.getAttribute("visibility");
+         if("hidden" === display) {
+             elem.setAttribute("visibility", "")
+         } else {
+             elem.setAttribute("visibility", "hidden")
+         }
+     }
+     </script>
+         </defs>
+         <g transform='scale(0.6)' id='GIDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e'><text x="540.0" y="18" fill="#000000" text-anchor="middle"  font-size="20px" font-family="Arial, Helvetica, sans-serif">Release Strategy Builder</text> <g transform="translate(10,60)" class="shadM">
+     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">July 30th, 2023</text>
+     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#FF6F36" fill="url(#shadM_rect)"/>
+     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadM_rect)" stroke="#FF6F36" />
+    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">M1</text>
+    <use xlink:href="#completedCheck" x="425" y="60" width="24" height="24"/>
+    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_0')">
+        <rect x="0" y="0" height="200" width="300" fill="url(#shadM_rect)" class="raise"/>
+        <text text-anchor="middle" x="150" y="40" class="milestoneTL lines" font-size="10px"
+              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
+           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is to</tspan><tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">Establish the Liberty</tspan><tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">infrastructure with</tspan><tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">Okta enabled</tspan>
+        </text>
+    </g>
+</g>      <g transform="translate(10,275)" class="shadM" visibility="hidden" id="IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_0">
+          <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#FF6F36" fill="#fcfcfc"/>
+          <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadM_rect)" stroke="#FF6F36" />
+         <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#fcfcfc">M1</text>
+         <text text-anchor="middle" x="200" y="12" class="milestoneTL lines" font-size="10px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
+             <tspan x="25" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will deploy to application server current production code</tspan><tspan x="35" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Setup IHS proxy</tspan><tspan x="45" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="55" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate Okta changes on Liberty</tspan><tspan x="65" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="75" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- QA will validate Production is still working</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will record all observations</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="105" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan>
+         </text>
+     </g> <g transform="translate(420,60)" class="shadR">
+     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">TBD</text>
+     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#EAA213" fill="url(#shadR_rect)"/>
+     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadR_rect)" stroke="#EAA213" />
+    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">RC1</text>
+
+    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_1')">
+        <rect x="0" y="0" height="200" width="300" fill="url(#shadR_rect)" class="raise"/>
+        <text text-anchor="middle" x="150" y="76" class="milestoneTL lines" font-size="10px"
+              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
+           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
+        </text>
+    </g>
+</g>      <g transform="translate(420,275)" class="shadR" visibility="hidden" id="IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_1">
+          <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#EAA213" fill="#fcfcfc"/>
+          <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadR_rect)" stroke="#EAA213" />
+         <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#fcfcfc">RC1</text>
+         <text text-anchor="middle" x="200" y="12" class="milestoneTL lines" font-size="10px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
+             <tspan x="25" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will deploy to application server current production code</tspan><tspan x="35" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Setup IHS proxy</tspan><tspan x="45" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="55" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate Okta changes on Liberty</tspan><tspan x="65" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="75" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- QA will validate Production is still working</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will record all observations</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="105" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan>
+         </text>
+     </g> <g transform="translate(830,60)" class="shadR">
+     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">TBD</text>
+     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#EAA213" fill="url(#shadR_rect)"/>
+     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadR_rect)" stroke="#EAA213" />
+    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">RC2</text>
+
+    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_2')">
+        <rect x="0" y="0" height="200" width="300" fill="url(#shadR_rect)" class="raise"/>
+        <text text-anchor="middle" x="150" y="76" class="milestoneTL lines" font-size="10px"
+              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
+           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
+        </text>
+    </g>
+</g>      <g transform="translate(830,275)" class="shadR" visibility="hidden" id="IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_2">
+          <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#EAA213" fill="#fcfcfc"/>
+          <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadR_rect)" stroke="#EAA213" />
+         <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#fcfcfc">RC2</text>
+         <text text-anchor="middle" x="200" y="12" class="milestoneTL lines" font-size="10px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
+             <tspan x="25" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will deploy to application server current production code</tspan><tspan x="35" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Setup IHS proxy</tspan><tspan x="45" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="55" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate Okta changes on Liberty</tspan><tspan x="65" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="75" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- QA will validate Production is still working</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will record all observations</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="105" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan>
+         </text>
+     </g> <g transform="translate(1240,60)" class="shadG">
+     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">TBD</text>
+     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#01FF90" fill="url(#shadG_rect)"/>
+     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadG_rect)" stroke="#01FF90" />
+    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">GA</text>
+
+    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_3')">
+        <rect x="0" y="0" height="200" width="300" fill="url(#shadG_rect)" class="raise"/>
+        <text text-anchor="middle" x="150" y="76" class="milestoneTL lines" font-size="10px"
+              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
+           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
+        </text>
+    </g>
+</g>      <g transform="translate(1240,275)" class="shadG" visibility="hidden" id="IDc0cf90db-fde1-45d4-a0b6-1eccd65b6d9e_3">
+          <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#01FF90" fill="#fcfcfc"/>
+          <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadG_rect)" stroke="#01FF90" />
+         <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#fcfcfc">GA</text>
+         <text text-anchor="middle" x="200" y="12" class="milestoneTL lines" font-size="10px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
+             <tspan x="25" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will deploy to application server current production code</tspan><tspan x="35" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Setup IHS proxy</tspan><tspan x="45" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="55" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate Okta changes on Liberty</tspan><tspan x="65" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="75" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- QA will validate Production is still working</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will record all observations</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="105" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="95" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan><tspan x="85" dy="10" class="entry" font-size="10px" font-weight="normal"
+font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">- Team will validate logs and record observations as well</tspan>
+         </text>
+     </g></g></svg>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://localhost:8010/extension/api/release/?payload=H4sIAAAAAAAA_-2XTY_aMBCG7_yKUfaKUICWftyyLOmHdkW7cFv1YJwhsTB2ZDtLo9X-99rOB3Q3FaeqokoOkeOZ9_HYmVdKngYAgWGGY_ARgnvkSDTCyihiMC3humA8QRUMXZqmxKeFo5l_VlW2tlMP9hngyd8dsMw9727slX6OM3GS6qfWSPZwYJxDgjmXJRgJJM85o8QwKUCjekQFtFAKhYFcyaSgPkJlgi3aklZoihy-fF65pJ_laei4yB1RO5CFgQNudJ6hwnoFDUQksHdhJoCzDSpTNrFu1iPhLLFnBMudIUAzIlLUYCu7rdSnqqWg2AoSMC1k3xT0YsnfynlV7Cn6e_SinG_HM2IatHHBg1Q7JtLujSikUiVA7FBu3Ar-6M_tmsu0qrKWn0qBaFs05_8Poib8aHvZSV1_fy14CdPQZEOYhJPpsdm1tQa1L9smGVVgO0_lPufYEUgl4Y64LBS4sXt71g0LbciGM52BybDpLdsVW0W01VNT2L44MJNVfYjCZlu4pz4Pu015P-9d2bvy8hF_dOX6-ua8E7sMNxqNzlln0lunt87FI_6BdT5FvXN651w84m86Z1BzA23K6n9sfbuqfr0SpnNOyrkUW5baSGUv-znJpfJOguAqjmfxdBYM7XARRZPx1A_DcRx_CIO64GArhZk7lcNfhf6q6w4oU5TjvGU2VVtyFI9Dj4vjm-m7ivzm7Wz8flHV3uApUR36ZpnOYaUfuP0__wLRFlH6jg4AAA==&amp;type=XLS&amp;filename=def.xls">Excel</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_of_a_roadmap_view">2.2. Example of a Roadmap View</h3>
+<div class="openblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 width="600.0" height="395.0"
+                 viewBox="0 0 600.0 395.0">
+                 <desc>https://docops.io/extension</desc>
+                            <defs>
+                   <filter xmlns="http://www.w3.org/2000/svg" id="filter1">
+                       <feGaussianBlur stdDeviation="1.75"/>
+                   </filter>
+                   <filter xmlns="http://www.w3.org/2000/svg" id="filter2">
+                       <feGaussianBlur stdDeviation="0.35"/>
+                   </filter>
+                   <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+                       <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+                       <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut"
+                                           lighting-color="white">
+                           <fePointLight x="-5000" y="-10000" z="20000"/>
+                       </feSpecularLighting>
+                       <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+                       <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"
+                                    result="litPaint"/>
+                   </filter>
+                   <filter id="Bevel3" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
+                       <feGaussianBlur in="SourceAlpha" stdDeviation="0.2" result="blur"/>
+                       <feSpecularLighting in="blur" surfaceScale="10" specularConstant="3.5" specularExponent="10"
+                                           result="specOut" lighting-color="#ffffff">
+                           <fePointLight x="-5000" y="-10000" z="0000"/>
+                       </feSpecularLighting>
+                       <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+                       <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"
+                                    result="litPaint"/>
+                   </filter>
+                   <filter id="filter-2">
+                       <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
+                       <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
+                   </filter>
+                   <path id="curve" fill="transparent" d="M267,317a56,56 0 1,0 112,0a56,56 0 1,0 -112,0" />
+                   <svg id="completedCheck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" enable-background="new 0 0 64 64"><path d="M32,2C15.431,2,2,15.432,2,32c0,16.568,13.432,30,30,30c16.568,0,30-13.432,30-30C62,15.432,48.568,2,32,2z M25.025,50  l-0.02-0.02L24.988,50L11,35.6l7.029-7.164l6.977,7.184l21-21.619L53,21.199L25.025,50z" fill="#43a047"/></svg>
+
+
+       <linearGradient id="releaseM" x2="0%" y2="100%">
+           <stop class="stop1" offset="0%" stop-color="#ffb79a"/>
+           <stop class="stop2" offset="50%" stop-color="#ff9368"/>
+           <stop class="stop3" offset="100%" stop-color="#FF6F36"/>
+       </linearGradient>
+       <linearGradient id="releaseR" x2="0%" y2="100%">
+           <stop class="stop1" offset="0%" stop-color="#f4d089"/>
+           <stop class="stop2" offset="50%" stop-color="#efb94e"/>
+           <stop class="stop3" offset="100%" stop-color="#EAA213"/>
+       </linearGradient>
+       <linearGradient id="releaseG" x2="0%" y2="100%">
+           <stop class="stop1" offset="0%" stop-color="#80ffc7"/>
+           <stop class="stop2" offset="50%" stop-color="#40ffab"/>
+           <stop class="stop3" offset="100%" stop-color="#01FF90"/>
+       </linearGradient>
+                   <style>
+       .milestone:hover { cursor: pointer; /* calculate using: (2 * PI * R) */ stroke-width: 16; stroke-opacity: 1; fill: lightblue; }
+       .milestone { font-size: 60px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; }
+       .milestoneDate { font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; }
+       .bev:hover { fill: transparent; stroke-width: 10px; stroke-dasharray: 471; stroke-dashoffset: 471; animation: clock-animation 2s linear infinite; stroke: #FFAF10; } .bev2:hover { fill: transparent; stroke-width: 10px; stroke-dasharray: 471; stroke-dashoffset: 471; animation: clock-animation 2s linear infinite; stroke: #FFD373; } .bev3:hover { fill: transparent; stroke-width: 10px; stroke-dasharray: 471; stroke-dashoffset: 471; animation: clock-animation 2s linear infinite; stroke: #45618E; }
+       .row { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4)); }
+       @keyframes clock-animation {
+           0% {
+               stroke-dashoffset: 471;
+           }
+           100% {
+               stroke-dashoffset: 0;
+           }
+       }
+       .box1Clicked { transition-timing-function: ease-out; transition: 1.25s; transform: translateX(0%); }
+       .box2Clicked { transition-timing-function: ease-out; transition: 2.25s; transform: translateX(-330%); }
+       </style>
+       <script>
+        function toggleItem(item1, item2) {
+           var elem2 = document.querySelector("#"+item2);
+           elem2.classList.toggle("box2Clicked");
+           var elem = document.querySelector("#"+item1);
+           elem.classList.toggle("box1Clicked");
+       }
+</script>
+               </defs>
+                 <g transform="scale(0.5)">
+                <text x="600" text-anchor="middle" y="44" font-size="32px" font-family="Arial, Helvetica, sans-serif" fill="#000000">Release Strategy Builder</text>
+                <g transform="translate(-200,-125)" cursor="pointer" onclick="toggleItem('detail_96b2488e-f97b-43cb-bfa0-e8646cc81247_0', 'goal_96b2488e-f97b-43cb-bfa0-e8646cc81247_0')">
+            <rect x="0" y="200" height="235" width="1400" fill="url(#releaseM)" stroke='#cccccc' class='row'/>
+            <g>
+            <circle cx="325" cy="310" r="84.5" fill-opacity="0.15" filter="url(#filter1)"/>
+            <circle class="bev" cx="323" cy="307" r="73" fill="#FFAF10" filter="url(#Bevel)"/>
+            <circle cx="323" cy="307" r="66" fill="#ffffff"/>
+             <text  class="milestoneDate" fill="#073763"><textPath text-anchor="middle" startOffset="25%" xlink:href="#curve">July 30th, 2023</textPath></text>
+            <text x="325" y="315" dominant-baseline="middle" stroke-width="1px" text-anchor="middle" class="milestone"
+            fill="#073763">M1
+            </text>
+
+            </g>
+
+            <g id="detail_96b2488e-f97b-43cb-bfa0-e8646cc81247_0" transform="translate(-1000,0)">
+                <text x="420" y="208" font-family="Arial, Helvetica, sans-serif" font-size="12px" fill="#000000"><tspan x="420" dy="18">* Team will deploy to application server current production code</tspan><tspan x="420" dy="18">* Setup IHS proxy</tspan><tspan x="420" dy="18">* Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="420" dy="18">* Team will validate Okta changes on Liberty</tspan><tspan x="420" dy="18">* Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="420" dy="18">* QA will validate Production is still working</tspan><tspan x="420" dy="18">* Team will record all observations</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan></text></g>
+            <g id="goal_96b2488e-f97b-43cb-bfa0-e8646cc81247_0" transform="translate(450,276)" text-anchor="middle">
+                <text x="400" y="0" font-family="Arial, Helvetica, sans-serif" font-size="25px" fill="#000000">
+                    <tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is to Establish the Liberty infrastructure with</tspan><tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">Okta enabled</tspan>
+                </text>
+            </g>
+            <use xlink:href="#completedCheck" x="310" y="335" fill="#fcfcfc" width="24" height="24"/>
+            <path d="M 420 430 L 1400 430" stroke="none" stroke-width="1"/>
+            </g><g transform="translate(-200,100)" cursor="pointer" onclick="toggleItem('detail_96b2488e-f97b-43cb-bfa0-e8646cc81247_1', 'goal_96b2488e-f97b-43cb-bfa0-e8646cc81247_1')">
+            <rect x="0" y="200" height="235" width="1400" fill="url(#releaseR)" stroke='#cccccc' class='row'/>
+            <g>
+            <circle cx="325" cy="310" r="84.5" fill-opacity="0.15" filter="url(#filter1)"/>
+            <circle class="bev2" cx="323" cy="307" r="73" fill="#FFD373" filter="url(#Bevel)"/>
+            <circle cx="323" cy="307" r="66" fill="#ffffff"/>
+             <text  class="milestoneDate" fill="#073763"><textPath text-anchor="middle" startOffset="25%" xlink:href="#curve">TBD</textPath></text>
+            <text x="325" y="315" dominant-baseline="middle" stroke-width="1px" text-anchor="middle" class="milestone"
+            fill="#073763">RC2
+            </text>
+
+            </g>
+
+            <g id="detail_96b2488e-f97b-43cb-bfa0-e8646cc81247_1" transform="translate(-1000,0)">
+                <text x="420" y="208" font-family="Arial, Helvetica, sans-serif" font-size="12px" fill="#000000"><tspan x="420" dy="18">* Team will deploy to application server current production code</tspan><tspan x="420" dy="18">* Setup IHS proxy</tspan><tspan x="420" dy="18">* Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="420" dy="18">* Team will validate Okta changes on Liberty</tspan><tspan x="420" dy="18">* Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="420" dy="18">* QA will validate Production is still working</tspan><tspan x="420" dy="18">* Team will record all observations</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan></text></g>
+            <g id="goal_96b2488e-f97b-43cb-bfa0-e8646cc81247_1" transform="translate(450,288)" text-anchor="middle">
+                <text x="400" y="0" font-family="Arial, Helvetica, sans-serif" font-size="25px" fill="#000000">
+                    <tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
+                </text>
+            </g>
+            <use xlink:href="#completedCheck" x="310" y="335" fill="#fcfcfc" width="24" height="24"/>
+            <path d="M 420 430 L 1400 430" stroke="none" stroke-width="1"/>
+            </g><g transform="translate(-200,325)" cursor="pointer" onclick="toggleItem('detail_96b2488e-f97b-43cb-bfa0-e8646cc81247_2', 'goal_96b2488e-f97b-43cb-bfa0-e8646cc81247_2')">
+            <rect x="0" y="200" height="235" width="1400" fill="url(#releaseG)" stroke='#cccccc' class='row'/>
+            <g>
+            <circle cx="325" cy="310" r="84.5" fill-opacity="0.15" filter="url(#filter1)"/>
+            <circle class="bev3" cx="323" cy="307" r="73" fill="#45618E" filter="url(#Bevel)"/>
+            <circle cx="323" cy="307" r="66" fill="#ffffff"/>
+             <text  class="milestoneDate" fill="#073763"><textPath text-anchor="middle" startOffset="25%" xlink:href="#curve">TBD</textPath></text>
+            <text x="325" y="315" dominant-baseline="middle" stroke-width="1px" text-anchor="middle" class="milestone"
+            fill="#073763">GA
+            </text>
+
+            </g>
+
+            <g id="detail_96b2488e-f97b-43cb-bfa0-e8646cc81247_2" transform="translate(-1000,0)">
+                <text x="420" y="208" font-family="Arial, Helvetica, sans-serif" font-size="12px" fill="#000000"><tspan x="420" dy="18">* Team will deploy to application server current production code</tspan><tspan x="420" dy="18">* Setup IHS proxy</tspan><tspan x="420" dy="18">* Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="420" dy="18">* Team will validate Okta changes on Liberty</tspan><tspan x="420" dy="18">* Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="420" dy="18">* QA will validate Production is still working</tspan><tspan x="420" dy="18">* Team will record all observations</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan></text></g>
+            <g id="goal_96b2488e-f97b-43cb-bfa0-e8646cc81247_2" transform="translate(450,288)" text-anchor="middle">
+                <text x="400" y="0" font-family="Arial, Helvetica, sans-serif" font-size="25px" fill="#000000">
+                    <tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
+                </text>
+            </g>
+
+            <path d="M 420 430 L 1400 430" stroke="none" stroke-width="1"/>
+            </g>
+                </g>
+            </svg>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://localhost:8010/extension/api/release/?payload=H4sIAAAAAAAA_-1Wy27bMBC85ysWytUwZLtxHzfHsfpAAzdxbkUPNLWWCNOkQK7iCkH-vST1sJuq6aG9pLAPxmp3Z3ZI7QB6OAOISJDE6B1EtyiRWYQVGUaYVXBZCpmiiQa-zXIW2uLhRXg2dbd1qa_uGeAh_HvCqgh816OADDkp1FFrSN0h28FeSAkpFlJXQBpYUUjBGQmtwKK5RwO8NAYVQWF0WvJQ4TrFjtoxrZDKAj5-WPmm79Vx6TDkmpkt6JJgj2tb5GiwmWCBqRR2viwUSLFGQ1Vb6-e6Z1Kk7o5guSUGPGcqQwtO2ecafYxaKo4dIAXqSHatoCcjf5Lzi9hj6pvZEzlfDnckLFjyxb02W6Gy_oMY5NqkwFyo135CuPo_nVrqrFbZwI-hwKwTLeX_Q9EwfOt22UP9fn8qZQWTmPIBjOPx5LDs1lmDu5ftmsiU2OW53hUSewqZZtIzLksDPvZvz7lhYYmtpbA5UI7tbrmt2BhmHZ5T6fZiLyiv9xCV63bkgfVx0G_K2_n45MqTK188xW9deXd59Y-dOBwOn_fU-9nJUidLvXiKv7PU8845a3gjS1XztVl_VqbCFpJVc602InP52lzOoFKb4COIzpNkmkym0cCFi9lsPJqEMB4lyds4auRGG61o7lGe_DwOv0Z1xIXhEucdZ6vZMc-SURzokuRq8rpmfnUxHb1Z1Mpbes5MD74d0xvW-DN_-scfvxQ7IWoLAAA=&amp;type=XLS&amp;filename=def.xls">Excel</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_json_schema">3. JSON Schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release Strategy is supported by a JSON schema which can be found below link.</p>
+</div>
+<div class="paragraph">
+<p>Link to schema for the JSON used for creating a release strategy.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docops.io/extension/schemas/release-strategy-schema.json" class="bare">https://docops.io/extension/schemas/release-strategy-schema.json</a></p>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<div id="slider" style="right:-342px;">
+    <div id="sidebar" onclick="FeedBack.open_panel()"><img src="data:image/png;base64,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" alt="feedback"></div>
+    <div id="fbheader">
+        <form data-hx-post="savefeedback"
+              method="post" data-hx-ext='json-enc'>
+            <h2>Contact Form</h2>
+            <p>Please provide feedback</p>
+            <label>
+                <input name="submitter" id="submitter" type="text" value="" placeholder="Your Name" required>
+            </label>
+            <h4>Document</h4>
+            <label>
+                <input id="docName" name="docName" type="text" value="/Users/steveroach/IdeaProjects/asciidoctorj-docops-panel-new/src/main/docs/strategy.adoc" readonly>
+            </label>
+            <label>
+                <textarea id="message" name="message" rows="10" placeholder="Message" required></textarea>
+            </label>
+            <button>Submit</button>
+        </form>
+    </div>
+</div>
+<script>!function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=5)}([function(e,t){var n;n=function(){return this}();try{n=n||Function("return this")()||(0,eval)("this")}catch(e){"object"==typeof window&&(n=window)}e.exports=n},function(e,t,n){var o,i,r;!function(n,l){i=[],o=l(),void 0!==(r="function"==typeof o?o.apply(t,i):o)&&(e.exports=r)}(0,function(){"use strict";var e=function(e){return"getComputedStyle"in window&&"smooth"===window.getComputedStyle(e)["scroll-behavior"]};if("undefined"==typeof window||!("document"in window))return{};var t=function(t,n,o){n=n||999,o||0===o||(o=9);var i,r=function(e){i=e},l=function(){clearTimeout(i),r(0)},s=function(e){return Math.max(0,t.getTopOf(e)-o)},c=function(o,i,s){if(l(),0===i||i&&i<0||e(t.body))t.toY(o),s&&s();else{var c=t.getY(),a=Math.max(0,o)-c,u=(new Date).getTime();i=i||Math.min(Math.abs(a),n),function e(){r(setTimeout(function(){var n=Math.min(1,((new Date).getTime()-u)/i),o=Math.max(0,Math.floor(c+a*(n<.5?2*n*n:n*(4-2*n)-1)));t.toY(o),n<1&&t.getHeight()+o<t.body.scrollHeight?e():(setTimeout(l,99),s&&s())},9))}()}},a=function(e,t,n){c(s(e),t,n)},u=function(e,n,i){var r=e.getBoundingClientRect().height,l=t.getTopOf(e)+r,u=t.getHeight(),d=t.getY(),f=d+u;s(e)<d||r+o>u?a(e,n,i):l+o>f?c(l-u+o,n,i):i&&i()},d=function(e,n,o,i){c(Math.max(0,t.getTopOf(e)-t.getHeight()/2+(o||e.getBoundingClientRect().height/2)),n,i)};return{setup:function(e,t){return(0===e||e)&&(n=e),(0===t||t)&&(o=t),{defaultDuration:n,edgeOffset:o}},to:a,toY:c,intoView:u,center:d,stop:l,moving:function(){return!!i},getY:t.getY,getTopOf:t.getTopOf}},n=document.documentElement,o=function(){return window.scrollY||n.scrollTop},i=t({body:document.scrollingElement||document.body,toY:function(e){window.scrollTo(0,e)},getY:o,getHeight:function(){return window.innerHeight||n.clientHeight},getTopOf:function(e){return e.getBoundingClientRect().top+o()-n.offsetTop}});if(i.createScroller=function(e,o,i){return t({body:e,toY:function(t){e.scrollTop=t},getY:function(){return e.scrollTop},getHeight:function(){return Math.min(e.clientHeight,window.innerHeight||n.clientHeight)},getTopOf:function(e){return e.offsetTop}},o,i)},"addEventListener"in window&&!window.noZensmooth&&!e(document.body)){var r="scrollRestoration"in history;r&&(history.scrollRestoration="auto"),window.addEventListener("load",function(){r&&(setTimeout(function(){history.scrollRestoration="manual"},9),window.addEventListener("popstate",function(e){e.state&&"zenscrollY"in e.state&&i.toY(e.state.zenscrollY)},!1)),window.location.hash&&setTimeout(function(){var e=i.setup().edgeOffset;if(e){var t=document.getElementById(window.location.href.split("#")[1]);if(t){var n=Math.max(0,i.getTopOf(t)-e),o=i.getY()-n;0<=o&&o<9&&window.scrollTo(0,n)}}},9)},!1);var l=new RegExp("(^|\\s)noZensmooth(\\s|$)");window.addEventListener("click",function(e){for(var t=e.target;t&&"A"!==t.tagName;)t=t.parentNode;if(!(!t||1!==e.which||e.shiftKey||e.metaKey||e.ctrlKey||e.altKey)){if(r)try{history.replaceState({zenscrollY:i.getY()},"")}catch(e){}var n=t.getAttribute("href")||"";if(0===n.indexOf("#")&&!l.test(t.className)){var o=0,s=document.getElementById(n.substring(1));if("#"!==n){if(!s)return;o=i.getTopOf(s)}e.preventDefault();var c=function(){window.location=n},a=i.setup().edgeOffset;a&&(o=Math.max(0,o-a),c=function(){history.pushState(null,"",n)}),i.toY(o,null,c)}}},!1)}return i})},function(e,t){e.exports=function(e){function t(e,n){var r=n.appendChild(o(e));if(e.children.length){var l=i(e.isCollapsed);e.children.forEach(function(e){t(e,l)}),r.appendChild(l)}}function n(e,n){var o=i(!1);n.forEach(function(e){t(e,o)});var r=document.querySelector(e);if(null!==r)return r.firstChild&&r.removeChild(r.firstChild),r.appendChild(o)}function o(t){var n=document.createElement("li"),o=document.createElement("a");return e.listItemClass&&n.setAttribute("class",e.listItemClass),e.includeHtml&&t.childNodes.length?u.call(t.childNodes,function(e){o.appendChild(e.cloneNode(!0))}):o.textContent=t.textContent,o.setAttribute("href","#"+t.id),o.setAttribute("class",e.linkClass+p+"node-name--"+t.nodeName+p+e.extraLinkClasses),n.appendChild(o),n}function i(t){var n=document.createElement("ul"),o=e.listClass+p+e.extraListClasses;return t&&(o+=p+e.collapsibleClass,o+=p+e.isCollapsedClass),n.setAttribute("class",o),n}function r(){var t=document.documentElement.scrollTop||f.scrollTop,n=document.querySelector(e.positionFixedSelector);"auto"===e.fixedSidebarOffset&&(e.fixedSidebarOffset=document.querySelector(e.tocSelector).offsetTop),t>e.fixedSidebarOffset?-1===n.className.indexOf(e.positionFixedClass)&&(n.className+=p+e.positionFixedClass):n.className=n.className.split(p+e.positionFixedClass).join("")}function l(t){var n=document.documentElement.scrollTop||f.scrollTop;e.positionFixedSelector&&r();var o,i=t;if(m&&null!==document.querySelector(e.tocSelector)&&i.length>0){d.call(i,function(t,r){if(t.offsetTop>n+e.headingsOffset+10){return o=i[0===r?r:r-1],!0}if(r===i.length-1)return o=i[i.length-1],!0});var l=document.querySelector(e.tocSelector).querySelectorAll("."+e.linkClass);u.call(l,function(t){t.className=t.className.split(p+e.activeLinkClass).join("")});var c=document.querySelector(e.tocSelector).querySelector("."+e.linkClass+".node-name--"+o.nodeName+'[href="#'+o.id+'"]');c.className+=p+e.activeLinkClass;var a=document.querySelector(e.tocSelector).querySelectorAll("."+e.listClass+"."+e.collapsibleClass);u.call(a,function(t){var n=p+e.isCollapsedClass;-1===t.className.indexOf(n)&&(t.className+=p+e.isCollapsedClass)}),c.nextSibling&&(c.nextSibling.className=c.nextSibling.className.split(p+e.isCollapsedClass).join("")),s(c.parentNode.parentNode)}}function s(t){return-1!==t.className.indexOf(e.collapsibleClass)?(t.className=t.className.split(p+e.isCollapsedClass).join(""),s(t.parentNode.parentNode)):t}function c(t){var n=t.target||t.srcElement;"string"==typeof n.className&&-1!==n.className.indexOf(e.linkClass)&&(m=!1)}function a(){m=!0}var u=[].forEach,d=[].some,f=document.body,m=!0,p=" ";return{enableTocAnimation:a,disableTocAnimation:c,render:n,updateToc:l}}},function(e,t){e.exports={tocSelector:".js-toc",contentSelector:".js-toc-content",headingSelector:"h1, h2, h3",ignoreSelector:".js-toc-ignore",linkClass:"toc-link",extraLinkClasses:"",activeLinkClass:"is-active-link",listClass:"toc-list",extraListClasses:"",isCollapsedClass:"is-collapsed",collapsibleClass:"is-collapsible",listItemClass:"toc-list-item",collapseDepth:0,smoothScroll:!0,smoothScrollDuration:420,scrollEndCallback:function(e){},headingsOffset:0,throttleTimeout:50,positionFixedSelector:null,positionFixedClass:"is-position-fixed",fixedSidebarOffset:"auto",includeHtml:!1}},function(e,t){e.exports=function(e){function t(e){return e[e.length-1]}function n(e){return+e.nodeName.split("H").join("")}function o(t){var o={id:t.id,children:[],nodeName:t.nodeName,headingLevel:n(t),textContent:t.textContent.trim()};return e.includeHtml&&(o.childNodes=t.childNodes),o}function i(i,r){for(var l=o(i),s=n(i),c=r,a=t(c),u=a?a.headingLevel:0,d=s-u;d>0;)a=t(c),a&&void 0!==a.children&&(c=a.children),d--;return s>=e.collapseDepth&&(l.isCollapsed=!0),c.push(l),c}function r(t,n){var o=n;e.ignoreSelector&&(o=n.split(",").map(function(t){return t.trim()+":not("+e.ignoreSelector+")"}));try{return document.querySelector(t).querySelectorAll(o)}catch(e){return console.warn("Element not found: "+t),null}}function l(e){return s.call(e,function(e,t){return i(o(t),e.nest),e},{nest:[]})}var s=[].reduce;return{nestHeadingsArray:l,selectHeadings:r}}},function(e,t,n){(function(o){var i,r,l;!function(n,o){r=[],i=o(n),void 0!==(l="function"==typeof i?i.apply(t,r):i)&&(e.exports=l)}(void 0!==o?o:this.window||this.global,function(e){"use strict";function t(){for(var e={},t=0;t<arguments.length;t++){var n=arguments[t];for(var o in n)m.call(n,o)&&(e[o]=n[o])}return e}function o(e,t,n){t||(t=250);var o,i;return function(){var r=n||this,l=+new Date,s=arguments;o&&l<o+t?(clearTimeout(i),i=setTimeout(function(){o=l,e.apply(r,s)},t)):(o=l,e.apply(r,s))}}var i,r,l=n(3),s={},c={},a=n(2),u=n(4);if("undefined"!=typeof window){var d,f=!!e.document.querySelector&&!!e.addEventListener,m=Object.prototype.hasOwnProperty;return c.destroy=function(){try{document.querySelector(s.tocSelector).innerHTML=""}catch(e){console.warn("Element not found: "+s.tocSelector)}document.removeEventListener("scroll",this._scrollListener,!1),document.removeEventListener("resize",this._scrollListener,!1),i&&document.removeEventListener("click",this._clickListener,!1)},c.init=function(e){if(f&&(s=t(l,e||{}),this.options=s,this.state={},s.smoothScroll&&(c.zenscroll=n(1),c.zenscroll.setup(s.smoothScrollDuration)),i=a(s),r=u(s),this._buildHtml=i,this._parseContent=r,c.destroy(),null!==(d=r.selectHeadings(s.contentSelector,s.headingSelector)))){var m=r.nestHeadingsArray(d),p=m.nest;return i.render(s.tocSelector,p),this._scrollListener=o(function(e){i.updateToc(d);var t=e&&e.target&&e.target.scrollingElement&&0===e.target.scrollingElement.scrollTop;(e&&0===e.eventPhase||t)&&(i.enableTocAnimation(),i.updateToc(d),s.scrollEndCallback&&s.scrollEndCallback(e))},s.throttleTimeout),this._scrollListener(),document.addEventListener("scroll",this._scrollListener,!1),document.addEventListener("resize",this._scrollListener,!1),this._clickListener=o(function(e){s.smoothScroll&&i.disableTocAnimation(e),i.updateToc(d)},s.throttleTimeout),document.addEventListener("click",this._clickListener,!1),this}},c.refresh=function(e){c.destroy(),c.init(e||this.options)},e.tocbot=c,c}})}).call(t,n(0))}]);</script>
+<script>
+    /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
+    /* Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006 */
+    var oldtoc = document.getElementById('toctitle').nextElementSibling;
+    var newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+    tocbot.init({ contentSelector: '#content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        smoothScroll: false });
+    var handleTocOnResize = function() {
+        var width = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+        if (width < 768) {
+            tocbot.refresh({ contentSelector: '#content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 6,
+                activeLinkClass: 'ignoreactive',
+                throttleTimeout: 1000,
+                smoothScroll: false });
+        }
+        else {
+            tocbot.refresh({ contentSelector: '#content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                smoothScroll: false });
+        }
+    };
+    window.addEventListener('resize', handleTocOnResize);
+    handleTocOnResize();
+</script>
+</body>
+</html>

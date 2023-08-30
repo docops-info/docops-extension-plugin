@@ -1172,13 +1172,6 @@ BUILD|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 include::example1.json[]
 ----
 
-=== Style is timeline summarized
-
-[release,scale=0.7,role="center"]
-----
-include::example4.json[]
-----
-
 
 === Style is timeline grouped
 
@@ -1187,36 +1180,6 @@ include::example4.json[]
 include::example2.json[]
 ----
 
-=== Style is Roadmap
-
-[release,scale=0.7,role="center", animate="ON"]
-----
-include::example3.json[]
-----
-
-==== Roadmap with Animation off
-
-[release,scale=0.7,role="center", animate="OFF", numChars="25",  useDark=true]
-----
-include::example3.json[]
-----
-
-
-=== Example Source
-
-[source,asciidoc]
------
-[release,scale=0.7]
-----
-include::example1.json[]
-----
------
-
-=== JSON Schema
-
-Link to schema for the JSON used for creating a release strategy.
-
-https://docops.io/extension/schemas/release-strategy-schema.json
 
 == Timeline Builder
 A timeline can be created with a simple text markup with an asciidoctor block macro.
