@@ -19,10 +19,11 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val numChars = getCharLength(attributes, 24)
-        return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=def.svg[$opts]"
+        return "image::$webserver/api/timeline/?payload=$payload&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=def.svg[$opts]"
     }
 
     override fun getUrl(
@@ -34,10 +35,11 @@ class TimelineBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val numChars = getCharLength(attributes, 24)
-        return "$webserver/api/timeline/?payload=$payload&scale=$scale&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=def.svg"
+        return "$webserver/api/timeline/?payload=$payload&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=def.svg"
 
     }
 }

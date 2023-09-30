@@ -18,7 +18,8 @@ class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         return if("PDF" == type) {
             val iopts = "format=png,opts=inline,align='$role'"
@@ -37,7 +38,8 @@ class ButtonsBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         return """$webserver/api/buttons?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg"""
     }

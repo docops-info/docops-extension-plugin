@@ -41,7 +41,8 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val numChars = getCharLength(attributes, 32)
         return "image::$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&useDark=$useDark&filename=def.svg[$opts]"
@@ -56,7 +57,8 @@ open class PanelsBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val numChars = getCharLength(attributes, 32)
         return "$webserver/api/panel?type=SVG&data=$payload&numChars=$numChars&useDark=$useDark&filename=def.svg"

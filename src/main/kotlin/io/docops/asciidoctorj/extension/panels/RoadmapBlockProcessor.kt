@@ -20,7 +20,8 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val fname = System.currentTimeMillis()
         val numChars = getCharLength(attributes, 32)
@@ -36,7 +37,8 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val fname = System.currentTimeMillis()
         val numChars = getCharLength(attributes, 32)

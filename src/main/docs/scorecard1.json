@@ -1,0 +1,56 @@
+{
+  "title": "Digital Policy Service",
+  "initiativeTitle": "PCF to EKS",
+  "outcomeTitle": "TMVS++",
+  "initiativeItems": [
+    {
+      "displayText": "Spring Boot 2.7 on Pcf Platform"
+    },
+    {
+      "displayText": "Redis used for storing circuit breaker data"
+    },
+    {
+      "displayText": "MySql for storing zipkin traces"
+    },
+    {
+      "displayText": "RabbitMQ for sendign zipkin traces"
+    }
+  ],
+  "outcomeItems": [
+    {
+      "displayText": "Docker Containerized Spring Boot 3.x on EKS"
+    },
+    {
+      "displayText":  "Okta used for Authentication"
+    },
+    {
+      "displayText": "PVC used for storing circuit breaker data"
+    },
+    {
+      "displayText": "Open Search for zipkin trace storage"
+    },
+    {
+      "displayText": "IBOB guidelines compliance"
+    },
+    {
+      "displayText": "Flight check completed"
+    },
+    {
+      "displayText": "Blue/Green/Canary deployments supported"
+    },
+    {
+      "displayText": "Documented Local Setup for building & debugging"
+    },
+    {
+      "displayText": "Production Support Guidelines documented"
+    },
+    {
+      "displayText": "Splunk queries documented"
+    },
+    {
+      "displayText": "Actuator Endpoints validated"
+    }
+
+  ],
+  "scale": 1.3
+}

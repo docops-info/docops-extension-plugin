@@ -34,7 +34,8 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         return "http://localhost:7001/imageserver/api/stacked?encoded=$payload&title=$title&useDark=$useDark&type=$type"
     }
@@ -48,7 +49,8 @@ class StackBlockProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         TODO("Not yet implemented")
     }

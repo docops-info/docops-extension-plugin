@@ -2,12 +2,11 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: slate.css
+:stylesheet: lumen.css
 :toc: middle
 :sectnums:
 :title-page:
 :source-highlighter: highlightjs
-:highlightjs-theme: dark
 :nofooter:
 :imagesdir: images
 :google: This Is Another Google
@@ -21,24 +20,28 @@ include::base.adoc[]
 == What are they?
 
 AsciiDoctorJ Panels are a way of creating a panel that is clickable.
-Now you can create a set of panels that links to various contents, an alternative way of building links.
+Now you can create a set of panels that link to various contents, an alternative way of building links.
 
 == How to use?
 
-AsciiDoctorJ Panels are built using a block processor. SO you will need to create blocks to visualize them. For the most part, the body of the panel is built using a Kotlin DSL.
+AsciiDoctorJ Panels are built using a block processor. So you will need to create blocks to visualize them.
+For the most part, the body of the panel is built using a Kotlin DSL.
 
 === First Example
 
 The first type of panels is just panels with a list of panel objects. See example below
 
-[source,kotlin]
+[source,json]
 ----
-panels {
-    panel{
-        link = "http://wwww.google.com"
-        label = "Google Search"
-    }
+{
+    "buttons": [
+      {
+        "link": "http://wwww.google.com",
+        "label": "Google Search"
+      }
+    ]
 }
+
 ----
 
 
@@ -48,55 +51,91 @@ panels {
 
 Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netflix
 
-[source,kotlin]
+[source,asciidoc]
 -----
-[panels,"buttons",width="80%"]
+[buttons,"myb",width="80%"]
 ----
-panels {
-    theme {
-        colorMap {
-				color("#a1f196")
-                color("#165578")
-                color("#7d746c")
-                color("#2442d1")
-                color("#c0adef")
-                color("#4d2666")
-                color("#fbb103")
-                color("#1eb3f1")
-                color("#4f49eb")
-                color("#f3b304")
-                color("#e693ce")
-                color("#a6b23b")
-                color("#ad217f")
-                color("#2fb6ee")
-                color("#81392e")
-                color("#071e9b")
-                color("#675b01")
-                color("#ed6b19")
-                color("#a02cae")
-                color("#88683f")
-			}
+{
+  "buttons": [
+    {
+      "label": "Google",
+      "link": "https://www.google.com",
+      "description": "Google is is an American multinational technology company that specializes in Internet-related services and products",
+      "type": "Advertising",
+      "author": [
+        "Sergey Brin",
+        "Larry Page"
+      ]
+    },
+    {
+      "label": "Apple",
+      "link": "https://www.apple.com",
+      "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
+      "type": "Personal Devices",
+      "author": [
+        "Steve Jobs",
+        "Steve Wozniak"
+      ],
+      "date": "01/30/1977"
+    },
+    {
+      "label": "Microsoft",
+      "link": "https://www.microsoft.com",
+      "description": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "type": "Software",
+      "author": [
+        "Bill Gates"
+      ]
+    },
+    {
+      "label": "Amazon",
+      "link": "https://www.amazon.com",
+      "description": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligences",
+      "type": "Super Store",
+      "author": [
+        "Jeff Bezos"
+      ]
+    },
+    {
+      "label": "Netflix",
+      "link": "https://www.netflix.com",
+      "description": "Netflix, Inc. is an American subscription streaming service and production company.",
+      "type": "Movie Theater",
+      "author": [
+        "Reed",
+        "Marc"
+      ]
+    },
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com",
+      "description": "Instagram is an American photo and video sharing social networking service.",
+      "type": "Beach",
+      "author": [
+        "Kevin",
+        "Mike"
+      ]
     }
-    panel {
-        link = "https://www.google.com"
-        label = "Google"
-    }
-    panel {
-        link = "https://www.apple.com"
-        label = "Apple"
-    }
-    panel {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-    }
-    panel {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-    }
-    panel {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-    }
+  ],
+  "buttonType": "REGULAR",
+  "theme": {
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+
+    ],
+    "columns": 3,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 }
 ----
 -----
@@ -372,150 +411,31 @@ Similar to the buttons, we have a round object we can use.
 
 == Theming
 
-TIP: New Attributes added, dropShadow & font
-
-.Theme Guide
-[cols="1,1,3"]
-|===
-|Item |Attribute |Value
-
-|layout
-|columns
-|_optional_,  default: 3, max recommended 6
-
-|
-|groupBy
-|default Grouping.TITLE, others -> .Grouping.TYPE, Grouping.AUTHOR, Grouping.DATE
-
-|
-|groupOrder
-|_optional_ default Grouping.ASCENDING, others -> Grouping.DESCENDING
-
-|
-|
-a|
-[source,kotlin]
+[source, json]
 ----
- theme {
-    layout {
-        columns = 4
-        groupBy = Grouping.TITLE
-        groupOrder = GroupingOrder.ASCENDING
-    }
-}
+{
+    "colors": [
+          "#790e66",
+    "#003a49",
+    "#00156f",
+    "#5500b5",
+    "#ae00ab"
+    ],
+    "columns": 4,
+    "scale": 0.7,
+"buttonStyle": {
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+"descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
+"dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
+  }
+  }
 ----
 
-|colorMap
-|color
-|_optional_
+With theme, you can control the colors, the number of columns, scaling the svg output
+and update the style for the text displayed.
 
-|
-|
-a|
-[source,kotlin]
-----
-colorMap{
-    color("#a1f196")
-    color("#165578")
-    color("#7d746c")
-    color("#2442d1")
-    color("#c0adef")
-    color("#4d2666")
-    color("#fbb103")
-    color("#1eb3f1")
-    color("#4f49eb")
-    color("#f3b304")
-    color("#e693ce")
-    color("#a6b23b")
-    color("#ad217f")
-    color("#2fb6ee")
-    color("#81392e")
-    color("#071e9b")
-    color("#675b01")
-    color("#ed6b19")
-    color("#a02cae")
-    color("#88683f")
-    color("#FDCBF1")
-}
-----
 
-|legendOn
-|legend
-|boolean, _default true_
-
-|newWin
-|
-|boolean, _default true_
-
-|dropShadow
-|
-|number 0..9, _default 1_
-|font
-|
-a|set of font to use
-[source,kotlin]
-----
-    font = font {
-         color = "#000000"
-         font = "Arial, Helvetica, sans-serif"
-         size = "9pt"
-        decoration = "underline"
-    }
-----
-|===
-
-=== Themed Example
-
-Same Panel as above but with sorting ascending and different colors.
-
-[source,kotlin]
------
-[panels,"round2"]
-----
-panels {
-    theme {
-        layout {
-            columns = 4
-            groupBy = Grouping.TITLE
-            groupOrder = GroupingOrder.ASCENDING
-        }
-        font = font {
-            color = "#ffffff"
-        }
-        dropShadow = 2
-        colorMap{
-            color("#ff6385")
-            color("#36a3eb")
-            color("#9966ff")
-            color("#ffcf56")
-            color("#4bc0c0")
-            color("#FDCBF1")
-        }
-        newWin = false
-    }
-    panel {
-        link = "https://www.google.com"
-        label = "Google"
-    }
-    panel {
-        link = "https://www.apple.com"
-        label = "Apple"
-    }
-    panel {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-    }
-    panel {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-    }
-    panel {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-    }
-}
-----
------
 
 [buttons,"regular2"]
 ----
@@ -602,93 +522,6 @@ panels {
   }
 }
 ----
-
-== Small Panels
-
-More informational panels can be created with small cards
-
-[source,kotlin]
------
-panels {
-    theme {
-        layout {
-            columns=4
-            groupOrder = GroupingOrder.ASCENDING
-        }
-        font = font {
-            color = "#000000"
-        }
-        colorMap{
-            color("#ebb3d1")
-        }
-        legendOn = false
-        gradientStyle = DarkTheme
-    }
-    slim {
-        link = "https://www.google.com"
-        label = "Google"
-        type = "Advertising"
-        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
-        author("Sergey Brin")
-        author("Larry Page")
-        date ="07/30/1998"
-    }
-    slim {
-        link = "https://www.apple.com"
-        label = "Apple"
-        type = "Personal Devices"
-        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
-        author("Steve Jobs")
-        author("Steve Wozniak")
-        date ="01/30/1977"
-    }
-    slim {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-        type = "Software"
-        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
-        author("Bill Gates")
-    }
-    slim {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-        type = "Super Store"
-        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
-        author("Jeff Bezos")
-    }
-    slim {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-        type = "Movie Theater"
-        description = "Netflix, Inc. is an American subscription streaming service and production company."
-        author("Reed")
-        author("Marc")
-    }
-    slim {
-        link = "https://www.facebook.com"
-        label = "Facebook"
-        type = "Social Butterfly"
-        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
-        author("Mark Zukerberg")
-    }
-    slim {
-        link = "https://www.instagram.com"
-        label = "Instagram"
-        type = "Beach"
-        description = "Instagram is an American photo and video sharing social networking service. "
-        author("Kevin")
-        author("Mike")
-    }
-    slim {
-        link = "#[link-server]#[app]"
-        label = "DocOps.io"
-        type = "Documentation"
-        description = "Sharing documentation experience for developers to extend with AsciiDoctor"
-        author("Steve Roach")
-        author("Ian Rose")
-    }
-}
------
 
 === Pill Buttons
 
@@ -892,78 +725,10 @@ panels {
 
 == Large Panels
 
-The alternative to Slim Panel is Large Panels where the description is now displayed on the card
+The alternative to Slim Panel is Large Panels where the description is now displayed on the card.
+The key attribute to use is `buttonType`
+"buttonType": "LARGE"
 
-[source,kotlin]
------
-[panels,"large"]
-----
-panels {
-theme {
-        layout {
-            columns = 3
-        }
-        font {
-            color = "#000000"
-            bold = true
-        }
-        colorMap{
-            color("#ff6385")
-            color("#36a3eb")
-            color("#9966ff")
-            color("#ffcf56")
-            color("#4bc0c0")
-            color("#FDCBF1")
-            color("#A6C1EE")
-        }
-    }
-    large {
-        link = "https://www.google.com"
-        label = "Google"
-        type = "Search"
-        description = "Google is is an American multinational technology company that specializes in Internet-related services and products "
-        date ="07/30/1998"
-    }
-    large {
-        link = "https://www.apple.com"
-        label = "Apple"
-        type = "Personal Devices"
-        description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services. "
-        date ="01/30/1977"
-    }
-    large {
-        link = "https://www.microsoft.com"
-        label = "Microsoft"
-        type = "Software"
-        description = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services."
-    }
-    large {
-        link = "https://www.amazon.com"
-        label = "Amazon"
-        type = "Super Store"
-        description = "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence"
-    }
-    large {
-        link = "https://www.netflix.com"
-        label = "Netflix"
-        type = "Movie Theater"
-        description = "Netflix, Inc. is an American subscription streaming service and production company."
-    }
-    large {
-        link = "https://www.facebook.com"
-        label = "Facebook"
-        type = "Social Butterfly"
-        description = "Facebook is an American online social media and social networking service owned by Meta Platforms."
-    }
-    large {
-        link = "https://www.instagram.com"
-        label = "Instagram"
-        type = "Beach"
-        description = "Instagram is an American photo and video sharing social networking service founded by Kevin Systrom and Mike Krieger. "
-    }
-}
-----
------
 
 [buttons,"large",role="center",scale="0.5"]
 ----
@@ -1047,32 +812,12 @@ theme {
 ----
 
 
-.Large Cards Guide
-[cols="1,1,3"]
-|===
-|Item |Attribute |Notes
-
-|large
-|type
-|A way to categorize the card by in case you would like to group or sort by, see the Theme table for sorting and grouping
-|
-|description
-|more information on the content behind the link
-
-
-|
-|date
-|date to display content attributed to link
-
-|===
-
-
 ifndef::backend-pdf[]
 == Generate Color Map Utility
 
 colorMap::[]
 
-* A simple Utility to generate a pastel themed the colormap for your convenience.
+* A simple Utility to generate a pastel themed colormap for your convenience.
 endif::[]
 
 == Badges/Shield
@@ -1125,7 +870,7 @@ Yahoo|Finance|https://www.yahoo.com|#800080|#277e14|<Yahoo>|#eeeeee
 BUILD|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 ----
 
-== ButtonPanel at 66% width
+== Button Panel at 66% width
 
 [buttons, default, width=66%,role=right]
 ----
@@ -1208,7 +953,7 @@ date: TBD
 text: xxyz
 ----
 
-[timeline,title="Demo timeline Builder by docops.io",scale="1.0",  useDark=true]
+[timeline,title="Demo timeline Builder by docops.io",scale="1.0",  useDark=false]
 ----
 -
 date: July 23rd, 2023
@@ -1442,7 +1187,7 @@ JSON Schema TBD.
 }
 ----
 
-[roadmap,title="Steve's%20Work", useDark=true]
+[roadmap,title="Steve's%20Work", useDark=false]
 ----
 - done
 image embed rectangle
@@ -1460,10 +1205,5 @@ refactor displayConfigUrl to displayTheme
 
 [scorecard, role="center"]
 ----
-{"title":"Digital Policy Service","initiativeTitle":"PCF to EKS","outcomeTitle":"TMVS++","initiativeItems":["Spring Boot 2.7 on Pcf Platform","Redis used for storing circuit breaker data","MySql for storing zipkin traces","RabbitMQ for sendign zipkin traces"],"outcomeItems":["Docker Containerized Spring Boot 3.x on EKS","Okta used for Authentication","PVC used for storing circuit breaker data","Open Search for zipkin trace storage","IBOB guidelines compliance","Flight check completed","Blue/Green/Canary deployments supported","Documented Local Setup for building & debugging","Production Support Guidelines documented","Splunk queries documented","Actuator Endpoints validated"],"scale":1.3}
-
-----
-
-[debug]
-----
+include::scorecard1.json[]
 ----

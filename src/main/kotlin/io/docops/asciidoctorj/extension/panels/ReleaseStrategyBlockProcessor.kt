@@ -21,7 +21,8 @@ class ReleaseStrategyBlockProcessor : AbstractDocOpsBlockProcessor(){
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val animate = attributes.getOrDefault("animate", "ON")
         val numChars = getCharLength(attributes, 32)
@@ -41,7 +42,8 @@ link:$webserver/api/release/?payload=$payload&type=XLS&filename=def.xls[Excel]
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         val animate = attributes.getOrDefault("animate", "ON")
         val numChars = getCharLength(attributes, 32)

@@ -61,7 +61,7 @@
       "goal": "Our goal is ..."
     }
   ],
-  "style": "TLG",
+  "style": "R",
   "displayConfig": {
     "colors": [ "#FF6F36", "#EAA213", "#01FF90"],
     "fontColor": "#000000",

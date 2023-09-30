@@ -29,7 +29,7 @@ There are three phases supported by the DocOps release strategy. This includes:
 
 DocOps support a few visualization approaches backed by a JSON format.
 
-The first visualization is a release strategy with a left to right timeline view that inititally shows the overview and the details can be visible by interacting with the visua;.
+The first visualization is a release strategy with a left to right timeline view that inititally shows the overview and the details can be visible by interacting with the visual.
 
 === Example of a timeline summary
 

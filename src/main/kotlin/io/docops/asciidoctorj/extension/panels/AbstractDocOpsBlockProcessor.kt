@@ -67,6 +67,7 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         val role = attributes.getOrDefault("role", "center") as String
         val dark = attributes.getOrDefault("useDark", "false") as String
         val idea = parent.document.getAttribute("env", "") as String
+        val outlineColor = attributes.getOrDefault("outlineColor", "#7149c6") as String
         val ideaOn = "idea".equals(idea, true)
         val useDark : Boolean = "true".equals(dark, true)
         if (serverPresent(server, parent, this, localDebug)) {
@@ -95,7 +96,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                     block = parent,
                     opts = opts,
                     useDark = useDark,
-                    attributes = attributes)
+                    attributes = attributes,
+                    outlineColor = outlineColor)
                 val image = getContentFromServer(url, parent, this, debug = localDebug)
                 return createImageBlockFromString(parent, image, role, "970")
             } else {
@@ -108,7 +110,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
                     block = parent,
                     opts = opts,
                     useDark = useDark,
-                    attributes = attributes
+                    attributes = attributes,
+                    outlineColor = outlineColor
                 )
                 if (localDebug) {
                     println(url)
@@ -136,7 +139,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String
 
     abstract fun getUrl(
@@ -148,7 +152,8 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String
 
      private fun createImageBlockFromString(parent: StructuralNode, svg: String, role: String, width: String): Block {

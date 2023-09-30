@@ -19,7 +19,8 @@ class DebugSvgProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         return """image::$webserver/api/svg/debug?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg[$opts]"""
     }
@@ -33,7 +34,8 @@ class DebugSvgProcessor : AbstractDocOpsBlockProcessor() {
         block: StructuralNode,
         opts: String,
         attributes: MutableMap<String, Any>,
-        useDark: Boolean
+        useDark: Boolean,
+        outlineColor: String
     ): String {
         return """$webserver/api/svg/debug?payload=$payload&type=$type&useDark=$useDark&filename=ghi.svg"""
     }
