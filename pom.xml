@@ -21,7 +21,7 @@
 
     <artifactId>asciidoctorj-docops-panel</artifactId>
     <groupId>io.docops</groupId>
-    <version>2023.34</version>
+    <version>2023.35</version>
     <packaging>jar</packaging>
 
     <name>asciidoctorj-docops-panel</name>
