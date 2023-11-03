@@ -25,7 +25,11 @@ class RoadmapBlockProcessor : AbstractDocOpsBlockProcessor(){
     ): String {
         val fname = System.currentTimeMillis()
         val numChars = getCharLength(attributes, 32)
-        return "image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&useDark=$useDark&filename=ghi$fname.svg[$opts]"
+        return """
+image::$webserver/api/roadmap/?payload=$payload&type=SVG&scale=$scale&numChars=$numChars&title=$title&useDark=$useDark&filename=ghi$fname.svg[$opts]
+            
+link:$webserver/api/roadmap/?payload=$payload&type=XLS&scale=$scale&numChars=$numChars&title=$title&useDark=$useDark&filename=jkl.xlsx[Excel]
+            """
     }
 
     override fun getUrl(
