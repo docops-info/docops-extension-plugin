@@ -18,7 +18,7 @@ Steve D Roach
 
 == Example 1
 
-[connector,scale=0.6]
+[connector,scale=0.6, useDark="true"]
 ----
 {
   "connectors": [
