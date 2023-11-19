@@ -32,6 +32,7 @@ class PanelsRegistry : ExtensionRegistry {
         registry.block(ReleaseStrategyBlockProcessor::class.java)
         registry.block(ButtonsBlockProcessor::class.java)
         registry.block(TimelineBlockProcessor::class.java)
+        registry.block(DocOpsBlockProcessor::class.java)
         registry.block(RoadmapBlockProcessor::class.java)
         registry.block(ScorecardProcessor::class.java)
         registry.block(DebugSvgProcessor::class.java)

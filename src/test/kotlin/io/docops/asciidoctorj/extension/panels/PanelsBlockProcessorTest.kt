@@ -146,4 +146,49 @@ internal class PanelsBlockProcessorTest {
             e.printStackTrace()
         }
     }
+
+    @Test
+    fun testConnector() {
+        val attrs = Attributes.builder()
+            .sourceHighlighter("highlightjs")
+            .allowUriRead(true)
+            .dataUri(true)
+            .copyCss(true)
+            .noFooter(true)
+            .attribute("highlightjs-theme", "dark")
+            .attribute("rouge-css", "style")
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
+            .attribute("feedback")
+            .attribute("tocbot")
+            .attribute("local-debug", "true")
+            .attribute("panel-webserver", "http://localhost:8010/extension")
+            .build()
+
+        val asciidoctor = Asciidoctor.Factory.create()
+        val src = File("src/main/docs/connector.adoc")
+        val build = File("docs/")
+        build.mkdirs()
+        val target = File(build, "connector.html")
+        if(target.exists()) {
+            target.delete()
+        }
+        val options = Options.builder()
+            .backend("html5")
+            .toDir(build)
+            .attributes(attrs)
+            .safe(SafeMode.UNSAFE)
+            .build()
+        try {
+            asciidoctor.convertFile(src, options)
+
+            assert(target.exists())
+            val images = File(src.parent,"images")
+            images.deleteRecursively()
+            //target.deleteOnExit()
+            makePdf(src)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

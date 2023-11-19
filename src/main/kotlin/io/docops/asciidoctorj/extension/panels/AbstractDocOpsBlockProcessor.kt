@@ -18,7 +18,6 @@ abstract class AbstractDocOpsBlockProcessor: BlockProcessor() {
     protected var server = "http://localhost:8010/extension"
     protected var webserver = "http://localhost:8010/extension"
     protected var localDebug = false
-
     protected fun imageBlock(
         env: String,
         pdf: String,

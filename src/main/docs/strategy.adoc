@@ -2,7 +2,7 @@
 Steve D Roach
 :email: sroachst@gmail.com
 :stylesdir: styles
-:stylesheet: slate.css
+:stylesheet: lumen.css
 :toc: middle
 :sectnums:
 :title-page:

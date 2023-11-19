@@ -1207,3 +1207,25 @@ refactor displayConfigUrl to displayTheme
 ----
 include::scorecard1.json[]
 ----
+
+== Roadmap
+
+[roadmap,scale="1.0", role="center",title="Roadmap", numChars="30", useDark=false]
+----
+- now
+Determine consuming applications for Form Property Service & Customer inquiry Service
+- later
+Use common docker image to streamline the process.
+- now
+analyze Form Property Service for their dependencies - Patrick analyze cusomter inquiry search for cloud dependencies.
+- next
+take these Form Property Service feature and customer inquiry service to governance
+- next
+start iBob process, Surekha for both application
+- next
+dockerize Form property service
+ build spring boot 3 version of application
+ analyze black duck results
+- done
+finished testing
+----
