@@ -20,12 +20,16 @@ Steve D Roach
 
 [connector,scale=0.6]
 ----
-Engineer
-Unit Tests
-Microsoft Excel
-GitHub
-Test Engine
-API Documentation
-DocOps
-Test Engine Database
+{
+  "connectors": [
+      {"text": "Engineer"},
+      {"text": "Unit Tests"},
+      {"text": "Microsoft Excel"},
+      {"text": "GitHub"},
+      {"text": "Test Engine"},
+      {"text": "API Documentation"},
+      {"text": "DocOps"},
+      {"text": "Test Engine Database"}
+    ]
+}
 ----
