@@ -18,7 +18,7 @@ Steve D Roach
 
 == Example 1
 
-[connector,scale=0.6, useDark="true"]
+[docops,connector,scale=0.6, useDark="true"]
 ----
 {
   "connectors": [
@@ -31,5 +31,88 @@ Steve D Roach
       {"text": "DocOps"},
       {"text": "Test Engine Database"}
     ]
+}
+----
+
+[docops, placemat]
+----
+{
+  "title": "Observability",
+  "scale": 1.0,
+  "placeMats": [
+    {
+      "name": "Audit",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Traceability",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Subscription",
+      "legend": "Both"
+    },
+    {
+      "name": "Automation",
+      "legend": "Both"
+    },
+    {
+      "name": "Metrics",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Software Milestone",
+      "legend": "Business Capability"
+    },
+    {
+      "name": "Monitoring",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Flakiness",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Performance Regression",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Misconfigurations",
+      "legend": "Engineering"
+    },
+    {
+      "name": "MTTR",
+      "legend": "Both"
+    },
+    {
+      "name": "Change Failure Rate",
+      "legend": "Both"
+    },
+    {
+      "name": "Deployment Frequency",
+      "legend": "Both"
+    }
+  ],
+  "useDark": true,
+  "config": {
+    "style": "font-size: 1em;",
+    "legend": [
+      {
+        "color": "#D62AD0",
+        "legend": "Business Capability",
+        "style":"fill:#fcfcfc"
+      },
+      {
+        "color": "#7FBCD2",
+        "legend": "Engineering",
+        "style":"fill:#fcfcfc"
+      },
+      {
+        "color": "#289672",
+        "legend": "Both",
+        "style":"fill:#fcfcfc"
+      }
+    ]
+  }
 }
 ----
