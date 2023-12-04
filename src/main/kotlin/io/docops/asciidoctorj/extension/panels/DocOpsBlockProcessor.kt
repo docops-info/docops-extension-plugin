@@ -60,9 +60,9 @@ class DocOpsBlockProcessor: BlockProcessor()  {
                 val lines = mutableListOf<String>()
                 val url = if("PDF" == type) {
                     val iopts = "format=png,opts=inline,align='$role'"
-                    """image::$webserver/api/docops/png?kind=$kind&payload=$payload&&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.png[$iopts]"""
+                    """image::$webserver/api/docops/png?kind=$kind&payload=$payload&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.png[$iopts]"""
                 } else {
-                    """image::$webserver/api/docops/svg?kind=$kind&payload=$payload&&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.svg[$opts]"""
+                    """image::$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.svg[$opts]"""
                 }
                 lines.addAll(url.lines())
                 parseContent(block, lines)
@@ -114,18 +114,7 @@ class DocOpsBlockProcessor: BlockProcessor()  {
         }
         return type
     }
-    fun extractParameters(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>) {
-        val scale = attributes.getOrDefault("scale", "1.0") as String
-        val block: Block = createBlock(parent, "open", null as String?)
-        val title = attributes.getOrDefault("title", "Roadmap Title Here") as String
-        val backend = parent.document.getAttribute("backend") as String
-        val role = attributes.getOrDefault("role", "center") as String
-        val dark = attributes.getOrDefault("useDark", "false") as String
-        val idea = parent.document.getAttribute("env", "") as String
-        val outlineColor = attributes.getOrDefault("outlineColor", "#7149c6") as String
-        val ideaOn = "idea".equals(idea, true)
-        val useDark : Boolean = "true".equals(dark, true)
-    }
+
     private fun createImageBlockFromString(
         parent: StructuralNode,
         svg: String,

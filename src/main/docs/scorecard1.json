@@ -1,56 +1,50 @@
 {
-  "title": "Digital Policy Service",
-  "initiativeTitle": "PCF to EKS",
-  "outcomeTitle": "TMVS++",
+  "title": "Initiative",
+  "initiativeTitle": "Journey Begins with",
+  "outcomeTitle": "Outcomes Since",
   "initiativeItems": [
     {
-      "displayText": "Spring Boot 2.7 on Pcf Platform"
+      "displayText": "API Versioning",
+      "description": "Host API versioning"
     },
     {
-      "displayText": "Redis used for storing circuit breaker data"
+      "displayText": "Network Switch",
+      "description": "Migrate IBM Websphere to Liberty Server with RHEL 8 and JSESSION ID fix with Application cache busting and versioning"
     },
     {
-      "displayText": "MySql for storing zipkin traces"
+      "displayText": "MFA",
+      "description": "Enabling single signon from server sign-in page"
     },
     {
-      "displayText": "RabbitMQ for sendign zipkin traces"
+      "displayText": "Product Elimination - from system"
     }
   ],
   "outcomeItems": [
     {
-      "displayText": "Docker Containerized Spring Boot 3.x on EKS"
+      "displayText": "API Versioning changes with backwards compatibility"
     },
     {
-      "displayText":  "Okta used for Authentication"
+      "displayText": "Network Mark-In/Mark-Out Servers"
     },
     {
-      "displayText": "PVC used for storing circuit breaker data"
+      "displayText": "Phased Rollout, Milestones and Release Candidate"
     },
-    {
-      "displayText": "Open Search for zipkin trace storage"
-    },
-    {
-      "displayText": "IBOB guidelines compliance"
-    },
-    {
-      "displayText": "Flight check completed"
-    },
-    {
-      "displayText": "Blue/Green/Canary deployments supported"
-    },
-    {
-      "displayText": "Documented Local Setup for building & debugging"
-    },
-    {
-      "displayText": "Production Support Guidelines documented"
-    },
-    {
-      "displayText": "Splunk queries documented"
-    },
-    {
-      "displayText": "Actuator Endpoints validated"
-    }
 
+    {
+      "displayText": "Software toggle to Enable/Disable OAuth Server"
+    }
   ],
-  "scale": 1.3
+  "scale": 1.0,
+  "scoreCardTheme": {
+    "titleColor": "#484b6a",
+    "initiativeTitleColor": "#484b6a",
+    "outcomeTitleColor":"#484b6a",
+    "backgroundColor": "#e4e5f1",
+    "initiativeBackgroundColor": "#EBE3D5",
+    "outcomeBackgroundColor": "#EBE3D5",
+    "initiativeDisplayTextColor": "#111111",
+    "outcomeDisplayTextColor":"#111111",
+    "arrowColor": "#9394a5"
+  }
 }
+

@@ -34,6 +34,7 @@ Steve D Roach
 }
 ----
 
+=== Placemat Dark Mode
 [docops, placemat]
 ----
 {
@@ -115,4 +116,128 @@ Steve D Roach
     ]
   }
 }
+----
+
+=== Placemat
+[docops, placemat]
+----
+{
+  "title": "Observability",
+  "scale": 1.0,
+  "placeMats": [
+    {
+      "name": "Audit",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Traceability",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Subscription",
+      "legend": "Both"
+    },
+    {
+      "name": "Automation",
+      "legend": "Both"
+    },
+    {
+      "name": "Metrics",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Software Milestone",
+      "legend": "Business Capability"
+    },
+    {
+      "name": "Monitoring",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Flakiness",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Performance Regression",
+      "legend": "Engineering"
+    },
+    {
+      "name": "Misconfigurations",
+      "legend": "Engineering"
+    },
+    {
+      "name": "MTTR",
+      "legend": "Both"
+    },
+    {
+      "name": "Change Failure Rate",
+      "legend": "Both"
+    },
+    {
+      "name": "Deployment Frequency",
+      "legend": "Both"
+    }
+  ],
+  "useDark": false,
+  "config": {
+    "style": "font-size: 1em;",
+    "legend": [
+      {
+        "color": "#D62AD0",
+        "legend": "Business Capability",
+        "style":"fill:#fcfcfc"
+      },
+      {
+        "color": "#7FBCD2",
+        "legend": "Engineering",
+        "style":"fill:#fcfcfc"
+      },
+      {
+        "color": "#289672",
+        "legend": "Both",
+        "style":"fill:#fcfcfc"
+      }
+    ]
+  }
+}
+----
+
+== Timeline
+
+[docops, timeline,title="Demo timeline Builder by docops.io",scale="1.0",  useDark=false]
+----
+-
+date: July 23rd, 2023
+text: DocOps extension Server releases a new feature, Timeline Maker
+for asciidoctorj. With a simple text markup block you can
+create very powerful timeline images. Enjoy!
+-
+date: August 15th, 2023
+text: [[https://DocOps.io docops.io]] revamping website with updated documentation. All
+our work will be updated with latest documentation for Panels,
+for extension server are the various plug-ing for asciidoctorj.
+-
+date: September 1st, 2023
+text: DocOps.io will begin work on revamping the asciidoctorj converter.
+with the asciidoctorj 3.0.0 release coming we will need to migrate
+custom plug-ins to the new version of the extensions as they will bring breaking changes.
+-
+date: October 18th, 2023
+text: Time to reimagine the future. Is it possible
+to write a lexer parser for custom language?
+-
+date: November 16th, 2023
+text: Another year been on this earth.
+Time to celebrate. Good times.
+-
+date: December 11th, 2023
+text: Annual start of vacation, time to relax
+and plugin the controller.
+----
+
+== Scorecard
+
+[docops, scorecard, role="center"]
+----
+include::scorecard1.json[]
 ----
