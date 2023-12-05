@@ -60,9 +60,12 @@ class DocOpsBlockProcessor: BlockProcessor()  {
                 val lines = mutableListOf<String>()
                 val url = if("PDF" == type) {
                     val iopts = "format=png,opts=inline,align='$role'"
-                    """image::$webserver/api/docops/png?kind=$kind&payload=$payload&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.png[$iopts]"""
+                    """image::$webserver/api/docops/png?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.png[$iopts]"""
                 } else {
-                    """image::$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=$outlineColor&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.svg[$opts]"""
+                    """image::$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.svg[$opts]"""
+                }
+                if(localDebug) {
+                    println(url)
                 }
                 lines.addAll(url.lines())
                 parseContent(block, lines)
