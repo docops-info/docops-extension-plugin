@@ -53,7 +53,7 @@ class DocOpsBlockProcessor: BlockProcessor()  {
             val numChars = getCharLength(attributes, 24)
             if(isIdeaOn(parent = parent)) {
                 opts = ""
-                val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&type=$type&useDark=$useDark&title=${title.encodeUrl()}&filename=ghi.svg"""
+                val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&type=$type&useDark=$useDark&title=${title.encodeUrl()}&numChars=$numChars&filename=ghi.svg"""
                 val image = getContentFromServer(url, parent, this, debug = localDebug)
                 return createImageBlockFromString(parent, image, role)
             } else {
