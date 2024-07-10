@@ -37,7 +37,7 @@ class DocOpsBlockProcessor: BlockProcessor()  {
 
         if(serverAvailable(parent = parent, pb = this)) {
             var type = getType(parent = parent)
-
+            val backend = parent.document.getAttribute("backend") as String
             val payload = getCompressedPayload(parent = parent, content = content)
             val role = attributes.getOrDefault("role", "center") as String
             var opts = "format=svg,opts=inline,align='$role'"
@@ -53,16 +53,16 @@ class DocOpsBlockProcessor: BlockProcessor()  {
             val numChars = getCharLength(attributes, 24)
             if(isIdeaOn(parent = parent)) {
                 opts = ""
-                val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&type=$type&useDark=$useDark&title=${title.encodeUrl()}&numChars=$numChars&filename=ghi.svg"""
+                val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&type=$type&useDark=$useDark&title=${title.encodeUrl()}&numChars=$numChars&backend=$backend&filename=ghi.svg"""
                 val image = getContentFromServer(url, parent, this, debug = localDebug)
                 return createImageBlockFromString(parent, image, role)
             } else {
                 val lines = mutableListOf<String>()
                 val url = if("PDF" == type) {
                     val iopts = "format=png,opts=inline,align='$role'"
-                    """image::$webserver/api/docops/png?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.png[$iopts]"""
+                    """image::$webserver/api/docops/png?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&backend=$backend&filename=docops.png[$iopts]"""
                 } else {
-                    """image::$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&filename=docops.svg[$opts]"""
+                    """image::$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&backend=$backend&filename=docops.svg[$opts]"""
                 }
                 if(localDebug) {
                     println(url)
@@ -112,9 +112,9 @@ class DocOpsBlockProcessor: BlockProcessor()  {
     fun getType(parent: StructuralNode): String {
         var type ="SVG"
         val backend = parent.document.getAttribute("backend") as String
-        if("pdf" == backend) {
+        /*if("pdf" == backend) {
             type = "PDF"
-        }
+        }*/
         return type
     }
 

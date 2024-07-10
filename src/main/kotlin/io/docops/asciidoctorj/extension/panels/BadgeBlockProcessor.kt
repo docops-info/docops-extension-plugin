@@ -39,18 +39,22 @@ class BadgeBlockProcessor : BlockProcessor() {
             webserver = it as String
         }
         val backend = parent.document.getAttribute("backend") as String
+        if(localDebug) {
+            println(backend)
+        }
         val idea = parent.document.getAttribute("env", "") as String
         val block: Block = createBlock(parent, "open", null as String?)
-        val lines: MutableList<String> = if ("pdf" == backend) {
+        val lines = makeContentForHtml(content, localDebug, backend)
+        /*val lines: MutableList<String> = if ("pdf" == backend) {
             makeContentForPdf(content, localDebug)
         } else {
             makeContentForHtml(content, localDebug)
-        }
+        }*/
         parseContent(block, lines)
         return block
     }
 
-    private fun makeContentForHtml(content: String, debug: Boolean): MutableList<String> {
+    private fun makeContentForHtml(content: String, debug: Boolean, backend: String): MutableList<String> {
         val lines = mutableListOf<String>()
         content.lines().forEach { line ->
             val payload = compressString(" $line")
@@ -61,7 +65,7 @@ class BadgeBlockProcessor : BlockProcessor() {
                 link = ",link=\"${split[2]}\""
             }
             val str =
-                "$imageLink$webserver/api/badge/item?payload=$payload&type=SVG&finalname=abc_${System.currentTimeMillis()}.svg[format=svg$link] "
+                "$imageLink$webserver/api/badge/item?payload=$payload&type=SVG&backend=$backend&finalname=abc_${System.currentTimeMillis()}.svg[format=svg$link] "
             lines.add(str)
         }
         if(debug) {
@@ -104,7 +108,7 @@ class BadgeBlockProcessor : BlockProcessor() {
                 link = ",link=\"${split[2]}\""
             }
             val str =
-                "$imageLink$webserver/api/badge/item?payload=$payload&type=PDF&finalname=abc_${System.currentTimeMillis()}.png[format=png$link] "
+                "$imageLink$webserver/api/badge/item?payload=$payload&type=PDF&finalname=abc_${System.currentTimeMillis()}.svg[format=svg$link] "
             var direction = ">"
             if(index >0) {
                 direction = "<"
