@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="author" content="Steve D Roach">
 <title>DocOps Connector Demo</title>
 <style>
@@ -389,100 +389,6 @@ a.image { text-decoration: none; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/dark.min.css">
-   
-   <style>
-    #slider {
-        width: 500px;
-        top: 100px;
-        position: absolute
-    }
-
-    #fbheader {
-        width: 260px;
-        height: 520px;
-        position: absolute;
-        right: 0;
-        border: 1px solid #d8d8d8;
-        margin-left: 40px;
-        padding: 20px 40px;
-        border-radius: 3px;
-        box-shadow: 0 0 8px gray;
-        background: darkgray;
-    }
-
-    #sidebar {
-        position: absolute;
-        top: 180px;
-        left: 113px;
-        box-shadow: 0 0 8px gray
-    }
-
-    #sidebar1 {
-        position: absolute;
-        top: 180px;
-        left: 113px;
-        box-shadow: 0 0 8px gray
-    }
-
-
-    #submitter {
-        background-color: white;
-        width: 200px;
-    }
-
-
-    textarea {
-        padding: 6px;
-        font-size: 15px;
-        border-radius: 2px;
-        margin-top: 10px;
-        height: 80px;
-        width: 100%;
-        background: #ffffff;
-    }
-    .error-message {
-        color:#CC1111;
-    }
-    .error {
-        box-shadow: 0 0 2px #CC1111;
-    }
-</style>    <script src="https://unpkg.com/htmx.org@1.6.1" ></script>
-    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
-    <script>
-    var FeedBack = (function (my) {
-        my.slideIn = function () {
-            const slidingDiv = document.getElementById("slider");
-            const stopPosition = -342;
-            if (parseInt(slidingDiv.style.right) > stopPosition) {
-                slidingDiv.style.right = parseInt(slidingDiv.style.right) - 2 + "px";
-                setTimeout(my.slideIn, 1);
-            }
-        };
-        my.close_panel = function () {
-            my.slideIn();
-            let a = document.getElementById("sidebar1");
-            a.setAttribute("id", "sidebar");
-            a.setAttribute("onclick", "FeedBack.open_panel()");
-        };
-        my.slideIt = function () {
-            const slidingDiv = document.getElementById("slider");
-            const stopPosition = 0;
-            if (parseInt(slidingDiv.style.right) < stopPosition) {
-                slidingDiv.style.right = parseInt(slidingDiv.style.right) + 2 + "px";
-                setTimeout(FeedBack.slideIt, 1);
-            }
-        };
-         my.open_panel = function () {
-            my.slideIt();
-            let a = document.getElementById("sidebar");
-            a.setAttribute("id", "sidebar1");
-            a.setAttribute("onclick", "FeedBack.close_panel()");
-        };
-         
-        return my;
-    }(FeedBack || {}));
-
-</script>
 <style>
   /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
   /* Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006 */
@@ -579,158 +485,7 @@ mediumZoom('.content img', {
 <div class="content">
 <div class="imageblock text-center">
 <div class="content">
-<svg xmlns="http://www.w3.org/2000/svg" width="1008.00006" height="132.0"
-viewBox="0 0 1680.0 220.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">           <defs>
-           <linearGradient id="grad0" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#f0a694"/>
-<stop class="stop2" offset="50%" stop-color="#e8795f"/>
-<stop class="stop3" offset="100%" stop-color="#E14D2A"/>
-</linearGradient> <linearGradient id="grad1" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#c0e6a3"/>
-<stop class="stop2" offset="50%" stop-color="#a1d975"/>
-<stop class="stop3" offset="100%" stop-color="#82CD47"/>
-</linearGradient> <linearGradient id="grad2" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#b3beff"/>
-<stop class="stop2" offset="50%" stop-color="#8d9eff"/>
-<stop class="stop3" offset="100%" stop-color="#687EFF"/>
-</linearGradient> <linearGradient id="grad3" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#df939c"/>
-<stop class="stop2" offset="50%" stop-color="#cf5d6a"/>
-<stop class="stop3" offset="100%" stop-color="#C02739"/>
-</linearGradient> <linearGradient id="grad4" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#fee0af"/>
-<stop class="stop2" offset="50%" stop-color="#fed187"/>
-<stop class="stop3" offset="100%" stop-color="#FEC260"/>
-</linearGradient> <linearGradient id="grad5" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#f4e9ff"/>
-<stop class="stop2" offset="50%" stop-color="#eedeff"/>
-<stop class="stop3" offset="100%" stop-color="#e9d3ff"/>
-</linearGradient> <linearGradient id="grad6" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#bfdfdb"/>
-<stop class="stop2" offset="50%" stop-color="#9fcfc9"/>
-<stop class="stop3" offset="100%" stop-color="#7fc0b7"/>
-</linearGradient> <linearGradient id="grad7" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#949ea5"/>
-<stop class="stop2" offset="50%" stop-color="#5e6d78"/>
-<stop class="stop3" offset="100%" stop-color="#293d4c"/>
-</linearGradient> <linearGradient id="grad8" x2="0%" y2="100%">
-<stop class="stop1" offset="0%" stop-color="#df898c"/>
-<stop class="stop2" offset="50%" stop-color="#cf4e53"/>
-<stop class="stop3" offset="100%" stop-color="#c0141a"/>
-</linearGradient>
-       <filter id="filter">
-           <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
-           <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
-       </filter>
-       <filter id="poly" x="0" y="0" width="200%" height="200%">
-           <feOffset result="offOut" in="SourceGraphic" dx="10" dy="15" />
-           <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
-           <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-       </filter>
-       <filter id="shadow2">
-           <feDropShadow
-                   dx="-0.8"
-                   dy="-0.8"
-                   stdDeviation="0"
-                   flood-color="pink"
-                   flood-opacity="0.5" />
-       </filter>
-       <style>
-           .shadowed {
-               -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));
-               filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));
-           }
-           .filtered {
-               filter: url(#filter);
-               fill: black;
-               font-family: 'Ultra', serif;
-               font-size: 100px;
-
-           }
-           .filtered-small {
-               filter: url(#filter);
-               fill: black;
-               font-family: 'Ultra', serif;
-               font-size: 14px;
-
-           }
-
-           .glass:after,.glass:before{content:"";display:block;position:absolute}.glass{overflow:hidden;color:#fff;text-shadow:0
-           1px 2px rgba(0,0,0,.7);background-image:radial-gradient(circle at
-           center,rgba(0,167,225,.25),rgba(0,110,149,.5));box-shadow:0 5px 10px rgba(0,0,0,.75),inset 0 0 0 2px
-           rgba(0,0,0,.3),inset 0 -6px 6px -3px
-           rgba(0,129,174,.2);position:relative}.glass:after{background:rgba(0,167,225,.2);z-index:0;height:100%;width:100%;top:0;left:0;backdrop-filter:blur(3px)
-           saturate(400%);-webkit-backdrop-filter:blur(3px) saturate(400%)}.glass:before{width:calc(100% -
-           4px);height:35px;background-image:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));top:2px;left:2px;border-radius:30px
-           30px 200px 200px;opacity:.7}.glass:hover{text-shadow:0 1px 2px
-           rgba(0,0,0,.9)}.glass:hover:before{opacity:1}.glass:active{text-shadow:0 0 2px rgba(0,0,0,.9);box-shadow:0
-           3px 8px rgba(0,0,0,.75),inset 0 0 0 2px rgba(0,0,0,.3),inset 0 -6px 6px -3px
-           rgba(0,129,174,.2)}.glass:active:before{height:25px}
-
-           .boxText {
-               font-size:24px;
-               font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-               font-variant: small-caps;
-               font-weight: bold;
-           }
-       </style>
-       <polygon id="ppoint" points="0,5 1.6666666666666667,2.5 0,0 5,2.5" stroke-width="7" />
-       <rect id="bbox" class="shadowed"  width="250" height="90" ry="18" rx="18"  />
-       <path id="hconnector" d="M260,50.0 h34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-       <path id="vconnector" d="M135,100 v34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-       </defs><rect width="100%" height="100%" fill="#fcfcfc"/><g transform="translate(100,0)"><g transform="translate(0,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad0)" stroke="#E14D2A"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Engineer</tspan></text>
-    <use xlink:href="#hconnector" stroke="#E14D2A" fill="url(#grad0)"/>
-    <g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad0)" stroke-width="7" stroke="url(#grad0)"/></g>
-    <rect x="270" y="13" height="24" width="24" fill="url(#grad0)" rx="5" ry="5"/>
-    <text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">A</text></g><g transform="translate(300,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad1)" stroke="#82CD47"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Unit</tspan><tspan x="135" dy="24">Tests</tspan></text>
-    <use xlink:href="#hconnector" stroke="#82CD47" fill="url(#grad1)"/>
-    <g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad1)" stroke-width="7" stroke="url(#grad1)"/></g>
-    <rect x="270" y="13" height="24" width="24" fill="url(#grad1)" rx="5" ry="5"/>
-    <text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">B</text></g><g transform="translate(600,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad2)" stroke="#687EFF"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Microsoft</tspan><tspan x="135" dy="24">Excel</tspan></text>
-    <use xlink:href="#hconnector" stroke="#687EFF" fill="url(#grad2)"/>
-    <g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad2)" stroke-width="7" stroke="url(#grad2)"/></g>
-    <rect x="270" y="13" height="24" width="24" fill="url(#grad2)" rx="5" ry="5"/>
-    <text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">C</text></g><g transform="translate(900,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad3)" stroke="#C02739"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >GitHub</tspan></text>
-    <use xlink:href="#hconnector" stroke="#C02739" fill="url(#grad3)"/>
-    <g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad3)" stroke-width="7" stroke="url(#grad3)"/></g>
-    <rect x="270" y="13" height="24" width="24" fill="url(#grad3)" rx="5" ry="5"/>
-    <text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">D</text></g><g transform="translate(1200,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad4)" stroke="#FEC260"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Test</tspan><tspan x="135" dy="24">Engine</tspan></text>
-    <use xlink:href="#hconnector" stroke="#FEC260" fill="url(#grad4)"/>
-    <g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad4)" stroke-width="7" stroke="url(#grad4)"/></g>
-    <rect x="270" y="13" height="24" width="24" fill="url(#grad4)" rx="5" ry="5"/>
-    <text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">E</text><g transform="translate(260,50)">
-    <path d="M0,0 L60,0" fill="#111111" stroke-width="3" stroke="#FEC260"/>
-    <line x1="60" x2="60" y1="0" y2="60" stroke-width="3" stroke="#FEC260" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="60" x2="-1480" y1="60" y2="60" stroke-width="3" stroke="#FEC260" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="-1480" x2="-1480" y1="110" y2="60" stroke-width="3" stroke="#FEC260" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="-1480" x2="-1400" y1="110" y2="110" stroke-width="3" stroke="#FEC260" stroke-linecap="round" stroke-linejoin="round"/>
-    <g transform="translate(-1460,107)"><use xlink:href="#ppoint" fill="url(#grad4)" stroke-width="7" stroke="url(#grad4)"/></g>
-</g></g><g transform="translate(0,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad5)" stroke="#e9d3ff"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >API</tspan><tspan x="135" dy="24">Documentation</tspan></text>
-    <use xlink:href="#hconnector" stroke="#e9d3ff" fill="url(#grad5)"/>
-    <g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad5)" stroke-width="7" stroke="url(#grad5)"/></g>
-    <rect x="270" y="13" height="24" width="24" fill="url(#grad5)" rx="5" ry="5"/>
-    <text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">F</text></g><g transform="translate(300,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad6)" stroke="#7fc0b7"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >DocOps</tspan></text>
-    <use xlink:href="#hconnector" stroke="#7fc0b7" fill="url(#grad6)"/>
-    <g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad6)" stroke-width="7" stroke="url(#grad6)"/></g>
-    <rect x="270" y="13" height="24" width="24" fill="url(#grad6)" rx="5" ry="5"/>
-    <text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">G</text></g> <g transform="translate(600,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad7)"/>
-    <text x="135" y="36" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Test</tspan><tspan x="135" dy="24">Engine</tspan><tspan x="135" dy="24">Database</tspan></text>
-</g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1008.00006" height="340.80002" viewBox="0 0 1680.0 568.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag_9f8a3f85-3a72-4e14-bb34-2874e4adcd59">            <defs><linearGradient id="grad0" x2="0%" y2="100%"><stop stop-color="#feb47b" stop-opacity="1" offset="0%"/><stop stop-color="hsl(26.0,98.5%,73.9%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad1" x2="0%" y2="100%"><stop stop-color="#dc8875" stop-opacity="1" offset="0%"/><stop stop-color="hsl(11.0,59.5%,66.1%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad2" x2="0%" y2="100%"><stop stop-color="#aa7398" stop-opacity="1" offset="0%"/><stop stop-color="hsl(320.0,24.4%,55.9%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad3" x2="0%" y2="100%"><stop stop-color="#eddcd2" stop-opacity="1" offset="0%"/><stop stop-color="hsl(22.0,42.9%,87.6%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad4" x2="0%" y2="100%"><stop stop-color="#b7b7a4" stop-opacity="1" offset="0%"/><stop stop-color="hsl(60.0,11.7%,68.0%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad5" x2="0%" y2="100%"><stop stop-color="#c77dff" stop-opacity="1" offset="0%"/><stop stop-color="hsl(274.0,100.0%,74.5%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad6" x2="0%" y2="100%"><stop stop-color="#98c1d9" stop-opacity="1" offset="0%"/><stop stop-color="hsl(202.0,46.1%,72.4%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad7" x2="0%" y2="100%"><stop stop-color="#ffafbd" stop-opacity="1" offset="0%"/><stop stop-color="hsl(349.0,100.0%,84.3%)" stop-opacity="1" offset="100%"/></linearGradient>    <linearGradient id="grad8" x2="0%" y2="100%"><stop stop-color="#2193b0" stop-opacity="1" offset="0%"/><stop stop-color="hsl(192.0,68.4%,41.0%)" stop-opacity="1" offset="100%"/></linearGradient><filter id="filter"><feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/><feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/></filter><filter id="poly" x="0" y="0" width="200%" height="200%"><feOffset result="offOut" in="SourceGraphic" dx="10" dy="15" /><feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" /><feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter><filter id="shadow2"><feDropShadow dx="-0.8" dy="-0.8" stdDeviation="0" flood-color="pink" flood-opacity="0.5" /></filter><style>#diag_9f8a3f85-3a72-4e14-bb34-2874e4adcd59 .shadowed {-webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));}#diag_9f8a3f85-3a72-4e14-bb34-2874e4adcd59 .filtered {filter: url(#filter);fill: black;font-family: 'Ultra', serif;font-size: 100px;}#diag_9f8a3f85-3a72-4e14-bb34-2874e4adcd59 .filtered-small {filter: url(#filter);fill: black;font-family: 'Ultra', serif;font-size: 14px;}#diag_9f8a3f85-3a72-4e14-bb34-2874e4adcd59 .glass:after,.glass:before{content:"";display:block;position:absolute}.glass{overflow:hidden;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.7);background-image:radial-gradient(circle at center,rgba(0,167,225,.25),rgba(0,110,149,.5));box-shadow:0 5px 10px rgba(0,0,0,.75),inset 0 0 0 2px rgba(0,0,0,.3),inset 0 -6px 6px -3px rgba(0,129,174,.2);position:relative}.glass:after{background:rgba(0,167,225,.2);z-index:0;height:100%;width:100%;top:0;left:0;backdrop-filter:blur(3px) saturate(400%);-webkit-backdrop-filter:blur(3px) saturate(400%)}.glass:before{width:calc(100% - 4px);height:35px;background-image:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));top:2px;left:2px;border-radius:30px 30px 200px 200px;opacity:.7}.glass:hover{text-shadow:0 1px 2px rgba(0,0,0,.9)}.glass:hover:before{opacity:1}.glass:active{text-shadow:0 0 2px rgba(0,0,0,.9);box-shadow:0 3px 8px rgba(0,0,0,.75),inset 0 0 0 2px rgba(0,0,0,.3),inset 0 -6px 6px -3px rgba(0,129,174,.2)}.glass:active:before{height:25px}#diag_9f8a3f85-3a72-4e14-bb34-2874e4adcd59 .boxText {font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;}</style><polygon id="ppoint" points="0,5 1.6666666666666667,2.5 0,0 5,2.5" stroke-width="7" /><rect id="bbox" class="shadowed"  width="250" height="90" ry="18" rx="18"  /><path id="hconnector" d="M260,50.0 h34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path id="vconnector" d="M135,100 v34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></defs><rect width="100%" height="100%" fill="#17242b"/><g transform="translate(100,0)"><g transform="translate(0,0)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#feb47b" stroke-width='3'/><text x="135" y="65" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >Engineer</tspan></text><use xlink:href="#hconnector" stroke="#feb47b" fill="url(#grad0)"/><g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad0)" stroke-width="7" stroke="url(#grad0)"/></g><rect x="270" y="13" height="24" width="24" fill="url(#grad0)" rx="5" ry="5"/><text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">A</text></g><g transform="translate(300,0)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#dc8875" stroke-width='3'/><text x="135" y="45" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >Unit</tspan><tspan x="135" dy="24">Tests</tspan></text><use xlink:href="#hconnector" stroke="#dc8875" fill="url(#grad1)"/><g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad1)" stroke-width="7" stroke="url(#grad1)"/></g><rect x="270" y="13" height="24" width="24" fill="url(#grad1)" rx="5" ry="5"/><text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">B</text></g><g transform="translate(600,0)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#aa7398" stroke-width='3'/><text x="135" y="45" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >Microsoft</tspan><tspan x="135" dy="24">Excel</tspan></text><use xlink:href="#hconnector" stroke="#aa7398" fill="url(#grad2)"/><g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad2)" stroke-width="7" stroke="url(#grad2)"/></g><rect x="270" y="13" height="24" width="24" fill="url(#grad2)" rx="5" ry="5"/><text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">C</text></g><g transform="translate(900,0)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#eddcd2" stroke-width='3'/><text x="135" y="65" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >GitHub</tspan></text><use xlink:href="#hconnector" stroke="#eddcd2" fill="url(#grad3)"/><g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad3)" stroke-width="7" stroke="url(#grad3)"/></g><rect x="270" y="13" height="24" width="24" fill="url(#grad3)" rx="5" ry="5"/><text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">D</text></g><g transform="translate(1200,0)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#b7b7a4" stroke-width='3'/><text x="135" y="45" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >Test</tspan><tspan x="135" dy="24">Engine</tspan></text><use xlink:href="#hconnector" stroke="#b7b7a4" fill="url(#grad4)"/><rect x="270" y="13" height="24" width="24" fill="url(#grad4)" rx="5" ry="5"/><text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">E</text><g transform="translate(260,50)"><path d="M0,0 L60,0" fill="#111111" stroke-width="3" stroke="#b7b7a4"/><line x1="60" x2="60" y1="0" y2="60" stroke-width="3" stroke="#b7b7a4" stroke-linecap="round" stroke-linejoin="round"/><line x1="60" x2="-1480" y1="60" y2="60" stroke-width="3" stroke="#b7b7a4" stroke-linecap="round" stroke-linejoin="round"/><line x1="-1480" x2="-1480" y1="110" y2="60" stroke-width="3" stroke="#b7b7a4" stroke-linecap="round" stroke-linejoin="round"/><line x1="-1480" x2="-1460" y1="110" y2="110" stroke-width="3" stroke="#b7b7a4" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(-1460,107)"><use xlink:href="#ppoint" fill="url(#grad4)" stroke-width="7" stroke="url(#grad4)"/></g></g></g><g transform="translate(0,110)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#c77dff" stroke-width='3'/><text x="135" y="45" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >API</tspan><tspan x="135" dy="24">Documentation</tspan></text><use xlink:href="#hconnector" stroke="#c77dff" fill="url(#grad5)"/><g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad5)" stroke-width="7" stroke="url(#grad5)"/></g><rect x="270" y="13" height="24" width="24" fill="url(#grad5)" rx="5" ry="5"/><text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">F</text></g><g transform="translate(300,110)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#98c1d9" stroke-width='3'/><text x="135" y="65" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >DocOps</tspan></text><use xlink:href="#hconnector" stroke="#98c1d9" fill="url(#grad6)"/><g transform="translate(297,47)"><use xlink:href="#ppoint" fill="url(#grad6)" stroke-width="7" stroke="url(#grad6)"/></g><rect x="270" y="13" height="24" width="24" fill="url(#grad6)" rx="5" ry="5"/><text x="282" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">G</text></g> <g transform="translate(600,110)" ><use xlink:href="#bbox" x="10" y="10" fill="#fcfcfc" stroke="#ffafbd" stroke-width='3'/><text x="135" y="36" text-anchor="middle" class="filtered glass boxText" > <tspan x="135" >Test</tspan><tspan x="135" dy="24">Engine</tspan><tspan x="135" dy="24">Database</tspan></text></g></g><g transform='translate(100,220.0)'><g transform="translate(0,0)"><rect x="0" y="13" height="24" width="24" fill="#feb47b" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">A</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g><g transform="translate(0,26)"><rect x="0" y="13" height="24" width="24" fill="#dc8875" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">B</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g><g transform="translate(0,52)"><rect x="0" y="13" height="24" width="24" fill="#aa7398" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">C</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g><g transform="translate(0,78)"><rect x="0" y="13" height="24" width="24" fill="#eddcd2" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">D</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g><g transform="translate(0,104)"><rect x="0" y="13" height="24" width="24" fill="#b7b7a4" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">E</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g><g transform="translate(0,130)"><rect x="0" y="13" height="24" width="24" fill="#c77dff" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">F</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g><g transform="translate(0,156)"><rect x="0" y="13" height="24" width="24" fill="#98c1d9" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">G</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g><g transform="translate(0,182)"><rect x="0" y="13" height="24" width="24" fill="#ffafbd" rx="5" ry="5"/><text x="12" y="29" fill="#111111" text-anchor="middle" class="filtered-small glass">H</text><text x="42" y="29" fill="#fcfcfc" text-anchor="start" style="font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;" class="desc_txt"></text></g></g></svg>
 </div>
 </div>
 </div>
@@ -742,19 +497,16 @@ viewBox="0 0 1680.0 220.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
 <div class="imageblock text-center">
 <div class="content">
 <svg xmlns="http://www.w3.org/2000/svg" width="1310.0" height="440.0"
-viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">           <defs>
-           <linearGradient id="grad_Business_Capability" x2="0%" y2="100%">
+viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag_c80c42ed-5d01-4187-9efa-d8670190b7a5">           <defs>
+           <linearGradient id="grad_Business_Capability_c80c42ed-5d01-4187-9efa-d8670190b7a5" x2="0%" y2="100%">
 <stop class="stop1" offset="0%" stop-color="#ea94e7"/>
-<stop class="stop2" offset="50%" stop-color="#e05fdb"/>
-<stop class="stop3" offset="100%" stop-color="#D62AD0"/>
-</linearGradient> <linearGradient id="grad_Engineering" x2="0%" y2="100%">
+<stop class="stop2" offset="100%" stop-color="hsl(302.0,67.7%,50.2%)"/>
+</linearGradient> <linearGradient id="grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5" x2="0%" y2="100%">
 <stop class="stop1" offset="0%" stop-color="#bfdde8"/>
-<stop class="stop2" offset="50%" stop-color="#9fccdd"/>
-<stop class="stop3" offset="100%" stop-color="#7FBCD2"/>
-</linearGradient> <linearGradient id="grad_Both" x2="0%" y2="100%">
+<stop class="stop2" offset="100%" stop-color="hsl(196.0,48.0%,66.1%)"/>
+</linearGradient> <linearGradient id="grad_Both_c80c42ed-5d01-4187-9efa-d8670190b7a5" x2="0%" y2="100%">
 <stop class="stop1" offset="0%" stop-color="#93cab8"/>
-<stop class="stop2" offset="50%" stop-color="#5db095"/>
-<stop class="stop3" offset="100%" stop-color="#289672"/>
+<stop class="stop2" offset="100%" stop-color="hsl(160.0,57.9%,37.3%)"/>
 </linearGradient>
        <filter id="filter">
            <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
@@ -774,18 +526,18 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
                    flood-opacity="0.5" />
        </filter>
        <style>
-           .shadowed {
+           #diag_c80c42ed-5d01-4187-9efa-d8670190b7a5 .shadowed {
                -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));
                filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));
            }
-           .filtered {
+           #diag_c80c42ed-5d01-4187-9efa-d8670190b7a5  .filtered {
                filter: url(#filter);
                fill: black;
                font-family: 'Ultra', serif;
                font-size: 100px;
 
            }
-           .filtered-small {
+           #diag_c80c42ed-5d01-4187-9efa-d8670190b7a5  .filtered-small {
                filter: url(#filter);
                fill: black;
                font-family: 'Ultra', serif;
@@ -805,7 +557,7 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
            3px 8px rgba(0,0,0,.75),inset 0 0 0 2px rgba(0,0,0,.3),inset 0 -6px 6px -3px
            rgba(0,129,174,.2)}.glass:active:before{height:25px}
 
-           .boxText {
+           #diag_c80c42ed-5d01-4187-9efa-d8670190b7a5  .boxText {
                font-size:24px;
                font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
                font-variant: small-caps;
@@ -816,43 +568,43 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
        <rect id="bbox" class="shadowed"  width="250" height="90" ry="18" rx="18"  />
        <path id="hconnector" d="M260,50.0 h34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
        <path id="vconnector" d="M135,100 v34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-       </defs><rect width="100%" height="100%" fill="#111111" stroke="#111111" stroke-width="3"/><g transform="translate(0,0)"><g transform="translate(0,0)">
+       </defs><rect width="100%" height="100%" fill="#17242b" stroke="#111111" stroke-width="3"/><g transform="translate(0,0)"><g transform="translate(0,0)">
             <text x="20" y="24" text-anchor="start" font-size="24" font-family="Arial,DejaVu Sans,sans-serif" font-variant="small-caps" fill="#fcfcfc">Observability</text>
         </g>
         <g transform="translate(0,50)"><g transform="translate(0,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Audit</tspan></text></g><g transform="translate(260,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Traceability</tspan></text></g><g transform="translate(520,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Subscription</tspan></text></g><g transform="translate(780,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Automation</tspan></text></g><g transform="translate(1040,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Metrics</tspan></text></g><g transform="translate(0,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Business_Capability)"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Software</tspan><tspan x="135" dy="24">Milestone</tspan></text></g><g transform="translate(260,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Monitoring</tspan></text></g><g transform="translate(520,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Flakiness</tspan></text></g><g transform="translate(780,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Performance</tspan><tspan x="135" dy="24">Regression</tspan></text></g><g transform="translate(1040,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Misconfigurations</tspan></text></g><g transform="translate(0,220)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >MTTR</tspan></text></g><g transform="translate(260,220)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="36" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Change</tspan><tspan x="135" dy="24">Failure</tspan><tspan x="135" dy="24">Rate</tspan></text></g><g transform="translate(520,220)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Deployment</tspan><tspan x="135" dy="24">Frequency</tspan></text></g><g transform="translate(20,350.0),scale(0.15)"><text x="10" font-size="110" font-family="Arial,DejaVu Sans,sans-serif" font-variant="small-caps" fill="#fcfcfc">Legend</text><g transform="translate(10.0,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
-    <rect x="0" y="0" width="1129.6665" height="110" fill="url(#grad_Business_Capability)" />
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Audit</tspan></text></g><g transform="translate(260,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Traceability</tspan></text></g><g transform="translate(520,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Subscription</tspan></text></g><g transform="translate(780,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Automation</tspan></text></g><g transform="translate(1040,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Metrics</tspan></text></g><g transform="translate(0,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Business_Capability_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #D62AD0;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="45" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Software</tspan><tspan x="135" dy="24">Milestone</tspan></text></g><g transform="translate(260,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Monitoring</tspan></text></g><g transform="translate(520,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Flakiness</tspan></text></g><g transform="translate(780,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="45" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Performance</tspan><tspan x="135" dy="24">Regression</tspan></text></g><g transform="translate(1040,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Misconfigurations</tspan></text></g><g transform="translate(0,220)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >MTTR</tspan></text></g><g transform="translate(260,220)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="36" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Change</tspan><tspan x="135" dy="24">Failure</tspan><tspan x="135" dy="24">Rate</tspan></text></g><g transform="translate(520,220)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_c80c42ed-5d01-4187-9efa-d8670190b7a5); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="45" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Deployment</tspan><tspan x="135" dy="24">Frequency</tspan></text></g><g transform="translate(20,350.0),scale(0.15)"><text x="10" font-size="110" font-family="Arial,DejaVu Sans,sans-serif" font-variant="small-caps" fill="#fcfcfc">Legend</text><g transform="translate(10.0,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
+    <rect x="0" y="0" width="1129.6665" height="110" fill="url(#grad_Business_Capability_c80c42ed-5d01-4187-9efa-d8670190b7a5)" />
     <text text-anchor="middle" style="fill:#fcfcfc" x="564.83325" y="90" textLength="1119.6665">Business Capability</text>
 </g><g transform="translate(1179.66650390625,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
-    <rect x="0" y="0" width="701.3333" height="110" fill="url(#grad_Engineering)" />
+    <rect x="0" y="0" width="701.3333" height="110" fill="url(#grad_Engineering_c80c42ed-5d01-4187-9efa-d8670190b7a5)" />
     <text text-anchor="middle" style="fill:#fcfcfc" x="350.66666" y="90" textLength="691.3333">Engineering</text>
 </g><g transform="translate(1920.9998168945312,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
-    <rect x="0" y="0" width="266.0001" height="110" fill="url(#grad_Both)" />
+    <rect x="0" y="0" width="266.0001" height="110" fill="url(#grad_Both_c80c42ed-5d01-4187-9efa-d8670190b7a5)" />
     <text text-anchor="middle" style="fill:#fcfcfc" x="133.00005" y="90" textLength="256.0001">Both</text>
 </g></g></g></g></svg>
 </div>
@@ -867,19 +619,16 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
 <div class="imageblock text-center">
 <div class="content">
 <svg xmlns="http://www.w3.org/2000/svg" width="1310.0" height="440.0"
-viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">           <defs>
-           <linearGradient id="grad_Business_Capability" x2="0%" y2="100%">
+viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag_1f771ea4-b0da-4407-966c-01c988a80786">           <defs>
+           <linearGradient id="grad_Business_Capability_1f771ea4-b0da-4407-966c-01c988a80786" x2="0%" y2="100%">
 <stop class="stop1" offset="0%" stop-color="#ea94e7"/>
-<stop class="stop2" offset="50%" stop-color="#e05fdb"/>
-<stop class="stop3" offset="100%" stop-color="#D62AD0"/>
-</linearGradient> <linearGradient id="grad_Engineering" x2="0%" y2="100%">
+<stop class="stop2" offset="100%" stop-color="hsl(302.0,67.7%,50.2%)"/>
+</linearGradient> <linearGradient id="grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786" x2="0%" y2="100%">
 <stop class="stop1" offset="0%" stop-color="#bfdde8"/>
-<stop class="stop2" offset="50%" stop-color="#9fccdd"/>
-<stop class="stop3" offset="100%" stop-color="#7FBCD2"/>
-</linearGradient> <linearGradient id="grad_Both" x2="0%" y2="100%">
+<stop class="stop2" offset="100%" stop-color="hsl(196.0,48.0%,66.1%)"/>
+</linearGradient> <linearGradient id="grad_Both_1f771ea4-b0da-4407-966c-01c988a80786" x2="0%" y2="100%">
 <stop class="stop1" offset="0%" stop-color="#93cab8"/>
-<stop class="stop2" offset="50%" stop-color="#5db095"/>
-<stop class="stop3" offset="100%" stop-color="#289672"/>
+<stop class="stop2" offset="100%" stop-color="hsl(160.0,57.9%,37.3%)"/>
 </linearGradient>
        <filter id="filter">
            <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
@@ -899,18 +648,18 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
                    flood-opacity="0.5" />
        </filter>
        <style>
-           .shadowed {
+           #diag_1f771ea4-b0da-4407-966c-01c988a80786 .shadowed {
                -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));
                filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .3));
            }
-           .filtered {
+           #diag_1f771ea4-b0da-4407-966c-01c988a80786  .filtered {
                filter: url(#filter);
                fill: black;
                font-family: 'Ultra', serif;
                font-size: 100px;
 
            }
-           .filtered-small {
+           #diag_1f771ea4-b0da-4407-966c-01c988a80786  .filtered-small {
                filter: url(#filter);
                fill: black;
                font-family: 'Ultra', serif;
@@ -930,7 +679,7 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
            3px 8px rgba(0,0,0,.75),inset 0 0 0 2px rgba(0,0,0,.3),inset 0 -6px 6px -3px
            rgba(0,129,174,.2)}.glass:active:before{height:25px}
 
-           .boxText {
+           #diag_1f771ea4-b0da-4407-966c-01c988a80786  .boxText {
                font-size:24px;
                font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
                font-variant: small-caps;
@@ -945,39 +694,39 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
             <text x="20" y="24" text-anchor="start" font-size="24" font-family="Arial,DejaVu Sans,sans-serif" font-variant="small-caps" fill="#111111">Observability</text>
         </g>
         <g transform="translate(0,50)"><g transform="translate(0,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Audit</tspan></text></g><g transform="translate(260,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Traceability</tspan></text></g><g transform="translate(520,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Subscription</tspan></text></g><g transform="translate(780,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Automation</tspan></text></g><g transform="translate(1040,0)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Metrics</tspan></text></g><g transform="translate(0,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Business_Capability)"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Software</tspan><tspan x="135" dy="24">Milestone</tspan></text></g><g transform="translate(260,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Monitoring</tspan></text></g><g transform="translate(520,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Flakiness</tspan></text></g><g transform="translate(780,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Performance</tspan><tspan x="135" dy="24">Regression</tspan></text></g><g transform="translate(1040,110)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Engineering)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Misconfigurations</tspan></text></g><g transform="translate(0,220)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="65" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >MTTR</tspan></text></g><g transform="translate(260,220)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="36" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Change</tspan><tspan x="135" dy="24">Failure</tspan><tspan x="135" dy="24">Rate</tspan></text></g><g transform="translate(520,220)" >
-    <use xlink:href="#bbox" x="10" y="10" fill="url(#grad_Both)"/>
-    <text x="135" y="45" text-anchor="middle" class="filtered glass boxText"><tspan x="135" >Deployment</tspan><tspan x="135" dy="24">Frequency</tspan></text></g><g transform="translate(20,350.0),scale(0.15)"><text x="10" font-size="110" font-family="Arial,DejaVu Sans,sans-serif" font-variant="small-caps" fill="#111111">Legend</text><g transform="translate(10.0,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
-    <rect x="0" y="0" width="1129.6665" height="110" fill="url(#grad_Business_Capability)" />
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Audit</tspan></text></g><g transform="translate(260,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Traceability</tspan></text></g><g transform="translate(520,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Subscription</tspan></text></g><g transform="translate(780,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Automation</tspan></text></g><g transform="translate(1040,0)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Metrics</tspan></text></g><g transform="translate(0,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Business_Capability_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #D62AD0;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="45" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Software</tspan><tspan x="135" dy="24">Milestone</tspan></text></g><g transform="translate(260,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Monitoring</tspan></text></g><g transform="translate(520,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Flakiness</tspan></text></g><g transform="translate(780,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="45" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Performance</tspan><tspan x="135" dy="24">Regression</tspan></text></g><g transform="translate(1040,110)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #7FBCD2;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Misconfigurations</tspan></text></g><g transform="translate(0,220)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="65" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >MTTR</tspan></text></g><g transform="translate(260,220)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="36" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Change</tspan><tspan x="135" dy="24">Failure</tspan><tspan x="135" dy="24">Rate</tspan></text></g><g transform="translate(520,220)" >
+    <rect x="10" y="10" class="shadowed"  width="250" height="90" ry="18" rx="18"  style="fill: url(#grad_Both_1f771ea4-b0da-4407-966c-01c988a80786); stroke: #289672;stroke-width: 1;"/>
+    <text x="135" fill="#111111" y="45" text-anchor="middle" class="filtered glass" style="fill:#111111; font-family: 'Ultra', serif;font-size:24px;font-family: 'Inter var', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-variant: small-caps;font-weight: bold;"><tspan x="135" >Deployment</tspan><tspan x="135" dy="24">Frequency</tspan></text></g><g transform="translate(20,350.0),scale(0.15)"><text x="10" font-size="110" font-family="Arial,DejaVu Sans,sans-serif" font-variant="small-caps" fill="#111111">Legend</text><g transform="translate(10.0,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
+    <rect x="0" y="0" width="1129.6665" height="110" fill="url(#grad_Business_Capability_1f771ea4-b0da-4407-966c-01c988a80786)" />
     <text text-anchor="middle" style="fill:#fcfcfc" x="564.83325" y="90" textLength="1119.6665">Business Capability</text>
 </g><g transform="translate(1179.66650390625,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
-    <rect x="0" y="0" width="701.3333" height="110" fill="url(#grad_Engineering)" />
+    <rect x="0" y="0" width="701.3333" height="110" fill="url(#grad_Engineering_1f771ea4-b0da-4407-966c-01c988a80786)" />
     <text text-anchor="middle" style="fill:#fcfcfc" x="350.66666" y="90" textLength="691.3333">Engineering</text>
 </g><g transform="translate(1920.9998168945312,40)" font-family="Arial,DejaVu Sans,sans-serif" font-size="110">
-    <rect x="0" y="0" width="266.0001" height="110" fill="url(#grad_Both)" />
+    <rect x="0" y="0" width="266.0001" height="110" fill="url(#grad_Both_1f771ea4-b0da-4407-966c-01c988a80786)" />
     <text text-anchor="middle" style="fill:#fcfcfc" x="133.00005" y="90" textLength="256.0001">Both</text>
 </g></g></g></g></svg>
 </div>
@@ -994,7 +743,7 @@ viewBox="0 0 1310.0 440.0" xmlns:xlink="http://www.w3.org/1999/xlink" id="diag">
 <div class="content">
 <div class="imageblock text-center">
 <div class="content">
-<svg width="920.0" height="1000.0" viewBox="0 0 920.0 1000.0"
+<svg width="920.0" height="660.0" viewBox="0 0 920.0 660.0"
 preserveAspectRatio="xMidYMin slice"
 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <desc>https://docops.io/extension</desc>        <defs>
@@ -1030,14 +779,12 @@ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <stop class="stop3" offset="100%" stop-color="#282828"/>
         </linearGradient>
         <linearGradient id="arrowColor" x2="0%" y2="100%">
-            <stop class="stop1" offset="0%" stop-color="#9be6de"/>
-            <stop class="stop2" offset="50%" stop-color="#69d9ce"/>
-            <stop class="stop3" offset="100%" stop-color="#37cdbe"/>
+            <stop stop-color="#b8a4e2" stop-opacity="1" offset="0%"/>
+            <stop stop-color="hsl(259.0,52.3%,53.1%)" stop-opacity="1" offset="100%"/>
         </linearGradient>
         <linearGradient id="topBar" x2="0%" y2="100%">
-            <stop class="stop1" offset="0%" stop-color="#9be6de"/>
-            <stop class="stop2" offset="50%" stop-color="#69d9ce"/>
-            <stop class="stop3" offset="100%" stop-color="#37cdbe"/>
+            <stop stop-color="#b8a4e2" stop-opacity="1" offset="0%"/>
+            <stop stop-color="hsl(259.0,52.3%,53.1%)" stop-opacity="1" offset="100%"/>
         </linearGradient>
         <marker
                 id="triangle"
@@ -1052,65 +799,65 @@ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
          </marker>
          <radialGradient id="grad0" cx="50%" cy="50%" r="50%" fx="50%" fy="20%">
     <stop offset="30%" style="stop-color:#a2b0c6; stop-opacity:1" />
-    <stop offset="60%" style="stop-color:#45618E; stop-opacity:1" />
+    <stop offset="60%" style="stop-color:hsl(217.0,34.6%,41.4%); stop-opacity:1" />
 </radialGradient>
 <linearGradient id="headerTimeline0" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#a2b0c6"/>
-    <stop class="stop2" offset="50%" stop-color="#7388aa"/>
-    <stop class="stop3" offset="100%" stop-color="#45618E"/>
+    <stop stop-color="#a2b0c6" stop-opacity="1" offset="0%"/>
+    <stop stop-color="hsl(217.0,34.6%,41.4%)" stop-opacity="1" offset="100%"/>
 </linearGradient> <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="20%">
     <stop offset="30%" style="stop-color:#d19d9d; stop-opacity:1" />
-    <stop offset="60%" style="stop-color:#A43B3B; stop-opacity:1" />
+    <stop offset="60%" style="stop-color:hsl(0.0,47.1%,43.7%); stop-opacity:1" />
 </radialGradient>
 <linearGradient id="headerTimeline1" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#d19d9d"/>
-    <stop class="stop2" offset="50%" stop-color="#ba6c6c"/>
-    <stop class="stop3" offset="100%" stop-color="#A43B3B"/>
+    <stop stop-color="#d19d9d" stop-opacity="1" offset="0%"/>
+    <stop stop-color="hsl(0.0,47.1%,43.7%)" stop-opacity="1" offset="100%"/>
 </linearGradient> <radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="20%">
     <stop offset="30%" style="stop-color:#ffe9b9; stop-opacity:1" />
-    <stop offset="60%" style="stop-color:#FFD373; stop-opacity:1" />
+    <stop offset="60%" style="stop-color:hsl(41.0,100.0%,72.5%); stop-opacity:1" />
 </radialGradient>
 <linearGradient id="headerTimeline2" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#ffe9b9"/>
-    <stop class="stop2" offset="50%" stop-color="#ffde96"/>
-    <stop class="stop3" offset="100%" stop-color="#FFD373"/>
+    <stop stop-color="#ffe9b9" stop-opacity="1" offset="0%"/>
+    <stop stop-color="hsl(41.0,100.0%,72.5%)" stop-opacity="1" offset="100%"/>
 </linearGradient> <radialGradient id="grad3" cx="50%" cy="50%" r="50%" fx="50%" fy="20%">
     <stop offset="30%" style="stop-color:#fbf2bc; stop-opacity:1" />
-    <stop offset="60%" style="stop-color:#F7E67A; stop-opacity:1" />
+    <stop offset="60%" style="stop-color:hsl(52.0,88.7%,72.4%); stop-opacity:1" />
 </radialGradient>
 <linearGradient id="headerTimeline3" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#fbf2bc"/>
-    <stop class="stop2" offset="50%" stop-color="#f9ec9b"/>
-    <stop class="stop3" offset="100%" stop-color="#F7E67A"/>
+    <stop stop-color="#fbf2bc" stop-opacity="1" offset="0%"/>
+    <stop stop-color="hsl(52.0,88.7%,72.4%)" stop-opacity="1" offset="100%"/>
 </linearGradient> <radialGradient id="grad4" cx="50%" cy="50%" r="50%" fx="50%" fy="20%">
     <stop offset="30%" style="stop-color:#80ffc7; stop-opacity:1" />
-    <stop offset="60%" style="stop-color:#01FF90; stop-opacity:1" />
+    <stop offset="60%" style="stop-color:hsl(154.0,100.0%,50.2%); stop-opacity:1" />
 </radialGradient>
 <linearGradient id="headerTimeline4" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#80ffc7"/>
-    <stop class="stop2" offset="50%" stop-color="#40ffab"/>
-    <stop class="stop3" offset="100%" stop-color="#01FF90"/>
+    <stop stop-color="#80ffc7" stop-opacity="1" offset="0%"/>
+    <stop stop-color="hsl(154.0,100.0%,50.2%)" stop-opacity="1" offset="100%"/>
 </linearGradient> <radialGradient id="grad5" cx="50%" cy="50%" r="50%" fx="50%" fy="20%">
     <stop offset="30%" style="stop-color:#ffb79a; stop-opacity:1" />
-    <stop offset="60%" style="stop-color:#FF6F36; stop-opacity:1" />
+    <stop offset="60%" style="stop-color:hsl(17.0,100.0%,60.6%); stop-opacity:1" />
 </radialGradient>
 <linearGradient id="headerTimeline5" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#ffb79a"/>
-    <stop class="stop2" offset="50%" stop-color="#ff9368"/>
-    <stop class="stop3" offset="100%" stop-color="#FF6F36"/>
+    <stop stop-color="#ffb79a" stop-opacity="1" offset="0%"/>
+    <stop stop-color="hsl(17.0,100.0%,60.6%)" stop-opacity="1" offset="100%"/>
 </linearGradient><radialGradient id="outlineGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="20%">
-            <stop offset="30%" style="stop-color:#9be6de; stop-opacity:1" />
-            <stop offset="60%" style="stop-color:#37cdbe; stop-opacity:1" />
+            <stop offset="30%" style="stop-color:#b8a4e2; stop-opacity:1" />
+            <stop offset="60%" style="stop-color:#7149c6; stop-opacity:1" />
         </radialGradient>
         <style>
     .edge { filter: drop-shadow(0 2mm 2mm #66557c); }
     .cricleedge { filter: drop-shadow(0 2mm 2mm #a899bd); }
-    .odd { font-size:14px; font-family: Arial, sans-serif; fill: #000000;}
-    .even { font-size:14px; font-family: Arial, sans-serif; fill: #000000;}
+    .odd { font-size:14px; font-family: Arial, Helvetica, sans-serif; fill: #000000;}
+    .even { font-size:14px; font-family: Arial, Helvetica, sans-serif; fill: #000000;}
     .rmLink { fill: #0000bb; text-decoration: underline; }
+    .main_pane { fill: #f1f5f8; }
+    .each_tm { fill: #fcfcfc; }
+    .tm_title { fill: rgba(0, 0, 0, 0.96); }
 </style>
+        <path id="vconnector" d="M135,100 v62"  stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <polygon id="ppoint" points="0,5 1.6666666666666667,2.5 0,0 5,2.5" stroke-width="7"/>
+
     </defs>
-    <rect width='100%' height='100%' fill='#fcfcfc'/><g transform="scale(1.0)"><text x="460" y="40" text-anchor="middle" style="font-size: 24px;font-family: Arial, sans-serif; font-variant:small-caps" class="edge" fill="#000000">title</text><g transform="translate(0,24) scale(1.0)">    <g transform="translate(30,500)">
+    <rect fill='#fcfcfc' width='100%' height='100%'/><g transform="scale(1.0)"><text x="460" y="30" text-anchor="middle" style="font-size: 24px;font-family: Arial, Helvetica, sans-serif; font-variant:small-caps" class="edge" fill="#000000" >Demo timeline Builder by docops.io</text><g transform="translate(0,24) scale(1.0)">    <g transform="translate(30,320)">
     <path d="M0,0 h820" stroke="#aaaaaa" stroke-width="28" fill="url(#arrowColor)" class="raise"
           stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="10" y1="0" x2="820" y2="0" stroke="#fcfcfc"
@@ -1121,118 +868,130 @@ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         />
     </g>
 </g>  <g transform="translate(0,0)" class="odd">
-    <g transform="translate(125,500)">
+    <g transform="translate(125,320)">
         <circle cx="0" cy="0" r="20" fill="#fcfcfc" />
         <circle cx="0" cy="0" r="17" fill="url(#outlineGradient)" />
-        <line x1="0" x2="0" y1="-20" y2="-95" stroke="#37cdbe" stroke-width="2"/>
-            <g transform="translate(-2.5,-92),rotate(-90)">
-                <polygon points="0,5 0,0 5,2.5" fill="url(#arrowColor)" stroke-width="3" stroke="url(#arrowColor)"/>
-            </g>
+         <g transform="translate(-135,-182)">
+            <use xlink:href="#vconnector" stroke="#7149c6"/>
+        </g>
+        <g transform="translate(-3,-86),rotate(-90)">
+            <use xlink:href="#ppoint"  stroke-width="7" stroke="url(#outlineGradient)"/>
+        </g>
     </g>
-    <rect x="10" y="150" width="225" height="250" fill="#fcfcfc" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <rect x="10" y="150" width="225" height="40" fill="url(#topBar)" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <text x="125" y="175" fill='#000000' text-anchor='middle'
+    <rect x="10" y="20" width="225" height="200" fill='#fcfcfc' stroke="#7149c6" stroke-width="2" rx="5"/>
+    <rect x="10" y="20" width="225" height="40" fill="url(#topBar)" stroke="#7149c6" stroke-width="2" rx="5"/>
+    <text x="125" y="50" fill='#000000' text-anchor='middle'
               style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;font-variant: small-caps;"
               class="glass raiseText">
               July 23rd, 2023
     </text>
-    <text x="20" y="200" class="odd" ><tspan x="20" dy="14" fill='#000000'> DocOps extension Server releases a</tspan><tspan x="20" dy="14" fill='#000000'>new feature, Timeline Maker for</tspan><tspan x="20" dy="14" fill='#000000'>asciidoctorj. With a simple text</tspan><tspan x="20" dy="14" fill='#000000'>markup block you can create very</tspan><tspan x="20" dy="14" fill='#000000'>powerful timeline images. Enjoy!</tspan></text>
+    <text x="20" y="70" font-size="14px" font-family="Arial, Helvetica, sans-serif" fill='#21252B'><tspan x="20" dy="14" > DocOps extension Server</tspan><tspan x="20" dy="14" >releases a new feature,</tspan><tspan x="20" dy="14" >Timeline Maker for</tspan><tspan x="20" dy="14" >asciidoctorj. With a</tspan><tspan x="20" dy="14" >simple text markup block</tspan><tspan x="20" dy="14" >you can create very</tspan><tspan x="20" dy="14" >powerful timeline images.</tspan><tspan x="20" dy="14" >Enjoy!</tspan></text>
 </g>
     <g transform="translate(125,0)" class="even">
-    <g transform="translate(125,500)">
+    <g transform="translate(125,320)">
         <circle cx="0" cy="0" r="20" fill="#fcfcfc" />
         <circle cx="0" cy="0" r="17" fill="url(#outlineGradient)" />
-        <line x1="0" x2="0" y1="20" y2="95" stroke="#37cdbe" stroke-width="2"/>
-        <g transform="translate(2.5,92),rotate(90)">
-            <polygon points="0,5 0,0 5,2.5" fill="url(#arrowColor)" stroke-width="3" stroke="url(#arrowColor)"/>
+         <g transform="translate(-134,-80)">
+            <use xlink:href="#vconnector" stroke="#7149c6"/>
+        </g>
+        <g transform="translate(3,86),rotate(90)">
+            <use xlink:href="#ppoint"  stroke-width="7" stroke="url(#outlineGradient)"/>
         </g>
     </g>
 
-    <rect x="10" y="600" width="225" height="250" fill="#fcfcfc" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <rect x="10" y="600" width="225" height="40" fill="url(#topBar)" stroke-width="2" rx="5" />
+    <rect x="10" y="420" width="225" height="200" fill='#fcfcfc' stroke="#7149c6" stroke-width="2" rx="5"/>
+    <rect x="10" y="420" width="225" height="40" fill="url(#topBar)" stroke-width="2" rx="5" />
 
-    <text x="125" y="625" fill='#000000' text-anchor='middle'
+    <text x="125" y="450" fill='#000000' text-anchor='middle'
               style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;font-variant: small-caps;"
               class="glass raiseText">
               August 15th, 2023
     </text>
-    <text x="20" y="650" class="even" ><tspan x="20" dy="14" fill='#000000'> <a xlink:href="https://DocOps.io" target="_blank" class="rmLink">docops.io</a> revamping website</tspan><tspan x="20" dy="14" fill='#000000'>with updated documentation. All our</tspan><tspan x="20" dy="14" fill='#000000'>work will be updated with latest</tspan><tspan x="20" dy="14" fill='#000000'>documentation for Panels, for</tspan><tspan x="20" dy="14" fill='#000000'>extension server are the various</tspan><tspan x="20" dy="14" fill='#000000'>plug-ing for asciidoctorj.</tspan></text>
+    <text x="20" y="470" font-size="14px" font-family="Arial, Helvetica, sans-serif" fill='#21252B'><tspan x="20" dy="14" > <a xlink:href="https://DocOps.io" target="_blank" style="fill: blue; text-decoration: underline;">docops.io</a> revamping</tspan><tspan x="20" dy="14" >website with updated</tspan><tspan x="20" dy="14" >documentation. All our</tspan><tspan x="20" dy="14" >work will be updated with</tspan><tspan x="20" dy="14" >latest documentation for</tspan><tspan x="20" dy="14" >Panels, for extension</tspan><tspan x="20" dy="14" >server are the various</tspan><tspan x="20" dy="14" >plug-ing for</tspan><tspan x="20" dy="14" >asciidoctorj.</tspan></text>
 </g>
   <g transform="translate(250,0)" class="odd">
-    <g transform="translate(125,500)">
+    <g transform="translate(125,320)">
         <circle cx="0" cy="0" r="20" fill="#fcfcfc" />
         <circle cx="0" cy="0" r="17" fill="url(#outlineGradient)" />
-        <line x1="0" x2="0" y1="-20" y2="-95" stroke="#37cdbe" stroke-width="2"/>
-            <g transform="translate(-2.5,-92),rotate(-90)">
-                <polygon points="0,5 0,0 5,2.5" fill="url(#arrowColor)" stroke-width="3" stroke="url(#arrowColor)"/>
-            </g>
+         <g transform="translate(-135,-182)">
+            <use xlink:href="#vconnector" stroke="#7149c6"/>
+        </g>
+        <g transform="translate(-3,-86),rotate(-90)">
+            <use xlink:href="#ppoint"  stroke-width="7" stroke="url(#outlineGradient)"/>
+        </g>
     </g>
-    <rect x="10" y="150" width="225" height="250" fill="#fcfcfc" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <rect x="10" y="150" width="225" height="40" fill="url(#topBar)" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <text x="125" y="175" fill='#000000' text-anchor='middle'
+    <rect x="10" y="20" width="225" height="200" fill='#fcfcfc' stroke="#7149c6" stroke-width="2" rx="5"/>
+    <rect x="10" y="20" width="225" height="40" fill="url(#topBar)" stroke="#7149c6" stroke-width="2" rx="5"/>
+    <text x="125" y="50" fill='#000000' text-anchor='middle'
               style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;font-variant: small-caps;"
               class="glass raiseText">
               September 1st, 2023
     </text>
-    <text x="20" y="200" class="odd" ><tspan x="20" dy="14" fill='#000000'> DocOps.io will begin work on</tspan><tspan x="20" dy="14" fill='#000000'>revamping the asciidoctorj</tspan><tspan x="20" dy="14" fill='#000000'>converter. with the asciidoctorj</tspan><tspan x="20" dy="14" fill='#000000'>3.0.0 release coming we will need to</tspan><tspan x="20" dy="14" fill='#000000'>migrate custom plug-ins to the new</tspan><tspan x="20" dy="14" fill='#000000'>version of the extensions as they</tspan><tspan x="20" dy="14" fill='#000000'>will bring breaking changes.</tspan></text>
+    <text x="20" y="70" font-size="14px" font-family="Arial, Helvetica, sans-serif" fill='#21252B'><tspan x="20" dy="14" > DocOps.io will begin</tspan><tspan x="20" dy="14" >work on revamping the</tspan><tspan x="20" dy="14" >asciidoctorj converter.</tspan><tspan x="20" dy="14" >with the asciidoctorj</tspan><tspan x="20" dy="14" >3.0.0 release coming we</tspan><tspan x="20" dy="14" >will need to migrate</tspan><tspan x="20" dy="14" >custom plug-ins to the</tspan><tspan x="20" dy="14" >new version of the</tspan><tspan x="20" dy="14" >extensions as they will</tspan><tspan x="20" dy="14" >bring breaking changes.</tspan></text>
 </g>
     <g transform="translate(375,0)" class="even">
-    <g transform="translate(125,500)">
+    <g transform="translate(125,320)">
         <circle cx="0" cy="0" r="20" fill="#fcfcfc" />
         <circle cx="0" cy="0" r="17" fill="url(#outlineGradient)" />
-        <line x1="0" x2="0" y1="20" y2="95" stroke="#37cdbe" stroke-width="2"/>
-        <g transform="translate(2.5,92),rotate(90)">
-            <polygon points="0,5 0,0 5,2.5" fill="url(#arrowColor)" stroke-width="3" stroke="url(#arrowColor)"/>
+         <g transform="translate(-134,-80)">
+            <use xlink:href="#vconnector" stroke="#7149c6"/>
+        </g>
+        <g transform="translate(3,86),rotate(90)">
+            <use xlink:href="#ppoint"  stroke-width="7" stroke="url(#outlineGradient)"/>
         </g>
     </g>
 
-    <rect x="10" y="600" width="225" height="250" fill="#fcfcfc" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <rect x="10" y="600" width="225" height="40" fill="url(#topBar)" stroke-width="2" rx="5" />
+    <rect x="10" y="420" width="225" height="200" fill='#fcfcfc' stroke="#7149c6" stroke-width="2" rx="5"/>
+    <rect x="10" y="420" width="225" height="40" fill="url(#topBar)" stroke-width="2" rx="5" />
 
-    <text x="125" y="625" fill='#000000' text-anchor='middle'
+    <text x="125" y="450" fill='#000000' text-anchor='middle'
               style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;font-variant: small-caps;"
               class="glass raiseText">
               October 18th, 2023
     </text>
-    <text x="20" y="650" class="even" ><tspan x="20" dy="14" fill='#000000'> Time to reimagine the future. Is it</tspan><tspan x="20" dy="14" fill='#000000'>possible to write a lexer parser for</tspan><tspan x="20" dy="14" fill='#000000'>custom language?</tspan></text>
+    <text x="20" y="470" font-size="14px" font-family="Arial, Helvetica, sans-serif" fill='#21252B'><tspan x="20" dy="14" > Time to reimagine the</tspan><tspan x="20" dy="14" >future. Is it possible to</tspan><tspan x="20" dy="14" >write a lexer parser for</tspan><tspan x="20" dy="14" >custom language?</tspan></text>
 </g>
   <g transform="translate(500,0)" class="odd">
-    <g transform="translate(125,500)">
+    <g transform="translate(125,320)">
         <circle cx="0" cy="0" r="20" fill="#fcfcfc" />
         <circle cx="0" cy="0" r="17" fill="url(#outlineGradient)" />
-        <line x1="0" x2="0" y1="-20" y2="-95" stroke="#37cdbe" stroke-width="2"/>
-            <g transform="translate(-2.5,-92),rotate(-90)">
-                <polygon points="0,5 0,0 5,2.5" fill="url(#arrowColor)" stroke-width="3" stroke="url(#arrowColor)"/>
-            </g>
+         <g transform="translate(-135,-182)">
+            <use xlink:href="#vconnector" stroke="#7149c6"/>
+        </g>
+        <g transform="translate(-3,-86),rotate(-90)">
+            <use xlink:href="#ppoint"  stroke-width="7" stroke="url(#outlineGradient)"/>
+        </g>
     </g>
-    <rect x="10" y="150" width="225" height="250" fill="#fcfcfc" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <rect x="10" y="150" width="225" height="40" fill="url(#topBar)" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <text x="125" y="175" fill='#000000' text-anchor='middle'
+    <rect x="10" y="20" width="225" height="200" fill='#fcfcfc' stroke="#7149c6" stroke-width="2" rx="5"/>
+    <rect x="10" y="20" width="225" height="40" fill="url(#topBar)" stroke="#7149c6" stroke-width="2" rx="5"/>
+    <text x="125" y="50" fill='#000000' text-anchor='middle'
               style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;font-variant: small-caps;"
               class="glass raiseText">
               November 16th, 2023
     </text>
-    <text x="20" y="200" class="odd" ><tspan x="20" dy="14" fill='#000000'> Another year been on this earth.</tspan><tspan x="20" dy="14" fill='#000000'>Time to celebrate. Good times.</tspan></text>
+    <text x="20" y="70" font-size="14px" font-family="Arial, Helvetica, sans-serif" fill='#21252B'><tspan x="20" dy="14" > Another year been on</tspan><tspan x="20" dy="14" >this earth. Time to</tspan><tspan x="20" dy="14" >celebrate. Good times.</tspan></text>
 </g>
     <g transform="translate(625,0)" class="even">
-    <g transform="translate(125,500)">
+    <g transform="translate(125,320)">
         <circle cx="0" cy="0" r="20" fill="#fcfcfc" />
         <circle cx="0" cy="0" r="17" fill="url(#outlineGradient)" />
-        <line x1="0" x2="0" y1="20" y2="95" stroke="#37cdbe" stroke-width="2"/>
-        <g transform="translate(2.5,92),rotate(90)">
-            <polygon points="0,5 0,0 5,2.5" fill="url(#arrowColor)" stroke-width="3" stroke="url(#arrowColor)"/>
+         <g transform="translate(-134,-80)">
+            <use xlink:href="#vconnector" stroke="#7149c6"/>
+        </g>
+        <g transform="translate(3,86),rotate(90)">
+            <use xlink:href="#ppoint"  stroke-width="7" stroke="url(#outlineGradient)"/>
         </g>
     </g>
 
-    <rect x="10" y="600" width="225" height="250" fill="#fcfcfc" stroke="#37cdbe" stroke-width="2" rx="5"/>
-    <rect x="10" y="600" width="225" height="40" fill="url(#topBar)" stroke-width="2" rx="5" />
+    <rect x="10" y="420" width="225" height="200" fill='#fcfcfc' stroke="#7149c6" stroke-width="2" rx="5"/>
+    <rect x="10" y="420" width="225" height="40" fill="url(#topBar)" stroke-width="2" rx="5" />
 
-    <text x="125" y="625" fill='#000000' text-anchor='middle'
+    <text x="125" y="450" fill='#000000' text-anchor='middle'
               style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;font-variant: small-caps;"
               class="glass raiseText">
               December 11th, 2023
     </text>
-    <text x="20" y="650" class="even" ><tspan x="20" dy="14" fill='#000000'> Annual start of vacation, time to</tspan><tspan x="20" dy="14" fill='#000000'>relax and plugin the controller.</tspan></text>
+    <text x="20" y="470" font-size="14px" font-family="Arial, Helvetica, sans-serif" fill='#21252B'><tspan x="20" dy="14" > Annual start of</tspan><tspan x="20" dy="14" >vacation, time to relax</tspan><tspan x="20" dy="14" >and plugin the</tspan><tspan x="20" dy="14" >controller.</tspan></text>
 </g>
 </g></g></svg>
 </div>
@@ -1248,168 +1007,167 @@ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <div class="content">
 <div class="imageblock text-center">
 <div class="content">
-<svg id="db9193c86-8e0a-42fe-8112-4bf0fcf850fa" xmlns="http://www.w3.org/2000/svg" width="1045.0" height="190.4"
-     viewBox="0 0 1045.0 190.4"
+<svg id="d99940a21-9c89-4ae5-a80b-fa1a85f00f9b" xmlns="http://www.w3.org/2000/svg" width="1045.0" height="166.0"
+     viewBox="0 0 1045.0 166.0"
      preserveAspectRatio="xMidYMin slice"
      xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-    <marker id="arrowhead1" markerWidth="2" markerHeight="5" refX="0" refY="1.5" orient="auto">
-    <polygon points="0 0, 1 1.5, 0 3" fill="#9394a5"/>
-</marker>
+            <defs>
+            <linearGradient id="bevelGradient99940a21-9c89-4ae5-a80b-fa1a85f00f9b" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop class="stop3" offset="0%" stop-color="#f1f2f8" stop-opacity="1"/>
+            <stop class="stop2" offset="50%" stop-color="#eaebf4" stop-opacity="1"/>
+            <stop class="stop1" offset="100%" stop-color="#e4e5f1" stop-opacity="1"/>
+            </linearGradient>
 
-   <linearGradient id="backgroundScore" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#f1f2f8"/>
-    <stop class="stop2" offset="50%" stop-color="#eaebf4"/>
-    <stop class="stop3" offset="100%" stop-color="#e4e5f1"/>
-    </linearGradient>
+            <filter id="bevelFilter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+                <feOffset in="blur" dx="2" dy="2" result="offsetBlur"/>
+                <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.75" specularExponent="20"
+                                    lighting-color="#bbbbbb" result="specOut">
+                    <fePointLight x="5000" y="-5000" z="20000"/>
+                </feSpecularLighting>
+                <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
+                <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+            </filter>
+            <marker id="arrowhead1" markerWidth="2" markerHeight="5" refX="0" refY="1.5" orient="auto">
+            <polygon points="0 0, 1 1.5, 0 3" fill="#9394a5"/>
+        </marker>
 
+            <linearGradient x2="0%" y2="100%" id="99940a21-9c89-4ae5-a80b-fa1a85f00f9b_arrowColor">
+    <stop stop-color="#c9c9d2" stop-opacity="1" offset="0%"/>
+    <stop stop-color="hsl(237.0,9.1%,61.2%)" stop-opacity="1" offset="100%"/>
+</linearGradient>
+            <linearGradient id="leftBullet" x2="0%" y2="100%">
+                <stop class="stop1" offset="0%" stop-color="#f9b890"/>
+                <stop class="stop2" offset="50%" stop-color="#f69458"/>
+                <stop class="stop3" offset="100%" stop-color="#F37121"/>
+            </linearGradient>
+            <linearGradient id="rightBullet" x2="0%" y2="100%">
+                <stop class="stop1" offset="0%" stop-color="#82b09d"/>
+                <stop class="stop2" offset="50%" stop-color="#44896c"/>
+                <stop class="stop3" offset="100%" stop-color="#06623B"/>
+            </linearGradient>
 
-   <linearGradient id="arrowColor" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#c9c9d2"/>
-    <stop class="stop2" offset="50%" stop-color="#aeaebb"/>
-    <stop class="stop3" offset="100%" stop-color="#9394a5"/>
-    </linearGradient>
-
-
-   <linearGradient id="leftScoreBox" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#e9b57f"/>
-    <stop class="stop2" offset="50%" stop-color="#de903f"/>
-    <stop class="stop3" offset="100%" stop-color="#D36B00"/>
-    </linearGradient>
-
-
-   <linearGradient id="rightScoreBox" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#aecdac"/>
-    <stop class="stop2" offset="50%" stop-color="#85b482"/>
-    <stop class="stop3" offset="100%" stop-color="#5D9C59"/>
-    </linearGradient>
-
-
-   <linearGradient id="rightItem" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#f5f1ea"/>
-    <stop class="stop2" offset="50%" stop-color="#f0eadf"/>
-    <stop class="stop3" offset="100%" stop-color="#EBE3D5"/>
-    </linearGradient>
-
-
-   <linearGradient id="leftItem" x2="0%" y2="100%">
-    <stop class="stop1" offset="0%" stop-color="#f5f1ea"/>
-    <stop class="stop2" offset="50%" stop-color="#f0eadf"/>
-    <stop class="stop3" offset="100%" stop-color="#EBE3D5"/>
-    </linearGradient>
-
-    <style>
-
-#b9193c86-8e0a-42fe-8112-4bf0fcf850fa .workitem {
-        filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
-    }
- #b9193c86-8e0a-42fe-8112-4bf0fcf850fa .workitem :hover {
-        opacity: 0.5;
-        stroke-opacity: 1.7;
-        stroke-width: 3;
-        stroke: #bd5d5d;
-    }
-    .glass:after,.glass:before{content:"";display:block;position:absolute}.glass{overflow:hidden;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.7);background-image:radial-gradient(circle at center,rgba(0,167,225,.25),rgba(0,110,149,.5));box-shadow:0 5px 10px rgba(0,0,0,.75),inset 0 0 0 2px rgba(0,0,0,.3),inset 0 -6px 6px -3px rgba(0,129,174,.2);position:relative}.glass:after{background:rgba(0,167,225,.2);z-index:0;height:100%;width:100%;top:0;left:0;backdrop-filter:blur(3px) saturate(400%);-webkit-backdrop-filter:blur(3px) saturate(400%)}.glass:before{width:calc(100% - 4px);height:35px;background-image:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));top:2px;left:2px;border-radius:30px 30px 200px 200px;opacity:.7}.glass:hover{text-shadow:0 1px 2px rgba(0,0,0,.9)}.glass:hover:before{opacity:1}.glass:active{text-shadow:0 0 2px rgba(0,0,0,.9);box-shadow:0 3px 8px rgba(0,0,0,.75),inset 0 0 0 2px rgba(0,0,0,.3),inset 0 -6px 6px -3px rgba(0,129,174,.2)}.glass:active:before{height:25px}.raise {pointer-events: bounding-box;opacity: 1;filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));}.raise:hover {stroke: gold;stroke-width: 3px; opacity: 0.9;} .raiseText {pointer-events: bounding-box; opacity: 1; filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4)); }
-    .left_b9193c86-8e0a-42fe-8112-4bf0fcf850fa {
-        fill: url(#leftItem);
-    }
-    .right_b9193c86-8e0a-42fe-8112-4bf0fcf850fa {
-        fill: url(#rightItem);
-    }
-    </style>
-    <script>
-        var reveal = function () {
-            var elems = document.querySelectorAll('#db9193c86-8e0a-42fe-8112-4bf0fcf850fa [display="none"]');
-            if(elems.length > 0) {
-                var item = elems[0];
-                item.setAttribute("display", "block");
-            }
+<script>
+    var reveal = function () {
+        var elems = document.querySelectorAll('#d99940a21-9c89-4ae5-a80b-fa1a85f00f9b [display="none"]');
+        if(elems.length > 0) {
+            var item = elems[0];
+            item.setAttribute("display", "block");
         }
-    </script>
-    </defs>
-    <g transform='scale(1.0)'><path d="M 0 16.0 A 16.0 16.0 0 0 1 16.0 0 L 1029.0 0 A 16.0 16.0 0 0 1 1045.0 16.0 L 1045.0 174.4 A 16.0 16.0 0 0 1 1029.0 190.4 L 16.0 190.4 A 16.0 16.0 0 0 1 0 174.4 Z"
-fill="#fcfcfc" stroke="#5b5b5b"  /><text x="522.5" y="20" style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 12px; fill: #484b6a; letter-spacing: normal;font-weight: bold;font-variant: small-caps;" class="raiseText">Initiative</text>
-<text x="255" y="40" style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 12px; fill: #484b6a; letter-spacing: normal;font-weight: bold;font-variant: small-caps;" class="raiseText">Journey Begins with</text>
-<text x="755.5" y="40" style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 12px; fill: #484b6a; letter-spacing: normal;font-weight: bold;font-variant: small-caps;" class="raiseText" >Outcomes Since</text>
-<g transform="translate(480,25)" class="raiseText">
+    }
+</script>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#bevelGradient99940a21-9c89-4ae5-a80b-fa1a85f00f9b)" filter="url(#bevelFilter)"/><g transform='scale(1.0)'><g transform="translate(490,25)" >
     <line x1="10" x2="50" y1="10" y2="10" stroke="#9394a5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
     <g transform="translate(50,7.5)">
-        <polygon points="0,5 1.6666666666666667,2.5 0,0 5,2.5" stroke="url(#arrowColor)" stroke-width="3"
-                 fill="url(#arrowColor)"/>
+        <polygon points="0,5 1.6666666666666667,2.5 0,0 5,2.5" stroke="url(#99940a21-9c89-4ae5-a80b-fa1a85f00f9b_arrowColor)" stroke-width="3"
+                 fill="url(#99940a21-9c89-4ae5-a80b-fa1a85f00f9b_arrowColor)"/>
     </g>
-</g><g transform="translate(10, 50)">
-<path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="left_b9193c86-8e0a-42fe-8112-4bf0fcf850fa">
-<title>Host API versioning</title>
-</path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#leftScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">A</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps;fill:#111111;">API Versioning</tspan>
+</g>
+
+    <g transform="translate(10, 50.0)">
+
+<g transform="translate(0, 5)" display="block">
+    <svg height="15" width="15" viewBox="0 0 45 45">
+        <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#leftBullet)"/>
+    </svg>
+</g>
+
+        <text x="15" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+            <tspan x="20" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> API Versioning</tspan>
+        </text>
+        <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+    </g>
+    <g transform="translate(10, 79.0)">
+
+<g transform="translate(0, 5)" display="block">
+    <svg height="15" width="15" viewBox="0 0 45 45">
+        <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#leftBullet)"/>
+    </svg>
+</g>
+
+        <text x="15" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+            <tspan x="20" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> Network Switch</tspan>
+        </text>
+        <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+    </g>
+    <g transform="translate(10, 108.0)">
+
+<g transform="translate(0, 5)" display="block">
+    <svg height="15" width="15" viewBox="0 0 45 45">
+        <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#leftBullet)"/>
+    </svg>
+</g>
+
+        <text x="15" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+            <tspan x="20" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> MFA</tspan>
+        </text>
+        <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+    </g>
+    <g transform="translate(10, 137.0)">
+
+<g transform="translate(0, 5)" display="block">
+    <svg height="15" width="15" viewBox="0 0 45 45">
+        <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#leftBullet)"/>
+    </svg>
+</g>
+
+        <text x="15" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+            <tspan x="20" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> Product Elimination - from system</tspan>
+        </text>
+        <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+    </g><g transform="translate(530, 50.0)" display="block">
+
+        <g transform="translate(0, 5)" display="block">
+            <svg height="15" width="15" viewBox="0 0 45 45">
+                <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#rightBullet)"/>
+            </svg>
+        </g>
+
+    <text x="30" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+        <tspan x="25" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> API Versioning changes with backwards compatibility</tspan>
     </text>
-</g><g transform="translate(10, 85)">
-<path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="left_b9193c86-8e0a-42fe-8112-4bf0fcf850fa">
-<title>Migrate IBM Websphere to Liberty Server with RHEL 8 and JSESSION ID fix with Application cache busting and versioning</title>
-</path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#leftScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">N</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps;fill:#111111;">Network Switch</tspan>
+    <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+</g><g transform="translate(530, 79.0)" display="block">
+
+        <g transform="translate(0, 5)" display="block">
+            <svg height="15" width="15" viewBox="0 0 45 45">
+                <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#rightBullet)"/>
+            </svg>
+        </g>
+
+    <text x="30" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+        <tspan x="25" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> Network Mark-In/Mark-Out Servers</tspan>
     </text>
-</g><g transform="translate(10, 120)">
-<path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="left_b9193c86-8e0a-42fe-8112-4bf0fcf850fa">
-<title>Enabling single signon from server sign-in page</title>
-</path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#leftScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">M</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps;fill:#111111;">MFA</tspan>
+    <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+</g><g transform="translate(530, 108.0)" display="block">
+
+        <g transform="translate(0, 5)" display="block">
+            <svg height="15" width="15" viewBox="0 0 45 45">
+                <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#rightBullet)"/>
+            </svg>
+        </g>
+
+    <text x="30" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+        <tspan x="25" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> Phased Rollout, Milestones and Release Candidate</tspan>
     </text>
-</g><g transform="translate(10, 155)">
-<path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="left_b9193c86-8e0a-42fe-8112-4bf0fcf850fa">
-<title></title>
-</path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#leftScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">P</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps;fill:#111111;">Product Elimination - from system</tspan>
+    <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+</g><g transform="translate(530, 137.0)" display="block">
+
+        <g transform="translate(0, 5)" display="block">
+            <svg height="15" width="15" viewBox="0 0 45 45">
+                <polygon points="23 35 9 43 11 27 0 16 16 14 23 0 29 14 45 16 34 27 36 43" fill="url(#rightBullet)"/>
+            </svg>
+        </g>
+
+    <text x="30" y="7" style="font-family: Arial, Helvetica, sans-serif;  font-size: 12px;" >
+        <tspan x="25" dy="12" style="fill:#111111;font-family: Arial, Helvetica, sans-serif;"> Software toggle to Enable/Disable OAuth Server</tspan>
     </text>
-</g><g transform="translate(525, 50)" display="block">
-    <path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="right_b9193c86-8e0a-42fe-8112-4bf0fcf850fa" >
-    <title></title>
-    </path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#rightScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">A</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps; fill:#111111;">API Versioning changes with backwards compatibility</tspan>
-    </text>
-</g><g transform="translate(525, 85)" display="block">
-    <path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="right_b9193c86-8e0a-42fe-8112-4bf0fcf850fa" >
-    <title></title>
-    </path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#rightScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">N</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps; fill:#111111;">Network Mark-In/Mark-Out Servers</tspan>
-    </text>
-</g><g transform="translate(525, 120)" display="block">
-    <path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="right_b9193c86-8e0a-42fe-8112-4bf0fcf850fa" >
-    <title></title>
-    </path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#rightScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">P</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps; fill:#111111;">Phased Rollout, Milestones and Release Candidate</tspan>
-    </text>
-</g><g transform="translate(525, 155)" display="block">
-    <path d="M 0 12.0 A 12.0 12.0 0 0 1 12.0 0 L 488.0 0 A 12.0 12.0 0 0 1 500.0 12.0 L 500.0 18.0 A 12.0 12.0 0 0 1 488.0 30.0 L 12.0 30.0 A 12.0 12.0 0 0 1 0 18.0 Z" class="right_b9193c86-8e0a-42fe-8112-4bf0fcf850fa" >
-    <title></title>
-    </path>
-    <rect x="5" y="5" height="20" width="20" fill="url(#rightScoreBox)" rx="5" ry="5"/>
-    <text x="11" y="19" fill="#efefef" style="font-family: arial;  font-size: 12px; font-weight:bold;">S</text>
-    <text x="30" y="7" style="font-family: arial;  font-size: 12px;" class="raiseText">
-        <tspan x="30" dy="12" style="font-variant: small-caps; fill:#111111;">Software toggle to Enable/Disable OAuth Server</tspan>
-    </text>
-</g></g></svg>
+    <line x1="10" x2="460" y1="24.0" y2="24.0" stroke="#21252B" stroke-dasharray="2"/>
+</g> <text x="522.5" y="20" style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 12px; fill: #484b6a; letter-spacing: normal;font-weight: bold;" >Initiative</text>
+ <text x="255" y="40" style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 12px; fill: #484b6a; letter-spacing: normal;font-weight: bold;" >Journey Begins with</text>
+ <text x="755.5" y="40" style="font-family: Arial, Helvetica, sans-serif;  text-anchor:middle; font-size: 12px; fill: #484b6a; letter-spacing: normal;font-weight: bold;"  >Outcomes Since</text>
+<line x1="522.5" x2="522.5" y1="50" y2="156.0" stroke="#21252B" stroke-dasharray="2"/></g></svg>
 </div>
 </div>
 </div>
@@ -1424,27 +1182,6 @@ if (!hljs.initHighlighting.called) {
   ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
 }
 </script>
-<div id="slider" style="right:-342px;">
-    <div id="sidebar" onclick="FeedBack.open_panel()"><img src="data:image/png;base64,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" alt="feedback"></div>
-    <div id="fbheader">
-        <form data-hx-post="savefeedback"
-              method="post" data-hx-ext='json-enc'>
-            <h2>Contact Form</h2>
-            <p>Please provide feedback</p>
-            <label>
-                <input name="submitter" id="submitter" type="text" value="" placeholder="Your Name" required>
-            </label>
-            <h4>Document</h4>
-            <label>
-                <input id="docName" name="docName" type="text" value="/Users/steveroach/IdeaProjects/asciidoctorj-docops-panel-new/src/main/docs/connector.adoc" readonly>
-            </label>
-            <label>
-                <textarea id="message" name="message" rows="10" placeholder="Message" required></textarea>
-            </label>
-            <button>Submit</button>
-        </form>
-    </div>
-</div>
 <script>!function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=5)}([function(e,t){var n;n=function(){return this}();try{n=n||Function("return this")()||(0,eval)("this")}catch(e){"object"==typeof window&&(n=window)}e.exports=n},function(e,t,n){var o,i,r;!function(n,l){i=[],o=l(),void 0!==(r="function"==typeof o?o.apply(t,i):o)&&(e.exports=r)}(0,function(){"use strict";var e=function(e){return"getComputedStyle"in window&&"smooth"===window.getComputedStyle(e)["scroll-behavior"]};if("undefined"==typeof window||!("document"in window))return{};var t=function(t,n,o){n=n||999,o||0===o||(o=9);var i,r=function(e){i=e},l=function(){clearTimeout(i),r(0)},s=function(e){return Math.max(0,t.getTopOf(e)-o)},c=function(o,i,s){if(l(),0===i||i&&i<0||e(t.body))t.toY(o),s&&s();else{var c=t.getY(),a=Math.max(0,o)-c,u=(new Date).getTime();i=i||Math.min(Math.abs(a),n),function e(){r(setTimeout(function(){var n=Math.min(1,((new Date).getTime()-u)/i),o=Math.max(0,Math.floor(c+a*(n<.5?2*n*n:n*(4-2*n)-1)));t.toY(o),n<1&&t.getHeight()+o<t.body.scrollHeight?e():(setTimeout(l,99),s&&s())},9))}()}},a=function(e,t,n){c(s(e),t,n)},u=function(e,n,i){var r=e.getBoundingClientRect().height,l=t.getTopOf(e)+r,u=t.getHeight(),d=t.getY(),f=d+u;s(e)<d||r+o>u?a(e,n,i):l+o>f?c(l-u+o,n,i):i&&i()},d=function(e,n,o,i){c(Math.max(0,t.getTopOf(e)-t.getHeight()/2+(o||e.getBoundingClientRect().height/2)),n,i)};return{setup:function(e,t){return(0===e||e)&&(n=e),(0===t||t)&&(o=t),{defaultDuration:n,edgeOffset:o}},to:a,toY:c,intoView:u,center:d,stop:l,moving:function(){return!!i},getY:t.getY,getTopOf:t.getTopOf}},n=document.documentElement,o=function(){return window.scrollY||n.scrollTop},i=t({body:document.scrollingElement||document.body,toY:function(e){window.scrollTo(0,e)},getY:o,getHeight:function(){return window.innerHeight||n.clientHeight},getTopOf:function(e){return e.getBoundingClientRect().top+o()-n.offsetTop}});if(i.createScroller=function(e,o,i){return t({body:e,toY:function(t){e.scrollTop=t},getY:function(){return e.scrollTop},getHeight:function(){return Math.min(e.clientHeight,window.innerHeight||n.clientHeight)},getTopOf:function(e){return e.offsetTop}},o,i)},"addEventListener"in window&&!window.noZensmooth&&!e(document.body)){var r="scrollRestoration"in history;r&&(history.scrollRestoration="auto"),window.addEventListener("load",function(){r&&(setTimeout(function(){history.scrollRestoration="manual"},9),window.addEventListener("popstate",function(e){e.state&&"zenscrollY"in e.state&&i.toY(e.state.zenscrollY)},!1)),window.location.hash&&setTimeout(function(){var e=i.setup().edgeOffset;if(e){var t=document.getElementById(window.location.href.split("#")[1]);if(t){var n=Math.max(0,i.getTopOf(t)-e),o=i.getY()-n;0<=o&&o<9&&window.scrollTo(0,n)}}},9)},!1);var l=new RegExp("(^|\\s)noZensmooth(\\s|$)");window.addEventListener("click",function(e){for(var t=e.target;t&&"A"!==t.tagName;)t=t.parentNode;if(!(!t||1!==e.which||e.shiftKey||e.metaKey||e.ctrlKey||e.altKey)){if(r)try{history.replaceState({zenscrollY:i.getY()},"")}catch(e){}var n=t.getAttribute("href")||"";if(0===n.indexOf("#")&&!l.test(t.className)){var o=0,s=document.getElementById(n.substring(1));if("#"!==n){if(!s)return;o=i.getTopOf(s)}e.preventDefault();var c=function(){window.location=n},a=i.setup().edgeOffset;a&&(o=Math.max(0,o-a),c=function(){history.pushState(null,"",n)}),i.toY(o,null,c)}}},!1)}return i})},function(e,t){e.exports=function(e){function t(e,n){var r=n.appendChild(o(e));if(e.children.length){var l=i(e.isCollapsed);e.children.forEach(function(e){t(e,l)}),r.appendChild(l)}}function n(e,n){var o=i(!1);n.forEach(function(e){t(e,o)});var r=document.querySelector(e);if(null!==r)return r.firstChild&&r.removeChild(r.firstChild),r.appendChild(o)}function o(t){var n=document.createElement("li"),o=document.createElement("a");return e.listItemClass&&n.setAttribute("class",e.listItemClass),e.includeHtml&&t.childNodes.length?u.call(t.childNodes,function(e){o.appendChild(e.cloneNode(!0))}):o.textContent=t.textContent,o.setAttribute("href","#"+t.id),o.setAttribute("class",e.linkClass+p+"node-name--"+t.nodeName+p+e.extraLinkClasses),n.appendChild(o),n}function i(t){var n=document.createElement("ul"),o=e.listClass+p+e.extraListClasses;return t&&(o+=p+e.collapsibleClass,o+=p+e.isCollapsedClass),n.setAttribute("class",o),n}function r(){var t=document.documentElement.scrollTop||f.scrollTop,n=document.querySelector(e.positionFixedSelector);"auto"===e.fixedSidebarOffset&&(e.fixedSidebarOffset=document.querySelector(e.tocSelector).offsetTop),t>e.fixedSidebarOffset?-1===n.className.indexOf(e.positionFixedClass)&&(n.className+=p+e.positionFixedClass):n.className=n.className.split(p+e.positionFixedClass).join("")}function l(t){var n=document.documentElement.scrollTop||f.scrollTop;e.positionFixedSelector&&r();var o,i=t;if(m&&null!==document.querySelector(e.tocSelector)&&i.length>0){d.call(i,function(t,r){if(t.offsetTop>n+e.headingsOffset+10){return o=i[0===r?r:r-1],!0}if(r===i.length-1)return o=i[i.length-1],!0});var l=document.querySelector(e.tocSelector).querySelectorAll("."+e.linkClass);u.call(l,function(t){t.className=t.className.split(p+e.activeLinkClass).join("")});var c=document.querySelector(e.tocSelector).querySelector("."+e.linkClass+".node-name--"+o.nodeName+'[href="#'+o.id+'"]');c.className+=p+e.activeLinkClass;var a=document.querySelector(e.tocSelector).querySelectorAll("."+e.listClass+"."+e.collapsibleClass);u.call(a,function(t){var n=p+e.isCollapsedClass;-1===t.className.indexOf(n)&&(t.className+=p+e.isCollapsedClass)}),c.nextSibling&&(c.nextSibling.className=c.nextSibling.className.split(p+e.isCollapsedClass).join("")),s(c.parentNode.parentNode)}}function s(t){return-1!==t.className.indexOf(e.collapsibleClass)?(t.className=t.className.split(p+e.isCollapsedClass).join(""),s(t.parentNode.parentNode)):t}function c(t){var n=t.target||t.srcElement;"string"==typeof n.className&&-1!==n.className.indexOf(e.linkClass)&&(m=!1)}function a(){m=!0}var u=[].forEach,d=[].some,f=document.body,m=!0,p=" ";return{enableTocAnimation:a,disableTocAnimation:c,render:n,updateToc:l}}},function(e,t){e.exports={tocSelector:".js-toc",contentSelector:".js-toc-content",headingSelector:"h1, h2, h3",ignoreSelector:".js-toc-ignore",linkClass:"toc-link",extraLinkClasses:"",activeLinkClass:"is-active-link",listClass:"toc-list",extraListClasses:"",isCollapsedClass:"is-collapsed",collapsibleClass:"is-collapsible",listItemClass:"toc-list-item",collapseDepth:0,smoothScroll:!0,smoothScrollDuration:420,scrollEndCallback:function(e){},headingsOffset:0,throttleTimeout:50,positionFixedSelector:null,positionFixedClass:"is-position-fixed",fixedSidebarOffset:"auto",includeHtml:!1}},function(e,t){e.exports=function(e){function t(e){return e[e.length-1]}function n(e){return+e.nodeName.split("H").join("")}function o(t){var o={id:t.id,children:[],nodeName:t.nodeName,headingLevel:n(t),textContent:t.textContent.trim()};return e.includeHtml&&(o.childNodes=t.childNodes),o}function i(i,r){for(var l=o(i),s=n(i),c=r,a=t(c),u=a?a.headingLevel:0,d=s-u;d>0;)a=t(c),a&&void 0!==a.children&&(c=a.children),d--;return s>=e.collapseDepth&&(l.isCollapsed=!0),c.push(l),c}function r(t,n){var o=n;e.ignoreSelector&&(o=n.split(",").map(function(t){return t.trim()+":not("+e.ignoreSelector+")"}));try{return document.querySelector(t).querySelectorAll(o)}catch(e){return console.warn("Element not found: "+t),null}}function l(e){return s.call(e,function(e,t){return i(o(t),e.nest),e},{nest:[]})}var s=[].reduce;return{nestHeadingsArray:l,selectHeadings:r}}},function(e,t,n){(function(o){var i,r,l;!function(n,o){r=[],i=o(n),void 0!==(l="function"==typeof i?i.apply(t,r):i)&&(e.exports=l)}(void 0!==o?o:this.window||this.global,function(e){"use strict";function t(){for(var e={},t=0;t<arguments.length;t++){var n=arguments[t];for(var o in n)m.call(n,o)&&(e[o]=n[o])}return e}function o(e,t,n){t||(t=250);var o,i;return function(){var r=n||this,l=+new Date,s=arguments;o&&l<o+t?(clearTimeout(i),i=setTimeout(function(){o=l,e.apply(r,s)},t)):(o=l,e.apply(r,s))}}var i,r,l=n(3),s={},c={},a=n(2),u=n(4);if("undefined"!=typeof window){var d,f=!!e.document.querySelector&&!!e.addEventListener,m=Object.prototype.hasOwnProperty;return c.destroy=function(){try{document.querySelector(s.tocSelector).innerHTML=""}catch(e){console.warn("Element not found: "+s.tocSelector)}document.removeEventListener("scroll",this._scrollListener,!1),document.removeEventListener("resize",this._scrollListener,!1),i&&document.removeEventListener("click",this._clickListener,!1)},c.init=function(e){if(f&&(s=t(l,e||{}),this.options=s,this.state={},s.smoothScroll&&(c.zenscroll=n(1),c.zenscroll.setup(s.smoothScrollDuration)),i=a(s),r=u(s),this._buildHtml=i,this._parseContent=r,c.destroy(),null!==(d=r.selectHeadings(s.contentSelector,s.headingSelector)))){var m=r.nestHeadingsArray(d),p=m.nest;return i.render(s.tocSelector,p),this._scrollListener=o(function(e){i.updateToc(d);var t=e&&e.target&&e.target.scrollingElement&&0===e.target.scrollingElement.scrollTop;(e&&0===e.eventPhase||t)&&(i.enableTocAnimation(),i.updateToc(d),s.scrollEndCallback&&s.scrollEndCallback(e))},s.throttleTimeout),this._scrollListener(),document.addEventListener("scroll",this._scrollListener,!1),document.addEventListener("resize",this._scrollListener,!1),this._clickListener=o(function(e){s.smoothScroll&&i.disableTocAnimation(e),i.updateToc(d)},s.throttleTimeout),document.addEventListener("click",this._clickListener,!1),this}},c.refresh=function(e){c.destroy(),c.init(e||this.options)},e.tocbot=c,c}})}).call(t,n(0))}]);</script>
 <script>
     /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
