@@ -3,11 +3,7 @@ package io.docops.asciidoctorj.extension.panels
 import org.asciidoctor.ast.Block
 import org.asciidoctor.ast.ContentModel
 import org.asciidoctor.ast.StructuralNode
-import org.asciidoctor.extension.BlockProcessor
-import org.asciidoctor.extension.Contexts
-import org.asciidoctor.extension.Name
-import org.asciidoctor.extension.PositionalAttributes
-import org.asciidoctor.extension.Reader
+import org.asciidoctor.extension.*
 import org.asciidoctor.log.LogRecord
 import org.asciidoctor.log.Severity
 import java.net.URI
@@ -62,7 +58,8 @@ class DocOpsBlockProcessor: BlockProcessor()  {
                     val iopts = "format=png,opts=inline,align='$role'"
                     """image::$webserver/api/docops/png?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&backend=$backend&filename=docops.png[$iopts]"""
                 } else {
-                    """image::$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&backend=$backend&filename=docops.svg[$opts]"""
+                    val link = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&backend=$backend&filename=docops.svg"""
+                    """image::$link[$opts,link=$link,window=_blank,opts=nofollow]"""
                 }
                 if(localDebug) {
                     println(url)
