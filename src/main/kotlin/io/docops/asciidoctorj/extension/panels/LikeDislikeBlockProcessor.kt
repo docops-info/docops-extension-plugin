@@ -11,7 +11,7 @@ class LikeDislikeBlockProcessor : BlockMacroProcessor() {
         // Only support HTML backend
         val backend = parent.document.getAttribute("backend") as String
         if (backend != "html5") {
-            return createBlock(parent, "paragraph", "Like/Dislike feature is only supported in HTML backend")
+            return createBlock(parent, "paragraph", "")
         }
 
         // Get document information
