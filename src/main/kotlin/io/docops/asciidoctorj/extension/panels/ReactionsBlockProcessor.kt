@@ -4,7 +4,7 @@ import org.asciidoctor.ast.StructuralNode
 import org.asciidoctor.extension.BlockMacroProcessor
 import org.asciidoctor.extension.Name
 
-@Name("likeDislike")
+@Name("reactions")
 class ReactionsBlockProcessor : BlockMacroProcessor() {
 
     override fun process(parent: StructuralNode, target: String, attributes: Map<String, Any>): StructuralNode {
