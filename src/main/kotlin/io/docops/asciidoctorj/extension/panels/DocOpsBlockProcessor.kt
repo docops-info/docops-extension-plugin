@@ -31,8 +31,6 @@ class DocOpsBlockProcessor: BlockProcessor()  {
 
         val id = generateId(attributes)
         val title = attributes["title"] as? String ?: "SVG Viewer"
-        val width = attributes["width"] as? String ?: "100%"
-        val height = attributes["height"] as? String ?: "400px"
         val showControls = (attributes["controls"] as? String)?.toBoolean() ?: false
         val allowCopy = (attributes["copy"] as? String)?.toBoolean() ?: true
         val allowZoom = (attributes["zoom"] as? String)?.toBoolean() ?: true
@@ -87,7 +85,7 @@ class DocOpsBlockProcessor: BlockProcessor()  {
                     image = getContentFromServer(url, parent, this, debug = localDebug)
                     val html = if (showControls) {
                         generateSvgViewerHtml(
-                            image, id, title, width, height,
+                            image, id, title,
                             showControls, allowCopy, allowZoom, allowExpand, theme, role  // Pass role
                         )
                     } else {
@@ -114,8 +112,6 @@ class DocOpsBlockProcessor: BlockProcessor()  {
         svgContent: String,
         id: String,
         title: String,
-        width: String,
-        height: String,
         showControls: Boolean,
         allowCopy: Boolean,
         allowZoom: Boolean,

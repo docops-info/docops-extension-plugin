@@ -65,15 +65,6 @@ Your content here
 |"SVG Viewer"
 |Title for the generated content
 
-|`width`
-|String
-|"100%"
-|Width of the output
-
-|`height`
-|String
-|"400px"
-|Height of the output
 
 |`controls`
 |Boolean
@@ -248,7 +239,7 @@ Start -> Process -> End
 === Interactive Dashboard
 [source,asciidoc]
 ----
-[docops,kind="dashboard",controls=true,theme="dark",width="800px"]
+[docops,kind="dashboard",controls=true,theme="dark"]
 ----
 metric1: 95%
 metric2: 87%
