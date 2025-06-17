@@ -191,4 +191,183 @@ internal class PanelsBlockProcessorTest {
             e.printStackTrace()
         }
     }
+
+    @Test
+    fun testApiDocs () {
+        val attrs = Attributes.builder()
+            .sourceHighlighter("highlightjs")
+            .allowUriRead(true)
+            .dataUri(true)
+            .copyCss(true)
+            .noFooter(true)
+            .attribute("highlightjs-theme", "idea")
+            .attribute("rouge-css", "style")
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
+            .attribute("tocbot")
+            .attribute("local-debug", "true")
+            .attribute("panel-webserver", "https://roach.gy/extension")
+            .build()
+
+        val asciidoctor = Asciidoctor.Factory.create()
+        val src = File("/Users/steveroach/IdeaProjects/apidocs/target/generated-snippets/index.adoc")
+        val build = File("docs/")
+        build.mkdirs()
+        val target = File(build, "index.html")
+        if(target.exists()) {
+            target.delete()
+        }
+        val options = Options.builder()
+            .backend("html5")
+            .toDir(build)
+            .attributes(attrs)
+            .safe(SafeMode.UNSAFE)
+            .build()
+        try {
+            asciidoctor.convertFile(src, options)
+
+            assert(target.exists())
+            val images = File(src.parent,"images")
+            images.deleteRecursively()
+            //target.deleteOnExit()
+            makePdf(src)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    @Test
+    fun testLikeDislike() {
+        val attrs = Attributes.builder()
+            .sourceHighlighter("highlightjs")
+            .allowUriRead(true)
+            .dataUri(true)
+            .copyCss(true)
+            .noFooter(true)
+            .attribute("highlightjs-theme", "dark")
+            .attribute("rouge-css", "style")
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
+            .attribute("feedback")
+            .attribute("tocbot")
+            .attribute("local-debug", "true")
+            .attribute("panel-webserver", "http://localhost:8010/extension")
+            .build()
+
+        val asciidoctor = Asciidoctor.Factory.create()
+        val src = File("src/main/docs/likeDislike.adoc")
+        val build = File("docs/")
+        build.mkdirs()
+        val target = File(build, "likeDislike.html")
+        if(target.exists()) {
+            target.delete()
+        }
+        val options = Options.builder()
+            .backend("html5")
+            .toDir(build)
+            .attributes(attrs)
+            .safe(SafeMode.UNSAFE)
+            .build()
+        try {
+            asciidoctor.convertFile(src, options)
+
+            assert(target.exists())
+            val images = File(src.parent,"images")
+            images.deleteRecursively()
+            //target.deleteOnExit()
+            makePdf(src)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    @Test
+    fun testPieChart() {
+        val attrs = Attributes.builder()
+            .sourceHighlighter("highlightjs")
+            .allowUriRead(true)
+            .dataUri(true)
+            .copyCss(true)
+            .noFooter(true)
+            .attribute("highlightjs-theme", "dark")
+            .attribute("rouge-css", "style")
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
+            .attribute("feedback")
+            .attribute("tocbot")
+            .attribute("local-debug", "true")
+            .build()
+
+        val asciidoctor = Asciidoctor.Factory.create()
+        val src = File("src/main/docs/piechart.adoc")
+        val build = File("docs/")
+        build.mkdirs()
+        val target = File(build, "piechart.html")
+        if(target.exists()) {
+            target.delete()
+        }
+        val options = Options.builder()
+            .backend("html5")
+            .toDir(build)
+            .attributes(attrs)
+            .safe(SafeMode.UNSAFE)
+            .build()
+        try {
+            asciidoctor.convertFile(src, options)
+
+            assert(target.exists())
+            val images = File(src.parent,"images")
+            if (images.exists()) {
+                images.deleteRecursively()
+            }
+            makePdf(src)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    @Test
+    fun testTreeChart() {
+        val attrs = Attributes.builder()
+            .sourceHighlighter("highlightjs")
+            .allowUriRead(true)
+            .dataUri(true)
+            .copyCss(true)
+            .noFooter(true)
+            .attribute("highlightjs-theme", "dark")
+            .attribute("rouge-css", "style")
+            .attribute("coderay-css", "class")
+            .attribute("coderay-linenums-mode", "inline")
+            .attribute("feedback")
+            .attribute("tocbot")
+            .attribute("local-debug", "true")
+            .build()
+
+        val asciidoctor = Asciidoctor.Factory.create()
+        val src = File("src/main/docs/treechart.adoc")
+        val build = File("docs/")
+        build.mkdirs()
+        val target = File(build, "treechart.html")
+        if(target.exists()) {
+            target.delete()
+        }
+        val options = Options.builder()
+            .backend("html5")
+            .toDir(build)
+            .attributes(attrs)
+            .safe(SafeMode.UNSAFE)
+            .build()
+        try {
+            asciidoctor.convertFile(src, options)
+
+            assert(target.exists())
+            val images = File(src.parent,"images")
+            if (images.exists()) {
+                images.deleteRecursively()
+            }
+            makePdf(src)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

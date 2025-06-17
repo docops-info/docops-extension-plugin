@@ -140,7 +140,7 @@ Given the above, we will build panels for Google, Apple, Microsoft,Amazon, Netfl
 ----
 -----
 
-[buttons,"buttons",width="80%"]
+[docops, buttons,"buttons",width="80%"]
 ----
 {
   "buttons": [
@@ -323,7 +323,7 @@ Similar to the buttons, we have a round object we can use.
 -----
 
 
-[buttons,"round",width="60%"]
+[docops, buttons,"round",width="60%"]
 ----
 {
   "buttons": [
@@ -400,7 +400,7 @@ Similar to the buttons, we have a round object we can use.
     "columns": 4,
     "scale": 0.7,
 "buttonStyle": {
-    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
+    "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #111111; letter-spacing: normal;font-weight: bold;",
 "descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
 "authorStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;",
 "dateStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #fcfcfc; letter-spacing: normal;font-weight: normal;font-style: italic;"
@@ -437,7 +437,7 @@ and update the style for the text displayed.
 
 
 
-[buttons,"regular2"]
+[docops,buttons,"regular2"]
 ----
 {
   "buttons": [
@@ -525,7 +525,7 @@ and update the style for the text displayed.
 
 === Pill Buttons
 
-[buttons,"round2"]
+[docops,buttons,"round2"]
 ----
 {
   "buttons": [
@@ -613,7 +613,7 @@ and update the style for the text displayed.
 
 == Slim Buttons
 
-[buttons,"slim",width="70%"]
+[docops,buttons,"slim",width="70%"]
 ----
 {
   "buttons": [
@@ -688,7 +688,7 @@ and update the style for the text displayed.
 
     ],
     "columns": 4,
-    "scale": 0.7,
+    "scale": 1.0,
 "buttonStyle": {
     "labelStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #fcfcfc; letter-spacing: normal;font-weight: bold;",
 "descriptionStyle": "font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #000000; letter-spacing: normal;font-weight: normal;",
@@ -730,7 +730,7 @@ The key attribute to use is `buttonType`
 "buttonType": "LARGE"
 
 
-[buttons,"large",role="center",scale="0.5"]
+[docops, buttons,"large",role="center",scale="0.5"]
 ----
 {
   "buttons": [
@@ -827,14 +827,14 @@ endif::[]
 
 [source,asciidoc]
 -----
-[badge]
+[docops,badge]
 ----
 Build|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 Technical|Debt|https://www.yahoo.com|#cc263f|#5d6d7e|<Yahoo>|#000000
 ----
 -----
 
-[badge]
+[docops, badge]
 ----
 Ninjutsu|Kakashi||#800080|#00dd00||#00dd00|
 ----
@@ -861,7 +861,7 @@ a|Color for label, e.g. #ff0000
 |===
 
 
-[badge]
+[docops,badge]
 ----
 Below|+ +|https://www.google.com|#0a2733|#a69460|<Asciidoctor>|#ffffff
 Technical|Debt|https://www.yahoo.com|#cc263f|#5d6d7e|<Yahoo>|#000000
@@ -870,9 +870,24 @@ Yahoo|Finance|https://www.yahoo.com|#800080|#277e14|<Yahoo>|#eeeeee
 BUILD|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 ----
 
+[docops,badge, role=left]
+----
+Build Tonight IS|Failing Because||#397bdd|#FB542B|<Apple>|#111111|
+Someone|Broke|badges.html#_naruto|#06133b|#e4854f|<Apple>|#111111|
+Working|Code||#06133b|#e4854f|<Amazon>|#111111|
+Ninjutsu|Naruto||#06133b|#387bb9|<Wegame>|#fcfcfc
+Ninjutsu|Kakashi||#06133b|#387bb9|<Wegame>|#fcfcfc
+Kenjutsu|Sasuke||#06133b|#387bb9|<Wegame>|#fcfcfc
+Fire Style|Madara||#06133b|#387bb9|<Wegame>|#fcfcfc
+Genjutsu|Itachi||#06133b|#387bb9|<Wegame>|#fcfcfc
+Made With|Kotlin||#abbfc0|#6392c4|<Kotlin>|#fcfcfc
+Contains|AsciiDoctor||#06133b|#469de8|<Asciidoctor>|#fcfcfc
+Uses|HTMX||#60c4d3|#5fa2b6|<Html5>|#fcfcfc
+----
+
 == Button Panel at 66% width
 
-[buttons, default, width=66%,role=right]
+[docops, buttons, default, width=66%,role=right]
 ----
 {
     "buttons": [
@@ -912,7 +927,7 @@ BUILD|Pass|https://www.yahoo.com|#800080|#00dd00|<Github>|#eeeeee|
 
 === Style is timeline
 
-[release,scale=0.7,role="center"]
+[docops, release,scale=0.7,role="center"]
 ----
 include::example1.json[]
 ----
@@ -920,7 +935,7 @@ include::example1.json[]
 
 === Style is timeline grouped
 
-[release,scale=0.5,role="center"]
+[docops, release,scale=0.5,role="center"]
 ----
 include::example2.json[]
 ----
@@ -953,7 +968,7 @@ date: TBD
 text: xxyz
 ----
 
-[timeline,title="Demo timeline Builder by docops.io",scale="1.0",  useDark=false]
+[docops, timeline,title="Demo timeline Builder by docops.io",scale="1.0",  useDark=false]
 ----
 -
 date: July 23rd, 2023
@@ -987,7 +1002,7 @@ and plugin the controller.
 
 == Roadmap Planning
 
-[roadmap,scale="1.0", role="left", numChars="25", useDark=true]
+[docops,roadmap,scale="1.0", role="left", numChars="25", useDark=true, title="Does title pass through?"]
 ----
 - now
 Architect the application security model [[https://medium.com/bytebytego-system-design-alliance/top-10-architecture-characteristics-non-functional-requirements-with-cheatsheat-7ad14bbb0a9b NFR]] using OAuth2
@@ -1012,7 +1027,7 @@ Revamped Panels into Buttons using JSON data structure
 JSON Schema TBD.
 
 
-[buttons, role="center"]
+[docops,buttons, role="center"]
 ----
 {
   "buttons": [
@@ -1171,7 +1186,7 @@ JSON Schema TBD.
 }
 ----
 
-[buttons,role="center"]
+[docops, buttons,role="center"]
 ----
 {
     "buttons": [
@@ -1187,7 +1202,7 @@ JSON Schema TBD.
 }
 ----
 
-[roadmap,title="Steve's%20Work", useDark=false]
+[docops,roadmap,title="Steve Work", useDark=false]
 ----
 - done
 image embed rectangle
@@ -1203,17 +1218,17 @@ pass in theme (light,dark)
 refactor displayConfigUrl to displayTheme
 ----
 
-[scorecard, role="center"]
+[docops,scorecard, role="center"]
 ----
 include::scorecard1.json[]
 ----
 
 == Roadmap
 
-[roadmap,scale="1.0", role="center",title="Roadmap", numChars="30", useDark=false]
+[docops,roadmap,scale="1.0", role="center",title="Roadmap", numChars="30", useDark=false]
 ----
 - now
-Determine consuming applications for Form Property Service & Customer inquiry Service
+Determine consuming applications for Form Property Service and Customer inquiry Service
 - later
 Use common docker image to streamline the process.
 - now
@@ -1228,4 +1243,120 @@ dockerize Form property service
  analyze black duck results
 - done
 finished testing
+----
+
+[docops, adr, scale="1"]
+----
+Title:Use Solr for Structured Data Search
+Date: November 24th, 2010
+Status: Accepted
+Context:  Solr and Elasticsearch are both open source search engines. Both can be used to search
+large amounts of data quickly and accurately. While Solr uses a SQL-like query language, Elasticsearch has a full-text search engine and is designed for distributed search and analytics. Elasticsearch also allows for faster indexing and more advanced search replicas. Both technologies have strengths and weaknesses and are often used in
+combination for enterprise-level search. There is a need of having an API exposed which can be used to search structured
+data. The Data currently resides in RDBMS, it is difficult to expose micro-service directly querying out of RDBMS databases since the application runs out of the same environment.
+There are options like [[https://www.elastic.co ElasticSearch]] and Solr where data can be replicated.
+
+These solutions provide out of the box capabilities that can be leveraged by developers without needed to build RESTful or
+GraphQL type APIs.
+Decision:Use [[https://solr.apache.org/ Solr]] for data indexing. This use is because Solr has high performance throughput with large volume of data.
+Unstructured data can also be supported.
+If this decision does not meet the need then additional PoC will be created.
+Consequences:Data Needs to be replicated across the solr cloud instances.
+This Solr cloud needs maintenance.
+Near realtime data replication is required Additional Cost of maintaining the Solr Cloud environment.
+Participants:Roach,Rose,Duffy
+----
+
+== New Release Strategy
+
+[docops,release]
+----
+{
+            "title": "Release Strategy Builder",
+            "releases": [
+                {
+                    "type": "M1",
+                    "lines": [
+                        "Reason for ",
+                        "Improve Sanitize Sensitive Values section in reference documentation #39200",
+                        "Update CRaC support status link #39173",
+                        "Fix link to Log4j2's JDK logging adapter documentation #39172",
+                        "Document virtual threads limitations #39169",
+                        "Polish reference documentation #39157",
+                        "Use the term tags in documentation consistently #39152",
+                        "Update links to Micrometer docs in metrics section of reference docs #39150",
+                        "Remove entry for OCI starter as it is no longer maintained #39145",
+                        "Correct the documentation on injecting dependencies into FailureAnalyzer implementations #39101",
+                        "Fix typos #38983"
+                    ],
+                    "date": "TBD",
+                    "selected": true,
+                    "goal": "Our goal is to build a better cog..."
+                },
+                {
+                    "type": "RC1",
+                    "lines": [
+                        "Auto-configure TypeDefinitionConfigurer beans for GraphQL apps #39118",
+                        "Create multiple registrations for beans that implement multiple Servlet API contracts #39056",
+                        "Remove APIs that were deprecated for removal in 3.3 #39039",
+                        "Remove dependency management for Dropwizard Metrics #39034",
+                        "Add configuration property spring.task.execution.pool.shutdown.accept-tasks-after-context-close #38968",
+                        "Autoconfigure Undertow/XNIO for virtual thread support #38819",
+                        "Add client-id and subscription-durable properties for JMS connections #38817",
+                        "Add property for maximum number of reactive sessions #38703",
+                        "Add support for the @SpanTag annotation #38662",
+                        "Add configuration option for path inclusion in DefaultErrorAttributes #38619",
+                        "Add configuration properties for cluster-level failover with Apache Pulsar #38559",
+                        "Change Health.down(Exception) factory method to Health.down(Throwable), aligning with Health.Builder.down(Throwable) #38550",
+                        "Make spring.config.activate.on-cloud-platform=none match when the current cloud platform is null #38510",
+                        "Add ProcessInfoContributor #38371",
+                        "Add possibility to configure a custom ExecutionContextSerializer in BatchAutoConfiguration #38328",
+                        "Remove deprecated support for FailureAnalyzer setter injection #38322",
+                        "Use unknown_service as default application name for OpenTelemetry #38219",
+                        "Auto-configure a JwtAuthenticationConverter #38105",
+                        "Fail configuration property metadata processing when additional metadata has unexpected content #37597",
+                        "Add local and tag correlation fields #37435",
+                        "Use request.requestPath().value() to populate path error attribute with WebFlux #37269",
+                        "Improve log messages to use the singular or plural forms instead of 'noun(s)', #37017",
+                        "Add observation-enabled properties for RabbitMQ #36451",
+                        "Make WebServers' started log messages more consistent #36149",
+                        "Add property to configure the queue size for Tomcat #36087"
+                    ],
+                    "date": "TBD",
+                    "selected": true,
+                    "goal": "Our goal is ..."
+                },
+                {
+                    "type": "GA",
+                    "lines": [
+                        "Even when spring.security.user.name or spring.security.user.password has been configured, user details auto-configuration still backs off when resource server is on the classpath #39239",
+                        "JarEntry.getComment() returns incorrect result from NestedJarFile instances #39226",
+                        "Oracle OJDBC BOM version is flagged not for production use #39225",
+                        "MockRestServiceServerAutoConfiguration with RestTemplate and RestClient together throws incorrect exception #39198",
+                        "SslBundle implementations do not provide useful toString() results #39168",
+                        "Mixing PEM and JKS certificate material in server.ssl properties does not work #39159",
+                        "Containers are not started when using @ImportTestcontainers #39151",
+                        "Having AspectJ and Micrometer on the classpath is not a strong enough signal to enable support for Micrometer observation annotations #39132",
+                        "Actuator endpoints with no operations that use selectors are not accessible when mapped to / #39123",
+                        "spring-boot-maven-plugin repackage uber jar execution fails when jar is put on WSL network drive #39121",
+                        "Spring Boot 3.2 app that uses WebFlux, Security, and Actuator may fail to start due to a missing authentication manager #39117",
+                        "@ConfigurationPropertiesBinding converters that rely on initial CharSequence to String conversion no longer work #39115",
+                        "management.observations.http.server.requests.name no longer has any effect #39106",
+                        "Configuring server.jetty.max-connections has no effect #39080",
+                        "spring.rabbitmq.listener.stream.auto-startup property has no effect #39079",
+                        "Connection leak when using jOOQ and spring.jooq.sql-dialect has not been set #39077",
+                        "Error mark in the log message for PatternParseException is in the wrong place #39076",
+                        "Manifest attributes cannot be resolved with the new loader implementation #39071"
+                    ],
+                    "date": "TBD",
+                    "selected": true,
+                    "goal": "Our goal is ..."
+                }
+            ],
+            "style": "TLS",
+            "displayConfig": {
+             "colors": [ "#5f57ff", "#2563eb", "#7149c6"],
+              "fontColor": "#000000"
+            }
+        }
 ----

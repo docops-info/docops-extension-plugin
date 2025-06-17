@@ -18,7 +18,7 @@ Steve D Roach
 
 == Example 1
 
-[docops,connector,scale=0.6, useDark="true"]
+[docops,connector,scale="1.0", useDark="false"]
 ----
 {
   "connectors": [
@@ -28,13 +28,14 @@ Steve D Roach
       {"text": "GitHub"},
       {"text": "Test Engine"},
       {"text": "API Documentation"},
-      {"text": "DocOps"},
+      {"text": "DocOps", "description":"move to test"},
       {"text": "Test Engine Database"}
     ]
 }
 ----
 
 === Placemat Dark Mode
+
 [docops, placemat]
 ----
 {
@@ -119,6 +120,7 @@ Steve D Roach
 ----
 
 === Placemat
+
 [docops, placemat]
 ----
 {
@@ -240,4 +242,20 @@ and plugin the controller.
 [docops, scorecard, role="center"]
 ----
 include::scorecard1.json[]
+----
+
+[docops, roadmap,title="My Work", useDark=false]
+----
+- done
+image embed rectangle
+- done
+image embed slim
+- later
+color background roadmap
+- later
+remove car from release strategy
+- now
+pass in theme (light,dark)
+- done
+refactor displayConfigUrl to displayTheme
 ----

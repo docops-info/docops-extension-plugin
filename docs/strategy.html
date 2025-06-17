@@ -389,72 +389,6 @@ a.image { text-decoration: none; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/dark.min.css">
-<style>
-  /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
-  /* Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006 */
-  #tocbot a.toc-link.node-name--H1{ font-style: italic }
-  @media screen{
-    #tocbot > ul.toc-list{ margin-bottom: 0.5em; margin-left: 0.125em }
-    #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul{
-      padding-left: 0 }
-    #tocbot a.toc-link{ height:100% }
-    .is-collapsible{ max-height:3000px; overflow:hidden; }
-    .is-collapsed{ max-height:0 }
-    .is-active-link{ font-weight:700; color: #00fa00 }
-  }
-  @media print{
-    #tocbot a.toc-link.node-name--H4{ display:none }
-  }
-  .toc{overflow-y:auto}.toc>.toc-list{overflow:hidden;position:relative}.toc>.toc-list li{list-style:none}.toc-list{margin:0;padding-left:10px}a.toc-link{color:currentColor;height:100%}.is-collapsible{max-height:1000px;overflow:hidden;transition:all 300ms ease-in-out}.is-collapsed{max-height:0}.is-position-fixed{position:fixed !important;top:0}.is-active-link{font-weight:700}.toc-link::before{background-color:#EEE;content:' ';display:inline-block;height:inherit;left:0;margin-top:-12px;position:absolute;width:2px}.is-active-link::before{background-color:#54BC4B}
-  @media only screen and (min-width: 993px) {
-    .sticky {
-          position: -webkit-sticky;
-          position: sticky;
-          top: 0;
-          align-self: flex-start;
-      }
-  }
-  @media only screen and (max-width: 992px) {
-    .is-collapsed {
-      max-height: none;
-    }
-  }
-  .admin-bar .sticky {
-      top: 32px;
-  }
-  .sticky:before,
-  .sticky:after {
-      content: '';
-      display: table;
-  }
-  a.toc-link {
-      padding: 1px 0;
-      display: block;
-      line-height: 1.0;
-  }
-  a.toc-link:hover {
-      color: #54bc4b;
-  }
-  .is-collapsible a.toc-link {
-      padding: 5px 0;
-  }
-  a.toc-link {
-      line-height: 1.4;
-  }
-  .medium-zoom-overlay,
-        img.medium-zoom-image {
-        z-index: 1000;
-    }
-</style>
-<script>
-/*! medium-zoom 1.0.8 | MIT License | https://github.com/francoischalifour/medium-zoom */
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).mediumZoom=t()}(this,(function(){"use strict";var e=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},t=function(e){return"IMG"===e.tagName},o=function(e){return e&&1===e.nodeType},n=function(e){return".svg"===(e.currentSrc||e.src).substr(-4).toLowerCase()},i=function(e){try{return Array.isArray(e)?e.filter(t):function(e){return NodeList.prototype.isPrototypeOf(e)}(e)?[].slice.call(e).filter(t):o(e)?[e].filter(t):"string"==typeof e?[].slice.call(document.querySelectorAll(e)).filter(t):[]}catch(e){throw new TypeError("The provided selector is invalid.\nExpects a CSS selector, a Node element, a NodeList or an array.\nSee: https://github.com/francoischalifour/medium-zoom")}},r=function(e){var t=document.createElement("div");return t.classList.add("medium-zoom-overlay"),t.style.background=e,t},d=function(e){var t=e.getBoundingClientRect(),o=t.top,n=t.left,i=t.width,r=t.height,d=e.cloneNode(),a=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,m=window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft||0;return d.removeAttribute("id"),d.style.position="absolute",d.style.top=o+a+"px",d.style.left=n+m+"px",d.style.width=i+"px",d.style.height=r+"px",d.style.transform="",d},a=function(t,o){var n=e({bubbles:!1,cancelable:!1,detail:void 0},o);if("function"==typeof window.CustomEvent)return new CustomEvent(t,n);var i=document.createEvent("CustomEvent");return i.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),i};return function(e,t){void 0===t&&(t={});var o=t.insertAt;if(e&&"undefined"!=typeof document){var n=document.head||document.getElementsByTagName("head")[0],i=document.createElement("style");i.type="text/css","top"===o&&n.firstChild?n.insertBefore(i,n.firstChild):n.appendChild(i),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(document.createTextNode(e))}}(".medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}"),function t(m){var l=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},c=window.Promise||function(e){function t(){}e(t,t)},u=function(e){var t=e.target;t!==N?-1!==x.indexOf(t)&&w({target:t}):E()},s=function(){if(!A&&k.original){var e=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;Math.abs(S-e)>T.scrollOffset&&setTimeout(E,150)}},f=function(e){var t=e.key||e.keyCode;"Escape"!==t&&"Esc"!==t&&27!==t||E()},p=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t;if(t.background&&(N.style.background=t.background),t.container&&t.container instanceof Object&&(n.container=e({},T.container,t.container)),t.template){var i=o(t.template)?t.template:document.querySelector(t.template);n.template=i}return T=e({},T,n),x.forEach((function(e){e.dispatchEvent(a("medium-zoom:update",{detail:{zoom:j}}))})),j},g=function(){var o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return t(e({},T,o))},v=function(){for(var e=arguments.length,t=Array(e),o=0;o<e;o++)t[o]=arguments[o];var n=t.reduce((function(e,t){return[].concat(e,i(t))}),[]);return n.filter((function(e){return-1===x.indexOf(e)})).forEach((function(e){x.push(e),e.classList.add("medium-zoom-image")})),O.forEach((function(e){var t=e.type,o=e.listener,i=e.options;n.forEach((function(e){e.addEventListener(t,o,i)}))})),j},h=function(){for(var e=arguments.length,t=Array(e),o=0;o<e;o++)t[o]=arguments[o];k.zoomed&&E();var n=t.length>0?t.reduce((function(e,t){return[].concat(e,i(t))}),[]):x;return n.forEach((function(e){e.classList.remove("medium-zoom-image"),e.dispatchEvent(a("medium-zoom:detach",{detail:{zoom:j}}))})),x=x.filter((function(e){return-1===n.indexOf(e)})),j},z=function(e,t){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return x.forEach((function(n){n.addEventListener("medium-zoom:"+e,t,o)})),O.push({type:"medium-zoom:"+e,listener:t,options:o}),j},y=function(e,t){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return x.forEach((function(n){n.removeEventListener("medium-zoom:"+e,t,o)})),O=O.filter((function(o){return!(o.type==="medium-zoom:"+e&&o.listener.toString()===t.toString())})),j},b=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},i=t.target,r=function(){var t={width:document.documentElement.clientWidth,height:document.documentElement.clientHeight,left:0,top:0,right:0,bottom:0},i=void 0,r=void 0;if(T.container)if(T.container instanceof Object)i=(t=e({},t,T.container)).width-t.left-t.right-2*T.margin,r=t.height-t.top-t.bottom-2*T.margin;else{var d=(o(T.container)?T.container:document.querySelector(T.container)).getBoundingClientRect(),a=d.width,m=d.height,l=d.left,c=d.top;t=e({},t,{width:a,height:m,left:l,top:c})}i=i||t.width-2*T.margin,r=r||t.height-2*T.margin;var u=k.zoomedHd||k.original,s=n(u)?i:u.naturalWidth||i,f=n(u)?r:u.naturalHeight||r,p=u.getBoundingClientRect(),g=p.top,v=p.left,h=p.width,z=p.height,y=Math.min(Math.max(h,s),i)/h,b=Math.min(Math.max(z,f),r)/z,E=Math.min(y,b),w="scale("+E+") translate3d("+((i-h)/2-v+T.margin+t.left)/E+"px, "+((r-z)/2-g+T.margin+t.top)/E+"px, 0)";k.zoomed.style.transform=w,k.zoomedHd&&(k.zoomedHd.style.transform=w)};return new c((function(e){if(i&&-1===x.indexOf(i))e(j);else{if(k.zoomed)e(j);else{if(i)k.original=i;else{if(!(x.length>0))return void e(j);var t=x;k.original=t[0]}if(k.original.dispatchEvent(a("medium-zoom:open",{detail:{zoom:j}})),S=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,A=!0,k.zoomed=d(k.original),document.body.appendChild(N),T.template){var n=o(T.template)?T.template:document.querySelector(T.template);k.template=document.createElement("div"),k.template.appendChild(n.content.cloneNode(!0)),document.body.appendChild(k.template)}if(k.original.parentElement&&"PICTURE"===k.original.parentElement.tagName&&k.original.currentSrc&&(k.zoomed.src=k.original.currentSrc),document.body.appendChild(k.zoomed),window.requestAnimationFrame((function(){document.body.classList.add("medium-zoom--opened")})),k.original.classList.add("medium-zoom-image--hidden"),k.zoomed.classList.add("medium-zoom-image--opened"),k.zoomed.addEventListener("click",E),k.zoomed.addEventListener("transitionend",(function t(){A=!1,k.zoomed.removeEventListener("transitionend",t),k.original.dispatchEvent(a("medium-zoom:opened",{detail:{zoom:j}})),e(j)})),k.original.getAttribute("data-zoom-src")){k.zoomedHd=k.zoomed.cloneNode(),k.zoomedHd.removeAttribute("srcset"),k.zoomedHd.removeAttribute("sizes"),k.zoomedHd.removeAttribute("loading"),k.zoomedHd.src=k.zoomed.getAttribute("data-zoom-src"),k.zoomedHd.onerror=function(){clearInterval(m),console.warn("Unable to reach the zoom image target "+k.zoomedHd.src),k.zoomedHd=null,r()};var m=setInterval((function(){k.zoomedHd.complete&&(clearInterval(m),k.zoomedHd.classList.add("medium-zoom-image--opened"),k.zoomedHd.addEventListener("click",E),document.body.appendChild(k.zoomedHd),r())}),10)}else if(k.original.hasAttribute("srcset")){k.zoomedHd=k.zoomed.cloneNode(),k.zoomedHd.removeAttribute("sizes"),k.zoomedHd.removeAttribute("loading");var l=k.zoomedHd.addEventListener("load",(function(){k.zoomedHd.removeEventListener("load",l),k.zoomedHd.classList.add("medium-zoom-image--opened"),k.zoomedHd.addEventListener("click",E),document.body.appendChild(k.zoomedHd),r()}))}else r()}}}))},E=function(){return new c((function(e){if(!A&&k.original){A=!0,document.body.classList.remove("medium-zoom--opened"),k.zoomed.style.transform="",k.zoomedHd&&(k.zoomedHd.style.transform=""),k.template&&(k.template.style.transition="opacity 150ms",k.template.style.opacity=0),k.original.dispatchEvent(a("medium-zoom:close",{detail:{zoom:j}})),k.zoomed.addEventListener("transitionend",(function t(){k.original.classList.remove("medium-zoom-image--hidden"),document.body.removeChild(k.zoomed),k.zoomedHd&&document.body.removeChild(k.zoomedHd),document.body.removeChild(N),k.zoomed.classList.remove("medium-zoom-image--opened"),k.template&&document.body.removeChild(k.template),A=!1,k.zoomed.removeEventListener("transitionend",t),k.original.dispatchEvent(a("medium-zoom:closed",{detail:{zoom:j}})),k.original=null,k.zoomed=null,k.zoomedHd=null,k.template=null,e(j)}))}else e(j)}))},w=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=e.target;return k.original?E():b({target:t})},L=function(){return T},H=function(){return x},C=function(){return k.original},x=[],O=[],A=!1,S=0,T=l,k={original:null,zoomed:null,zoomedHd:null,template:null};"[object Object]"===Object.prototype.toString.call(m)?T=m:(m||"string"==typeof m)&&v(m),T=e({margin:0,background:"#fff",scrollOffset:40,container:null,template:null},T);var N=r(T.background);document.addEventListener("click",u),document.addEventListener("keyup",f),document.addEventListener("scroll",s),window.addEventListener("resize",E);var j={open:b,close:E,toggle:w,update:p,clone:g,attach:v,detach:h,on:z,off:y,getOptions:L,getImages:H,getZoomedImage:C};return j}}));
-
-mediumZoom('.content img', {
-  background: '#fff'
-})
-
-</script>
 </head>
 <body class="article">
 <div id="header">
@@ -559,391 +493,185 @@ mediumZoom('.content img', {
 </tr>
 </table>
 </div>
-<div class="openblock">
+<div class="listingblock center">
 <div class="content">
-<div class="imageblock text-center">
-<div class="content">
-<svg width="1080.0" height="413.40002" viewBox='0 0 1080.0 413.40002' xmlns='http://www.w3.org/2000/svg' xmlns:xlink="http://www.w3.org/1999/xlink" role='img'
-aria-label='Docops: Release Strategy' id="ID33320d7e-567c-48c0-ac56-5bad461546f2">
-<desc>https://docops.io/extension</desc>
-<title>Release Strategy Builder</title>             <defs>
-             <filter id="Bevel2" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
-                 <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
-                 <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
-                     <fePointLight x="-5000" y="-10000" z="0000"/>
-                 </feSpecularLighting>
-                 <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
-                 <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint" />
-             </filter>
-             <linearGradient id="ID0756d7d2-2648-4a67-89af-c133b3a8d4c9" x2="1" y2="1">
-                 <stop class="stop1" offset="0%" stop-color="#a48bdb">
-                     <animate attributeName="stop-color"
-                              values="#a48bdb;#7651c9;#4918B8;#a48bdb;#7651c9;#4918B8;" dur="20s" repeatCount="indefinite">
-                     </animate>
-                 </stop>
-                 <stop class="stop2" offset="50%" stop-color="#7651c9">
-                     <animate attributeName="stop-color"
-                              values="#a48bdb;#7651c9;#4918B8;#a48bdb;#7651c9;#4918B8;" dur="20s" repeatCount="indefinite">
-                     </animate>
-                 </stop>
-                 <stop class="stop3" offset="100%" stop-color="#4918B8">
-                     <animate attributeName="stop-color"
-                              values="#a48bdb;#7651c9;#4918B8;#a48bdb;#7651c9;#4918B8;" dur="20s" repeatCount="indefinite">
-                     </animate>
-                 </stop>
-                 <animateTransform attributeName="gradientTransform" type="rotate" values="360 .5 .5;0 .5 .5"
-                                   dur="10s" repeatCount="indefinite" />
-             </linearGradient>
-             <linearGradient id="circlecheck" x2="1" y2="1">
-                <stop class="stop1" offset="0%" stop-color="#a9d99a"/>
-                <stop class="stop2" offset="50%" stop-color="#7ec667"/>
-                <stop class="stop3" offset="100%" stop-color="#54B435"/>
-            </linearGradient>
-            <g id="completedCheck">
-                <polyline points="10 25 22 40 50 10" fill="none" stroke="url(#circlecheck)" stroke-width="6"/>
-            </g>
-
-             <linearGradient x2="0%" y2="100%" id="shadM_rect_33320d7e-567c-48c0-ac56-5bad461546f2">
-    <stop stop-color="#ffb79a" stop-opacity="1" offset="0%"/>
-    <stop stop-color="hsl(17.0,100.0%,60.6%)" stop-opacity="1" offset="100%"/>
-</linearGradient><linearGradient x2="0%" y2="100%" id="shadR_rect_33320d7e-567c-48c0-ac56-5bad461546f2">
-    <stop stop-color="#f4d089" stop-opacity="1" offset="0%"/>
-    <stop stop-color="hsl(40.0,85.0%,49.6%)" stop-opacity="1" offset="100%"/>
-</linearGradient><linearGradient x2="0%" y2="100%" id="shadG_rect_33320d7e-567c-48c0-ac56-5bad461546f2">
-    <stop stop-color="#80ffc7" stop-opacity="1" offset="0%"/>
-    <stop stop-color="hsl(154.0,100.0%,50.2%)" stop-opacity="1" offset="100%"/>
-</linearGradient>
-                     <style>
-    #ID33320d7e-567c-48c0-ac56-5bad461546f2 .shadM { fill: #FF6F36; filter: drop-shadow(0 1mm 1mm #FF6F36); }
-    #ID33320d7e-567c-48c0-ac56-5bad461546f2 .shadR { fill: #EAA213; filter: drop-shadow(0 1mm 1mm #EAA213); }
-
-    #ID33320d7e-567c-48c0-ac56-5bad461546f2 .shadG { fill: #01FF90; filter: drop-shadow(0 1mm 1mm #01FF90); }
-    #ID33320d7e-567c-48c0-ac56-5bad461546f2 .milestoneTL { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-weight: bold; }
-    #ID33320d7e-567c-48c0-ac56-5bad461546f2 .lines { font-size: 10px; }
-
-    #ID33320d7e-567c-48c0-ac56-5bad461546f2 .milestoneTL > .entry { text-anchor: start; font-weight: normal; }
-    .raise { pointer-events: bounding-box; opacity: 1; filter: drop-shadow(3px 1px 2px rgb(0 0 0 / 0.4)); }
-
-    .raise:hover { stroke: gold; stroke-width: 3px; opacity: 0.9; }
-
-</style>
-    <script>
-     function strategyShowItem(item) {
-         var elem = document.querySelector("#"+item);
-         var display = elem.getAttribute("visibility");
-         if("hidden" === display) {
-             elem.setAttribute("visibility", "")
-         } else {
-             elem.setAttribute("visibility", "hidden")
-         }
-     }
-     </script>
-         </defs>
-         <text x="540.0" y="18" fill="#000000" text-anchor="middle"  font-size="20px" font-family="Arial, Helvetica, sans-serif">Release Strategy Builder</text><g transform='translate(0,20),scale(0.6)' id='GID33320d7e-567c-48c0-ac56-5bad461546f2'> <g transform="translate(10,60)" class="shadM">
-     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">July 30th, 2023</text>
-     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#FF6F36" fill="url(#shadM_rect_33320d7e-567c-48c0-ac56-5bad461546f2)"/>
-     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadM_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" stroke="#FF6F36" />
-    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">M1</text>
-    <use xlink:href="#completedCheck" x="405" y="65" width="24" height="24"/>
-    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('ID33320d7e-567c-48c0-ac56-5bad461546f2_0')">
-        <rect x="0" y="0" height="200" width="300" fill="url(#shadM_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" class="raise"/>
-        <text text-anchor="middle" x="150" y="40" class="milestoneTL lines" font-size="12px"
-              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
-           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is to</tspan><tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">Establish the Liberty</tspan><tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">infrastructure with</tspan><tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">Okta enabled</tspan>
-        </text>
-    </g>
-</g>      <g transform="translate(10,275)" class="shadM" id="ID33320d7e-567c-48c0-ac56-5bad461546f2_0" visibility='hidden'>
-         <rect width='400' height='180' stroke="#FF6F36" fill="#fcfcfc"/>
-         <text text-anchor='middle' x="200" y="2" class="milestoneTL lines" font-size="12px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
-             <tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will deploy to application server current production</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> code</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Setup IHS proxy</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will Mark out websphere servers and mark in liberty</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate Okta changes on Liberty</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Once validated team will mark out liberty servers and mark</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> in websphere servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   QA will validate Production is still working</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will record all observations</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan>
-         </text>
-     </g> <g transform="translate(420,60)" class="shadR">
-     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">TBD</text>
-     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#EAA213" fill="url(#shadR_rect_33320d7e-567c-48c0-ac56-5bad461546f2)"/>
-     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadR_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" stroke="#EAA213" />
-    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">RC1</text>
-
-    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('ID33320d7e-567c-48c0-ac56-5bad461546f2_1')">
-        <rect x="0" y="0" height="200" width="300" fill="url(#shadR_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" class="raise"/>
-        <text text-anchor="middle" x="150" y="76" class="milestoneTL lines" font-size="12px"
-              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
-           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
-        </text>
-    </g>
-</g>      <g transform="translate(420,275)" class="shadR" id="ID33320d7e-567c-48c0-ac56-5bad461546f2_1" visibility='hidden'>
-         <rect width='400' height='180' stroke="#EAA213" fill="#fcfcfc"/>
-         <text text-anchor='middle' x="200" y="2" class="milestoneTL lines" font-size="12px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
-             <tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will deploy to application server current production</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> code</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Setup IHS proxy</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will Mark out websphere servers and mark in liberty</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate Okta changes on Liberty</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Once validated team will mark out liberty servers and mark</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> in websphere servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   QA will validate Production is still working</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will record all observations</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan>
-         </text>
-     </g> <g transform="translate(830,60)" class="shadR">
-     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">TBD</text>
-     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#EAA213" fill="url(#shadR_rect_33320d7e-567c-48c0-ac56-5bad461546f2)"/>
-     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadR_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" stroke="#EAA213" />
-    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">RC2</text>
-
-    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('ID33320d7e-567c-48c0-ac56-5bad461546f2_2')">
-        <rect x="0" y="0" height="200" width="300" fill="url(#shadR_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" class="raise"/>
-        <text text-anchor="middle" x="150" y="76" class="milestoneTL lines" font-size="12px"
-              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
-           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
-        </text>
-    </g>
-</g>      <g transform="translate(830,275)" class="shadR" id="ID33320d7e-567c-48c0-ac56-5bad461546f2_2" visibility='hidden'>
-         <rect width='400' height='180' stroke="#EAA213" fill="#fcfcfc"/>
-         <text text-anchor='middle' x="200" y="2" class="milestoneTL lines" font-size="12px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
-             <tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will deploy to application server current production</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> code</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Setup IHS proxy</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will Mark out websphere servers and mark in liberty</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate Okta changes on Liberty</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Once validated team will mark out liberty servers and mark</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> in websphere servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   QA will validate Production is still working</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will record all observations</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan>
-         </text>
-     </g> <g transform="translate(1240,60)" class="shadG">
-     <text text-anchor="middle" x="250" y="-12" class="milestoneTL">TBD</text>
-     <path d="m 0,0 h 400 v 200 h -400 l 0,0 l 100,-100 z" stroke="#01FF90" fill="url(#shadG_rect_33320d7e-567c-48c0-ac56-5bad461546f2)"/>
-     <path d="m 400,0 v 200 l 100,-100 z" fill="url(#shadG_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" stroke="#01FF90" />
-    <text x="410" y="110" class="milestoneTL" font-size="36px" fill="#000000">GA</text>
-
-    <g transform="translate(100,0)" cursor="pointer" onclick="strategyShowItem('ID33320d7e-567c-48c0-ac56-5bad461546f2_3')">
-        <rect x="0" y="0" height="200" width="300" fill="url(#shadG_rect_33320d7e-567c-48c0-ac56-5bad461546f2)" class="raise"/>
-        <text text-anchor="middle" x="150" y="76" class="milestoneTL lines" font-size="12px"
-              font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="bold" fill="#000000">
-           <tspan x="150" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
-        </text>
-    </g>
-</g>      <g transform="translate(1240,275)" class="shadG" id="ID33320d7e-567c-48c0-ac56-5bad461546f2_3" visibility='hidden'>
-         <rect width='400' height='180' stroke="#01FF90" fill="#fcfcfc"/>
-         <text text-anchor='middle' x="200" y="2" class="milestoneTL lines" font-size="12px" font-family='Arial, "Helvetica Neue", Helvetica, sans-serif' font-weight="bold">
-             <tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will deploy to application server current production</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> code</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Setup IHS proxy</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will Mark out websphere servers and mark in liberty</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate Okta changes on Liberty</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Once validated team will mark out liberty servers and mark</tspan><tspan x="4" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start"> in websphere servers</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   QA will validate Production is still working</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will record all observations</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan><tspan x="2" dy="12" class="entry" font-size="12px" font-weight="normal"
-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" text-anchor="start">-   Team will validate logs and record observations as well</tspan>
-         </text>
-     </g></g></svg>
-</div>
-</div>
-<div class="paragraph">
-<p><a href="http://localhost:8010/extension/api/release/?payload=H4sIAAAAAAAA_-2XTY_aMBCG7_yKUfaKUICWftyyLOmHdkW7cFv1YJwhsTB2ZDtLo9X-99rOB3Q3FaeqokoOkeOZ9_HYmVdKngYAgWGGY_ARgnvkSDTCyihiMC3humA8QRUMXZqmxKeFo5l_VlW2tlMP9hngyd8dsMw9727slX6OM3GS6qfWSPZwYJxDgjmXJRgJJM85o8QwKUCjekQFtFAKhYFcyaSgPkJlgi3aklZoihy-fF65pJ_laei4yB1RO5CFgQNudJ6hwnoFDUQksHdhJoCzDSpTNrFu1iPhLLFnBMudIUAzIlLUYCu7rdSnqqWg2AoSMC1k3xT0YsnfynlV7Cn6e_SinG_HM2IatHHBg1Q7JtLujSikUiVA7FBu3Ar-6M_tmsu0qrKWn0qBaFs05_8Poib8aHvZSV1_fy14CdPQZEOYhJPpsdm1tQa1L9smGVVgO0_lPufYEUgl4Y64LBS4sXt71g0LbciGM52BybDpLdsVW0W01VNT2L44MJNVfYjCZlu4pz4Pu015P-9d2bvy8hF_dOX6-ua8E7sMNxqNzlln0lunt87FI_6BdT5FvXN651w84m86Z1BzA23K6n9sfbuqfr0SpnNOyrkUW5baSGUv-znJpfJOguAqjmfxdBYM7XARRZPx1A_DcRx_CIO64GArhZk7lcNfhf6q6w4oU5TjvGU2VVtyFI9Dj4vjm-m7ivzm7Wz8flHV3uApUR36ZpnOYaUfuP0__wLRFlH6jg4AAA==&amp;type=XLS&amp;filename=def.xls">Excel</a></p>
-</div>
+<pre>{
+  "title": "Release Strategy Builder",
+  "scale": 0.6,
+  "releases": [
+    {
+      "type": "M1",
+      "lines": [
+        "Team will deploy to application server current production code",
+        "Setup IHS proxy",
+        "Team will Mark out websphere servers and mark in liberty servers",
+        "Team will validate Okta changes on Liberty",
+        "Once validated team will mark out liberty servers and mark in websphere servers",
+        "QA will validate Production is still working",
+        "Team will record all observations",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well"
+      ],
+      "date": "July 30th, 2023",
+      "selected": true,
+      "completed": true,
+      "goal": "Our goal is to Establish the Liberty infrastructure with Okta enabled"
+    },
+    {
+      "type": "RC1",
+      "lines": [
+        "Team will deploy to application server current production code",
+        "Setup IHS proxy",
+        "Team will Mark out websphere servers and mark in liberty servers",
+        "Team will validate Okta changes on Liberty",
+        "Once validated team will mark out liberty servers and mark in websphere servers",
+        "QA will validate Production is still working",
+        "Team will record all observations",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well"
+      ],
+      "date": "TBD",
+      "selected": true,
+      "goal": "Our goal is ..."
+    },
+    {
+      "type": "RC2",
+      "lines": [
+        "Team will deploy to application server current production code",
+        "Setup IHS proxy",
+        "Team will Mark out websphere servers and mark in liberty servers",
+        "Team will validate Okta changes on Liberty",
+        "Once validated team will mark out liberty servers and mark in websphere servers",
+        "QA will validate Production is still working",
+        "Team will record all observations",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well"
+      ],
+      "date": "TBD",
+      "selected": true,
+      "goal": "Our goal is ..."
+    },
+    {
+      "type": "GA",
+      "lines": [
+        "Team will deploy to application server current production code",
+        "Setup IHS proxy",
+        "Team will Mark out websphere servers and mark in liberty servers",
+        "Team will validate Okta changes on Liberty",
+        "Once validated team will mark out liberty servers and mark in websphere servers",
+        "QA will validate Production is still working",
+        "Team will record all observations",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well"
+      ],
+      "date": "TBD",
+      "selected": true,
+      "goal": "Our goal is ..."
+    }
+  ],
+  "style": "TLS",
+  "displayConfig": {
+    "colors": [ "#FF6F36", "#EAA213", "#01FF90"],
+    "fontColor": "#000000",
+    "circleColors": [
+      "#FFAF10", "#FFD373", "#45618E"
+    ],
+    "carColors": [
+      "#000000", "#000000", "#000000"
+    ]
+  }
+}</pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_example_of_a_roadmap_view">2.2. Example of a Roadmap View</h3>
-<div class="openblock">
+<div class="listingblock center">
 <div class="content">
-<div class="imageblock text-center">
-<div class="content">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                 width="600.0" height="395.0"
-                 viewBox="0 0 600.0 395.0">
-                 <desc>https://docops.io/extension</desc>
-                            <defs>
-                   <filter xmlns="http://www.w3.org/2000/svg" id="filter1">
-                       <feGaussianBlur stdDeviation="1.75"/>
-                   </filter>
-                   <filter xmlns="http://www.w3.org/2000/svg" id="filter2">
-                       <feGaussianBlur stdDeviation="0.35"/>
-                   </filter>
-                   <filter id="Bevel" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
-                       <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
-                       <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut"
-                                           lighting-color="white">
-                           <fePointLight x="-5000" y="-10000" z="20000"/>
-                       </feSpecularLighting>
-                       <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
-                       <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"
-                                    result="litPaint"/>
-                   </filter>
-                   <filter id="Bevel3" filterUnits="objectBoundingBox" x="-10%" y="-10%" width="150%" height="150%">
-                       <feGaussianBlur in="SourceAlpha" stdDeviation="0.2" result="blur"/>
-                       <feSpecularLighting in="blur" surfaceScale="10" specularConstant="3.5" specularExponent="10"
-                                           result="specOut" lighting-color="#ffffff">
-                           <fePointLight x="-5000" y="-10000" z="0000"/>
-                       </feSpecularLighting>
-                       <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
-                       <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"
-                                    result="litPaint"/>
-                   </filter>
-                   <linearGradient id="circlecheck" x2="1" y2="1">
-                       <stop class="stop1" offset="0%" stop-color="#a9d99a"/>
-                       <stop class="stop2" offset="50%" stop-color="#7ec667"/>
-                       <stop class="stop3" offset="100%" stop-color="#54B435"/>
-                   </linearGradient>
-                   <filter id="filter-2">
-                       <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="OUTLINE"/>
-                       <feComposite operator="out" in="OUTLINE" in2="SourceAlpha"/>
-                   </filter>
-                   <path id="curve" fill="transparent" d="M267,317a56,56 0 1,0 112,0a56,56 0 1,0 -112,0" />
-                   <g id="completedCheck">
-                       <polyline points="10 25 22 40 50 10" fill="none" stroke="url(#circlecheck)" stroke-width="6"/>
-                   </g>
-
-       <linearGradient id="releaseM" x2="0%" y2="100%">
-           <stop class="stop1" offset="0%" stop-color="#ffb79a"/>
-           <stop class="stop2" offset="50%" stop-color="#ff9368"/>
-           <stop class="stop3" offset="100%" stop-color="#FF6F36"/>
-       </linearGradient>
-       <linearGradient id="releaseR" x2="0%" y2="100%">
-           <stop class="stop1" offset="0%" stop-color="#f4d089"/>
-           <stop class="stop2" offset="50%" stop-color="#efb94e"/>
-           <stop class="stop3" offset="100%" stop-color="#EAA213"/>
-       </linearGradient>
-       <linearGradient id="releaseG" x2="0%" y2="100%">
-           <stop class="stop1" offset="0%" stop-color="#80ffc7"/>
-           <stop class="stop2" offset="50%" stop-color="#40ffab"/>
-           <stop class="stop3" offset="100%" stop-color="#01FF90"/>
-       </linearGradient>
-                   <style>
-       .milestone:hover { cursor: pointer; /* calculate using: (2 * PI * R) */ stroke-width: 16; stroke-opacity: 1; fill: lightblue; }
-       .milestone { font-size: 60px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; }
-       .milestoneDate { font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; }
-       .bev:hover { fill: transparent; stroke-width: 10px; stroke-dasharray: 471; stroke-dashoffset: 471; animation: clock-animation 2s linear infinite; stroke: #FFAF10; } .bev2:hover { fill: transparent; stroke-width: 10px; stroke-dasharray: 471; stroke-dashoffset: 471; animation: clock-animation 2s linear infinite; stroke: #FFD373; } .bev3:hover { fill: transparent; stroke-width: 10px; stroke-dasharray: 471; stroke-dashoffset: 471; animation: clock-animation 2s linear infinite; stroke: #45618E; }
-       .row { filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4)); }
-       @keyframes clock-animation {
-           0% {
-               stroke-dashoffset: 471;
-           }
-           100% {
-               stroke-dashoffset: 0;
-           }
-       }
-       .box1Clicked { transition-timing-function: ease-out; transition: 1.25s; transform: translateX(0%); }
-       .box2Clicked { transition-timing-function: ease-out; transition: 2.25s; transform: translateX(-330%); }
-       </style>
-       <script>
-        function toggleItem(item1, item2) {
-           var elem2 = document.querySelector("#"+item2);
-           elem2.classList.toggle("box2Clicked");
-           var elem = document.querySelector("#"+item1);
-           elem.classList.toggle("box1Clicked");
-       }
-</script>
-               </defs>
-                 <g transform="scale(0.5)">
-                <text x="600" text-anchor="middle" y="44" font-size="32px" font-family="Arial, Helvetica, sans-serif" fill="#000000">Release Strategy Builder</text>
-                <g transform="translate(-200,-125)" cursor="pointer" onclick="toggleItem('detail_92ebd466-2b1f-491c-bf53-a8aca34310e2_0', 'goal_92ebd466-2b1f-491c-bf53-a8aca34310e2_0')">
-            <rect x="0" y="200" height="235" width="1400" fill="url(#releaseM)" stroke='#cccccc' class='row'/>
-            <g>
-            <circle cx="325" cy="310" r="84.5" fill-opacity="0.15" filter="url(#filter1)"/>
-            <circle class="bev" cx="323" cy="307" r="73" fill="#FFAF10" filter="url(#Bevel)"/>
-            <circle cx="323" cy="307" r="66" fill="#ffffff"/>
-             <text  class="milestoneDate" fill="#073763"><textPath text-anchor="middle" startOffset="25%" xlink:href="#curve">July 30th, 2023</textPath></text>
-            <text x="325" y="315" dominant-baseline="middle" stroke-width="1px" text-anchor="middle" class="milestone"
-            fill="#073763">M1
-            </text>
-
-            </g>
-
-            <g id="detail_92ebd466-2b1f-491c-bf53-a8aca34310e2_0" transform="translate(-1000,0)">
-                <text x="420" y="208" font-family="Arial, Helvetica, sans-serif" font-size="16px" fill="#000000"><tspan x="420" dy="18">* Team will deploy to application server current production code</tspan><tspan x="420" dy="18">* Setup IHS proxy</tspan><tspan x="420" dy="18">* Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="420" dy="18">* Team will validate Okta changes on Liberty</tspan><tspan x="420" dy="18">* Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="420" dy="18">* QA will validate Production is still working</tspan><tspan x="420" dy="18">* Team will record all observations</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan></text></g>
-            <g id="goal_92ebd466-2b1f-491c-bf53-a8aca34310e2_0" transform="translate(450,276)" text-anchor="middle">
-                <text x="400" y="0" font-family="Arial, Helvetica, sans-serif" font-size="25px" fill="#000000">
-                    <tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is to Establish the Liberty infrastructure with</tspan><tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal">Okta enabled</tspan>
-                </text>
-            </g>
-            <use xlink:href="#completedCheck" x="300" y="315" fill="#fcfcfc" width="24" height="24"/>
-            <path d="M 420 430 L 1400 430" stroke="none" stroke-width="1"/>
-            </g><g transform="translate(-200,100)" cursor="pointer" onclick="toggleItem('detail_92ebd466-2b1f-491c-bf53-a8aca34310e2_1', 'goal_92ebd466-2b1f-491c-bf53-a8aca34310e2_1')">
-            <rect x="0" y="200" height="235" width="1400" fill="url(#releaseR)" stroke='#cccccc' class='row'/>
-            <g>
-            <circle cx="325" cy="310" r="84.5" fill-opacity="0.15" filter="url(#filter1)"/>
-            <circle class="bev2" cx="323" cy="307" r="73" fill="#FFD373" filter="url(#Bevel)"/>
-            <circle cx="323" cy="307" r="66" fill="#ffffff"/>
-             <text  class="milestoneDate" fill="#073763"><textPath text-anchor="middle" startOffset="25%" xlink:href="#curve">TBD</textPath></text>
-            <text x="325" y="315" dominant-baseline="middle" stroke-width="1px" text-anchor="middle" class="milestone"
-            fill="#073763">RC2
-            </text>
-
-            </g>
-
-            <g id="detail_92ebd466-2b1f-491c-bf53-a8aca34310e2_1" transform="translate(-1000,0)">
-                <text x="420" y="208" font-family="Arial, Helvetica, sans-serif" font-size="16px" fill="#000000"><tspan x="420" dy="18">* Team will deploy to application server current production code</tspan><tspan x="420" dy="18">* Setup IHS proxy</tspan><tspan x="420" dy="18">* Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="420" dy="18">* Team will validate Okta changes on Liberty</tspan><tspan x="420" dy="18">* Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="420" dy="18">* QA will validate Production is still working</tspan><tspan x="420" dy="18">* Team will record all observations</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan></text></g>
-            <g id="goal_92ebd466-2b1f-491c-bf53-a8aca34310e2_1" transform="translate(450,288)" text-anchor="middle">
-                <text x="400" y="0" font-family="Arial, Helvetica, sans-serif" font-size="25px" fill="#000000">
-                    <tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
-                </text>
-            </g>
-            <use xlink:href="#completedCheck" x="300" y="315" fill="#fcfcfc" width="24" height="24"/>
-            <path d="M 420 430 L 1400 430" stroke="none" stroke-width="1"/>
-            </g><g transform="translate(-200,325)" cursor="pointer" onclick="toggleItem('detail_92ebd466-2b1f-491c-bf53-a8aca34310e2_2', 'goal_92ebd466-2b1f-491c-bf53-a8aca34310e2_2')">
-            <rect x="0" y="200" height="235" width="1400" fill="url(#releaseG)" stroke='#cccccc' class='row'/>
-            <g>
-            <circle cx="325" cy="310" r="84.5" fill-opacity="0.15" filter="url(#filter1)"/>
-            <circle class="bev3" cx="323" cy="307" r="73" fill="#45618E" filter="url(#Bevel)"/>
-            <circle cx="323" cy="307" r="66" fill="#ffffff"/>
-             <text  class="milestoneDate" fill="#073763"><textPath text-anchor="middle" startOffset="25%" xlink:href="#curve">TBD</textPath></text>
-            <text x="325" y="315" dominant-baseline="middle" stroke-width="1px" text-anchor="middle" class="milestone"
-            fill="#073763">GA
-            </text>
-
-            </g>
-
-            <g id="detail_92ebd466-2b1f-491c-bf53-a8aca34310e2_2" transform="translate(-1000,0)">
-                <text x="420" y="208" font-family="Arial, Helvetica, sans-serif" font-size="16px" fill="#000000"><tspan x="420" dy="18">* Team will deploy to application server current production code</tspan><tspan x="420" dy="18">* Setup IHS proxy</tspan><tspan x="420" dy="18">* Team will Mark out websphere servers and mark in liberty servers</tspan><tspan x="420" dy="18">* Team will validate Okta changes on Liberty</tspan><tspan x="420" dy="18">* Once validated team will mark out liberty servers and mark in websphere servers</tspan><tspan x="420" dy="18">* QA will validate Production is still working</tspan><tspan x="420" dy="18">* Team will record all observations</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan><tspan x="420" dy="18">* Team will validate logs and record observations as well</tspan></text></g>
-            <g id="goal_92ebd466-2b1f-491c-bf53-a8aca34310e2_2" transform="translate(450,288)" text-anchor="middle">
-                <text x="400" y="0" font-family="Arial, Helvetica, sans-serif" font-size="25px" fill="#000000">
-                    <tspan x="400" dy="24" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="24" font-weight="normal"> Our goal is ...</tspan>
-                </text>
-            </g>
-
-            <path d="M 420 430 L 1400 430" stroke="none" stroke-width="1"/>
-            </g>
-                </g>
-            </svg>
-</div>
-</div>
-<div class="paragraph">
-<p><a href="http://localhost:8010/extension/api/release/?payload=H4sIAAAAAAAA_-1Wy27bMBC85ysWytUwZLtxHzfHsfpAAzdxbkUPNLWWCNOkQK7iCkH-vST1sJuq6aG9pLAPxmp3Z3ZI7QB6OAOISJDE6B1EtyiRWYQVGUaYVXBZCpmiiQa-zXIW2uLhRXg2dbd1qa_uGeAh_HvCqgh816OADDkp1FFrSN0h28FeSAkpFlJXQBpYUUjBGQmtwKK5RwO8NAYVQWF0WvJQ4TrFjtoxrZDKAj5-WPmm79Vx6TDkmpkt6JJgj2tb5GiwmWCBqRR2viwUSLFGQ1Vb6-e6Z1Kk7o5guSUGPGcqQwtO2ecafYxaKo4dIAXqSHatoCcjf5Lzi9hj6pvZEzlfDnckLFjyxb02W6Gy_oMY5NqkwFyo135CuPo_nVrqrFbZwI-hwKwTLeX_Q9EwfOt22UP9fn8qZQWTmPIBjOPx5LDs1lmDu5ftmsiU2OW53hUSewqZZtIzLksDPvZvz7lhYYmtpbA5UI7tbrmt2BhmHZ5T6fZiLyiv9xCV63bkgfVx0G_K2_n45MqTK188xW9deXd59Y-dOBwOn_fU-9nJUidLvXiKv7PU8845a3gjS1XztVl_VqbCFpJVc602InP52lzOoFKb4COIzpNkmkym0cCFi9lsPJqEMB4lyds4auRGG61o7lGe_DwOv0Z1xIXhEucdZ6vZMc-SURzokuRq8rpmfnUxHb1Z1Mpbes5MD74d0xvW-DN_-scfvxQ7IWoLAAA=&amp;type=XLS&amp;filename=def.xls">Excel</a></p>
-</div>
+<pre>{
+  "title": "Release Strategy Builder",
+  "scale": 0.5,
+  "releases": [
+    {
+      "type": "M1",
+      "lines": [
+        "Team will deploy to application server current production code",
+        "Setup IHS proxy",
+        "Team will Mark out websphere servers and mark in liberty servers",
+        "Team will validate Okta changes on Liberty",
+        "Once validated team will mark out liberty servers and mark in websphere servers",
+        "QA will validate Production is still working",
+        "Team will record all observations",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well"
+      ],
+      "date": "July 30th, 2023",
+      "selected": true,
+      "completed": true,
+      "goal": "Our goal is to Establish the Liberty infrastructure with Okta enabled"
+    },
+    {
+      "type": "RC2",
+      "lines": [
+        "Team will deploy to application server current production code",
+        "Setup IHS proxy",
+        "Team will Mark out websphere servers and mark in liberty servers",
+        "Team will validate Okta changes on Liberty",
+        "Once validated team will mark out liberty servers and mark in websphere servers",
+        "QA will validate Production is still working",
+        "Team will record all observations",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well"
+      ],
+      "date": "TBD",
+      "selected": true,
+      "completed": true,
+      "goal": "Our goal is ..."
+    },
+    {
+      "type": "GA",
+      "lines": [
+        "Team will deploy to application server current production code",
+        "Setup IHS proxy",
+        "Team will Mark out websphere servers and mark in liberty servers",
+        "Team will validate Okta changes on Liberty",
+        "Once validated team will mark out liberty servers and mark in websphere servers",
+        "QA will validate Production is still working",
+        "Team will record all observations",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well",
+        "Team will validate logs and record observations as well"
+      ],
+      "date": "TBD",
+      "selected": true,
+      "goal": "Our goal is ..."
+    }
+  ],
+  "style": "R",
+  "displayConfig": {
+    "colors": [ "#FF6F36", "#EAA213", "#01FF90"],
+    "fontColor": "#000000",
+    "circleColors": [
+      "#FFAF10", "#FFD373", "#45618E"
+    ],
+    "carColors": [
+      "#000000", "#000000", "#000000"
+    ]
+  }
+}</pre>
 </div>
 </div>
 </div>
@@ -972,37 +700,175 @@ if (!hljs.initHighlighting.called) {
 }
 </script>
 <script>!function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=5)}([function(e,t){var n;n=function(){return this}();try{n=n||Function("return this")()||(0,eval)("this")}catch(e){"object"==typeof window&&(n=window)}e.exports=n},function(e,t,n){var o,i,r;!function(n,l){i=[],o=l(),void 0!==(r="function"==typeof o?o.apply(t,i):o)&&(e.exports=r)}(0,function(){"use strict";var e=function(e){return"getComputedStyle"in window&&"smooth"===window.getComputedStyle(e)["scroll-behavior"]};if("undefined"==typeof window||!("document"in window))return{};var t=function(t,n,o){n=n||999,o||0===o||(o=9);var i,r=function(e){i=e},l=function(){clearTimeout(i),r(0)},s=function(e){return Math.max(0,t.getTopOf(e)-o)},c=function(o,i,s){if(l(),0===i||i&&i<0||e(t.body))t.toY(o),s&&s();else{var c=t.getY(),a=Math.max(0,o)-c,u=(new Date).getTime();i=i||Math.min(Math.abs(a),n),function e(){r(setTimeout(function(){var n=Math.min(1,((new Date).getTime()-u)/i),o=Math.max(0,Math.floor(c+a*(n<.5?2*n*n:n*(4-2*n)-1)));t.toY(o),n<1&&t.getHeight()+o<t.body.scrollHeight?e():(setTimeout(l,99),s&&s())},9))}()}},a=function(e,t,n){c(s(e),t,n)},u=function(e,n,i){var r=e.getBoundingClientRect().height,l=t.getTopOf(e)+r,u=t.getHeight(),d=t.getY(),f=d+u;s(e)<d||r+o>u?a(e,n,i):l+o>f?c(l-u+o,n,i):i&&i()},d=function(e,n,o,i){c(Math.max(0,t.getTopOf(e)-t.getHeight()/2+(o||e.getBoundingClientRect().height/2)),n,i)};return{setup:function(e,t){return(0===e||e)&&(n=e),(0===t||t)&&(o=t),{defaultDuration:n,edgeOffset:o}},to:a,toY:c,intoView:u,center:d,stop:l,moving:function(){return!!i},getY:t.getY,getTopOf:t.getTopOf}},n=document.documentElement,o=function(){return window.scrollY||n.scrollTop},i=t({body:document.scrollingElement||document.body,toY:function(e){window.scrollTo(0,e)},getY:o,getHeight:function(){return window.innerHeight||n.clientHeight},getTopOf:function(e){return e.getBoundingClientRect().top+o()-n.offsetTop}});if(i.createScroller=function(e,o,i){return t({body:e,toY:function(t){e.scrollTop=t},getY:function(){return e.scrollTop},getHeight:function(){return Math.min(e.clientHeight,window.innerHeight||n.clientHeight)},getTopOf:function(e){return e.offsetTop}},o,i)},"addEventListener"in window&&!window.noZensmooth&&!e(document.body)){var r="scrollRestoration"in history;r&&(history.scrollRestoration="auto"),window.addEventListener("load",function(){r&&(setTimeout(function(){history.scrollRestoration="manual"},9),window.addEventListener("popstate",function(e){e.state&&"zenscrollY"in e.state&&i.toY(e.state.zenscrollY)},!1)),window.location.hash&&setTimeout(function(){var e=i.setup().edgeOffset;if(e){var t=document.getElementById(window.location.href.split("#")[1]);if(t){var n=Math.max(0,i.getTopOf(t)-e),o=i.getY()-n;0<=o&&o<9&&window.scrollTo(0,n)}}},9)},!1);var l=new RegExp("(^|\\s)noZensmooth(\\s|$)");window.addEventListener("click",function(e){for(var t=e.target;t&&"A"!==t.tagName;)t=t.parentNode;if(!(!t||1!==e.which||e.shiftKey||e.metaKey||e.ctrlKey||e.altKey)){if(r)try{history.replaceState({zenscrollY:i.getY()},"")}catch(e){}var n=t.getAttribute("href")||"";if(0===n.indexOf("#")&&!l.test(t.className)){var o=0,s=document.getElementById(n.substring(1));if("#"!==n){if(!s)return;o=i.getTopOf(s)}e.preventDefault();var c=function(){window.location=n},a=i.setup().edgeOffset;a&&(o=Math.max(0,o-a),c=function(){history.pushState(null,"",n)}),i.toY(o,null,c)}}},!1)}return i})},function(e,t){e.exports=function(e){function t(e,n){var r=n.appendChild(o(e));if(e.children.length){var l=i(e.isCollapsed);e.children.forEach(function(e){t(e,l)}),r.appendChild(l)}}function n(e,n){var o=i(!1);n.forEach(function(e){t(e,o)});var r=document.querySelector(e);if(null!==r)return r.firstChild&&r.removeChild(r.firstChild),r.appendChild(o)}function o(t){var n=document.createElement("li"),o=document.createElement("a");return e.listItemClass&&n.setAttribute("class",e.listItemClass),e.includeHtml&&t.childNodes.length?u.call(t.childNodes,function(e){o.appendChild(e.cloneNode(!0))}):o.textContent=t.textContent,o.setAttribute("href","#"+t.id),o.setAttribute("class",e.linkClass+p+"node-name--"+t.nodeName+p+e.extraLinkClasses),n.appendChild(o),n}function i(t){var n=document.createElement("ul"),o=e.listClass+p+e.extraListClasses;return t&&(o+=p+e.collapsibleClass,o+=p+e.isCollapsedClass),n.setAttribute("class",o),n}function r(){var t=document.documentElement.scrollTop||f.scrollTop,n=document.querySelector(e.positionFixedSelector);"auto"===e.fixedSidebarOffset&&(e.fixedSidebarOffset=document.querySelector(e.tocSelector).offsetTop),t>e.fixedSidebarOffset?-1===n.className.indexOf(e.positionFixedClass)&&(n.className+=p+e.positionFixedClass):n.className=n.className.split(p+e.positionFixedClass).join("")}function l(t){var n=document.documentElement.scrollTop||f.scrollTop;e.positionFixedSelector&&r();var o,i=t;if(m&&null!==document.querySelector(e.tocSelector)&&i.length>0){d.call(i,function(t,r){if(t.offsetTop>n+e.headingsOffset+10){return o=i[0===r?r:r-1],!0}if(r===i.length-1)return o=i[i.length-1],!0});var l=document.querySelector(e.tocSelector).querySelectorAll("."+e.linkClass);u.call(l,function(t){t.className=t.className.split(p+e.activeLinkClass).join("")});var c=document.querySelector(e.tocSelector).querySelector("."+e.linkClass+".node-name--"+o.nodeName+'[href="#'+o.id+'"]');c.className+=p+e.activeLinkClass;var a=document.querySelector(e.tocSelector).querySelectorAll("."+e.listClass+"."+e.collapsibleClass);u.call(a,function(t){var n=p+e.isCollapsedClass;-1===t.className.indexOf(n)&&(t.className+=p+e.isCollapsedClass)}),c.nextSibling&&(c.nextSibling.className=c.nextSibling.className.split(p+e.isCollapsedClass).join("")),s(c.parentNode.parentNode)}}function s(t){return-1!==t.className.indexOf(e.collapsibleClass)?(t.className=t.className.split(p+e.isCollapsedClass).join(""),s(t.parentNode.parentNode)):t}function c(t){var n=t.target||t.srcElement;"string"==typeof n.className&&-1!==n.className.indexOf(e.linkClass)&&(m=!1)}function a(){m=!0}var u=[].forEach,d=[].some,f=document.body,m=!0,p=" ";return{enableTocAnimation:a,disableTocAnimation:c,render:n,updateToc:l}}},function(e,t){e.exports={tocSelector:".js-toc",contentSelector:".js-toc-content",headingSelector:"h1, h2, h3",ignoreSelector:".js-toc-ignore",linkClass:"toc-link",extraLinkClasses:"",activeLinkClass:"is-active-link",listClass:"toc-list",extraListClasses:"",isCollapsedClass:"is-collapsed",collapsibleClass:"is-collapsible",listItemClass:"toc-list-item",collapseDepth:0,smoothScroll:!0,smoothScrollDuration:420,scrollEndCallback:function(e){},headingsOffset:0,throttleTimeout:50,positionFixedSelector:null,positionFixedClass:"is-position-fixed",fixedSidebarOffset:"auto",includeHtml:!1}},function(e,t){e.exports=function(e){function t(e){return e[e.length-1]}function n(e){return+e.nodeName.split("H").join("")}function o(t){var o={id:t.id,children:[],nodeName:t.nodeName,headingLevel:n(t),textContent:t.textContent.trim()};return e.includeHtml&&(o.childNodes=t.childNodes),o}function i(i,r){for(var l=o(i),s=n(i),c=r,a=t(c),u=a?a.headingLevel:0,d=s-u;d>0;)a=t(c),a&&void 0!==a.children&&(c=a.children),d--;return s>=e.collapseDepth&&(l.isCollapsed=!0),c.push(l),c}function r(t,n){var o=n;e.ignoreSelector&&(o=n.split(",").map(function(t){return t.trim()+":not("+e.ignoreSelector+")"}));try{return document.querySelector(t).querySelectorAll(o)}catch(e){return console.warn("Element not found: "+t),null}}function l(e){return s.call(e,function(e,t){return i(o(t),e.nest),e},{nest:[]})}var s=[].reduce;return{nestHeadingsArray:l,selectHeadings:r}}},function(e,t,n){(function(o){var i,r,l;!function(n,o){r=[],i=o(n),void 0!==(l="function"==typeof i?i.apply(t,r):i)&&(e.exports=l)}(void 0!==o?o:this.window||this.global,function(e){"use strict";function t(){for(var e={},t=0;t<arguments.length;t++){var n=arguments[t];for(var o in n)m.call(n,o)&&(e[o]=n[o])}return e}function o(e,t,n){t||(t=250);var o,i;return function(){var r=n||this,l=+new Date,s=arguments;o&&l<o+t?(clearTimeout(i),i=setTimeout(function(){o=l,e.apply(r,s)},t)):(o=l,e.apply(r,s))}}var i,r,l=n(3),s={},c={},a=n(2),u=n(4);if("undefined"!=typeof window){var d,f=!!e.document.querySelector&&!!e.addEventListener,m=Object.prototype.hasOwnProperty;return c.destroy=function(){try{document.querySelector(s.tocSelector).innerHTML=""}catch(e){console.warn("Element not found: "+s.tocSelector)}document.removeEventListener("scroll",this._scrollListener,!1),document.removeEventListener("resize",this._scrollListener,!1),i&&document.removeEventListener("click",this._clickListener,!1)},c.init=function(e){if(f&&(s=t(l,e||{}),this.options=s,this.state={},s.smoothScroll&&(c.zenscroll=n(1),c.zenscroll.setup(s.smoothScrollDuration)),i=a(s),r=u(s),this._buildHtml=i,this._parseContent=r,c.destroy(),null!==(d=r.selectHeadings(s.contentSelector,s.headingSelector)))){var m=r.nestHeadingsArray(d),p=m.nest;return i.render(s.tocSelector,p),this._scrollListener=o(function(e){i.updateToc(d);var t=e&&e.target&&e.target.scrollingElement&&0===e.target.scrollingElement.scrollTop;(e&&0===e.eventPhase||t)&&(i.enableTocAnimation(),i.updateToc(d),s.scrollEndCallback&&s.scrollEndCallback(e))},s.throttleTimeout),this._scrollListener(),document.addEventListener("scroll",this._scrollListener,!1),document.addEventListener("resize",this._scrollListener,!1),this._clickListener=o(function(e){s.smoothScroll&&i.disableTocAnimation(e),i.updateToc(d)},s.throttleTimeout),document.addEventListener("click",this._clickListener,!1),this}},c.refresh=function(e){c.destroy(),c.init(e||this.options)},e.tocbot=c,c}})}).call(t,n(0))}]);</script>
+<style>
+/* Enhanced TOC Styling */
+.js-toc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  max-width: 300px;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid #e9ecef;
+  padding-left: 1rem;
+}
+
+.toc-list-item {
+  margin: 0.25rem 0;
+  position: relative;
+}
+
+.toc-link {
+  display: block;
+  color: #495057;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.toc-link:hover {
+  background-color: #e9ecef;
+  color: #212529;
+  transform: translateX(2px);
+}
+
+.toc-link.is-active-link {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.toc-list.is-collapsible {
+  position: relative;
+}
+
+.toc-list.is-collapsible::before {
+  content: '▼';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  font-size: 0.8rem;
+  color: #6c757d;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1;
+}
+
+.toc-list.is-collapsible.is-collapsed::before {
+  transform: rotate(-90deg);
+}
+
+.toc-list.is-collapsed {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.toc-list:not(.is-collapsed) {
+  max-height: 1000px;
+  transition: max-height 0.3s ease;
+}
+
+.toc-list .toc-list {
+  margin-top: 0.5rem;
+  border-left-color: #dee2e6;
+  padding-left: 0.75rem;
+}
+
+.toc-list .toc-list .toc-link {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+@media (max-width: 768px) {
+  .js-toc {
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+  
+  .toc-list {
+    padding-left: 0.5rem;
+  }
+}
+</style>
 <script>
-    /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
-    /* Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006 */
+    /* Enhanced Tocbot configuration */
     var oldtoc = document.getElementById('toctitle').nextElementSibling;
     var newtoc = document.createElement('div');
     newtoc.setAttribute('id', 'tocbot');
     newtoc.setAttribute('class', 'js-toc');
     oldtoc.parentNode.replaceChild(newtoc, oldtoc);
-    tocbot.init({ contentSelector: '#content',
+    
+    // Enhanced configuration with better collapsing
+    var tocConfig = {
+        contentSelector: '#content',
         headingSelector: 'h1, h2, h3, h4, h5',
-        smoothScroll: false });
-    var handleTocOnResize = function() {
-        var width = window.innerWidth
-                    || document.documentElement.clientWidth
-                    || document.body.clientWidth;
-        if (width < 768) {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 6,
-                activeLinkClass: 'ignoreactive',
-                throttleTimeout: 1000,
-                smoothScroll: false });
+        collapseDepth: 2,
+        smoothScroll: true,
+        smoothScrollDuration: 300,
+        headingsOffset: 80,
+        throttleTimeout: 50,
+        activeLinkClass: 'is-active-link',
+        listClass: 'toc-list',
+        linkClass: 'toc-link',
+        collapsibleClass: 'is-collapsible',
+        isCollapsedClass: 'is-collapsed'
+    };
+    
+    tocbot.init(tocConfig);
+    
+    // Enhanced click handler for expand/collapse arrows
+    document.addEventListener('click', function(e) {
+        var target = e.target;
+        if (target.matches('.toc-list.is-collapsible::before') || 
+            (target.closest('.toc-list.is-collapsible') && 
+             e.offsetX < 0)) {
+            var list = target.closest('.toc-list.is-collapsible') || target;
+            list.classList.toggle('is-collapsed');
+            e.preventDefault();
         }
-        else {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                smoothScroll: false });
+    });
+    
+    // Responsive behavior
+    var handleTocOnResize = function() {
+        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        
+        if (width < 768) {
+            tocbot.refresh({
+                ...tocConfig,
+                collapseDepth: 1,
+                activeLinkClass: 'ignoreactive',
+                throttleTimeout: 1000
+            });
+        } else {
+            tocbot.refresh(tocConfig);
         }
     };
+    
     window.addEventListener('resize', handleTocOnResize);
     handleTocOnResize();
+    
+    // Keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            var focused = document.activeElement;
+            if (focused.matches('.toc-list.is-collapsible::before')) {
+                focused.closest('.toc-list').classList.toggle('is-collapsed');
+                e.preventDefault();
+            }
+        }
+    });
 </script>
 </body>
 </html>

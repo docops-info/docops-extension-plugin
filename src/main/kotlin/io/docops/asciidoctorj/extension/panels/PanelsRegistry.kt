@@ -22,25 +22,9 @@ import org.asciidoctor.jruby.extension.spi.ExtensionRegistry
 class PanelsRegistry : ExtensionRegistry {
     override fun register(asciidoctor: Asciidoctor) {
         val registry = asciidoctor.javaExtensionRegistry()
-        registry.block(PanelsBlockProcessor::class.java)
-        registry.block(PanelBlockProcessor::class.java)
-        registry.block(BadgeBlockProcessor::class.java)
-        registry.block(EChartBlockProcessor::class.java)
-        registry.block(EChartStackBarBlockProcessor::class.java)
-        registry.block(EChartTreeBlockProcessor::class.java)
-        registry.block(EChartCustomBlockProcessor::class.java)
-        registry.block(ReleaseStrategyBlockProcessor::class.java)
-        registry.block(ButtonsBlockProcessor::class.java)
-        registry.block(TimelineBlockProcessor::class.java)
         registry.block(DocOpsBlockProcessor::class.java)
-        registry.block(RoadmapBlockProcessor::class.java)
-        registry.block(ScorecardProcessor::class.java)
-        registry.block(DebugSvgProcessor::class.java)
-        //registry.docinfoProcessor(FeedbackDocinfoProcessor::class.java)
-        //registry.docinfoProcessor(FeedbackDivDocInfoProcessor::class.java)
-        registry.blockMacro(ColorMapBlockMacroProcessor::class.java)
         registry.blockMacro(ReactionsBlockProcessor::class.java)
-        registry.docinfoProcessor(TocBotHeaderDocInfoProcessor::class.java)
+        //registry.docinfoProcessor(TocBotHeaderDocInfoProcessor::class.java)
         registry.docinfoProcessor(TocBotFooterDocInfoProcessor::class.java)
 
     }
