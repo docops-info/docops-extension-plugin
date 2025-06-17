@@ -60,20 +60,18 @@ class DocOpsBlockProcessor: BlockProcessor()  {
             val dark = attributes.getOrDefault("useDark", "false") as String
             val useDark: Boolean = "true".equals(dark, true)
             val scale = attributes.getOrDefault("scale", "1.0") as String
-            val outlineColor = attributes.getOrDefault("outlineColor", "#7149c6") as String
             val title = attributes.getOrDefault("title", "Title") as String
-            val numChars = getCharLength(attributes, 24)
             if (isIdeaOn(parent = parent)) {
                 opts = ""
                 val url =
-                    """$webserver/api/docops/svg?kind=$kind&payload=$payload&type=$type&useDark=$useDark&title=${title.encodeUrl()}&numChars=$numChars&backend=$backend&filename=ghi.svg"""
+                    """$webserver/api/docops/svg?kind=$kind&payload=$payload&type=$type&useDark=$useDark&title=${title.encodeUrl()}&backend=$backend&filename=ghi.svg"""
                 val image = getContentFromServer(url, parent, this, debug = localDebug)
                 return createImageBlockFromString(parent, image, role)
             } else {
                 val lines = mutableListOf<String>()
                 if ("PDF" == type) {
 
-                    val link = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&outlineColor=${outlineColor.encodeUrl()}&title=${title.encodeUrl()}&numChars=$numChars&type=SVG&useDark=$useDark&backend=$backend&filename=docops.svg"""
+                    val link = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&useDark=$useDark&backend=$backend&filename=docops.svg"""
                     val img = """image::$link[$opts,link=$link,window=_blank,opts=nofollow]"""
                     if (localDebug) {
                         println(img)
@@ -82,7 +80,7 @@ class DocOpsBlockProcessor: BlockProcessor()  {
                     parseContent(block, lines)
                 } else {
 
-                    val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&type=$type&useDark=$useDark&title=${title.encodeUrl()}&numChars=$numChars&backend=$backend&filename=ghi.svg"""
+                    val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&type=$type&useDark=$useDark&title=${title.encodeUrl()}&backend=$backend&filename=ghi.svg"""
                     if (localDebug) {
                         println(url)
                     }
