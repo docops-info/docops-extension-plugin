@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-io.docops.asciidoctorj.extension.panels.PanelsRegistry
+io.docops.extension.plugin.PanelsRegistry

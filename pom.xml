@@ -19,7 +19,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>asciidoctorj-docops-panel</artifactId>
+    <artifactId>docops-extension-plugin</artifactId>
     <groupId>io.docops</groupId>
     <version>2025.00</version>
     <packaging>jar</packaging>
@@ -94,7 +94,7 @@
         <dokka.version>1.9.10</dokka.version>
         <maven-plugin.version>3.0.0-M6</maven-plugin.version>
         <maven-plugin.validation>VERBOSE</maven-plugin.validation>
-        <maven-shared-utils.version>3.3.4</maven-shared-utils.version>
+        <maven-shared-utils.version>3.4.2</maven-shared-utils.version>
         <maven-deploy.version>3.1.0</maven-deploy.version>
         <maven-compiler.version>3.10.1</maven-compiler.version>
         <maven-release.version>3.0.0-M5</maven-release.version>
@@ -102,7 +102,7 @@
         <nexus-staging.version>1.7.0</nexus-staging.version>
 <!--        <nexus-staging.version>1.6.7</nexus-staging.version>-->
         <maven-source.version>3.2.1</maven-source.version>
-        <maven-gpg.version>3.0.1</maven-gpg.version>
+        <maven-gpg.version>3.2.7</maven-gpg.version>
         <commons-io.version>2.14.0</commons-io.version>
     </properties>
 
@@ -151,21 +151,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-plugin.version}</version>
             </plugin>
-            <plugin>
-                <groupId>org.jetbrains.dokka</groupId>
-                <artifactId>dokka-maven-plugin</artifactId>
-                <version>${dokka.version}</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>dokka</goal>
-                            <goal>javadoc</goal>
-                            <goal>javadocJar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy.version}</version>
@@ -222,25 +208,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>${maven-gpg.version}</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                     <phase>site</phase>
-                        <!--<phase>verify</phase>-->
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                        <configuration>
-                            <keyname>${gpg.keyname}</keyname>
-                            <passphraseServerId>${gpg.keyname}</passphraseServerId>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -315,8 +283,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
@@ -326,4 +292,47 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>DocOps</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jetbrains.dokka</groupId>
+                        <artifactId>dokka-maven-plugin</artifactId>
+                        <version>${dokka.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>dokka</goal>
+                                    <goal>javadoc</goal>
+                                    <goal>javadocJar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>install</phase>
+                                <!--<phase>verify</phase>-->
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

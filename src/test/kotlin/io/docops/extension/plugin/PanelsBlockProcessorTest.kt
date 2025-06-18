@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.docops.asciidoctorj.extension.panels
+package io.docops.extension.plugin
 
 import org.asciidoctor.Asciidoctor
 import org.asciidoctor.Attributes

@@ -1,4 +1,4 @@
-package io.docops.asciidoctorj.extension.panels
+package io.docops.extension.plugin
 
 import org.asciidoctor.ast.Block
 import org.asciidoctor.ast.ContentModel
@@ -22,8 +22,8 @@ import java.util.zip.GZIPOutputStream
 @Contexts(Contexts.LISTING)
 @ContentModel(ContentModel.COMPOUND)
 class DocOpsBlockProcessor: BlockProcessor()  {
-    protected var server = "http://localhost:8010/extension"
-    protected var webserver = "http://localhost:8010/extension"
+    protected var server = "http://localhost:8010"
+    protected var webserver = "http://localhost:8010"
     protected var localDebug = false
 
 

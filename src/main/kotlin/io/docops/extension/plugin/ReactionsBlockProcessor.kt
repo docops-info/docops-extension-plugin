@@ -1,4 +1,4 @@
-package io.docops.asciidoctorj.extension.panels
+package io.docops.extension.plugin
 
 import org.asciidoctor.ast.StructuralNode
 import org.asciidoctor.extension.BlockMacroProcessor

@@ -1,4 +1,4 @@
-package io.docops.asciidoctorj.extension.panels
+package io.docops.extension.plugin
 
 import org.asciidoctor.ast.Document
 import org.asciidoctor.extension.DocinfoProcessor

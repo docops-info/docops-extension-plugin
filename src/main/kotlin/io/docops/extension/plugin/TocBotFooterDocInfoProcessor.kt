@@ -1,4 +1,4 @@
-package io.docops.asciidoctorj.extension.panels
+package io.docops.extension.plugin
 
 
 

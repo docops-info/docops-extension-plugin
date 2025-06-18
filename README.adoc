@@ -2,8 +2,8 @@
 :imagesdir: images
 :data-uri:
 :group: io.docops
-:artifact: asciidoctorj-docops-panel
-:major: 2024
+:artifact: docops-extension-plugin
+:major: 2025
 :minor: .00
 :patch:
 :build:
