@@ -25,7 +25,7 @@ class PanelsRegistry : ExtensionRegistry {
         registry.block(DocOpsBlockProcessor::class.java)
         registry.blockMacro(ReactionsBlockProcessor::class.java)
         //registry.docinfoProcessor(TocBotHeaderDocInfoProcessor::class.java)
-        registry.docinfoProcessor(TocBotFooterDocInfoProcessor::class.java)
+       // registry.docinfoProcessor(TocBotFooterDocInfoProcessor::class.java)
 
     }
 

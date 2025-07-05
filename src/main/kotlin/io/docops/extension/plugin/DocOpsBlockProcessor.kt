@@ -28,6 +28,9 @@ class DocOpsBlockProcessor: BlockProcessor()  {
 
 
     override fun process(parent: StructuralNode, reader: Reader, attributes: MutableMap<String, Any>): Any {
+        val doc = parent.document
+
+        val docname = doc.attributes["docname"] as String
 
         val id = generateId(attributes)
         val title = attributes["title"] as? String ?: "SVG Viewer"
@@ -47,7 +50,7 @@ class DocOpsBlockProcessor: BlockProcessor()  {
             val type = getType(parent = parent)
             val backend = parent.document.getAttribute("backend") as String
             val payload = getCompressedPayload(parent = parent, content = content)
-            var opts = "format=svg,opts=inline,align='$role'"
+            val opts = "format=svg,opts=inline,align='$role'"
             val kind = attributes.get("kind") as String
             if (kind.isEmpty()) {
                 parseContent(
@@ -59,44 +62,47 @@ class DocOpsBlockProcessor: BlockProcessor()  {
             val useDark: Boolean = "true".equals(dark, true)
             val scale = attributes.getOrDefault("scale", "1.0") as String
             val title = attributes.getOrDefault("title", "Title") as String
-            if (isIdeaOn(parent = parent)) {
-                opts = ""
-                val url =
-                    """$webserver/api/docops/svg?kind=$kind&payload=$payload&type=$type&useDark=$useDark&title=${title.encodeUrl()}&backend=$backend&filename=ghi.svg"""
-                val image = getContentFromServer(url, parent, this, debug = localDebug)
-                return createImageBlockFromString(parent, image, role)
-            } else {
-                val lines = mutableListOf<String>()
-                if ("PDF" == type) {
+            val lines = mutableListOf<String>()
+            // Check if base64 conversion is requested
+            val useBase64 = (attributes["base64"] as? String)?.toBoolean() ?: true
 
-                    val link = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&useDark=$useDark&backend=$backend&filename=docops.svg"""
-                    val img = """image::$link[$opts,link=$link,window=_blank,opts=nofollow]"""
-                    if (localDebug) {
-                        println(img)
-                    }
-                    lines.add(img)
-                    parseContent(block, lines)
-                } else {
 
-                    val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&type=$type&useDark=$useDark&title=${title.encodeUrl()}&backend=$backend&filename=ghi.svg"""
-                    if (localDebug) {
-                        println(url)
-                    }
-                    image = getContentFromServer(url, parent, this, debug = localDebug)
-                    val html = if (showControls) {
-                        generateSvgViewerHtml(
-                            image, id, title,
-                            showControls, allowCopy, allowZoom, allowExpand, theme, role  // Pass role
-                        )
-                    } else {
-                        // For non-controlled SVGs, still apply alignment
-                        """<div style="${getAlignmentStyle(role)}"><div style="display: inline-block;">$image</div></div>"""
-                    }
 
-                    lines.add(html)
-                    return createBlock(block, "pass", html)
+            if ("PDF" == type) {
+
+                val link = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&title=${title.encodeUrl()}&type=SVG&useDark=$useDark&backend=$backend&docname=${docname.encodeUrl()}&filename=docops.svg"""
+                val img = """image::$link[$opts,link=$link,window=_blank,opts=nofollow]"""
+                if (localDebug) {
+                    println(img)
                 }
+                lines.add(img)
+                parseContent(block, lines)
+            } else {
+
+                val url = """$webserver/api/docops/svg?kind=$kind&payload=$payload&scale=$scale&type=$type&useDark=$useDark&title=${title.encodeUrl()}&backend=$backend&docname=${docname.encodeUrl()}&filename=ghi.svg"""
+                if (localDebug) {
+                    println(url)
+                }
+                image = getContentFromServer(url, parent, this, debug = localDebug)
+                // Convert to base64 if requested and it's SVG content
+                if (useBase64 && !isIdeaOn(parent)) {
+                    image = convertSvgToBase64Image(image, attributes)
+                }
+
+                val html = if (showControls) {
+                    generateSvgViewerHtml(
+                        image, id, title,
+                        showControls, allowCopy, allowZoom, allowExpand, theme, role  // Pass role
+                    )
+                } else {
+                    // For non-controlled SVGs, still apply alignment
+                    """<div style="${getAlignmentStyle(role)}"><div style="display: inline-block;">$image</div></div>"""
+                }
+
+                lines.add(html)
+                return createBlock(block, "pass", html)
             }
+
         } else {
             parseContent(parent, mutableListOf<String>("DocOps Server Unavailable! 😵"))
         }
@@ -107,6 +113,114 @@ class DocOpsBlockProcessor: BlockProcessor()  {
         return attributes["id"] as? String ?: "svgviewer-${System.currentTimeMillis()}"
     }
 
+    /**
+     * Build HTML object tag for interactive SVG with proper attributes
+     */
+    private fun buildObjectTag(dataUrl: String, attributes: Map<String, Any>): String {
+        return buildString {
+            append("<object type=\"image/svg+xml\" data=\"$dataUrl\"")
+
+            // Add standard attributes if provided
+            attributes["width"]?.let { append(" width=\"${escapeHtml(it.toString())}\"") }
+            attributes["height"]?.let { append(" height=\"${escapeHtml(it.toString())}\"") }
+            attributes["class"]?.let { append(" class=\"${escapeHtml(it.toString())}\"") }
+            attributes["id"]?.let { append(" id=\"${escapeHtml(it.toString())}\"") }
+            attributes["style"]?.let { append(" style=\"${escapeHtml(it.toString())}\"") }
+
+            // Add ARIA attributes for accessibility
+            attributes["title"]?.let { append(" aria-label=\"${escapeHtml(it.toString())}\"") }
+            attributes["alt"]?.let { append(" aria-describedby=\"${escapeHtml(it.toString())}\"") }
+
+            // Close opening tag
+            append(">")
+
+           /* // Add fallback content for browsers that don't support object tag
+            append("<p>")
+            attributes["alt"]?.let {
+                append("${escapeHtml(it.toString())}")
+            } ?: append("Interactive SVG content - please use a modern browser to view.")
+            append("</p>")*/
+
+            // Close object tag
+            append("</object>")
+        }
+    }
+
+    /**
+     * Check if the content is SVG by looking for SVG tags
+     */
+    private fun isSvgContent(content: String): Boolean {
+        return content.trim().startsWith("<svg") && content.contains("</svg>")
+    }
+
+    /**
+     * Convert SVG content to base64 data URL image tag
+     */
+    private fun convertSvgToBase64Image(svgContent: String, attributes: Map<String, Any>): String {
+        return try {
+            // Clean and optimize the SVG content
+            val cleanSvg = optimizeSvgContent(svgContent)
+
+            // Encode to base64
+            val base64Content = Base64.getEncoder().encodeToString(
+                cleanSvg.toByteArray(Charsets.UTF_8)
+            )
+
+            // Create data URL
+            val dataUrl = "data:image/svg+xml;base64,$base64Content"
+
+            // Build image tag with attributes
+            buildObjectTag(dataUrl, attributes)
+
+        } catch (e: Exception) {
+            if (localDebug) {
+                println("Warning: Failed to convert SVG to base64: ${e.message}")
+            }
+            // Return original SVG content if conversion fails
+            svgContent
+        }
+    }
+
+    /**
+     * Optimize SVG content by removing unnecessary whitespace and comments
+     */
+    private fun optimizeSvgContent(svgContent: String): String {
+        var optimized = svgContent.trim()
+
+        // Remove XML declaration if present (not needed for data URLs)
+        optimized = optimized.replace(Regex("""<\?xml[^>]*\?>"""), "")
+
+        // Remove DOCTYPE if present
+        optimized = optimized.replace(Regex("""<!DOCTYPE[^>]*>"""), "")
+
+        // Remove comments
+        optimized = optimized.replace(Regex("""<!--.*?-->""", RegexOption.DOT_MATCHES_ALL), "")
+
+        // Normalize whitespace (but be careful with text content)
+        optimized = optimized.replace(Regex("""\s+"""), " ")
+
+        // Remove leading/trailing whitespace
+        optimized = optimized.trim()
+
+        // Ensure xmlns attribute is present for standalone SVG
+        if (!optimized.contains("xmlns=")) {
+            optimized = optimized.replace("<svg", """<svg xmlns="http://www.w3.org/2000/svg"""")
+        }
+
+        return optimized
+    }
+
+
+    /**
+     * Escape HTML special characters in attribute values
+     */
+    private fun escapeHtml(text: String): String {
+        return text.replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace("\"", "&quot;")
+            .replace("'", "&#39;")
+    }
 
     private fun generateSvgViewerHtml(
         svgContent: String,
@@ -180,6 +294,7 @@ class DocOpsBlockProcessor: BlockProcessor()  {
         }
     }
 
+    //language=html
     private fun getMinimalControlsAssets(): String = """
 <style>
 /* Outer container handles alignment */
